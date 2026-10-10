@@ -431,3 +431,38 @@ strong { font-family: 'Lato', 'Segoe UI', sans-serif; font-weight: 700; -webkit-
     margin-left: 8px;
     margin-right: 0;
 }
+
+/* --- REPO LINK STYLE (Ana & FCC Uyumlu) --- */
+.repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.repo-link:hover {
+    color: var(--primary-color);
+}
+
+.repo-link i {
+    font-size: 1.1rem;
+}
+
+/* İkon renkleri */
+.repo-link .fa-python { color: #3776AB; }
+.repo-link .fa-html5 { color: #E34F26; }
+.repo-link .fa-css3-alt { color: #1572B6; }
+.repo-link .fa-js { color: #F7DF1E; }
+.repo-link .fa-code { color: var(--primary-color); }
+.repo-link .fa-file-pdf { color: #E53935; }
+.repo-link .fa-book { color: #7B1FA2; }
+.repo-link .fa-music { color: #16A085; }
+.repo-link .fa-language { color: #E67E22; }
+.repo-link .fa-gamepad { color: #9C27B0; }
+.repo-link .fa-headphones { color: #E91E63; }
+.repo-link .fa-layer-group { color: #000000; }
+.repo-link .fa-calendar-alt { color: #00BCD4; }
+.repo-link .fa-hand-sparkles { color: #4CAF50; }
