@@ -245,6 +245,9 @@ function copyEmail() {
             case 'ar':
                 feedback.textContent = 'نُسِخَ!';
                 break;
+            case 'en':
+                feedback.textContent = 'Copied!';
+                break;
             default:
                 feedback.textContent = 'Kopyalandı!';
         }
