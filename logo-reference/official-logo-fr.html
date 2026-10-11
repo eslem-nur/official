@@ -6,13 +6,13 @@
     
     <!-- SEO & Meta -->
     <title>Référence Logo | Eslem Nur Çetin</title>
-    <meta name="description" content="Référence officielle du logo par Eslem Nur Çetin">
+    <meta name="description" content="Référence Officielle du Logo d'Eslem Nur Çetin">
     <meta name="author" content="Eslem Nur Çetin">
     <meta name="robots" content="noindex, follow">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Référence Logo | Eslem Nur Çetin">
-    <meta property="og:description" content="Logo officiel original par Eslem Nur Çetin">
+    <meta property="og:description" content="Logo Original Officiel d'Eslem Nur Çetin">
     <meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
     <meta property="og:url" content="https://eslem-nur.github.io/official/logo-reference/">
     <meta property="og:type" content="website">
@@ -28,24 +28,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- styles -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="/official/logo-reference/logo-reference-styles.css">
 
     <!-- PWA Manifest -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon-96x96.png" />
     <link rel="manifest" href="/official/PWA/manifest/site.webmanifest" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon.svg" />
-    <link rel="shortcut icon" href="/official/PWA/icon/favicon.ico" />
+    <meta name="theme-color" content="#6d4aff" />
 
-    <!-- PWA Service Worker Registration -->
+    <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
-            .then(reg => console.log('Service Worker registered successfully!', reg.scope))
-            .catch(err => console.log('Service Worker registration failed:', err));
+            .then(reg => console.log("Service Worker enregistré avec succès!", reg.scope))
+            .catch(err => console.log("Échec de l'enregistrement du Service Worker:", err));
         });
       }
     </script>
@@ -56,12 +55,12 @@
 <header>
     <div class="container">
         <nav>
-            <a href="https://eslem-nur.github.io/official/fr.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            <a href="https://eslem-nur.github.io/official/" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à l'Accueil
             </a>
             
             <div class="lang-dropdown" id="langDropdown">
-                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Changer la langue">
+                <button class="lang-toggle" onclick="toggleLangMenu()" aria-label="Changer la Langue">
                     <i class="fa fa-globe"></i>
                 </button>
                 <div class="lang-dropdown-menu">
@@ -73,7 +72,7 @@
                 </div>
             </div>
             
-            <button id="themeToggle" class="theme-toggle" aria-label="Basculer le mode sombre">
+            <button id="themeToggle" class="theme-toggle" aria-label="Basculer le Mode Sombre">
                 <i class="fas fa-moon" id="themeIcon"></i>
             </button>
         </nav>
@@ -83,15 +82,16 @@
 <main>
     <div class="container logo-page">
         
+        <!-- Bismala -->
         <div style="text-align: center; margin: 30px 0;">
-            <span style="font-family: 'Scheherazade New', serif; font-size: 2.8rem; color: var(--primary-color); direction: rtl; display: inline-block;">بسم الله الرحمن الرحيم</span>
+            <span class="basmala-text">بسم الله الرحمن الرحيم</span>
         </div>
       
         <div class="logo-container">
             <div class="logo-wrapper">
-                <img src="/official/PWA/svg/favicon.svg" alt="Logo officiel" class="logo-image" style="width: 280px;">
+                <img src="/official/PWA/svg/favicon.svg" alt="Logo Officiel" class="logo-image">
                 
-                <h1>Référence Logo Officielle</h1>
+                <h1>Référence Logo Officiel</h1>
                 <p class="subtitle">Eslem Nur Çetin</p>
             </div>
         </div>
@@ -106,26 +106,26 @@
                 <span class="info-value">06.10.2026</span>
             </div>
             <div class="info-item">
-                <span class="info-label">🌐 Site principal:</span>
-                <span class="info-value"><a href="https://eslem-nur.github.io/official/" target="_blank" style="color: var(--primary-color);">eslem-nur.github.io/official/</a></span>
+                <span class="info-label">🌐 Site Principal:</span>
+                <span class="info-value"><a href="https://eslem-nur.github.io/official/" target="_blank" rel="noopener noreferrer">eslem-nur.github.io/official/</a></span>
             </div>
             <div class="info-item">
                 <span class="info-label">📁 GitHub:</span>
-                <span class="info-value"><a href="https://github.com/eslem-nur/official" target="_blank" style="color: var(--primary-color);">github.com/eslem-nur/official</a></span>
+                <span class="info-value"><a href="https://github.com/eslem-nur/official" target="_blank" rel="noopener noreferrer">github.com/eslem-nur/official</a></span>
             </div>
         </div>
         
         <div class="info-block">
             <div class="info-item">
-                <span class="info-label">© Droit d'auteur:</span>
-                <span class="info-value">Tous droits réservés depuis 2026</span>
+                <span class="info-label">© Droits d'Auteur:</span>
+                <span class="info-value">Tous Droits Réservés (Depuis 2026)</span>
             </div>
             <div class="info-item">
                 <span class="info-label">™ Marque:</span>
-                <span class="info-value">Utilisée (non enregistrée)</span>
+                <span class="info-value">En Utilisation (Non Enregistrée)</span>
             </div>
             <div class="info-item">
-                <span class="info-label">🛡️ Usage:</span>
+                <span class="info-label">🛡️ Utilisation:</span>
                 <span class="info-value">Utilisation commerciale non autorisée interdite</span>
             </div>
         </div>
@@ -137,11 +137,11 @@
                 <strong>Marques:</strong> 
                 <span class="brand-badge">Eslem Nur Notes™</span> 
                 <span class="separator">|</span> 
-                <span class="brand-badge">Eslem Nur Kalligraphie™</span>
+                <span class="brand-badge">Eslem Nur Kalligrafie™</span>
             </p>
             
             <p class="legal-note">
-                ™ indique une marque non enregistrée. Projet de marque personnel | Allemagne
+                ™ signifie marque non enregistrée. Projet de marque personnelle | Allemagne
             </p>
             
             <p class="footer-copy" style="margin-top: 20px;">
@@ -150,40 +150,17 @@
         </div>
         
         <div class="links">
-            <a href="https://github.com/eslem-nur/official" class="btn-primary" target="_blank">
-                <i class="fab fa-github"></i> Dépôt principal
+            <a href="https://github.com/eslem-nur/official" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Dépôt Principal
             </a>
-            <a href="https://eslem-nur.github.io/official/fr.html" class="btn-outline" target="_blank">
-                <i class="fas fa-globe"></i> Site officiel
+            <a href="https://eslem-nur.github.io/official/index.html" class="btn-outline" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-globe"></i> Site Web Officiel
             </a>
         </div>
       
     </div>
 </main>
-<!--
-<footer>
-    <div class="container">
-        <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
-        <p style="color: var(--text-light); margin-bottom: 20px;">Ô Allah, augmente-nous en connaissance.</p>
-        
-        <div class="social-links" style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap;">
-            <a href="https://github.com/eslem-nur" class="btn-outline" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://ko-fi.com/eslemnur_notes" class="btn-outline" target="_blank" title="Ko-fi">
-                <i class="fas fa-coffee"></i> Ko-fi
-            </a>
-            <a href="mailto:eslemnur-official@proton.me" class="btn-outline" title="Email">
-                <i class="fas fa-envelope"></i> Email
-            </a>
-        </div>
-        
-        <p class="footer-copy">
-            © <span id="current-year-footer"></span> Eslem Nur Çetin
-        </p>
-    </div>
-</footer>
--->
+
 <!-- Scripts (shared) -->
 <script src="/official/logo-reference/logo-reference-scripts.js"></script>
 

@@ -1,6 +1,6 @@
 // ============================================
 // ESLEM NUR | LOGO REFERENCE - GLOBAL SCRIPTS
-// Tüm Diller İçin Ortak JavaScript
+// Ana Portfolyo Sitesi ile Uyumlu
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,14 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     currentYearElements.forEach(el => {
         el.textContent = new Date().getFullYear();
     });
-    
-    // --- 2. Font Awesome Loading ---
-    const fontAwesome = document.createElement('link');
-    fontAwesome.rel = 'stylesheet';
-    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-    document.head.appendChild(fontAwesome);
   
-    // --- 3. Theme Toggle Functionality ---
+    // --- 2. Theme Toggle Functionality ---
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     
@@ -48,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', theme);
     }
     
-    // --- 4. Language Dropdown Menu ---
+    // --- 3. Language Dropdown Menu ---
     const langDropdown = document.getElementById('langDropdown');
     
     if (langDropdown) {
@@ -77,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // --- 5. Smooth Scroll (if anchor links exist) ---
+    // --- 4. Smooth Scroll (if anchor links exist) ---
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -95,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // --- 6. External Links Opening in New Tab (optional security) ---
+    // --- 5. External Links Security ---
     const externalLinks = document.querySelectorAll('a[target="_blank"]');
     externalLinks.forEach(link => {
         link.setAttribute('rel', 'noopener noreferrer');
