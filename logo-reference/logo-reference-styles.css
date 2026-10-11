@@ -500,7 +500,7 @@ footer {
 [dir="rtl"] .copyright,
 [dir="rtl"] .trademark-notice {
     direction: rtl;
-    text-align: right;
+    text-align: center;
 }
 
 [dir="rtl"] .lang-dropdown-menu {
