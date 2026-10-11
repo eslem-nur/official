@@ -1648,6 +1648,59 @@ footer {
 }
 
 /* ============================================
+   EMAIL COPY FUNCTIONALITY
+   ============================================ */
+
+.email-copy-wrapper {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.email-button {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    width: 45px;
+    height: 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-address {
+    margin-left: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+}
+
+.copy-feedback {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* RTL için özel düzenleme */
+[dir="rtl"] .copy-feedback {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* ============================================
    SECTION DESCRIPTION TEXT (MERKEZLEŞTİRME)
    ============================================ */
 

@@ -216,20 +216,73 @@ function initMobileMenu() {
     menuInitialized = true;
 }
 
-// --- E-POSTA KOPYALAMA ---
+// ============================================
+// EMAIL KOPYALAMA FONKSİYONU
+// ============================================
+
 function copyEmail() {
-    const email = "eslemnur-notes@proton.me";
+    const email = 'eslemnur-official@proton.me';
+    const feedback = document.getElementById('copyFeedback');
+    
+    if (!feedback) return;
+    
+    // Email'ı clipboard'a kopyala
     navigator.clipboard.writeText(email).then(() => {
-        const feedback = document.getElementById("copyFeedback");
-        if (feedback) {
-            feedback.style.opacity = "1";
-            setTimeout(() => { feedback.style.opacity = "0"; }, 2000);
+        // Feedback göstergesini göster
+        feedback.style.opacity = '1';
+        feedback.textContent = 'Copied!';
+        
+        // İngilizce olmayan diller için mesajları ayarla
+        const lang = document.documentElement.lang || 'tr';
+        
+        switch(lang) {
+            case 'de':
+                feedback.textContent = 'Kopiert!';
+                break;
+            case 'fr':
+                feedback.textContent = 'Copié!';
+                break;
+            case 'ar':
+                feedback.textContent = 'نُسِخَ!';
+                break;
+            default:
+                feedback.textContent = 'Kopyalandı!';
         }
-    }).catch(err => { 
-        console.error("Kopyalama başarısız:", err); 
-        alert("E-posta adresi: " + email); 
+        
+        // 2 saniye sonra gizle
+        setTimeout(() => {
+            feedback.style.opacity = '0';
+        }, 2000);
+    }).catch(err => {
+        console.error('Kopyalama hatası:', err);
+        // Fallback: manuel seçim
+        const tempInput = document.createElement('textarea');
+        tempInput.value = email;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        
+        // Feedback göster
+        feedback.style.opacity = '1';
+        setTimeout(() => {
+            feedback.style.opacity = '0';
+        }, 2000);
     });
 }
+
+// Enter tuşu ile de kopyalanabilsin
+document.addEventListener('DOMContentLoaded', () => {
+    const emailWrapper = document.querySelector('.email-copy-wrapper');
+    if (emailWrapper) {
+        emailWrapper.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                copyEmail();
+            }
+        });
+    }
+});
 
 // --- SEKMELER (Class-Based Management) ---
 function switchSkillTab(tabName) {
