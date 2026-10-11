@@ -451,7 +451,7 @@ strong { font-family: 'Lato', 'Segoe UI', sans-serif; font-weight: 700; -webkit-
     font-size: 1.1rem;
 }
 
-/* İkon renkleri 
+/* İkon renkleri */
 .repo-link .fa-python { color: #3776AB; }
 .repo-link .fa-html5 { color: #E34F26; }
 .repo-link .fa-css3-alt { color: #1572B6; }
@@ -466,5 +466,3 @@ strong { font-family: 'Lato', 'Segoe UI', sans-serif; font-weight: 700; -webkit-
 .repo-link .fa-layer-group { color: #000000; }
 .repo-link .fa-calendar-alt { color: #00BCD4; }
 .repo-link .fa-hand-sparkles { color: #4CAF50; }
-
-*/
