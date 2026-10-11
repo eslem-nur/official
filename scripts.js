@@ -230,12 +230,13 @@ function copyEmail() {
     navigator.clipboard.writeText(email).then(() => {
         // Feedback göstergesini göster
         feedback.style.opacity = '1';
-        feedback.textContent = 'Copied!';
         
-        // İngilizce olmayan diller için mesajları ayarla
         const lang = document.documentElement.lang || 'tr';
         
         switch(lang) {
+            case 'en':
+                feedback.textContent = 'Copied!';
+                break;
             case 'de':
                 feedback.textContent = 'Kopiert!';
                 break;
@@ -244,9 +245,6 @@ function copyEmail() {
                 break;
             case 'ar':
                 feedback.textContent = 'نُسِخَ!';
-                break;
-            case 'en':
-                feedback.textContent = 'Copied!';
                 break;
             default:
                 feedback.textContent = 'Kopyalandı!';
