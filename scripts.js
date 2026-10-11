@@ -1,6 +1,6 @@
 /* ============================================
-   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT
-   Tüm Diller İçin Ortak JS (DÜZELTİLDİ)
+   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT (v2.0)
+   Class-Based Tab System - Optimize & Clean
    ============================================ */
 
 // --- DİL MESAJLARI (STAR RATING) ---
@@ -71,7 +71,7 @@ function getCurrentLanguage() {
 let ratingInitialized = false;
 
 function initStarRating() {
-    if (ratingInitialized) return; // Duplicate önleme
+    if (ratingInitialized) return;
     
     const stars = document.querySelectorAll('.star');
     const ratingValue = document.getElementById('ratingValue');
@@ -82,12 +82,10 @@ function initStarRating() {
     const lang = getCurrentLanguage();
     const messages = ratingMessages[lang] || ratingMessages.tr;
     
-    // Mesajları güncelle
     function updateRatingText(value) {
         ratingText.textContent = messages[value] || messages[0];
     }
     
-    // Yıldızları vurgula
     function highlightStars(value) {
         stars.forEach((star, index) => {
             const starValue = parseInt(star.getAttribute('data-value'));
@@ -99,7 +97,6 @@ function initStarRating() {
         });
     }
     
-    // Yıldızları aktif et
     function activateStars(value) {
         ratingValue.value = value;
         highlightStars(value);
@@ -107,7 +104,6 @@ function initStarRating() {
         saveRating(value);
     }
     
-    // LocalStorage'a kaydet
     function saveRating(value) {
         try {
             localStorage.setItem('userRating_' + lang, value);
@@ -116,7 +112,6 @@ function initStarRating() {
         }
     }
     
-    // LocalStorage'dan yükle
     function loadRating() {
         try {
             const saved = localStorage.getItem('userRating_' + lang);
@@ -131,7 +126,6 @@ function initStarRating() {
         }
     }
     
-    // Event listener'ları ekle
     stars.forEach(star => {
         star.addEventListener('click', function() {
             const value = parseInt(this.getAttribute('data-value'));
@@ -148,7 +142,6 @@ function initStarRating() {
         });
     });
     
-    // Mouse çıkınca seçili haline dön
     const starRatingContainer = document.getElementById('starRating');
     if (starRatingContainer) {
         starRatingContainer.addEventListener('mouseleave', function() {
@@ -225,7 +218,7 @@ function initMobileMenu() {
 
 // --- E-POSTA KOPYALAMA ---
 function copyEmail() {
-    const email = "eslemnur_notes@proton.me";
+    const email = "eslemnur-notes@proton.me";
     navigator.clipboard.writeText(email).then(() => {
         const feedback = document.getElementById("copyFeedback");
         if (feedback) {
@@ -238,7 +231,7 @@ function copyEmail() {
     });
 }
 
-// --- SEKMELER (Global scope'ta kalıyor - HTML'den çağrılıyor) ---
+// --- SEKMELER (Class-Based Management) ---
 function switchSkillTab(tabName) {
     const buttons = document.querySelectorAll('#skills .skill-tab-btn');
     const groups = document.querySelectorAll('#skills .skill-group');
@@ -247,11 +240,22 @@ function switchSkillTab(tabName) {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    groups.forEach(group => group.style.display = 'none');
+    
+    groups.forEach(group => {
+        group.classList.add('hidden');
+        group.style.display = 'none';
+    });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    if (targetGroup) {
+    const targetBtn = Array.from(buttons).find(b => 
+        b.getAttribute('onclick')?.includes(`'${tabName}'`)
+    );
+    
+    if (targetGroup && targetBtn) {
+        targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-selected', 'true');
     }
 }
 
@@ -263,11 +267,22 @@ function switchProjectTab(tabName) {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    groups.forEach(group => group.style.display = 'none');
+    
+    groups.forEach(group => {
+        group.classList.add('hidden');
+        group.style.display = 'none';
+    });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    if (targetGroup) {
+    const targetBtn = Array.from(buttons).find(b => 
+        b.getAttribute('onclick')?.includes(`'${tabName}'`)
+    );
+    
+    if (targetGroup && targetBtn) {
+        targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-selected', 'true');
         localStorage.setItem('lastProjectTab', tabName);
     }
 }
@@ -280,16 +295,27 @@ function switchShopTab(tabName) {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    groups.forEach(group => group.style.display = 'none');
+    
+    groups.forEach(group => {
+        group.classList.add('hidden');
+        group.style.display = 'none';
+    });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    if (targetGroup) {
+    const targetBtn = Array.from(buttons).find(b => 
+        b.getAttribute('onclick')?.includes(`'${tabName}'`)
+    );
+    
+    if (targetGroup && targetBtn) {
+        targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-selected', 'true');
         localStorage.setItem('lastShopTab', tabName);
     }
 }
 
-// --- DİL MENÜSÜ TOGGLE (Global) ---
+// --- DİL MENÜSÜ TOGGLE ---
 function toggleLangMenu() {
     const langDropdown = document.getElementById('langDropdown');
     if (langDropdown) {
@@ -325,7 +351,54 @@ function initThemeToggle() {
     }
 }
 
-// --- SAYFA YÜKLENDİĞİNDE ---
+// --- SCROLL REVEAL ANIMATION ---
+let scrollRevealInitialized = false;
+
+function initScrollReveal() {
+    if (scrollRevealInitialized) return;
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.project-card, .shop-card, .skill-card').forEach(card => {
+        revealObserver.observe(card);
+    });
+    
+    scrollRevealInitialized = true;
+}
+
+// --- NAVBAR SCROLL EFFECT ---
+let navbarScrolled = false;
+
+function handleNavbarScroll() {
+    const header = document.querySelector('header');
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 50) {
+        if (!navbarScrolled) {
+            header.classList.add('scrolled');
+            navbarScrolled = true;
+        }
+    } else {
+        if (navbarScrolled) {
+            header.classList.remove('scrolled');
+            navbarScrolled = false;
+        }
+    }
+}
+
+// --- DOM READY ---
 document.addEventListener('DOMContentLoaded', () => {
     // Sekmelerin varsayılan durumunu geri yükle
     const savedProjectTab = localStorage.getItem('lastProjectTab');
@@ -333,32 +406,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectGroups = document.querySelectorAll('#projects .project-group');
 
     if (projectGroups.length > 0) {
-        projectGroups.forEach(g => g.style.display = 'none');
+        projectGroups.forEach(g => {
+            g.classList.add('hidden');
+            g.style.display = 'none';
+        });
         projectBtns.forEach(b => {
             b.classList.remove('active');
             b.setAttribute('aria-selected', 'false');
         });
 
         if (savedProjectTab) {
-            const btn = Array.from(projectBtns).find(b => b.getAttribute('onclick').includes(`'${savedProjectTab}'`));
+            const btn = Array.from(projectBtns).find(b => 
+                b.getAttribute('onclick')?.includes(`'${savedProjectTab}'`)
+            );
             const grp = document.getElementById('group-' + savedProjectTab);
             if (btn && grp) {
                 btn.classList.add('active');
                 btn.setAttribute('aria-selected', 'true');
+                grp.classList.remove('hidden');
                 grp.style.display = 'grid';
             }
         } else {
-            const defBtn = Array.from(projectBtns).find(b => b.getAttribute('onclick').includes("'pdf'"));
+            const defBtn = Array.from(projectBtns).find(b => 
+                b.getAttribute('onclick')?.includes("'pdf'")
+            );
             const defGrp = document.getElementById('group-pdf');
             if (defBtn && defGrp) {
                 defBtn.classList.add('active');
                 defBtn.setAttribute('aria-selected', 'true');
+                defGrp.classList.remove('hidden');
                 defGrp.style.display = 'grid';
             }
         }
     }
 
-    // Skill tabs
+    // Skill tabs - varsayılan dil
     const skillBtns = document.querySelectorAll('#skills .skill-tab-btn');
     const skillGroups = document.querySelectorAll('#skills .skill-group');
     const defaultTabs = {
@@ -371,11 +453,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lang = getCurrentLanguage();
     const defTab = defaultTabs[lang] || 'yetenekler';
-    const defSkillBtn = Array.from(skillBtns).find(b => b.getAttribute('onclick').includes(`'${defTab}'`));
+    const defSkillBtn = Array.from(skillBtns).find(b => 
+        b.getAttribute('onclick')?.includes(`'${defTab}'`)
+    );
     const defSkillGrp = document.getElementById('group-' + defTab);
 
     if (skillGroups.length > 0) {
-        skillGroups.forEach(g => g.style.display = 'none');
+        skillGroups.forEach(g => {
+            g.classList.add('hidden');
+            g.style.display = 'none';
+        });
         skillBtns.forEach(b => {
             b.classList.remove('active');
             b.setAttribute('aria-selected', 'false');
@@ -384,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (defSkillBtn && defSkillGrp) {
             defSkillBtn.classList.add('active');
             defSkillBtn.setAttribute('aria-selected', 'true');
+            defSkillGrp.classList.remove('hidden');
             defSkillGrp.style.display = 'grid';
         }
     }
@@ -394,26 +482,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const shopGroups = document.querySelectorAll('#shop .shop-group');
 
     if (shopGroups.length > 0) {
-        shopGroups.forEach(g => g.style.display = 'none');
+        shopGroups.forEach(g => {
+            g.classList.add('hidden');
+            g.style.display = 'none';
+        });
         shopBtns.forEach(b => {
             b.classList.remove('active');
             b.setAttribute('aria-selected', 'false');
         });
 
         if (savedShopTab) {
-            const btn = Array.from(shopBtns).find(b => b.getAttribute('onclick').includes(`'${savedShopTab}'`));
+            const btn = Array.from(shopBtns).find(b => 
+                b.getAttribute('onclick')?.includes(`'${savedShopTab}'`)
+            );
             const grp = document.getElementById('group-' + savedShopTab);
             if (btn && grp) {
                 btn.classList.add('active');
                 btn.setAttribute('aria-selected', 'true');
+                grp.classList.remove('hidden');
                 grp.style.display = 'grid';
             }
         } else {
-            const defBtn = Array.from(shopBtns).find(b => b.getAttribute('onclick').includes("'PDF'"));
+            const defBtn = Array.from(shopBtns).find(b => 
+                b.getAttribute('onclick')?.includes("'PDF'")
+            );
             const defGrp = document.getElementById('group-PDF');
             if (defBtn && defGrp) {
                 defBtn.classList.add('active');
                 defBtn.setAttribute('aria-selected', 'true');
+                defGrp.classList.remove('hidden');
                 defGrp.style.display = 'grid';
             }
         }
@@ -425,4 +522,43 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initStarRating();
     updateYear();
+    initScrollReveal();
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', handleNavbarScroll);
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    console.log('✨ İlim ve Kod - Portal initialized successfully');
 });
+
+// --- WINDOW LOAD ---
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// --- ERROR HANDLING ---
+window.addEventListener('error', (e) => {
+    console.error('Global error:', e.error);
+});
+
+// --- PERFORMANCE MONITORING ---
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        const perfData = window.performance.timing;
+        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+        console.log(`Page Load Time: ${pageLoadTime}ms`);
+    });
+}

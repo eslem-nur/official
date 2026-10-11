@@ -64,7 +64,7 @@
                 <a href="#" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
                 <div class="nav-controls">
                     <div class="lang-dropdown" id="langDropdown">
-                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Changer la langue" style="font-size: 1.2rem; font-weight: bold;">
+                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Changer la langue">
                             <i class="fa fa-globe" aria-hidden="true"></i>
                         </button>
                         <div class="lang-dropdown-menu">
@@ -99,7 +99,7 @@
             <div class="hero-badges">
                 <span class="badge">Coran</span><span class="badge">Arabe</span><span class="badge">Tafsir</span><span class="badge">HTML/CSS</span><span class="badge">Développement Web</span>
             </div>
-            <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 12px; width: 100%; max-width: 100%; margin: 20px auto;">
+            <div class="hero-actions">
                 <a href="#projects" class="btn-primary">Voir mes Projets</a>
                 <a href="#shop" class="btn-primary">Voir les Produits</a>
             </div>
@@ -112,14 +112,14 @@
             <h2 class="section-title">À Propos de Moi</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p><span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span> Je m'appelle Eslem Nur. Je m'efforce de relier le savoir à mon cœur et le code à mon esprit. J'acquiers des connaissances de base en religion durant mes études au Lycée Imam Hatip, et je cherche à approfondir ces connaissances à la Faculté de Théologie, Inchallah, et à trouver des façons de les partager dans le monde numérique contemporain.</p>
+                    <p><span class="arabic-text">السلام عليكم ورحمة الله وبركاته</span> Je m'appelle Eslem Nur. Je m'efforce de relier le savoir à mon cœur et le code à mon esprit. J'acquiers des connaissances de base en religion durant mes études au Lycée Imam Hatip, et je cherche à approfondir ces connaissances à la Faculté de Théologie, Inchallah, et à trouver des façons de les partager dans le monde numérique contemporain.</p>
                     <p>En tant qu'<strong>étudiante en Sciences Religieuses</strong> et <strong>développeuse en développement continu</strong>, j'essaie de créer des travaux numériques significatifs avec les technologies web modernes.</p>
-                    <p><strong style="text-decoration: underline;">Mon Objectif :</strong><span style="font-family: 'Scheherazade New', serif; font-size: 1rem; direction: rtl; display: inline-block; margin-left: 10px; vertical-align: middle;">إِن شَاءَ ٱللَّٰهُ</span> est de ne pas laisser le savoir seulement sur le papier, mais de le diffuser dans le monde numérique et d'utiliser la technologie pour le bien.</p>
+                    <p><strong class="underline">Mon Objectif :</strong><span class="arabic-text-small">إِن شَاءَ ٱللَّٰهُ</span> est de ne pas laisser le savoir seulement sur le papier, mais de le diffuser dans le monde numérique et d'utiliser la technologie pour le bien.</p>
                 </div>
                 <div class="about-visual">
                     <div class="icon-box">✿</div>
-                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px; color: var(--primary-color)">Savoir et Technologie</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">Selon la prière "Ô mon Seigneur, accrois mon savoir", j'essaie d'apprendre quelque chose de nouveau chaque jour pour acquérir ce bas-monde et l'au-delà.</p>
+                    <h3 class="about-visual-title">Savoir et Technologie</h3>
+                    <p class="about-visual-text">Selon la prière "Ô mon Seigneur, accrois mon savoir", j'essaie d'apprendre quelque chose de nouveau chaque jour pour acquérir ce bas-monde et l'au-delà.</p>
                 </div>
             </div>
         </div>
@@ -130,13 +130,14 @@
         <div class="container">
             <h2 class="section-title">Mes Compétences</h2>
             
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('competences')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Compétences</button>
-                <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('certifications')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Certifications</button>
+
+            <div class="tab-controls">
+                <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('competences')" aria-selected="true">Compétences</button>
+                <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('certifications')" aria-selected="false">Certifications</button>
             </div>
 
             <!-- Competences Content -->
-            <div id="group-competences" class="skill-group active" style="display: grid;">
+            <div id="group-competences" class="skill-group active">
                 <div class="skills-container">
                     
                     <div class="skill-card">
@@ -155,13 +156,13 @@
             </div>
 
             <!-- Certifications Content -->
-            <div id="group-certifications" class="skill-group" style="display: none;">
+            <div id="group-certifications" class="skill-group hidden">
                 <div class="projects-grid"> 
                     
                     <!-- Certificate 1 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Certification Python" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5nX2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Certification Python" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Certification Python</div>
@@ -173,7 +174,7 @@
                     <!-- Certificate 2 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="Certification C#" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="Certification C#" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Certification C#</div>
@@ -185,7 +186,7 @@
                     <!-- Certificate 3 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Certification Web Design" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Certification Web Design" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Certification Web Design Responsive</div>
@@ -197,7 +198,7 @@
                     <!-- Certificate 4 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlw/dC1Mb2dvLTUwMHgy/ODEucG5n" alt="Certifications Canva" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlwdC1Mb2dvLTUwMHgy/ODEucG5n" alt="Certifications Canva" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Algorithmes JavaScript et Développement Web</div>
@@ -209,7 +210,7 @@
                     <!-- Certificate 5 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Certificat Anglais B1" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Certificat Anglais B1" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Anglais pour Développeurs (B1)</div>
@@ -221,7 +222,7 @@
                     <!-- Certificate 6 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Certifications Canva" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Certifications Canva" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Fondamentaux du Design et UI/UX</div>
@@ -239,17 +240,17 @@
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">Mes Projets</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
+            <p class="section-description">
                 Notes numériques gratuites et projets web que j'ai préparés. Je les partage tous avec l'intention de Sadaqah Jariyah (aumône continue).
             </p>
 
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Modèles et Notes</button>
-                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Applications Web</button>
+            <div class="tab-controls">
+                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" aria-selected="true">Modèles et Notes</button>
+                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" aria-selected="false">Applications Web</button>
             </div>
 
             <!-- PDF GROUP -->
-            <div id="group-pdf" class="project-group active" style="display: grid;">
+            <div id="group-pdf" class="project-group active">
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/ef/1b/28/ef1b28c9f2232802cbde69e1c32133b8.jpg" alt="Coran Ombré" loading="lazy" decoding="async" width="300" height="180"></div>
@@ -329,7 +330,7 @@
             </div>
 
             <!-- WEB GROUP -->
-            <div id="group-web" class="project-group" style="display: none;">
+            <div id="group-web" class="project-group hidden">
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/79/97/c7/7997c7b5fb0a1fdcb0a0671e0b987690.jpg" alt="Nur Quran" loading="lazy" decoding="async" width="300" height="180"></div>
@@ -396,7 +397,7 @@
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/30/8f/ef/308fefe9c3178b62721bcc2642a7ae8b.jpg" alt="iKuran" loading="lazy"></div>
                         <div class="project-content"><div class="project-title">iKuran</div><p class="project-desc">iKuran offre une interface unique combinant la sensation nostalgique chaleureuse du design classique iPod avec la technologie moderne pour écouter le Coran. Cette application permet de lister et jouer toutes les 114 sourates avec la récitation de Mishary Alafasy, tout comme un ancien lecteur de musique.</p><a href="en/ikuran-pink.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Démarrer l'App (Rose)</a>
-                        <a href="en/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: 10px">Démarrer l'App (Noir)</a>
+                        <a href="en/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Démarrer l'App (Noir)</a>
                     <div class="repo-link">
     <i class="fab fa-html5"></i>
     <span>HTML5 • API Audio</span>
@@ -406,7 +407,7 @@
                     <div class="project-card">
                         <div class="project-img"><img src="https://i.pinimg.com/736x/94/d1/d7/94d1d76481345d689af76363b48ca8a3.jpg" alt="Notion Planner" loading="lazy"></div>
                         <div class="project-content"><div class="project-title">Planificateur Notion</div><p class="project-desc">Ce planificateur Notion a été conçu pour réunir vos objectifs académiques et responsabilités spirituelles sous un même toit pendant la vie universitaire ou scolaire. Il comprend des sections spéciales intégrant vos temps de prière, vos douas et vos dhikr dans votre routine quotidienne tout en organisant votre calendrier d'étude, le suivi des devoirs et les dates d'examens.</p>
-                        <a href="https://app.notion.com/p/eslemnur-notes/I-l-m-C-o-d-e-eng-3e793c2f46cb80b99f37fcc825191628?source=copy_link" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: 10px">Ouvrir la Page</a>
+                        <a href="https://app.notion.com/p/eslemnur-notes/I-l-m-C-o-d-e-eng-3e793c2f46cb80b99f37fcc825191628?source=copy_link" target="_blank" rel="noopener noreferrer" class="btn-outline">Ouvrir la Page</a>
                     <div class="repo-link">
     <i class="fas fa-layer-group"></i>
     <span>Modèle Notion</span>
@@ -422,18 +423,18 @@
     <section id="shop" class="section">
         <div class="container">
             <h2 class="section-title">Boutique</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
+            <p class="section-description">
                 Je vends ici mes produits numériques préparés. Vous pouvez visiter la section Projets pour mes notes numériques FlipBook gratuites.
             </p>
 
             <!-- Shop Tab Buttons -->
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="true">Cahiers et PDF</button>
-                <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Calligraphie')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="false">Calligraphie</button>
+            <div class="tab-controls">
+                <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" aria-selected="true">Cahiers et PDF</button>
+                <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Calligraphie')" aria-selected="false">Calligraphie</button>
             </div>
 
             <!-- Group 1: PDF -->
-            <div id="group-PDF" class="shop-group active" style="display: grid;">
+            <div id="group-PDF" class="shop-group active">
                 <div class="shop-grid">
                     
                     <div class="shop-card">
@@ -532,12 +533,10 @@
             </div>
       
             <!-- Group 2: Calligraphie -->
-            <div id="group-Calligraphie" class="shop-group" style="display: none;">
+            <div id="group-Calligraphie" class="shop-group hidden">
                 <!-- Informations d'abord -->
-                <div style="grid-column: 1 / -1; background: linear-gradient(90deg, rgba(183,110,121,0.1), rgba(183,110,121,0.05)); border: 2px dashed var(--primary-color); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center;">
-                    <p style="color: var(--primary-color); font-weight: 600; margin: 0;">
-                        🇩🇪 Ouvert uniquement aux commandes en Allemagne.
-                    </p>
+                <div class="shop-info-box">
+                    <p>🇩🇪 Ouvert uniquement aux commandes en Allemagne.</p>
                 </div>
                 <div class="shop-grid">
                     <div class="shop-card">
@@ -559,7 +558,7 @@
     <div class="shop-content">
         <div class="shop-title">⌀ 25 cm Toile avec inscription Elif-Vav</div>
         <p class="shop-desc">1 x Toile personnalisée avec inscription Elif-Vav</p> 
-        <p class="shop-desc" style="font-size: 12px">Signification : "Tenez-vous droit comme la lettre Elif face au mécréant, inclinez-vous comme la lettre Vav devant Allah."</p>
+        <p class="shop-desc">Signification : "Tenez-vous droit comme la lettre Elif face au mécréant, inclinez-vous comme la lettre Vav devant Allah."</p>
         <a href="https://ko-fi.com/c/ad33ee2468" target="_blank" rel="noopener noreferrer" class="btn-outline">Commander</a>
     </div>
 </div> 
@@ -649,7 +648,7 @@
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-arabic">رَبِّ زِدْنِي عِلْمًا</div>
-            <p style="margin-bottom: 30px;">Ô mon Seigneur, accrois mon savoir.</p>
+            <p class="footer-quote">Ô mon Seigneur, accrois mon savoir.</p>
             
             <div class="social-links">
                 <a href="http://linktr.ee/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="Linktree" aria-label="Profil Linktree">
@@ -659,22 +658,24 @@
                     <i class="fas fa-coffee"></i>
                 </a>
                 
-                <div style="display: inline-block; position: relative; cursor: pointer;" onclick="copyEmail()" title="Cliquez pour copier l'adresse email" role="button" tabindex="0" aria-label="Copier l'Adresse Email">
-                    <span class="social-link" style="background: none; border: 2px solid var(--primary-color); color: var(--primary-color); font-size: 1.2rem; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-envelope"></i></span>
-                    <span style="margin-left: 10px; color: var(--primary-color); font-weight: 600; font-family: 'Lato', sans-serif;">eslemnur-official@proton.me</span>
-                    <div id="copyFeedback" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Copié!</div>
+                <div class="email-copy-wrapper" onclick="copyEmail()" title="Cliquez pour copier l'adresse email" role="button" tabindex="0" aria-label="Copier l'Adresse Email">
+                    <span class="social-link email-button">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="email-address">eslemnur-official@proton.me</span>
+                    <span class="copy-feedback" id="copyFeedback">Copié!</span>
                 </div>
             </div>
 
             <!-- STAR RATING -->
-<div class="feedback-section" style="margin: 40px auto; max-width: 500px;">
-    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); text-align: center; margin-bottom: 15px;">Notez Mon Site Web</h3>
+<div class="feedback-section">
+    <h3>Notez Mon Site Web</h3>
     <div class="star-rating" id="starRating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
+        <span class="star" data-value="1" aria-label="1 étoile">★</span>
+        <span class="star" data-value="2" aria-label="2 étoiles">★</span>
+        <span class="star" data-value="3" aria-label="3 étoiles">★</span>
+        <span class="star" data-value="4" aria-label="4 étoiles">★</span>
+        <span class="star" data-value="5" aria-label="5 étoiles">★</span>
     </div>
     <p class="rating-text" id="ratingText">Vous n'avez pas encore noté</p>
     <input type="hidden" name="rating" id="ratingValue" value="0">
@@ -689,8 +690,8 @@
             </p>
 
             <!-- Logo -->
-<p style="margin: 15px 0 0; text-align: center;">
-    <a href="/official/logo-reference/official-logo-fr.html" class="btn-outline" style="font-size: 0.85rem; padding: 10px 25px;" target="_blank" title="Référence du Logo et Droits d'Auteur">
+<p class="logo-reference">
+    <a href="/official/logo-reference/official-logo-fr.html" class="btn-outline logo-ref-btn" target="_blank" title="Référence du Logo et Droits d'Auteur">
         <i class="fas fa-shield-alt"></i> Référence du Logo
     </a>
 </p>

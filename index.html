@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- SEO & Meta Etiketleri -->
-    <title>Eslem Nur Çetin• İlim ve Kod</title>
+    <title>Eslem Nur Çetin • İlim ve Kod</title>
     <meta name="description" content="Eslem Nur Çetin - İlahiyat öğrencisi ve web geliştiricisinin portfolyosu. Kur'an notları ve dijital ilim projeleri.">
     <meta name="keywords" content="İslami İlimler, Web Geliştirme, Tefsir, Arapça, Proton, Eslem Nur Çetin, İmam Hatip, Dijital Notlar, Portfolio">
     <meta name="author" content="Eslem Nur Çetin">
@@ -41,7 +41,6 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          // Başındaki nokyayı (.sw.js) kaldır, sadece sw.js yap
           navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
             .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
             .catch(err => console.log('Service Worker kaydı başarısız:', err));
@@ -53,8 +52,6 @@
     <!-- Fontlar & İkonlar -->
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    
 </head>
 <body>
 
@@ -63,34 +60,36 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
-               <div class="nav-controls">
-    <!-- Dil Toggle Butonu -->
-    <div class="lang-dropdown" id="langDropdown">
-        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Dili Değiştir" style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; font-family: 'Inter', sans-serif;">
-            <i class="fa fa-globe" aria-hidden="true"></i>
-        </button>
-        <div class="lang-dropdown-menu">
-            <a href="index.html"> Türkçe</a>
-            <a href="en.html">󠁧󠁢󠁥󠁮󠁧󠁿 English</a>
-            <a href="de.html"> Deutsch</a>
-            <a href="fr.html">Français</a>
-            <a href="ar.html"> العربية</a>
-        </div>
-    </div>
-    
-    <!-- Tema Toggle -->
-    <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
-    
-    <!-- Hamburger Menü -->
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
-</div>
+                <div class="nav-controls">
+                    <!-- Dil Toggle Butonu -->
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Dili Değiştir">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </button>
+                        <div class="lang-dropdown-menu">
+                            <a href="index.html">Türkçe</a>
+                            <a href="en.html">󠁧󠁢󠁥󠁮󠁧󠁿 English</a>
+                            <a href="de.html">Deutsch</a>
+                            <a href="fr.html">Français</a>
+                            <a href="ar.html">العربية</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tema Toggle -->
+                    <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    
+                    <!-- Hamburger Menü -->
+                    <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
+                </div>
                 <div class="nav-links" id="navLinks">
                     <a href="#about" id="nav-about">Hakkımda</a>
                     <a href="#skills" id="nav-skills">Yetenekler</a>
                     <a href="#skills" id="nav-certs">Sertifikalar</a>
                     <a href="#projects" id="nav-projects">Projeler</a>
                     <a href="#shop" id="nav-shop">Shop</a>
-                    <a href="#contact"  id="nav-contact">İletişim</a>
+                    <a href="#contact" id="nav-contact">İletişim</a>
                 </div>
             </nav>
         </div>
@@ -99,16 +98,20 @@
     <!-- HERO BÖLÜMÜ -->
     <section class="hero">
         <div class="container hero-content">
-            <div class="basmala-hero" aria-label="Bismillah"> بسم الله الرحمن الرحيم</div>
-            <h1>İlim Arayan, <br><span class="gradient-text">Kod Yazan</span> Bir Talebe</h1>
+            <div class="basmala-hero" aria-label="Bismillah">بسم الله الرحمن الرحيم</div>
+            <h1>İlim Arayan,<br><span class="gradient-text">Kod Yazan</span> Bir Talebe</h1>
             <p class="hero-subtitle">İmam Hatip Lisesi mezunu ve İlahiyat Fakültesi birinci sınıf öğrencisi; modern teknolojileri dinî ilimlerle harmanlamaya çalışan bir yazılımcı.</p>
             <div class="hero-badges">
-                <span class="badge">Kur'an</span><span class="badge">Arapça</span><span class="badge">Tefsir</span><span class="badge">HTML/CSS</span><span class="badge">Web Geliştirme</span>
+                <span class="badge">Kur'an</span>
+                <span class="badge">Arapça</span>
+                <span class="badge">Tefsir</span>
+                <span class="badge">HTML/CSS</span>
+                <span class="badge">Web Geliştirme</span>
             </div>
-         <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 12px; width: 100%; max-width: 100%; margin: 20px auto;">
-    <a href="#projects" class="btn-primary">Projelerimi Gör</a>
-    <a href="#shop" class="btn-primary">Ürünlerimi Gör</a>
-</div>
+            <div class="hero-actions">
+                <a href="#projects" class="btn-primary">Projelerimi Gör</a>
+                <a href="#shop" class="btn-primary">Ürünlerimi Gör</a>
+            </div>
         </div>
     </section>
 
@@ -118,724 +121,729 @@
             <h2 class="section-title">Hakkımda</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p><span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span> Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, İlahiyat Fakültesi'nde Allah'ın izniyle derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.</p>
-                    <p>Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de 
-<strong>kendini geliştiren</strong> bir yazılımcı olarak, modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.</p>
-                    <p><strong style="text-decoration: underline;">Amacım:</strong><span style="font-family: 'Scheherazade New', serif; font-size: 1rem; direction: rtl; display: inline-block; margin-left: 10px; vertical-align: middle;">
-            إن شاء الله
-        </span> ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.</p>
+                    <p><span class="arabic-text">السلام عليكم ورحمة الله وبركاته</span> Ben Eslem Nur. İlimi kalbimle, kodları ise zihnimle birleştirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca edindiğim ilmi birikimi, İlahiyat Fakültesi'nde Allah'ın izniyle derinleştirmeyi ve günümüz dijital dünyasında paylaşmanın yollarını arıyorum.</p>
+                    <p>Hem <strong>ilim talebesi</strong> (İlahiyat öğrencisi) hem de <strong>kendini geliştiren</strong> bir yazılımcı olarak, modern web teknolojileriyle anlamlı dijital eserler ortaya koymaya çalışıyorum.</p>
+                    <p><strong class="underline">Amacım:</strong><span class="arabic-text-small">إن شاء الله</span> ilmi sadece kağıt üzerinde bırakmamak, onu dijital dünyada yaygınlaştırmak ve teknolojiyi hayır yolunda kullanmaktır.</p>
                 </div>
                 <div class="about-visual">
                     <div class="icon-box">✿</div>
-                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px; color: var(--primary-color)">İlim & Teknoloji</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">"Rabbim, ilmimi arttır." duası doğrultusunda, her gün yeni bir şey öğrenerek hem dünyayı hem ahireti kazanmaya çalışıyorum.</p>
+                    <h3 class="about-visual-title">İlim & Teknoloji</h3>
+                    <p class="about-visual-text">"Rabbim, ilmimi arttır." duası doğrultusunda, her gün yeni bir şey öğrenerek hem dünyayı hem ahireti kazanmaya çalışıyorum.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- BECERİLERİM -->
-<section id="skills" class="section">
-    <div class="container">
-        <h2 class="section-title">Yeteneklerim</h2>
-        
-        
-        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-            <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Yeteneklerim</button>
-            <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Sertifikalarım</button>
-        </div>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Yeteneklerim</h2>
+            
+            <div class="tab-controls">
+                <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" aria-selected="true">Yeteneklerim</button>
+                <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" aria-selected="false">Sertifikalarım</button>
+            </div>
 
-        <!-- Yetenekler İçeriği -->
-        <div id="group-yetenekler" class="skill-group active" style="display: grid;">
-            <div class="skills-container">
-                
-                <div class="skill-card">
-                    <div class="skill-header"><div class="skill-icon">📖</div><div class="skill-title">İslami İlimler</div></div>
-                    <ul class="skill-list"><li>Tefsir ve Meali Okuma</li><li>Arapça Dil Bilgisi</li><li>Tecvid Kuralları</li><li>Hadis ve Fıkıh Temelleri</li><li>İslam Tarihçesi</li></ul>
+            <!-- Yetenekler İçeriği -->
+            <div id="group-yetenekler" class="skill-group active">
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon">📖</div>
+                            <div class="skill-title">İslami İlimler</div>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Tefsir ve Meali Okuma</li>
+                            <li>Arapça Dil Bilgisi</li>
+                            <li>Tecvid Kuralları</li>
+                            <li>Hadis ve Fıkıh Temelleri</li>
+                            <li>İslam Tarihçesi</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon">💻</div>
+                            <div class="skill-title">Yazılım & Tasarım</div>
+                        </div>
+                        <ul class="skill-list">
+                            <li>HTML5 & CSS3 (Semantik & Responsive)</li>
+                            <li>JavaScript (Temel Seviye)</li>
+                            <li>Web Tasarım (UI/UX)</li>
+                            <li>Dijital Not Yönetimi</li>
+                            <li>Dosya Formatları (PDF, EPUB)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon">🌸</div>
+                            <div class="skill-title">Kişisel Özellikler</div>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Sistemli Çalışma</li>
+                            <li>Araştırma & Analiz</li>
+                            <li>Dijital İçerik Üretimi</li>
+                            <li>Zaman Yönetimi</li>
+                            <li>Aile ve Topluluk Projeleri</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-header"><div class="skill-icon">💻</div><div class="skill-title">Yazılım & Tasarım</div></div>
-                    <ul class="skill-list"><li>HTML5 & CSS3 (Semantik & Responsive)</li><li>JavaScript (Temel Seviye)</li><li>Web Tasarım (UI/UX)</li><li>Dijital Not Yönetimi</li><li>Dosya Formatları (PDF, EPUB)</li></ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-header"><div class="skill-icon">🌸</div><div class="skill-title">Kişisel Özellikler</div></div>
-                    <ul class="skill-list"><li>Sistemli Çalışma</li><li>Araştırma & Analiz</li><li>Dijital İçerik Üretimi</li><li>Zaman Yönetimi</li><li>Aile ve Topluluk Projeleri</li></ul>
+            </div>
+
+            <!-- Sertifikalar İçeriği -->
+            <div id="group-sertifika" class="skill-group hidden">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python Programlama Sertifikası" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Python Sertifikası</div>
+                            <p class="project-desc">freeCodeCamp'in 2025 müfredat güncellemesiyle yapılandırılan, ileri düzey Python programlama, veri yapıları ve modern yazılım geliştirme prensiplerini kapsayan, proje tabanlı ve sınavla doğrulanmış yetkinlik sertifikasıdır.</p>
+                            <a href="https://drive.proton.me/urls/43SXAYP9SM#pdByWAIoVSRZ" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C# Programlama Sertifikası" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">C# Sertifikası</div>
+                            <p class="project-desc">Microsoft iş birliğiyle geliştirilen, C# programlama dilinin temel sözdizimini, veri yapılarını, akış kontrol mekanizmalarını ve hata ayıklama süreçlerini kapsayan, 35 saatlik uygulamalı eğitim ve sınavla doğrulanmış yetkinlik sertifikasıdır.</p>
+                            <a href="https://drive.proton.me/urls/N4SDZPR7Y4#neLvaileRg2a" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Responsive Web Design Sertifikası" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Responsive Web Design Sertifikası</div>
+                            <p class="project-desc">HTML5, CSS3, Flexbox ve CSS Grid teknolojilerini kullanarak erişilebilir ve tüm cihazlara uyumlu web sayfaları geliştirme yetkinliğini belgeleyen, 5 farklı gerçek dünya projesi ve kapsamlı bir final sınavı ile tamamlanan temel web geliştirme sertifikasıdır.</p>
+                            <a href="https://drive.proton.me/urls/AF99YNGJS0#uXD7q961ZDWv" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlw/dC1Mb2dvLTUwMHgy/ODEucG5n" alt="JavaScript Sertifikası" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">JavaScript Algoritmaları & Web Geliştirme</div>
+                            <p class="project-desc">Modern JavaScript (ES6+), veri yapıları, asenkron programlama ve API entegrasyonları konularındaki uzmanlığı belgeleyen; dinamik veri tabloları, hava durumu uygulamaları ve oyunlar gibi 10+ gerçek dünya projesi geliştirerek karmaşık algoritmik problemleri çözme ve modern web uygulamaları inşa etme yetkinliğini kanıtlayan sertifikadır.</p>
+                            <a href="https://drive.proton.me/urls/7XD1Z5CTHC#wW5bACKNO2bn" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="English B1 Sertifikası" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">English for Developers (B1)</div>
+                            <p class="project-desc">Yazılım geliştiriciler için özel olarak hazırlanan, teknik dokümantasyon okuma, uluslararası ekip iletişimi ve mülakat süreçlerinde gerekli İngilizce yetkinliğini (B1 seviyesi) belgeleyen, mesleki terminoloji odaklı sertifikadır.</p>
+                            <a href="https://drive.proton.me/urls/ZDY4YH3J94#6MEwomoWjkB6" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva Sertifikaları" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Tasarım & UI/UX Temelleri</div>
+                            <p class="project-desc">Canva Design School müfredatına göre renk teorisi, tipografi ve düzen prensipleri konularındaki uzmanlığı belgeleyen; logo tasarımları, sosyal medya içerikleri, infografikler ve profesyonel sunumlar gibi çeşitli formatlarda projeler üreterek modern görsel iletişim çözümleri geliştirme yetkinliğini kanıtlayan sertifikalardır.</p>
+                            <a href="https://drive.proton.me/urls/RXP92H17R0#6uhkNEGDMhJC" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-                <!-- Sertifikalar İçeriği -->
-        <div id="group-sertifika" class="skill-group" style="display: none;">
-            <div class="projects-grid"> 
-                
-                <!-- Sertifika 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python Programlama Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Python Sertifikası</div>
-                        <p class="project-desc">freeCodeCamp'in 2025 müfredat güncellemesiyle yapılandırılan, ileri düzey Python programlama, veri yapıları ve modern yazılım geliştirme prensiplerini kapsayan, proje tabanlı ve sınavla doğrulanmış yetkinlik sertifikasıdır.</p>
-                        
-                        <a href="https://drive.proton.me/urls/43SXAYP9SM#pdByWAIoVSRZ" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
+    <!-- PROJELER -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projelerim</h2>
+            <p class="section-description">
+                Hazırladığım ücretsiz dijital notlar ve web projeleri. Hepsini sadaka-i cariye niyetiyle paylaşıyorum.
+            </p>
 
-                <!-- Sertifika 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C# Programlama Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">C# Sertifikası</div>
-                        <p class="project-desc">"Microsoft iş birliğiyle geliştirilen, C# programlama dilinin temel sözdizimini, veri yapılarını, akış kontrol mekanizmalarını ve hata ayıklama (debugging) süreçlerini kapsayan, 35 saatlik uygulamalı eğitim ve sınavla doğrulanmış yetkinlik sertifikasıdır."</p>
-                        <a href="https://drive.proton.me/urls/N4SDZPR7Y4#neLvaileRg2a" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
+            <div class="tab-controls">
+                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" aria-selected="true">Şablon & Notlar</button>
+                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" aria-selected="false">Web Uygulamaları</button>
+            </div>
 
-                <!-- Sertifika 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Responsive Web Design Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+            <!-- PDF GRUBU -->
+            <div id="group-pdf" class="project-group active">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/ef/1b/28/ef1b28c9f2232802cbde69e1c32133b8.jpg" alt="Gölgeli Kur'an" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Gölgeli Kur'an</div>
+                            <p class="project-desc">Kur'an-ı Kerim'i yazarak öğrenmek için hazırlanmış zarif şablon.</p>
+                            <a href="https://drive.proton.me/urls/QADJ318QJR#JmAVkU5icdO9" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Gölgeli Tasarım</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-title">Responsive Web Design Sertifikası </div>
-                        <p class="project-desc">HTML5, CSS3, Flexbox ve CSS Grid teknolojilerini kullanarak erişilebilir ve tüm cihazlara uyumlu (responsive) web sayfaları geliştirme yetkinliğini belgeleyen, 5 farklı gerçek dünya projesi ve kapsamlı bir final sınavı ile tamamlanan temel web geliştirme sertifikasıdır.</p>
-                        <a href="https://drive.proton.me/urls/AF99YNGJS0#uXD7q961ZDWv" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
 
-                <!-- Sertifika 4 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlw/dC1Mb2dvLTUwMHgy/ODEucG5n" alt="Canva Sertifikaları" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/8a/1c/98/8a1c9854b4498412f68cf8ddb85f3118.jpg" alt="Tefsir Notları" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Tefsir Notlarım (Özet)</div>
+                            <p class="project-desc">Tefsir derslerimin özetleri.</p>
+                            <a href="https://heyzine.com/flip-book/be4fb6ca40.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Heyzine</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-title">JavaScript Algoritmaları & Web Geliştirme</div>
-                        <p class="project-desc">Modern JavaScript (ES6+), veri yapıları, asenkron programlama ve API entegrasyonları konularındaki uzmanlığı belgeleyen; dinamik veri tabloları, hava durumu uygulamaları ve oyunlar gibi 10+ gerçek dünya projesi geliştirerek karmaşık algoritmik problemleri çözme ve modern web uygulamaları inşa etme yetkinliğini kanıtlayan sertifikadır.</p>
-                        <a href="https://drive.proton.me/urls/7XD1Z5CTHC#wW5bACKNO2bn" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
-                
-                <!-- Sertifika 5 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="English B1 Sertifikası" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">English for Developers (B1)</div>
-                        <p class="project-desc">Yazılım geliştiriciler için özel olarak hazırlanan, teknik dokümantasyon okuma, uluslararası ekip iletişimi ve mülakat süreçlerinde gerekli İngilizce yetkinliğini (B1 seviyesi) belgeleyen, mesleki terminoloji odaklı sertifikadır.</p>
-                        <a href="https://drive.proton.me/urls/ZDY4YH3J94#6MEwomoWjkB6" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
-              <!-- Sertifika 6 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva Sertifikaları" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Tasarım & UI/UX Temelleri</div>
-                        <p class="project-desc">Canva Design School müfredatına göre renk teorisi, tipografi ve düzen prensipleri konularındaki uzmanlığı belgeleyen; logo tasarımları, sosyal medya içerikleri, infografikler ve profesyonel sunumlar gibi çeşitli formatlarda projeler üreterek modern görsel iletişim çözümleri geliştirme yetkinliğini kanıtlayan sertifikalardır.</p>
-                        <a href="https://drive.proton.me/urls/RXP92H17R0#6uhkNEGDMhJC" target="_blank" rel="noopener noreferrer" class="btn-outline">Sertifikayı İncele</a>
-                    </div>
-                </div>
 
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/a6/96/d7/a696d7208dc10222a799b7e4643436cf.jpg" alt="Tecvid" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Tecvid Notlarım (Özet)</div>
+                            <p class="project-desc">Tecvid derslerimin özetleri.</p>
+                            <a href="https://heyzine.com/flip-book/c796c9f840.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Tecvid Kuralları</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/70/df/68/70df683db7f74c781a61742871a1513d.jpg" alt="Arapça" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Arapça Gramer Notlarım</div>
+                            <p class="project-desc">Arapça derslerimin özetleri.</p>
+                            <a href="https://heyzine.com/flip-book/4501c64c59.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Arapça</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/f8/37/18/f83718dabcf69f922b336b2c63ec0fe6.jpg" alt="Lise" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Lise & TYT/AYT Notları</div>
+                            <p class="project-desc">İmam Hatip Lisesi ve genel lise dersleri için özetler.</p>
+                            <a href="https://drive.proton.me/urls/RQQDN0VSYG#dwOmk7qTrmCM" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Eğitim</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/41/be/45/41be45346d9f960381abff4f5bb7858f.jpg" alt="Dualar" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Günlük Dualar</div>
+                            <p class="project-desc">Sabah-akşam ve günlük duaların özetleri.</p>
+                            <a href="https://drive.proton.me/urls/5HWA7GZHXW#CK509RcHWmcB" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Dualar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/ecc1262e-986f-4288-9592-678289f17642_img_1725.jpeg" alt="Şablon" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Notlar Şablonu</div>
+                            <p class="project-desc">Ders notlarınızı düzenli alabileceğiniz farklı renklerde şablon seti.</p>
+                            <a href="https://drive.proton.me/urls/C6QHTEMVD0#FwxRwhZHJixb" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Şablon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/709d35e1-1e58-44de-b8df-94e4b2c4e2e6_img_1539.jpeg" alt="Çizelgeler" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">3 Aylar Çizelgeleri</div>
+                            <p class="project-desc">1 senelik kaza namazı çizelgesi ve 30 günlük oruç takibi.</p>
+                            <a href="https://drive.proton.me/urls/5GXK5R8AAC#eRBT4uIdrL43" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Takip</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEB GRUBU -->
+            <div id="group-web" class="project-group hidden">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/92/37/00/92370015e85446f62999b90bccbbe8d6.jpg" alt="Nur Kuran" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Nur Kuran-ı Kerim</div>
+                            <p class="project-desc">Diyanet API'si ile çalışan, Arapça ve Türkçe mealini gösteren modern uygulama.</p>
+                            <a href="tr/kuran.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a>
+                            <div class="repo-link">
+                                <i class="fab fa-html5"></i><span>HTML5</span> • 
+                                <i class="fab fa-css3-alt"></i><span>CSS3</span> • 
+                                <i class="fab fa-js"></i><span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/2f/ff/0f/2fff0fed341fd0c33b891233f1fd9c30.jpg" alt="İlim Takibi" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">İlim ve İbadet Takibi</div>
+                            <p class="project-desc">Günlük ibadet ve ilim çalışmalarınızı takip eden, seviye sistemi olan uygulama.</p>
+                            <a href="tr/gelisim.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a>
+                            <div class="repo-link">
+                                <i class="fab fa-js"></i><span>JavaScript</span> • 
+                                <i class="fas fa-save"></i><span>LocalStorage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/d7/23/87/d72387170e4f46e17afa063a83fade13.jpg" alt="Kelime Avı" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Dini Literatür Kelime Avı</div>
+                            <p class="project-desc">İslami terimleri oyunlaştırarak öğrenen, KPSS ve Diyanet soruları içeren uygulama.</p>
+                            <a href="tr/kelime-oyunu.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Oyunu Başlat</a>
+                            <div class="repo-link">
+                                <i class="fab fa-js"></i><span>JavaScript</span> • 
+                                <i class="fas fa-gamepad"></i><span>Oyunlaştırma</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/1a/19/3e/1a193eb8c8c745411840775c20012a6b.jpg" alt="Planlayıcı" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Akıllı İlim & İbadet Planlayıcısı</div>
+                            <p class="project-desc">Hedeflerinizi günlük görevlerle birleştiren, koyu mod ve yedekleme özellikli sistem.</p>
+                            <a href="tr/planner.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
+                            <div class="repo-link">
+                                <i class="fab fa-html5"></i><span>HTML5</span> • 
+                                <i class="fab fa-css3-alt"></i><span>CSS3</span> • 
+                                <i class="fab fa-js"></i><span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/af/cb/19/afcb19731307532619c23769124e3c45.jpg" alt="Zikir" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Dijital Zikir Sayacı</div>
+                            <p class="project-desc">Geleneksel tesbihin dijital dünyadaki hali. Zarif, minimalist ve karanlık mod destekli.</p>
+                            <a href="tr/zikir.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
+                            <div class="repo-link">
+                                <i class="fab fa-js"></i><span>JavaScript</span> • 
+                                <i class="fas fa-minimize"></i><span>Minimalist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/31/b0/3e/31b03e07fc8b10f214d9df4292b31395.jpg" alt="Hac" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Adım Adım Hac ve Umre</div>
+                            <p class="project-desc">Kutsal topraklardaki yolculuğunuzu adım adım, dualarla takip edebileceğiniz rehber.</p>
+                            <a href="tr/umre-hac.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Rehberi Aç</a>
+                            <div class="repo-link">
+                                <i class="fab fa-html5"></i><span>HTML5</span> • 
+                                <i class="fas fa-map-marked-alt"></i><span>İnteraktif Rehber</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/db/19/1b/db191b92415dc0bfb743dac29141a746.jpg" alt="Arapça" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Ayet-i Kelim</div>
+                            <p class="project-desc">Kur'an kıssalarını dil laboratuvarına dönüştüren, bağlamsal kelime öğrenimi uygulaması.</p>
+                            <a href="tr/arapca.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
+                            <div class="repo-link">
+                                <i class="fab fa-js"></i><span>JavaScript</span> • 
+                                <i class="fas fa-code"></i><span>API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/3b/ca/9c/3bca9c12c00bd3a0cc8872d168a9dc62.jpg" alt="iKuran" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">iKuran</div>
+                            <p class="project-desc">iPod tasarımının nostalgic hissini modern teknolojiyle birleştiren Kur'an dinleme arayüzü.</p>
+                            <a href="tr/ikuran-pink.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Pembe</a>
+                            <a href="tr/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Siyah</a>
+                            <div class="repo-link">
+                                <i class="fab fa-html5"></i><span>HTML5</span> • 
+                                <i class="fas fa-code"></i><span>API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/94/d1/d7/94d1d76481345d689af76363b48ca8a3.jpg" alt="Notion" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Notion Planlayıcım</div>
+                            <p class="project-desc">Akademik hedefleriniz ile manevi sorumluluklarınızı tek çatıda birleştiren planlayıcı.</p>
+                            <a href="https://eslemnur-notes.notion.site/" target="_blank" rel="noopener noreferrer" class="btn-outline">Sayfayı Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Notion Template</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-   <!-- PROJELER - PROJE KARTLARI (repo-link ile) -->
-<section id="projects" class="section">
-    <div class="container">
-        <h2 class="section-title">Projelerim</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
-            Hazırladığım ücretsiz dijital notlar ve web projeleri. Hepsini sadaka-i cariye niyetiyle paylaşıyorum.
-        </p>
+    <!-- SHOP -->
+    <section id="shop" class="section">
+        <div class="container">
+            <h2 class="section-title">Shop</h2>
+            <p class="section-description">
+                Hazırladığım dijital ürünleri burada satıyorum. Ücretsiz FlipBook halindeki dijital notlarıma ise Projeler kısmından ulaşabilirsiniz.
+            </p>
 
-        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-            <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Şablon & Notlar</button>
-            <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Web Uygulamaları</button>
-        </div>
+            <div class="tab-controls">
+                <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" aria-selected="true">Defterler & PDF</button>
+                <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Hat')" aria-selected="false">Çizimlerim / Hat</button>
+            </div>
 
-        <!-- PDF GRUBU -->
-        <div id="group-pdf" class="project-group active" style="display: grid;">
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/ef/1b/28/ef1b28c9f2232802cbde69e1c32133b8.jpg" alt="Gölgeli Kur'an" loading="lazy">
+            <!-- GRUP 1: PDF -->
+            <div id="group-PDF" class="shop-group active">
+                <div class="shop-grid">
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Esma-ul Husna</div>
+                            <p class="shop-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter.</p>
+                            <a href="https://ko-fi.com/s/596c3f86fe" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>GoodNotes</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-title">Gölgeli Kur'an</div>
-                        <p class="project-desc">Kur'an-ı Kerim'i yazarak öğrenmek için hazırlanmış zarif şablon.</p>
-                        <a href="https://drive.proton.me/urls/QADJ318QJR#JmAVkU5icdO9" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Gölgeli Tasarım</span>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/64/f1/0d/64f10da8f3bb18583d68f0efcd5eca87.jpg" alt="Tefsir Defteri" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Tefsir Defteri</div>
+                            <p class="shop-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon.</p>
+                            <a href="https://ko-fi.com/s/f68844b74c" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>GoodNotes • Şablon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/ad/07/81/ad0781eeafcc06bba7035eb4e586947b.jpg" alt="Tefsir Notları" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Tefsir Notlarım (PDF)</div>
+                            <p class="shop-desc">Tefsir derslerimin özetleri.</p>
+                            <a href="https://ko-fi.com/s/0ce64ba049" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Notlar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/f6/41/ec/f641ecb074da508253ec768e778606bd.jpg" alt="Tecvid" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Tecvid Notlarım (PDF)</div>
+                            <p class="shop-desc">Tecvid derslerimin özetleri.</p>
+                            <a href="https://ko-fi.com/s/36cbecd911" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Tecvid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/b9/5c/6a/b95c6a9560e2194bf095eef207ab70d2.jpg" alt="Arapça" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Arapça Notlarım (PDF)</div>
+                            <p class="shop-desc">Arapça Gramer derslerimin özetleri.</p>
+                            <a href="https://ko-fi.com/s/6d093fe301" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Arapça</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/ce/ca/5f/ceca5f5566741b9c03e4858887b3acf2.jpg" alt="Kur'an Günlüğü" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Kur'ân Günlüğüm</div>
+                            <p class="shop-desc">Kur'an okurken notlarınızı, dualarınızı ve tefekkürlerinizi kaydetmek için PDF şablon.</p>
+                            <a href="https://ko-fi.com/s/08ce0ce0fd" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Günlük</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/41/ec/f5/41ecf506d1d094710db88d68de055f6f.jpg" alt="Ramazan" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Ramazan Planlayıcı</div>
+                            <p class="shop-desc">Ramazan ayı ibadetlerini, duaları ve hedefleri takip etmek için planlayıcı PDF.</p>
+                            <a href="https://ko-fi.com/s/6ae48ff989" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Ramazan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/7a3b2514-1d71-4eb1-94f5-bab0da4c8ebc_darkminimalisttypographicmotivationalinstagrampost.jpeg" alt="Esma ül-Hüsna" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Esma ül-Hüsna</div>
+                            <p class="shop-desc">Bu kapsamlı çalışma şablonu, Allah'ın 99 ismini (Esma ül-Hüsna) sistematik olarak öğrenmenize, ezberlemenize ve tefekkür etmenize yardımcı olur.</p>
+                            <a href="https://ko-fi.com/s/b96f120f68" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Günlük</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://i.pinimg.com/736x/3d/68/ff/3d68ffa01e8780f319b264acad1523c6.jpg" alt="Defterler" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Noktalı Dijital Defterler</div>
+                            <p class="shop-desc">7 farklı logolu kapak seçeneğiyle, ilim notlarınızı kaydetmek için tasarlandı.</p>
+                            <a href="https://tr.ee/NdjjoZ" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
+                            <div class="repo-link">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF • Defter</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/8a/1c/98/8a1c9854b4498412f68cf8ddb85f3118.jpg" alt="Tefsir Notları" loading="lazy">
+            <!-- GRUP 2: HAT -->
+            <div id="group-Hat" class="shop-group hidden">
+                <div class="shop-info-box">
+                    <p>🇩🇪 Sadece Almanya içinde siparişe açıktır.</p>
+                </div>
+                <div class="shop-grid">
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/4ddc13a5-e770-439b-8207-2ec3ab5f130e_minileinwand-1.jpeg" alt="Mini Tuval" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Mini Tuval</div>
+                            <p class="shop-desc">1 x Kişiselleştirilmiş Mini Tuval + Stand</p>
+                            <a href="https://ko-fi.com/c/b6cfbca213" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <div class="project-title">Tefsir Notlarım (Özet)</div>
-                        <p class="project-desc">Tefsir derslerimin özetleri.</p>
-                        <a href="https://heyzine.com/flip-book/be4fb6ca40.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
-                        <div class="repo-link">
-                            <i class="fas fa-book"></i>
-                            <span>FlipBook • Heyzine</span>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/508f202a-8d12-4734-a1f0-1ac56bcf3ad6_img_0448.jpeg" alt="Elif-Vav" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">⌀ 25 cm Elif-Vav Tuval</div>
+                            <p class="shop-desc">Elif-Vav yazılı kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/ad33ee2468" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/aeb6addc-9df2-4da4-9acf-88470f2fbe9d_img_0556.jpeg" alt="Tuval" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Sure/Ayet Yazılı Tuval</div>
+                            <p class="shop-desc">Kısa sure veya ayet yazılı kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/433dac6c7c" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/bba4ed1f-311c-493e-a6e0-aae464d1a7c8_img_0536.jpeg" alt="İsimli" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">İsimli Mini Tuval</div>
+                            <p class="shop-desc">İsmi yazılı kişiselleştirilmiş mini tuval + stand</p>
+                            <a href="https://ko-fi.com/c/d85d77b072" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/200e2ff2-7544-4346-846d-468bc54bc02a_img_0551.jpeg" alt="Aşk" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">حب (Aşk) Tuval</div>
+                            <p class="shop-desc">حب yazılı kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/b381055290" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/5f6ba066-da60-49bc-82a0-82383ff758a6_img_0549.jpeg" alt="İlim" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">ilm Tuval</div>
+                            <p class="shop-desc">İlim yazılı kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/313bc59ade" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/607d71f4-111e-4fa5-8827-58d9881c4f6f_img_0555.jpeg" alt="Tuval" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">25 cm x 25 cm Tuval</div>
+                            <p class="shop-desc">İstenilen yazıyla kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/1d28dce136" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/93e179a9-9e51-41c3-a322-7ecff0bfdf30_img_2728.jpeg" alt="Kabe" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">Kabe 2 Parça</div>
+                            <p class="shop-desc">2 parçalı Kabe diptych (Allah ve Muhammed Arapça)</p>
+                            <a href="https://ko-fi.com/c/b3332aaef9" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-card">
+                        <div class="shop-img">
+                            <img src="https://storage.ko-fi.com/cdn/useruploads/display/6baabd7d-e72e-4ba9-8c9e-47852f25cdbc_img_2730.jpeg" alt="İsimli" loading="lazy">
+                        </div>
+                        <div class="shop-content">
+                            <div class="shop-title">İsimli Tuval</div>
+                            <p class="shop-desc">İstenilen parıltılı isimle kişiselleştirilmiş tuval</p>
+                            <a href="https://ko-fi.com/c/baa45d77b9" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/a6/96/d7/a696d7208dc10222a799b7e4643436cf.jpg" alt="Tecvid" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Tecvid Notlarım (Özet)</div>
-                        <p class="project-desc">Tecvid derslerimin özetleri.</p>
-                        <a href="https://heyzine.com/flip-book/c796c9f840.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
-                        <div class="repo-link">
-                            <i class="fas fa-book"></i>
-                            <span>FlipBook • Tecvid Kuralları</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/70/df/68/70df683db7f74c781a61742871a1513d.jpg" alt="Arapça" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Arapça Gramer Notlarım</div>
-                        <p class="project-desc">Arapça derslerimin özetleri.</p>
-                        <a href="https://heyzine.com/flip-book/4501c64c59.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
-                        <div class="repo-link">
-                            <i class="fas fa-book"></i>
-                            <span>FlipBook • Arapça</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/f8/37/18/f83718dabcf69f922b336b2c63ec0fe6.jpg" alt="Lise" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Lise & TYT/AYT Notları</div>
-                        <p class="project-desc">İmam Hatip Lisesi ve genel lise dersleri için özetler.</p>
-                        <a href="https://drive.proton.me/urls/RQQDN0VSYG#dwOmk7qTrmCM" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Eğitim</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/41/be/45/41be45346d9f960381abff4f5bb7858f.jpg" alt="Dualar" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Günlük Dualar</div>
-                        <p class="project-desc">Sabah-akşam ve günlük duaların özetleri.</p>
-                        <a href="https://drive.proton.me/urls/5HWA7GZHXW#CK509RcHWmcB" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Dualar</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/ecc1262e-986f-4288-9592-678289f17642_img_1725.jpeg" alt="Şablon" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Notlar Şablonu</div>
-                        <p class="project-desc">Ders notlarınızı düzenli alabileceğiniz farklı renklerde şablon seti.</p>
-                        <a href="https://drive.proton.me/urls/C6QHTEMVD0#FwxRwhZHJixb" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Şablon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/709d35e1-1e58-44de-b8df-94e4b2c4e2e6_img_1539.jpeg" alt="Çizelgeler" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">3 Aylar Çizelgeleri</div>
-                        <p class="project-desc">1 senelik kaza namazı çizelgesi ve 30 günlük oruç takibi.</p>
-                        <a href="https://drive.proton.me/urls/5GXK5R8AAC#eRBT4uIdrL43" target="_blank" rel="noopener noreferrer" class="btn-outline">İndir</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Takip</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-
-        <!-- WEB GRUBU -->
-        <div id="group-web" class="project-group" style="display: none;">
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/92/37/00/92370015e85446f62999b90bccbbe8d6.jpg" alt="Nur Kuran" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Nur Kuran-ı Kerim</div>
-                        <p class="project-desc">Diyanet API'si ile çalışan, Arapça ve Türkçe mealini gösteren modern uygulama.</p>
-                        <a href="tr/kuran.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a>
-                        <div class="repo-link">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5 • </span><i class="fab fa-css3-alt"></i><span> CSS3 • </span><i class="fab fa-js"></i><span> JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/2f/ff/0f/2fff0fed341fd0c33b891233f1fd9c30.jpg" alt="İlim Takibi" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">İlim ve İbadet Takibi</div>
-                        <p class="project-desc">Günlük ibadet ve ilim çalışmalarınızı takip eden, seviye sistemi olan uygulama.</p>
-                        <a href="tr/gelisim.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Aç</a>
-                        <div class="repo-link">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript • LocalStorage</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/d7/23/87/d72387170e4f46e17afa063a83fade13.jpg" alt="Kelime Avı" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Dini Literatür Kelime Avı</div>
-                        <p class="project-desc">İslami terimleri oyunlaştırarak öğrenen, KPSS ve Diyanet soruları içeren uygulama.</p>
-                        <a href="tr/kelime-oyunu.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Oyunu Başlat</a>
-                        <div class="repo-link">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript • Oyunlaştırma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/1a/19/3e/1a193eb8c8c745411840775c20012a6b.jpg" alt="Planlayıcı" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Akıllı İlim & İbadet Planlayıcısı</div>
-                        <p class="project-desc">Hedeflerinizi günlük görevlerle birleştiren, koyu mod ve yedekleme özellikli sistem.</p>
-                        <a href="tr/planner.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
-                        <div class="repo-link">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5 • </span><i class="fab fa-css3-alt"></i><span> CSS3 • </span><i class="fab fa-js"></i><span> JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/af/cb/19/afcb19731307532619c23769124e3c45.jpg" alt="Zikir" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Dijital Zikir Sayacı</div>
-                        <p class="project-desc">Geleneksel tesbihin dijital dünyadaki hali. Zarif, minimalist ve karanlık mod destekli.</p>
-                        <a href="tr/zikir.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
-                        <div class="repo-link">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript • Minimalist</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/31/b0/3e/31b03e07fc8b10f214d9df4292b31395.jpg" alt="Hac" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Adım Adım Hac ve Umre</div>
-                        <p class="project-desc">Kutsal topraklardaki yolculuğunuzu adım adım, dualarla takip edebileceğiniz rehber.</p>
-                        <a href="tr/umre-hac.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Rehberi Aç</a>
-                        <div class="repo-link">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5 • İnteraktif Rehber</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/db/19/1b/db191b92415dc0bfb743dac29141a746.jpg" alt="Arapça" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Ayet-i Kelim</div>
-                        <p class="project-desc">Kur'an kıssalarını dil laboratuvarına dönüştüren, bağlamsal kelime öğrenimi uygulaması.</p>
-                        <a href="tr/arapca.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Uygulamayı Başlat</a>
-                        <div class="repo-link">
-                            <i class="fab fa-js"></i>
-                            <span>JavaScript • API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/3b/ca/9c/3bca9c12c00bd3a0cc8872d168a9dc62.jpg" alt="iKuran" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">iKuran</div>
-                        <p class="project-desc">iPod tasarımının nostalgic hissini modern teknolojiyle birleştiren Kur'an dinleme arayüzü.</p>
-                        <a href="tr/ikuran-pink.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Pembe</a>
-                        <a href="tr/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: 10px">Siyah</a>
-                        <div class="repo-link">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5 • API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://i.pinimg.com/736x/94/d1/d7/94d1d76481345d689af76363b48ca8a3.jpg" alt="Notion" loading="lazy">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-title">Notion Planlayıcım</div>
-                        <p class="project-desc">Akademik hedefleriniz ile manevi sorumluluklarınızı tek çatıda birleştiren planlayıcı.</p>
-                        <a href="https://eslemnur-notes.notion.site/" target="_blank" rel="noopener noreferrer" class="btn-outline">Sayfayı Aç</a>
-                        <div class="repo-link">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Notion Template</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-     <!-- Shop -->
-<section id="shop" class="section">
-    <div class="container">
-        <h2 class="section-title">Shop</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
-            Hazırladığım dijital ürünleri burada satıyorum. Ücretsiz FlipBook halindeki dijital notlarıma ise Projeler kısmından ulaşabilirsiniz.
-        </p>
-
-        <!-- Shop Sekme Butonları -->
-        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-            <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="true">Defterler & PDF</button>
-            <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Hat')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="false">Çizimlerim / Hat</button>
-        </div>
-
-        <!-- GRUP 1: PDF -->
-        <div id="group-PDF" class="shop-group active" style="display: grid;">
-            <div class="shop-grid">
-                
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/90/a7/a1/90a7a1ed70e10606b9b14d48ef4f3399.jpg" alt="Esma-ul Husna" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Esma-ul Husna</div>
-                        <p class="shop-desc">Allah'ın 99 ismini interaktif olarak inceleyebileceğiniz defter.</p>
-                        <a href="https://ko-fi.com/s/596c3f86fe" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="fas fa-book"></i>
-                            <span>GoodNotes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/64/f1/0d/64f10da8f3bb18583d68f0efcd5eca87.jpg" alt="Tefsir Defteri" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Tefsir Defteri</div>
-                        <p class="shop-desc">Tefsir derslerinizi düzenli tutmanız için özel şablon.</p>
-                        <a href="https://ko-fi.com/s/f68844b74c" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="fas fa-book"></i>
-                            <span>GoodNotes • Şablon</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/ad/07/81/ad0781eeafcc06bba7035eb4e586947b.jpg" alt="Tefsir Notları" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Tefsir Notlarım (PDF)</div>
-                        <p class="shop-desc">Tefsir derslerimin özetleri.</p>
-                        <a href="https://ko-fi.com/s/0ce64ba049" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Notlar</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/f6/41/ec/f641ecb074da508253ec768e778606bd.jpg" alt="Tecvid" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Tecvid Notlarım (PDF)</div>
-                        <p class="shop-desc">Tecvid derslerimin özetleri.</p>
-                        <a href="https://ko-fi.com/s/36cbecd911" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Tecvid</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/b9/5c/6a/b95c6a9560e2194bf095eef207ab70d2.jpg" alt="Arapça" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Arapça Notlarım (PDF)</div>
-                        <p class="shop-desc">Arapça Gramer derslerimin özetleri.</p>
-                        <a href="https://ko-fi.com/s/6d093fe301" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • </span><i class="fas fa-language"></i><span> Arapça</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/ce/ca/5f/ceca5f5566741b9c03e4858887b3acf2.jpg" alt="Kur'an Günlüğü" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Kur'ân Günlüğüm</div>
-                        <p class="shop-desc">Kur'an okurken notlarınızı, dualarınızı ve tefekkürlerinizi kaydetmek için PDF şablon.</p>
-                        <a href="https://ko-fi.com/s/08ce0ce0fd" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Günlük</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/41/ec/f5/41ecf506d1d094710db88d68de055f6f.jpg" alt="Ramazan" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Ramazan Planlayıcı</div>
-                        <p class="shop-desc">Ramazan ayı ibadetlerini, duaları ve hedefleri takip etmek için planlayıcı PDF.</p>
-                        <a href="https://ko-fi.com/s/6ae48ff989" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Ramazan</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/7a3b2514-1d71-4eb1-94f5-bab0da4c8ebc_darkminimalisttypographicmotivationalinstagrampost.jpeg" alt="Ramazan" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Esma ül-Hüsna</div>
-                        <p class="shop-desc">Bu kapsamlı çalışma şablonu, Allah'ın 99 ismini (Esma ül-Hüsna) sistematik olarak öğrenmenize, ezberlemenize ve tefekkür etmenize yardımcı olur.</p>
-                        <a href="https://ko-fi.com/s/b96f120f68" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Günlük</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://i.pinimg.com/736x/3d/68/ff/3d68ffa01e8780f319b264acad1523c6.jpg" alt="Defterler" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Noktalı Dijital Defterler</div>
-                        <p class="shop-desc">7 farklı logolu kapak seçeneğiyle, ilim notlarınızı kaydetmek için tasarlandı.</p>
-                        <a href="https://tr.ee/NdjjoZ" target="_blank" rel="noopener noreferrer" class="btn-outline">Satın Al</a>
-                        <div class="repo-link">
-                            <i class="far fa-file-pdf"></i>
-                            <span>PDF • Defter</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- GRUP 2: HAT (Fiziki sipariş - repo-link gerekli değil) -->
-        <div id="group-Hat" class="shop-group" style="display: none;">
-            <!-- Bilgilendirme Kutusu -->
-            <div style="grid-column: 1 / -1; background: linear-gradient(90deg, rgba(183,110,121,0.1), rgba(183,110,121,0.05)); border: 2px dashed var(--primary-color); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center;">
-                <p style="color: var(--primary-color); font-weight: 600; margin: 0;">
-                    🇩🇪 Sadece Almanya içinde siparişe açıktır.
-                </p>
-            </div>
-            <div class="shop-grid">
-                
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/4ddc13a5-e770-439b-8207-2ec3ab5f130e_minileinwand-1.jpeg" alt="Mini Tuval" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Mini Tuval</div>
-                        <p class="shop-desc">1 x Kişiselleştirilmiş Mini Tuval + Stand</p>
-                        <a href="https://ko-fi.com/c/b6cfbca213" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/508f202a-8d12-4734-a1f0-1ac56bcf3ad6_img_0448.jpeg" alt="Elif-Vav" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">⌀ 25 cm Elif-Vav Tuval</div>
-                        <p class="shop-desc">Elif-Vav yazılı kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/ad33ee2468" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/aeb6addc-9df2-4da4-9acf-88470f2fbe9d_img_0556.jpeg" alt="Tuval" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Sure/Ayet Yazılı Tuval</div>
-                        <p class="shop-desc">Kısa sure veya ayet yazılı kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/433dac6c7c" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/bba4ed1f-311c-493e-a6e0-aae464d1a7c8_img_0536.jpeg" alt="İsimli" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">İsimli Mini Tuval</div>
-                        <p class="shop-desc">İsmi yazılı kişiselleştirilmiş mini tuval + stand</p>
-                        <a href="https://ko-fi.com/c/d85d77b072" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/200e2ff2-7544-4346-846d-468bc54bc02a_img_0551.jpeg" alt="Aşk" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">حب (Aşk) Tuval</div>
-                        <p class="shop-desc">حب yazılı kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/b381055290" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/5f6ba066-da60-49bc-82a0-82383ff758a6_img_0549.jpeg" alt="İlim" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">ilm Tuval</div>
-                        <p class="shop-desc">İlim yazılı kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/313bc59ade" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/607d71f4-111e-4fa5-8827-58d9881c4f6f_img_0555.jpeg" alt="Tuval" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">25 cm x 25 cm Tuval</div>
-                        <p class="shop-desc">İstenilen yazıyla kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/1d28dce136" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/93e179a9-9e51-41c3-a322-7ecff0bfdf30_img_2728.jpeg" alt="Kabe" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">Kabe 2 Parça</div>
-                        <p class="shop-desc">2 parçalı Kabe diptych (Allah ve Muhammed Arapça)</p>
-                        <a href="https://ko-fi.com/c/b3332aaef9" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-                <div class="shop-card">
-                    <div class="shop-img">
-                        <img src="https://storage.ko-fi.com/cdn/useruploads/display/6baabd7d-e72e-4ba9-8c9e-47852f25cdbc_img_2730.jpeg" alt="İsimli" loading="lazy">
-                    </div>
-                    <div class="shop-content">
-                        <div class="shop-title">İsimli Tuval</div>
-                        <p class="shop-desc">İstenilen parıltılı isimle kişiselleştirilmiş tuval</p>
-                        <a href="https://ko-fi.com/c/baa45d77b9" target="_blank" rel="noopener noreferrer" class="btn-outline">Sipariş Ver</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-       
-    
+    </section>
 
     <!-- FOOTER -->
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
-            <p style="margin-bottom: 30px;">Rabbim, ilmimizi arttır.</p>
+            <p class="footer-quote">Rabbim, ilmimizi arttır.</p>
             
             <div class="social-links">
-               
                 <a href="http://linktr.ee/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="Linktree" aria-label="Linktree Profilim">
                     <i class="fas fa-link"></i>
                 </a>
-                <a href="https://github.com/eslem-nur" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                <a href="https://github.com/eslem-nur" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub" aria-label="GitHub Profilim">
                     <i class="fab fa-github"></i>
                 </a>
                 
-                <div style="display: inline-block; position: relative; cursor: pointer;" onclick="copyEmail()" title="E-posta adresini kopyalamak için tıklayın" role="button" tabindex="0" aria-label="E-posta adresini kopyala">
-                    <span class="social-link" style="background: none; border: 2px solid var(--primary-color); color: var(--primary-color); font-size: 1.2rem; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-envelope"></i></span>
-                    <span style="margin-left: 10px; color: var(--primary-color); font-weight: 600; font-family: 'Lato', sans-serif;">eslemnur-official@proton.me</span>
-                    <div id="copyFeedback" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Kopyalandı!</div>
+                <div class="email-copy-wrapper" onclick="copyEmail()" title="E-posta adresini kopyalamak için tıklayın" role="button" tabindex="0" aria-label="E-posta adresini kopyala">
+                    <span class="social-link email-button">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="email-address">eslemnur-official@proton.me</span>
+                    <span class="copy-feedback" id="copyFeedback">Kopyalandı!</span>
                 </div>
             </div>
 
-          <!-- YILDIZ RATING BÖLÜMÜ -->
-<div class="feedback-section" style="margin: 40px auto; max-width: 500px;">
-    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); text-align: center; margin-bottom: 15px;">Web Sitemi Değerlendir</h3>
-    <div class="star-rating" id="starRating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
-    </div>
-    <p class="rating-text" id="ratingText">Henüz değerlendirmediniz</p>
-    <input type="hidden" name="rating" id="ratingValue" value="0">
-</div>
+            <!-- YILDIZ DEĞERLENDİRME -->
+            <div class="feedback-section">
+                <h3>Web Sitemi Değerlendir</h3>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-value="1" aria-label="1 yıldız">★</span>
+                    <span class="star" data-value="2" aria-label="2 yıldız">★</span>
+                    <span class="star" data-value="3" aria-label="3 yıldız">★</span>
+                    <span class="star" data-value="4" aria-label="4 yıldız">★</span>
+                    <span class="star" data-value="5" aria-label="5 yıldız">★</span>
+                </div>
+                <p class="rating-text" id="ratingText">Henüz değerlendirmediniz</p>
+                <input type="hidden" name="rating" id="ratingValue" value="0">
+            </div>
+            
             <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Tüm hakları saklıdır.</p>
             <p class="trademark-notice">
                 <strong>Markalar:</strong> 
@@ -844,16 +852,13 @@
                 <span class="brand-badge">Eslem Nur Kalligrafie™</span>
             </p>
 
-            <!-- Logo -->
-<p style="margin: 15px 0 0;">
-    <a href="/official/logo-reference/official-logo-tr.html" class="btn-outline" style="font-size: 0.8rem; padding: 8px 20px;" target="_blank">
-        <i class="fas fa-shield-alt"></i> Logo Referansı
-    </a>
-</p>
-
-
-            <p class="legal-note">™ tescilsiz ticari marka anlamına gelir. Kişisel marka projesi • Almanya 
+            <p class="logo-reference">
+                <a href="/official/logo-reference/official-logo-tr.html" class="btn-outline logo-ref-btn" target="_blank">
+                    <i class="fas fa-shield-alt"></i> Logo Referansı
+                </a>
             </p>
+
+            <p class="legal-note">™ tescilsiz ticari marka anlamına gelir. Kişisel marka projesi • Almanya</p>
         </div>
         
         <!-- Ko-fi Widget -->
@@ -867,11 +872,7 @@
             });
         </script>
     </footer>
-
-
-    </script>
     
     <script src="scripts.js"></script>
-
 </body>
 </html>

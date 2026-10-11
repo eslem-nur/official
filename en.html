@@ -65,7 +65,7 @@
                 <div class="nav-controls">
     <!-- Dil Toggle Butonu -->
     <div class="lang-dropdown" id="langDropdown">
-        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Change Language" style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; font-family: 'Inter', sans-serif;">
+        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Change Language">
             <i class="fa fa-globe" aria-hidden="true"></i>
         </button>
         <div class="lang-dropdown-menu">
@@ -104,7 +104,7 @@
             <div class="hero-badges">
                 <span class="badge">Quran</span><span class="badge">Arabic</span><span class="badge">Tafsir</span><span class="badge">HTML/CSS</span><span class="badge">Web Development</span>
             </div>
-            <div style="display: flex; flex-wrap: nowrap; justify-content: center; gap: 12px; width: 100%; max-width: 100%; margin: 20px auto;">
+            <div class="hero-actions">
                 <a href="#projects" class="btn-primary">View My Projects</a>
                 <a href="#shop" class="btn-primary">View Products</a>
             </div>
@@ -117,14 +117,14 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p><span style="font-family: 'Scheherazade New', serif; font-size: 1.4rem; color: var(--primary-color); direction: rtl; display: inline-block; margin-right: 10px; vertical-align: middle;">السلام عليكم ورحمة الله وبركاته</span> I am Eslem Nur. I strive to connect knowledge with my heart and code with my mind. I aim to deepen the theological knowledge I acquired during my education at Imam Hatip High School at the Faculty of Theology, God willing, and find ways to share it in today's digital world.</p>
+                    <p><span class="arabic-text">السلام عليكم ورحمة الله وبركاته</span> I am Eslem Nur. I strive to connect knowledge with my heart and code with my mind. I aim to deepen the theological knowledge I acquired during my education at Imam Hatip High School at the Faculty of Theology, God willing, and find ways to share it in today's digital world.</p>
                     <p>As both a <strong>Theology Student</strong> and a <strong>Self-Developing Developer</strong>, I try to create meaningful digital works with modern web technologies.</p>
-                    <p><strong style="text-decoration: underline;">My Goal:</strong><span style="font-family: 'Scheherazade New', serif; font-size: 1rem; direction: rtl; display: inline-block; margin-left: 10px; vertical-align: middle;">إن شاء الله</span> is to not leave knowledge only on paper, but to spread it in the digital world and use technology for good.</p>
+                    <p><strong class="underline">My Goal:</strong><span class="arabic-text-small">إن شاء الله</span> is to not leave knowledge only on paper, but to spread it in the digital world and use technology for good.</p>
                 </div>
                 <div class="about-visual">
                     <div class="icon-box">✿</div>
-                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 10px; color: var(--primary-color)">Ilm & Technology</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">In accordance with the prayer "Oh Allah, increase me in knowledge," I try to learn something new every day to gain both this world and the hereafter.</p>
+                    <h3 class="about-visual-title">Ilm & Technology</h3>
+                    <p class="about-visual-text">In accordance with the prayer "Oh Allah, increase me in knowledge," I try to learn something new every day to gain both this world and the hereafter.</p>
                 </div>
             </div>
         </div>
@@ -135,13 +135,14 @@
         <div class="container">
             <h2 class="section-title">My Skills</h2>
             
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Skills</button>
-                <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Certificates</button>
+
+            <div class="tab-controls">
+                <button class="tab-btn skill-tab-btn active" tabindex="0" onclick="switchSkillTab('yetenekler')" aria-selected="true">Skills</button>
+                <button class="tab-btn skill-tab-btn" tabindex="0" onclick="switchSkillTab('sertifika')" aria-selected="false">Certificates</button>
             </div>
 
             <!-- Skills Content -->
-            <div id="group-yetenekler" class="skill-group active" style="display: grid;">
+            <div id="group-yetenekler" class="skill-group active">
                 <div class="skills-container">
                     
                     <div class="skill-card">
@@ -160,13 +161,13 @@
             </div>
 
             <!-- Certificates Content -->
-            <div id="group-sertifika" class="skill-group" style="display: none;">
+            <div id="group-sertifika" class="skill-group hidden">
                 <div class="projects-grid"> 
                     
                     <!-- Certificate 1 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5n/X2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python Programming Certificate" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/H41DUKTjQ2jfrzvhqRnycaaGDYymBdBylOWOtLaDEbY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nby53aW5lL2Ev/bG9nby9QeXRob25f/KHByb2dyYW1taW5nX2xhbmd1YWdlKS9Q/eXRob25fKHByb2dy/YW1taW5nX2xhbmd1/YWdlKS1Mb2dvLndp/bmUuc3Zn" alt="Python Programming Certificate" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Python Certificate</div>
@@ -178,7 +179,7 @@
                     <!-- Certificate 2 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C# Programming Certificate" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/XdOj0jNCyxw6SLQZ0leaxN0W-TxPF-R7AYc05CjuCGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vbWpIRno2/ZkpOZThNVnJEU3M5/N1k2bFhRdEhBemFs/d29nTFJiUkZqLVNl/MC9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlz/YjJkdi9kSGx3TG5W/ekwyWnBiR1V2L1l5/MXphR0Z5Y0M1emRt/Yw" alt="C# Programming Certificate" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">C# Certificate</div>
@@ -190,7 +191,7 @@
                     <!-- Certificate 3 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Responsive Web Design Certificate" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/ipyoQx_XRRi3gxyK3TC3uMryY9JcsK5rZKDFy0-WXbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzNmLzdh/LzI0LzNmN2EyNDAx/NDI5OGIzZWJmYWE4/OTU5NmEwZWNkMzgy/LmpwZw" alt="Responsive Web Design Certificate" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Responsive Web Design Certificate</div>
@@ -202,7 +203,7 @@
                     <!-- Certificate 4 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlw/dC1Mb2dvLTUwMHgy/ODEucG5n" alt="Canva Certificates" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://imgs.search.brave.com/Uq1hUDc8_B_J8RFHSIof1A9zZYOJyoJiD6J4MYQTaVo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDIvSmF2YVNjcmlwdC1Mb2dvLTUwMHgy/ODEucG5n" alt="Canva Certificates" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">JavaScript Algorithms & Web Development</div>
@@ -214,7 +215,7 @@
                     <!-- Certificate 5 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="English B1 Certificate" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://plus.unsplash.com/premium_photo-1685086785054-d047cdc0e525?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="English B1 Certificate" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">English for Developers (B1)</div>
@@ -226,7 +227,7 @@
                     <!-- Certificate 6 -->
                     <div class="project-card">
                         <div class="project-img">
-                            <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva Certificates" loading="lazy" style="background: #f0f0f0; object-fit: cover;">
+                            <img src="https://i.pinimg.com/736x/69/6c/c3/696cc346b4793cdf138edff209f97196.jpg" alt="Canva Certificates" loading="lazy">
                         </div>
                         <div class="project-content">
                             <div class="project-title">Design & UI/UX Fundamentals</div>
@@ -244,17 +245,17 @@
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
+            <p class="section-description">
                 Free digital notes and web projects I have prepared. I share them all with the intention of Sadaqah Jariyah (continuous charity).
             </p>
 
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Templates & Notes</button>
-                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Web Applications</button>
+            <div class="tab-controls">
+                <button class="tab-btn project-tab-btn active" tabindex="0" onclick="switchProjectTab('pdf')" aria-selected="true">Templates & Notes</button>
+                <button class="tab-btn project-tab-btn" tabindex="0" onclick="switchProjectTab('web')" aria-selected="false">Web Applications</button>
             </div>
 
              <!-- PDF GROUP -->
-            <div id="group-pdf" class="project-group active" style="display: grid;">
+            <div id="group-pdf" class="project-group active">
                 <div class="projects-grid">
                     
                     <div class="project-card">
@@ -381,7 +382,7 @@
             </div>
 
             <!-- WEB GROUP -->
-            <div id="group-web" class="project-group" style="display: none;">
+            <div id="group-web" class="project-group hidden">
                 <div class="projects-grid">
                     
                     <div class="project-card">
@@ -497,7 +498,7 @@
                             <div class="project-title">iKuran</div>
                             <p class="project-desc">Combines the nostalgic feel of classic iPod design with modern technology to provide a unique interface for listening to the Quran.</p>
                             <a href="tr/ikuran-pink.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Pink Version</a>
-                            <a href="tr/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: 10px">Black Version</a>
+                            <a href="tr/ikuran-black.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Black Version</a>
                             <div class="repo-link">
                                 <i class="fab fa-html5"></i>
                                 <span>HTML5 • </span><i class="fas fa-headphones"></i><span> API</span>
@@ -529,18 +530,18 @@
     <section id="shop" class="section">
         <div class="container">
             <h2 class="section-title">Shop</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-light);">
+            <p class="section-description">
                 I sell my digital products here. For free FlipBook digital notes, please visit the Projects section.
             </p>
 
             <!-- Shop Tab Buttons -->
-            <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
-                <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="true">Notebooks & PDF</button>
-                <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Hat')" style="padding: 10px 25px; border: 2px solid var(--border-color); background: transparent; color: var(--text-light); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;" aria-selected="false">My Drawings / Calligraphy</button>
+            <div class="tab-controls">
+                <button class="tab-btn shop-tab-btn active" tabindex="0" onclick="switchShopTab('PDF')" aria-selected="true">Notebooks & PDF</button>
+                <button class="tab-btn shop-tab-btn" tabindex="0" onclick="switchShopTab('Hat')" aria-selected="false">My Drawings / Calligraphy</button>
             </div>
 
             <!-- GROUP 1: PDF -->
-            <div id="group-PDF" class="shop-group active" style="display: grid;">
+            <div id="group-PDF" class="shop-group active">
                 <div class="shop-grid">
                     
                     <div class="shop-card">
@@ -682,13 +683,11 @@
             </div>
       
             <!-- Group 2: Calligraphy -->
-            <div id="group-Hat" class="shop-group" style="display: none;">
+            <div id="group-Hat" class="shop-group hidden">
                 <!-- Information Box First -->
-                <div style="grid-column: 1 / -1; background: linear-gradient(90deg, rgba(183,110,121,0.1), rgba(183,110,121,0.05)); border: 2px dashed var(--primary-color); border-radius: 20px; padding: 20px; margin-bottom: 30px; text-align: center;">
-                    <p style="color: var(--primary-color); font-weight: 600; margin: 0;">
-                        🇩🇪 Only open for orders within Germany.
-                    </p>
-                </div>
+                <div class="shop-info-box">
+    <p>🇩🇪 Only open for orders within Germany.</p>
+</div>
                 <div class="shop-grid">
                     <div class="shop-card">
     <div class="shop-img">
@@ -709,7 +708,7 @@
     <div class="shop-content">
         <div class="shop-title">⌀ 25 cm Canvas with Elif-Vav Text</div>
         <p class="shop-desc">1 x Personalized Canvas with Elif-Vav Text</p> 
-        <p class="shop-desc" style="font-size: 12px">Meaning: "Stand upright like the letter Elif against the disbeliever, bow like the letter Vav before Allah."</p>
+        <p class="shop-desc">Meaning: "Stand upright like the letter Elif against the disbeliever, bow like the letter Vav before Allah."</p>
         <a href="https://ko-fi.com/c/ad33ee2468" target="_blank" rel="noopener noreferrer" class="btn-outline">Order</a>
     </div>
 </div> 
@@ -799,7 +798,7 @@
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
-            <p style="margin-bottom: 30px;">Oh Allah, increase us in knowledge.</p>
+            <p class="footer-quote">Oh Allah, increase us in knowledge.</p>
             
             <div class="social-links">
                 <a href="http://linktr.ee/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="Linktree" aria-label="Linktree Profile">
@@ -809,22 +808,24 @@
                     <i class="fas fa-coffee"></i>
                 </a>
                 
-                <div style="display: inline-block; position: relative; cursor: pointer;" onclick="copyEmail()" title="Click to copy email address" role="button" tabindex="0" aria-label="Copy Email Address">
-                    <span class="social-link" style="background: none; border: 2px solid var(--primary-color); color: var(--primary-color); font-size: 1.2rem; width: 4                    .2rem; width: 45px; height: 45px; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-envelope"></i></span>
-                    <span style="margin-left: 10px; color: var(--primary-color); font-weight: 600; font-family: 'Lato', sans-serif;">eslemnur-official@proton.me</span>
-                    <div id="copyFeedback" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;">Copied!</div>
+                <div class="email-copy-wrapper" onclick="copyEmail()" title="Click to copy email address" role="button" tabindex="0" aria-label="Copy Email Address">
+                    <span class="social-link email-button">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="email-address">eslemnur-official@proton.me</span>
+                    <span class="copy-feedback" id="copyFeedback">Copied!</span>
                 </div>
             </div>
 
             <!-- STAR RATING -->
-<div class="feedback-section" style="margin: 40px auto; max-width: 500px;">
-    <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); text-align: center; margin-bottom: 15px;">Rate My Website</h3>
+<div class="feedback-section">
+    <h3>Rate My Website</h3>
     <div class="star-rating" id="starRating">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
+        <span class="star" data-value="1" aria-label="1 star">★</span>
+        <span class="star" data-value="2" aria-label="2 stars">★</span>
+        <span class="star" data-value="3" aria-label="3 stars">★</span>
+        <span class="star" data-value="4" aria-label="4 stars">★</span>
+        <span class="star" data-value="5" aria-label="5 stars">★</span>
     </div>
     <p class="rating-text" id="ratingText">You haven't rated yet</p>
     <input type="hidden" name="rating" id="ratingValue" value="0">
@@ -838,8 +839,8 @@
             </p>
 
             <!-- Logo -->
-<p style="margin: 15px 0 0; text-align: center;">
-    <a href="/official/logo-reference/official-logo-en.html" class="btn-outline" style="font-size: 0.85rem; padding: 10px 25px;" target="_blank" title="Logo Reference and Copyright">
+<p class="logo-reference">
+    <a href="/official/logo-reference/official-logo-en.html" class="btn-outline logo-ref-btn" target="_blank" title="Logo Reference and Copyright">
         <i class="fas fa-shield-alt"></i> Logo Reference
     </a>
 </p>
