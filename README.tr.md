@@ -2,6 +2,8 @@
 
 # 🌸 Eslem Nur Çetin | ilim & Kod
 
+[English](./README.md) | [Türkçe](./README.tr.md)
+
 > "Ey Rabbim! İlmimizi artır." — رَبِّ زِدْنِى عِلْمًا
 
 İmam Hatip Lisesi mezunu ve birinci sınıf İlahiyat Fakültesi öğrencisi; dini ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
