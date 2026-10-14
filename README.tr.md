@@ -1,12 +1,12 @@
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
 
-# 🌸 Eslem Nur | İlham & Kod
+# 🌸 Eslem Nur Çetin | İlham & Kod
 
 > "Ey Rabbim! İlmimizi artır." — رَبِّ زِدْنِى عِلْمًا
 
 İmam Hatip Lisesi mezunu ve birinci sınıf İlahiyat Fakültesi öğrencisi; dini ilimleri modern web teknolojileriyle harmanlayan kişisel portfolyo ve dijital ürün platformu.
 
-🔗 **Canlı Site:** [Eslem Nur](https://eslem-nur.github.io/official/)
+🔗 **Canlı Site:** [Eslem Nur Çetin](https://eslem-nur.github.io/official/)
 
 ---
 
