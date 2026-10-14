@@ -1,15 +1,15 @@
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
 # In the Name of Allah, the Most Gracious, the Most Merciful
 
-# 🌸 Eslem Nur | Knowledge & Code
+# 🌸 Eslem Nur Çetin | Knowledge & Code
 
 [English](./README.md) | [Türkçe](./README.tr.md)
 
 > "Oh Allah, increase us in knowledge." — رَبِّ زِدْنَا عِلْمًا
 
-Imam Hatip High School graduate and first-year Theology Faculty student; a personal portfolio and digital product platform that blends religious sciences with modern web technologies.
+Imam Hatip High School graduate and first-year Islamic Theology Faculty student; a personal portfolio and digital product platform that blends religious sciences with modern web technologies.
 
-🔗 **Live Site:** [Eslem Nur](https://eslem-nur.github.io/official/)
+🔗 **Live Site:** [Eslem Nur Çetin](https://eslem-nur.github.io/official/)
 
 ---
 
