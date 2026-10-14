@@ -1,6 +1,6 @@
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
 
-# 🌸 Eslem Nur Çetin | İlham & Kod
+# 🌸 Eslem Nur Çetin | ilim & Kod
 
 > "Ey Rabbim! İlmimizi artır." — رَبِّ زِدْنِى عِلْمًا
 
