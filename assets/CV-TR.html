@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eslem Nur Çetin - Özgeçmiş</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Same styles as EN version */
+        :root {
+            --primary-color: #A06872;
+            --primary-dark: #8E5A65;
+            --bg-color: #FFF9F9;
+            --text-primary: #4E342E;
+            --text-secondary: #8D6E63;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        @media print {
+            body { padding: 0; background: #fff; }
+            .no-print { display: none; }
+            @page { margin: 1.5cm; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+        }
+
+        section { margin-bottom: 30px; }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .date-location {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        ul { list-style: none; }
+
+        ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .project-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-item:last-child { border-bottom: none; }
+
+        .project-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .tech-stack {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .cert-item { margin-bottom: 10px; }
+        .cert-name { font-weight: 600; color: var(--text-primary); }
+        .cert-org { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .print-btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-print {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arabic {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.3rem;
+            direction: rtl;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="print-btn-container no-print">
+        <button class="btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> PDF Olarak Kaydet / Yazdır
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="name">Eslem Nur ÇETİN</h1>
+            <p class="title">Web Geliştirici & İlahiyat Öğrencisi</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>eslemnur-official@proton.me</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/eslem-nur</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>eslem-nur.github.io/official</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Türkiye / Almanya</span>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h2>Hakkımda</h2>
+            <p class="arabic" style="text-align: center; margin-bottom: 15px;">رَبِّ زِدْنَا عِلْمًا</p>
+            <p>İmam Hatip Lisesi mezunu ve birinci sınıf İlahiyat fakültesi öğrencisiyim. Dinî ilimleri modern web teknolojileriyle birleştiriyorum. Topluma hizmet eden anlamlı dijital projeler üretirken yazılım becerilerimi sürekli geliştirmeye devam ediyorum. Amacım, ilmi dijital dünyada yaygınlaştırmak ve teknolojiyi hayır için kullanmaktır.</p>
+        </section>
+
+        <section>
+            <h2>Eğitim</h2>
+            <div class="education-item">
+                <h3>İlahiyat Fakültesi</h3>
+                <p class="date-location">Üniversite, Türkiye | 2024 - Devam Ediyor</p>
+                <ul>
+                    <li>Birinci Sınıf Öğrencisi - İlahiyat Programı</li>
+                    <li>Odak: Tefsir, Hadis, Arapça Gramer, Fıkıh Temelleri</li>
+                </ul>
+            </div>
+            <div class="education-item">
+                <h3>İmam Hatip Lisesi</h3>
+                <p class="date-location">Türkiye | Mezuniyet 2024</p>
+                <ul>
+                    <li>Dini meslek lisesi eğitimi</li>
+                    <li>İslami ilimler ve Kur'an çalışmaları konusunda güçlü altyapı</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Teknik Beceriler</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Web Geliştirme</h3>
+                    <ul>
+                        <li>HTML5 & Semantik İşaretleme</li>
+                        <li>CSS3 & Responsive Tasarım</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>UI/UX Tasarım</li>
+                        <li>Web Uygulama Geliştirme</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fab fa-python"></i> Programlama Dilleri</h3>
+                    <ul>
+                        <li>Python (İleri Düzey)</li>
+                        <li>C# (Orta Düzey)</li>
+                        <li>JavaScript Algoritmaları</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-quran"></i> İslami İlimler</h3>
+                    <ul>
+                        <li>Tefsir ve Meal Okuma</li>
+                        <li>Arapça Dil Bilgisi</li>
+                        <li>Tecvid Kuralları</li>
+                        <li>Hadis ve Fıkıh Temelleri</li>
+                        <li>İslam Tarihçesi</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Araçlar & Diğerleri</h3>
+                    <ul>
+                        <li>Git & Versiyon Kontrolü</li>
+                        <li>Dijital Not Yönetimi</li>
+                        <li>PDF & EPUB Formatları</li>
+                        <li>Canva (Tasarım)</li>
+                        <li>Notion Şablonları</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sertifikalar</h2>
+            <div class="cert-item">
+                <p class="cert-name">Python Programlama Sertifikası</p>
+                <p class="cert-org">freeCodeCamp (2025 müfredat) • İleri düzey</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">C# Programlama Sertifikası</p>
+                <p class="cert-org">Microsoft iş birliği • 35 saat uygulamalı eğitim</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">Responsive Web Design Sertifikası</p>
+                <p class="cert-org">freeCodeCamp • HTML5, CSS3, Flexbox, Grid</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">JavaScript Algoritmaları ve Web Geliştirme</p>
+                <p class="cert-org">freeCodeCamp • ES6+, API'ler, Asenkron Programlama</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">English for Developers (B1 Seviyesi)</p>
+                <p class="cert-org">Teknik dokümantasyon ve ekip iletişimi</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">Tasarım & UI/UX Temelleri</p>
+                <p class="cert-org">Canva Design School • Renk teorisi ve tipografi</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projeler</h2>
+            
+            <div class="project-item">
+                <p class="project-name">Nur Kur'an - Dijital Kur'an Uygulaması</p>
+                <p>Diyanet API entegrasyonlu, Arapça metin ve Türkçe meal gösteren Kur'an okuma uygulaması</p>
+                <p class="tech-stack">Teknolojiler: HTML5, CSS3, JavaScript</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">İlim ve İbadet Takibi</p>
+                <p>Günlük ibadet ve çalışma takibi yapan, seviye sistemi olan uygulama</p>
+                <p class="tech-stack">Teknolojiler: JavaScript, LocalStorage</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">Dijital Zikir Sayacı</p>
+                <p>Minimalist dijital tesbih (dualar sayacı), koyu mod desteği ile</p>
+                <p class="tech-stack">Teknolojiler: JavaScript, Minimalist Tasarım</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">Ayet-i Kelim - Arapça Öğrenme Uygulaması</p>
+                <p>Kur'an kıssaları üzerinden bağlamsal kelime öğrenimi</p>
+                <p class="tech-stack">Teknolojiler: JavaScript, API Entegrasyonu</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">Adım Adım Hac ve Umre</p>
+                <p>Manevia dualarla kutsal yolculuğu adım adım takip rehberi</p>
+                <p class="tech-stack">Teknolojiler: HTML5, İnteraktif Rehber</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">Akıllı İlim & İbadet Planlayıcısı</p>
+                <p>Günlük görevleri manevi sorumluluklarla birleştiren hedef planlayıcı</p>
+                <p class="tech-stack">Teknolojiler: HTML5, CSS3, JavaScript</p>
+            </div>
+            
+            <div class="project-item">
+                <p class="project-name">Dijital Not Şablonları (GoodNotes)</p>
+                <p>Satış: Esma-ul Husna defteri, Tefsir defteri, Ramazan planlayıcı, Günlük dualar şablonları</p>
+                <p class="tech-stack">Platform: GoodNotes, PDF Tasarım</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Diller</h2>
+            <ul>
+                <li><strong>Türkçe</strong> - Ana dil</li>
+                <li><strong>Arapça</strong> - Orta seviye (Okuma ve Gramer)</li>
+                <li><strong>İngilizce</strong> - B1 Seviyesi (Teknik İletişim)</li>
+                <li><strong>Almanca</strong> - Temel</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ek Bilgiler</h2>
+            <ul>
+                <li><strong>Dijital Ürünler:</strong> Ko-fi platformunda İslami çalışma defterleri ve hat sanatı eserleri satışı</li>
+                <li><strong>Ücretsiz Kaynaklar:</strong> Heyzine üzerinde ücretsiz eğitim flipbook'ları hazırlama ve paylaşma</li>
+                <li><strong>Felsefe:</strong> Teknolojiyi hayır amaçlı kullanmak ve ilmi dijital dünyada yaygınlaştırmak</li>
+                <li><strong>Sürekli Öğrenme:</strong> Hem İslami ilimler hem yazılım geliştirme alanında aktif öğrenci</li>
+            </ul>
+        </section>
+        
+        <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+            <p>Son güncelleme: Ekim 2026</p>
+            <p class="arabic" style="margin-top: 10px;">رَبِّ زِدْنَا عِلْمًا</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -616,3 +616,38 @@ if ('performance' in window) {
         console.log(`Page Load Time: ${pageLoadTime}ms`);
     });
 }
+
+// CV Download Notification
+document.addEventListener('DOMContentLoaded', () => {
+    const cvBtn = document.querySelector('.btn-cv');
+    
+    if (cvBtn) {
+        cvBtn.addEventListener('click', (e) => {
+            const toast = document.createElement('div');
+            toast.textContent = '📄 CV açılıyor...';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 90px;
+                right: 30px;
+                background: var(--primary-color);
+                color: #fff;
+                padding: 12px 20px;
+                border-radius: 25px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                box-shadow: var(--shadow-lg);
+                z-index: 998;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            document.body.appendChild(toast);
+            
+            requestAnimationFrame(() => { toast.style.opacity = '1'; });
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        });
+    }
+});
