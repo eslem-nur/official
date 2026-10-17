@@ -52,7 +52,7 @@ Hem ilim talebesi hem de gelişmekte olan bir geliştirici olarak, modern web te
 
 Hedefim: إن شاء الله ilmi sadece kağıtta bırakmamak, dijital dünyada yaymak ve hayır yolunda teknolojiyi kullanmak.
 
-→ [See Full Portfolio](https://eslem-nur.github.io/official/)
+→ [Tüm Portfolyoyu Gör](https://eslem-nur.github.io/official/)
 
 ---
 
