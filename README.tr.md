@@ -1,4 +1,10 @@
-بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+<div align="center">
+
+# بسم الله الرحمن الرحيم
+</div>
+<div align="center">
+  <img src="./logo.gif" alt="Eslem Nur Logo" width="100%" />
+</div>
 
 # 🌸 Eslem Nur Çetin | ilim & Kod
 
@@ -10,9 +16,10 @@
 
 🔗 **Canlı Site:** [Eslem Nur Çetin](https://eslem-nur.github.io/official/)
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## ✨ Özellikler
+
+## ✦ Özellikler
 
 - 🌙 **Karanlık / Aydınlık Mod** — Tercih kalıcı olarak kaydedilir
 - 📱 **Responsive Tasarım** — Mobil, tablet ve masaüstü ile uyumlu
@@ -22,7 +29,7 @@
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## ✦ Kullanılan Teknolojiler
 
 | Kategori | Kullanılanlar |
 | :--- | :--- |
@@ -33,9 +40,10 @@
 | **Tasarım** | Canva |
 | **Hosting** | GitHub Pages |
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## 📖 İçerik Bölümleri
+
+## ✦ İçerik Bölümleri
 
 ### Hakkımda
 Ben Eslem Nur. Kalbimle ilmi, aklımla kodu bir araya getirmeye çalışıyorum. İmam Hatip Lisesi eğitimim boyunca ilmi bilgiler edindim ve Allah'ın izniyle İlahiyat Fakültesinde derinleştirmeyi, günümüzün dijital dünyasında paylaşmanın yollarını aramayı hedefliyorum.
@@ -43,6 +51,10 @@ Ben Eslem Nur. Kalbimle ilmi, aklımla kodu bir araya getirmeye çalışıyorum.
 Hem ilim talebesi hem de gelişmekte olan bir geliştirici olarak, modern web teknolojileriyle anlamlı dijimal çalışmalar oluşturmaya çalışıyorum.
 
 Hedefim: إن شاء الله ilmi sadece kağıtta bırakmamak, dijital dünyada yaymak ve hayır yolunda teknolojiyi kullanmak.
+
+→ [See Full Portfolio](https://eslem-nur.github.io/official/)
+
+---
 
 ### Beceriler ve Sertifikalar
 | Sertifika | Kurum |
@@ -61,27 +73,17 @@ Hedefim: إن شاء الله ilmi sadece kağıtta bırakmamak, dijital dünyad
 - **Defterler ve PDF'ler:** GoodNotes şablonları, dijital defterler, Ramazan planlayıcı (Ko-fi üzerinden)
 - **Çizimler / Hat Sanatı:** Kişiselleştirilmiş tuval sanat parçaları (yalnızca Almanya)
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## 📸 Önizleme ve İçerik Özeti
+
+## ✦ Önizleme ve İçerik Özeti
 
 ![Site Önizlemesi](https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg)
 ![İçerik Özeti](https://i.pinimg.com/736x/5e/d1/a3/5ed1a331608a5a9c1974cab89ffeb8f5.jpg)
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## 🔗 İletişim
-
-| Platform | Link |
-| :--- | :--- |
-| 🌐 Linktree | [linktr.ee/eslemnur](http://linktr.ee/eslemnur) |
-| ☕ Ko-fi | [ko-fi.com/eslemnur_notes](https://ko-fi.com/eslemnur_notes) |
-| ☕ Ko-fi | [ko-fi.com/eslemnur_kalligrafie](https://ko-fi.com/eslemnur_kalligrafie) |
-| ✉️ E-posta | eslemnur-official@proton.me |
-
----
-
-## 📄 Lisans
+## ✦ Lisans
 
 © 2026 Eslem Nur Çetin. Tüm hakları saklıdır.
 
@@ -98,6 +100,25 @@ Bu projedeki içerikler (notlar, şablonlar, web uygulamaları) **sadaka-i jariy
 
 > ™ tescilsiz ticari marka anlamına gelir. Bu işaretler Almanya'da ortak hukuk ticari marka ilkelerine (MarkenG) göre kullanılmaktadır.
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-❤️ ile yapıldı | **Eslem Nur Çetin** tarafından
+
+<div align="center">
+
+#### Bir şeyler inşa edelim.
+
+<sub>`˖⊹𖥔` Almanya &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub>
+
+[![Kartım](https://img.shields.io/badge/Kartım-010101?style=flat-square&logo=github&logoColor=c583a0)](https://github.com/eslem-nur/Business-Card/)
+
+</br>
+</br>
+
+✦ ࣪ ˖ ✦
+
+</div>
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=c583a0&height=120&section=footer&text=Sevgiyle%20Eslem%20Nur%20%C3%87etin%20taraf%C4%B1ndan%20yap%C4%B1ld%C4%B1&fontSize=22&fontColor=010101&fontAlignY=72" width="100%" />
+
+</div>
