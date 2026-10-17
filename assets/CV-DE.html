@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eslem Nur Çetin - Lebenslauf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #A06872;
+            --primary-dark: #8E5A65;
+            --bg-color: #FFF9F9;
+            --text-primary: #4E342E;
+            --text-secondary: #8D6E63;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        @media print {
+            body { padding: 0; background: #fff; }
+            .no-print { display: none; }
+            @page { margin: 1.5cm; }
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item { display: flex; align-items: center; gap: 8px; }
+        .contact-item i { color: var(--primary-color); }
+
+        section { margin-bottom: 30px; }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 { font-size: 1.1rem; color: var(--text-primary); margin-bottom: 8px; }
+
+        .date-location {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        ul { list-style: none; }
+
+        ul li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .project-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-item:last-child { border-bottom: none; }
+
+        .project-name { font-weight: 600; color: var(--primary-color); }
+
+        .tech-stack {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .cert-item { margin-bottom: 10px; }
+        .cert-name { font-weight: 600; color: var(--text-primary); }
+        .cert-org { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .print-btn-container { text-align: center; margin-bottom: 20px; }
+
+        .btn-print {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-print:hover { background: var(--primary-dark); }
+
+        .arabic {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.3rem;
+            direction: rtl;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 25px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .name { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-btn-container no-print">
+        <button class="btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> Als PDF speichern / Drucken
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- KOPFZEILE -->
+        <header>
+            <h1 class="name">Eslem Nur ÇETİN</h1>
+            <p class="title">Webentwicklerin & Studentin der Islamischen Theologie</p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>eslemnur-official@proton.me</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/eslem-nur</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>eslem-nur.github.io/official</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Deutschland</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- PROFIL -->
+        <section>
+            <h2>Profil</h2>
+            <p class="arabic" style="text-align: center; margin-bottom: 15px;">رَبِّ زِدْنَا عِلْمًا</p>
+            <p>Absolventin eines Imam-Hatip-Gymnasiums und Studentin im ersten Studienjahr der Islamischen Theologie. Ich verbinde religiöse Wissenschaften mit modernen Webtechnologien und entwickle digitale Projekte mit gesellschaftlichem Nutzen. Mein Ziel ist es, Wissen im digitalen Raum zugänglich zu machen und Technologie sinnvoll einzusetzen.</p>
+        </section>
+
+        <!-- AUSBILDUNG -->
+        <section>
+    <h2>Schulischer Werdegang</h2>
+
+    <div>
+        <h3>Studium der Islamischen Theologie (İlahiyat)</h3>
+        <p class="date-location">Universität, Türkei | seit September 2026</p>
+        <ul>
+            <li>Schwerpunkt Islamische Wissenschaften</li>
+            <li>Fächer: Tafsir (Koranexegese), Hadith, arabische Grammatik, Grundlagen des Fiqh</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <h3>Imam-Hatip-Gymnasium</h3>
+        <p class="date-location">Ankara, Türkei | September 2024 – Juli 2026</p>
+        <ul>
+            <li>Berufsbildende religiöse Ausbildung</li>
+            <li>Fundierte Kenntnisse in islamischen Wissenschaften und Koranstudien</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <h3>Ausbildung zur Mechatronikerin für Automatisierungstechnik</h3>
+        <p class="date-location">Audi | September 2020 – Januar 2024</p>
+        <ul>
+            <li>Duale Berufsausbildung im Bereich Automatisierungstechnik</li>
+            <li>Praxis in Montage, Steuerungstechnik und Instandhaltung automatisierter Anlagen</li>
+            <li>Abschluss: Januar 2024</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <h3>Realschulabschluss</h3>
+        <p class="date-location">Deutschland | September 2013 – Juli 2019</p>
+        <ul>
+            <li>Mittlere Reife</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <h3>Grundschule</h3>
+        <p class="date-location">Deutschland | September 2009 – Juli 2013</p>
+    </div>
+</section>
+
+        <!-- TECHNISCHE KENNTNISSE -->
+        <section>
+            <h2>Technische Kenntnisse</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Webentwicklung</h3>
+                    <ul>
+                        <li>HTML5 & semantisches Markup</li>
+                        <li>CSS3 & responsives Design</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>UI/UX-Design</li>
+                        <li>Entwicklung von Webanwendungen</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fab fa-python"></i> Programmiersprachen</h3>
+                    <ul>
+                        <li>Python (fortgeschritten)</li>
+                        <li>C# (mittelstufe)</li>
+                        <li>JavaScript-Algorithmen</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-book-open"></i> Islamische Wissenschaften</h3>
+                    <ul>
+                        <li>Tafsir und Koranübersetzung</li>
+                        <li>Arabische Sprache und Grammatik</li>
+                        <li>Tajwid-Regeln</li>
+                        <li>Grundlagen von Hadith und Fiqh</li>
+                        <li>Islamische Geschichte</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Werkzeuge & Sonstiges</h3>
+                    <ul>
+                        <li>Git & Versionsverwaltung</li>
+                        <li>Digitale Notizverwaltung</li>
+                        <li>PDF- & EPUB-Formate</li>
+                        <li>Canva (Design)</li>
+                        <li>Notion-Vorlagen</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZERTIFIKATE -->
+        <section>
+            <h2>Zertifikate</h2>
+            <div class="cert-item">
+                <p class="cert-name">Python-Programmierung</p>
+                <p class="cert-org">freeCodeCamp (Lehrplan 2025) • Fortgeschrittenes Niveau</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">C#-Programmierung</p>
+                <p class="cert-org">In Zusammenarbeit mit Microsoft • 35 Stunden Praxis</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">Responsive Webdesign</p>
+                <p class="cert-org">freeCodeCamp • HTML5, CSS3, Flexbox, Grid</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">JavaScript-Algorithmen & Webentwicklung</p>
+                <p class="cert-org">freeCodeCamp • ES6+, APIs, asynchrone Programmierung</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">English for Developers (B1)</p>
+                <p class="cert-org">Technische Dokumentation & Teamkommunikation</p>
+            </div>
+            <div class="cert-item">
+                <p class="cert-name">Grundlagen Design & UI/UX</p>
+                <p class="cert-org">Canva Design School • Farbtheorie und Typografie</p>
+            </div>
+        </section>
+
+        <!-- PROJEKTE -->
+        <section>
+            <h2>Projekte</h2>
+
+            <div class="project-item">
+                <p class="project-name">Nur Koran – Digitale Koran-App</p>
+                <p>Koran-Leseanwendung mit Anbindung an die Diyanet-API zur Darstellung von arabischem Text und türkischer Übersetzung</p>
+                <p class="tech-stack">Technologien: HTML5, CSS3, JavaScript</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Tracker für Studium & Gottesdienst</p>
+                <p>Anwendung zur täglichen Erfassung von Gottesdiensten und Lernaktivitäten mit Stufensystem</p>
+                <p class="tech-stack">Technologien: JavaScript, LocalStorage</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Digitaler Dhikr-Zähler</p>
+                <p>Minimalistischer digitaler Gebetszähler mit Unterstützung für den Dunkelmodus</p>
+                <p class="tech-stack">Technologien: JavaScript, minimalistisches Design</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Ayat-i Kelim – Arabisch-Lern-App</p>
+                <p>Kontextbezogenes Vokabellernen anhand koranischer Erzählungen</p>
+                <p class="tech-stack">Technologien: JavaScript, API-Integration</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Schritt-für-Schritt-Anleitung für Hadsch & Umra</p>
+                <p>Interaktiver Leitfaden für die Pilgerreise mit Gebeten und Anleitungen</p>
+                <p class="tech-stack">Technologien: HTML5, interaktiver Leitfaden</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Intelligenter Planer für Studium & Gottesdienst</p>
+                <p>Zielführende Planungsanwendung, die tägliche Aufgaben mit spirituellen Verpflichtungen verbindet</p>
+                <p class="tech-stack">Technologien: HTML5, CSS3, JavaScript</p>
+            </div>
+
+            <div class="project-item">
+                <p class="project-name">Digitale Notizvorlagen (GoodNotes)</p>
+                <p>Vertrieb: Esma-ul-Husna-Heft, Tafsir-Heft, Ramadan-Planer, Vorlagen für tägliche Gebete</p>
+                <p class="tech-stack">Plattform: GoodNotes, PDF-Design</p>
+            </div>
+        </section>
+
+        <!-- SPRACHEN -->
+        <section>
+            <h2>Sprachen</h2>
+            <ul>
+                <li><strong>Türkisch</strong> — Muttersprache</li>
+                <li><strong>Deutsch</strong> — Muttersprache</li>
+                <li><strong>Englisch</strong> — Muttersprachliches Niveau (C2)</li>
+                <li><strong>Französisch</strong> — B2 (zertifiziert)</li>
+                <li><strong>Arabisch</strong> — Akademisches Niveau (Studium läuft)</li>
+            </ul>
+        </section>
+
+        <!-- WEITERES -->
+        <section>
+            <h2>Weitere Informationen</h2>
+            <ul>
+                <li><strong>Digitale Produkte:</strong> Vertrieb islamischer Lernhefte und Kalligrafie-Arbeiten auf Ko-fi</li>
+                <li><strong>Kostenlose Ressourcen:</strong> Erstellung und Bereitstellung kostenloser Lern-Flipbooks auf Heyzine</li>
+                <li><strong>Motivation:</strong> Technologie sinnvoll einsetzen und Wissen im digitalen Raum zugänglich machen</li>
+                <li><strong>Weiterbildung:</strong> Aktive Weiterbildung in islamischen Wissenschaften und Softwareentwicklung</li>
+            </ul>
+        </section>
+
+        <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+            <p>Stand: Oktober 2026</p>
+            <p class="arabic" style="margin-top: 10px;">رَبِّ زِدْنَا عِلْمًا</p>
+        </footer>
+    </div>
+</body>
+</html>
