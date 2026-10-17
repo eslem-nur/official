@@ -47,6 +47,50 @@ const ratingMessages = {
     }
 };
 
+// --- ARAYÜZ METİNLERİ (YENİ ÖĞELER) ---
+const uiMessages = {
+    tr: {
+        backToTopLabel: 'Yukarı çık',
+        cvOpening: '📄 CV açılıyor...',
+        formSubmitting: 'Gönderiliyor...',
+        formSuccess: '✅ Mesajınız başarıyla gönderildi! Teşekkür ederim.',
+        formError: '❌ Bir hata oluştu. Lütfen tekrar deneyin.'
+    },
+    en: {
+        backToTopLabel: 'Back to top',
+        cvOpening: '📄 Opening CV...',
+        formSubmitting: 'Sending...',
+        formSuccess: '✅ Your message was sent successfully! Thank you.',
+        formError: '❌ Something went wrong. Please try again.'
+    },
+    de: {
+        backToTopLabel: 'Nach oben',
+        cvOpening: '📄 Lebenslauf wird geöffnet...',
+        formSubmitting: 'Wird gesendet...',
+        formSuccess: '✅ Ihre Nachricht wurde erfolgreich gesendet! Vielen Dank.',
+        formError: '❌ Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.'
+    },
+    fr: {
+        backToTopLabel: 'Retour en haut',
+        cvOpening: '📄 Ouverture du CV...',
+        formSubmitting: 'Envoi en cours...',
+        formSuccess: '✅ Votre message a bien été envoyé ! Merci.',
+        formError: '❌ Une erreur est survenue. Veuillez réessayer.'
+    },
+    ar: {
+        backToTopLabel: 'العودة إلى الأعلى',
+        cvOpening: '📄 جارٍ فتح السيرة الذاتية...',
+        formSubmitting: 'جارٍ الإرسال...',
+        formSuccess: '✅ تم إرسال رسالتك بنجاح! شكرًا لك.',
+        formError: '❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
+    }
+};
+
+function getUiMessages() {
+    const lang = getCurrentLanguage();
+    return uiMessages[lang] || uiMessages.tr;
+}
+
 // --- MEVCUT DİLİ TESPİT ET ---
 function getCurrentLanguage() {
     const htmlLang = document.documentElement.getAttribute('lang');
@@ -57,14 +101,86 @@ function getCurrentLanguage() {
     if (htmlLang === 'fr') return 'fr';
     if (htmlLang === 'ar') return 'ar';
     
-    // URL'den tahmin et (fallback)
     const path = window.location.pathname.toLowerCase();
     if (path.includes('/en.html') || path.endsWith('en.html')) return 'en';
     if (path.includes('/de.html') || path.endsWith('de.html')) return 'de';
     if (path.includes('/fr.html') || path.endsWith('fr.html')) return 'fr';
     if (path.includes('/ar.html') || path.endsWith('ar.html')) return 'ar';
     
-    return 'tr'; // Varsayılan
+    return 'tr';
+}
+
+// --- TOAST NOTIFICATION ---
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background: ${type === 'success' ? '#388E3C' : type === 'error' ? '#D32F2F' : 'var(--primary-color)'};
+        color: #fff;
+        padding: 16px 24px;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-lg);
+        z-index: 9998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        max-width: 90%;
+    `;
+    document.body.appendChild(toast);
+    
+    requestAnimationFrame(() => { toast.style.opacity = '1'; });
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+    }, 4000);
+}
+
+// --- BACK TO TOP BUTONU ---
+let backToTopInitialized = false;
+
+function initBackToTop() {
+    if (backToTopInitialized) return;
+    
+    const ui = getUiMessages();
+    
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.setAttribute('aria-label', ui.backToTopLabel);
+    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    document.body.appendChild(backToTopBtn);
+    
+    window.addEventListener('scroll', () => {
+        backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    
+    backToTopInitialized = true;
+}
+
+// --- SCROLL PROGRESS BAR ---
+let progressBarInitialized = false;
+
+function initProgressBar() {
+    if (progressBarInitialized) return;
+    
+    const progressBar = document.createElement('div');
+    progressBar.id = 'progressBar';
+    progressBar.style.cssText = 'width: 0%; height: 3px; background: var(--primary-color); position: fixed; top: 0; left: 0; z-index: 9999; transition: width 0.1s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+    document.body.insertBefore(progressBar, document.body.firstChild);
+    
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+    
+    progressBarInitialized = true;
 }
 
 // --- STAR RATING BAŞLAT ---
@@ -216,47 +332,32 @@ function initMobileMenu() {
     menuInitialized = true;
 }
 
-// ============================================
-// EMAIL KOPYALAMA FONKSİYONU
-// ============================================
-
+// --- EMAIL KOPYALAMA ---
 function copyEmail() {
     const email = 'eslemnur-official@proton.me';
     const feedback = document.getElementById('copyFeedback');
     
     if (!feedback) return;
     
-    // Email'ı clipboard'a kopyala
     navigator.clipboard.writeText(email).then(() => {
-        // Feedback göstergesini göster
         feedback.style.opacity = '1';
         
         const lang = document.documentElement.lang || 'tr';
         
-        switch(lang) {
-            case 'en':
-                feedback.textContent = 'Copied!';
-                break;
-            case 'de':
-                feedback.textContent = 'Kopiert!';
-                break;
-            case 'fr':
-                feedback.textContent = 'Copié!';
-                break;
-            case 'ar':
-                feedback.textContent = 'نُسِخَ!';
-                break;
-            default:
-                feedback.textContent = 'Kopyalandı!';
-        }
+        const feedbackMessages = {
+            en: 'Copied!',
+            de: 'Kopiert!',
+            fr: 'Copié!',
+            ar: 'نُسِخَ!'
+        };
         
-        // 2 saniye sonra gizle
+        feedback.textContent = feedbackMessages[lang] || 'Kopyalandı!';
+        
         setTimeout(() => {
             feedback.style.opacity = '0';
         }, 2000);
     }).catch(err => {
         console.error('Kopyalama hatası:', err);
-        // Fallback: manuel seçim
         const tempInput = document.createElement('textarea');
         tempInput.value = email;
         document.body.appendChild(tempInput);
@@ -264,7 +365,6 @@ function copyEmail() {
         document.execCommand('copy');
         document.body.removeChild(tempInput);
         
-        // Feedback göster
         feedback.style.opacity = '1';
         setTimeout(() => {
             feedback.style.opacity = '0';
@@ -272,7 +372,6 @@ function copyEmail() {
     });
 }
 
-// Enter tuşu ile de kopyalanabilsin
 document.addEventListener('DOMContentLoaded', () => {
     const emailWrapper = document.querySelector('.email-copy-wrapper');
     if (emailWrapper) {
@@ -285,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- SEKMELER (Class-Based Management) ---
+// --- SEKMELER ---
 function switchSkillTab(tabName) {
     const buttons = document.querySelectorAll('#skills .skill-tab-btn');
     const groups = document.querySelectorAll('#skills .skill-group');
@@ -377,7 +476,6 @@ function toggleLangMenu() {
     }
 }
 
-// Menü dışına tıklanınca kapat
 document.addEventListener('click', function(e) {
     const langDropdown = document.getElementById('langDropdown');
     if (langDropdown && !langDropdown.contains(e.target)) {
@@ -450,6 +548,43 @@ function handleNavbarScroll() {
             navbarScrolled = false;
         }
     }
+}
+
+// --- CONTACT FORM SUBMIT ---
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (!contactForm) return;
+    
+    const ui = getUiMessages();
+    
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = ui.formSubmitting;
+        
+        try {
+            await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            });
+            
+            showToast(ui.formSuccess, 'success');
+            contactForm.reset();
+        } catch (error) {
+            showToast(ui.formError, 'error');
+            console.error('Form error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
 }
 
 // --- DOM READY ---
@@ -577,6 +712,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initStarRating();
     updateYear();
     initScrollReveal();
+    initBackToTop();
+    initProgressBar();
+    initContactForm();
     
     // Navbar scroll effect
     window.addEventListener('scroll', handleNavbarScroll);
@@ -608,46 +746,13 @@ window.addEventListener('error', (e) => {
     console.error('Global error:', e.error);
 });
 
-// --- PERFORMANCE MONITORING ---
-if ('performance' in window) {
-    window.addEventListener('load', () => {
-        const perfData = window.performance.timing;
-        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-        console.log(`Page Load Time: ${pageLoadTime}ms`);
-    });
-}
-
 // CV Download Notification
 document.addEventListener('DOMContentLoaded', () => {
     const cvBtn = document.querySelector('.btn-cv');
     
     if (cvBtn) {
         cvBtn.addEventListener('click', (e) => {
-            const toast = document.createElement('div');
-            toast.textContent = '📄 CV açılıyor...';
-            toast.style.cssText = `
-                position: fixed;
-                bottom: 90px;
-                right: 30px;
-                background: var(--primary-color);
-                color: #fff;
-                padding: 12px 20px;
-                border-radius: 25px;
-                font-size: 0.9rem;
-                font-weight: 600;
-                box-shadow: var(--shadow-lg);
-                z-index: 998;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-            document.body.appendChild(toast);
-            
-            requestAnimationFrame(() => { toast.style.opacity = '1'; });
-            
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 2000);
+            showToast(getUiMessages().cvOpening, 'info');
         });
     }
 });
