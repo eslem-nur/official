@@ -1,5 +1,12 @@
-بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-# In the Name of Allah, the Most Gracious, the Most Merciful
+<div align="center">
+
+# بسم الله الرحمن الرحيم
+</div>
+<div align="center">
+  <img src="./logo.gif" alt="Eslem Nur Logo" width="100%" />
+</div>
+
+
 
 # 🌸 Eslem Nur Çetin | Knowledge & Code
 
@@ -11,9 +18,10 @@ Imam Hatip High School graduate and first-year Islamic Theology Faculty student;
 
 🔗 **Live Site:** [Eslem Nur Çetin](https://eslem-nur.github.io/official/)
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## ✨ Features
+
+## ✦ Features
 
 - 🌙 **Dark / Light Mode** — Preference saved persistently
 - 📱 **Responsive Design** — Compatible with mobile, tablet, and desktop
@@ -23,7 +31,7 @@ Imam Hatip High School graduate and first-year Islamic Theology Faculty student;
 
 ---
 
-## 🛠️ Technologies
+## ✦ Technologies
 
 | Category | Used |
 | :--- | :--- |
@@ -34,16 +42,24 @@ Imam Hatip High School graduate and first-year Islamic Theology Faculty student;
 | **Design** | Canva |
 | **Hosting** | GitHub Pages |
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## 📖 Content Sections
+
+## ✦ Content Sections
 
 ### About Me
-I am Eslem Nur. I strive to combine knowledge with my heart, and code with my mind. Throughout my Imam Hatip High School education, I gained scholarly knowledge, and with Allah's permission, I aim to deepen it at the Theology Faculty and find ways to share it in today's digital world.
+
+I strive to combine knowledge with my heart, and code with my mind. Throughout my Imam Hatip High School education, I gained scholarly knowledge, and with Allah's permission, I aim to deepen it at the Theology Faculty and find ways to share it in today's digital world.
 
 As both a seeker of knowledge (*ilim talebesi* / theology student) and a developing developer, I try to create meaningful digital works with modern web technologies.
 
 My goal: إن شاء الله to not leave knowledge only on paper, but to spread it in the digital world and use technology on the path of good.
+
+
+→ [See Full Portfolio](https://eslem-nur.github.io/official/)
+
+---
+
 
 ### Skills & Certificates
 | Certificate | Institution |
@@ -62,22 +78,16 @@ My goal: إن شاء الله to not leave knowledge only on paper, but to sprea
 - **Notebooks & PDFs:** GoodNotes templates, digital notebooks, Ramadan planner (via Ko-fi)
 - **Drawings / Calligraphy:** Personalized canvas art pieces (Germany only)
 
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-## 📸 Preview & Content Summary
+## ✦ Preview & Content Summary
 
 ![Site Preview](https://i.pinimg.com/736x/81/c7/2f/81c72ffba837191d76f5be3a664c9184.jpg)
 ![Content Summary](https://i.pinimg.com/736x/d4/31/f6/d431f6a79434d130e6e405bfb4e44502.jpg)
 
-## 🔗 Contact
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
-| Platform | Link |
-| :--- | :--- |
-| 🌐 Linktree | [linktr.ee/eslemnur](http://linktr.ee/eslemnur) |
-| ☕ Ko-fi | [ko-fi.com/eslemnur_notes](https://ko-fi.com/eslemnur_notes) |
-| ☕ Ko-fi | [ko-fi.com/eslemnur_kalligrafie](https://ko-fi.com/eslemnur_kalligrafie) |
-| ✉️ Email | eslemnur-official@proton.me |
-
-## 📄 License
+## ✦ License
 
 © 2026 Eslem Nur Çetin. All rights reserved.
 
@@ -94,6 +104,25 @@ The contents in this project (notes, templates, web applications) are shared wit
 
 > ™ denotes unregistered trademark. These marks are used under common law trademark principles in Germany (MarkenG).
 
----
+<img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" /> 
 
-Made with ❤️ by **Eslem Nur Çetin**
+<div align="center">
+
+#### Let's build something.
+
+<sub>`˖⊹𖥔` Germany &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub>
+
+[![Business Card](https://img.shields.io/badge/Business_Card-010101?style=flat-square&logo=github&logoColor=c583a0)](https://github.com/eslem-nur/Business-Card/en.html)
+
+</br>
+</br>
+
+✦ ࣪ ˖ ✦
+
+</div>
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=c583a0&height=120&section=footer&text=Made%20with%20love%20by%20Eslem%20Nur%20%C3%87etin&fontSize=22&fontColor=010101&fontAlignY=72" width="100%" />
+
+</div>
