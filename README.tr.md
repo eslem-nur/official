@@ -82,8 +82,13 @@ Hedefim: إن شاء الله ilmi sadece kağıtta bırakmamak, dijital dünyad
 
 ## ✦ Önizleme ve İçerik Özeti
 
+<div align="center">
+
+
 ![Site Önizlemesi](https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg)
 ![İçerik Özeti](https://i.pinimg.com/736x/5e/d1/a3/5ed1a331608a5a9c1974cab89ffeb8f5.jpg)
+
+</div>
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
@@ -113,7 +118,7 @@ Bu projedeki içerikler (notlar, şablonlar, web uygulamaları) **sadaka-i jariy
 
 <sub>`˖⊹𖥔` Almanya &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub>
 
-[![Kartım](https://img.shields.io/badge/Kartım-010101?style=flat-square&logo=github&logoColor=c583a0)](https://github.com/eslem-nur/Business-Card/)
+[![Kartım](https://img.shields.io/badge/Kartım-0d1117?style=for-the-badge&logo=github&logoColor=c583a0)](https://eslem-nur.github.io/Business-Card/)
 
 </br>
 </br>
