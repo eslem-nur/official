@@ -86,8 +86,13 @@ My goal: إن شاء الله to not leave knowledge only on paper, but to sprea
 
 ## ✦ Preview & Content Summary
 
+<div align="center">
+
+
 ![Site Preview](https://i.pinimg.com/736x/81/c7/2f/81c72ffba837191d76f5be3a664c9184.jpg)
 ![Content Summary](https://i.pinimg.com/736x/d4/31/f6/d431f6a79434d130e6e405bfb4e44502.jpg)
+
+</div>
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" />
 
@@ -110,13 +115,14 @@ The contents in this project (notes, templates, web applications) are shared wit
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=c583a0&height=2" width="100%" /> 
 
+
 <div align="center">
 
 #### Let's build something.
 
 <sub>`˖⊹𖥔` Germany &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub>
 
-[![Business Card](https://img.shields.io/badge/Business_Card-010101?style=flat-square&logo=github&logoColor=c583a0)](https://github.com/eslem-nur/Business-Card/en.html)
+[![Business Card](https://img.shields.io/badge/Business_Card-0d1117?style=for-the-badge&logo=github&logoColor=c583a0)](https://eslem-nur.github.io/Business-Card/en.html)
 
 </br>
 </br>
