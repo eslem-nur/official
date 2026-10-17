@@ -3,7 +3,11 @@
 # بسم الله الرحمن الرحيم
 </div>
 <div align="center">
-  <img src="./logo.gif" alt="Eslem Nur Logo" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./logo-dark.gif">
+    <source media="(prefers-color-scheme: light)" srcset="./logo-light.gif">
+    <img src="./logo-light.gif" alt="Eslem Nur Logo" width="100%">
+  </picture>
 </div>
 
 # 🌸 Eslem Nur Çetin | ilim & Kod
