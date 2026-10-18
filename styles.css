@@ -2216,3 +2216,90 @@ select {
         font-size: 2rem;
     }
 }
+
+/* ============================================
+   İLETİŞİM TAB YAPISI
+   ============================================ */
+
+.contact-form-group {
+    animation: fadeIn var(--transition-base) ease;
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form-group.hidden {
+    display: none !important;
+}
+
+/* Öneri formu özel stiller */
+.survey-form {
+    width: 100%;
+}
+
+.survey-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.survey-form fieldset {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background: var(--card-secondary);
+}
+
+.survey-form legend {
+    padding: 0 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+.survey-form .choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.survey-form .choice:hover {
+    background: var(--note-bg);
+    color: var(--primary-color);
+}
+
+.survey-form .choice input[type="radio"],
+.survey-form .choice input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-height: auto;
+    flex-shrink: 0;
+    margin: 0;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Mobilde responsive */
+@media (max-width: 768px) {
+    .survey-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact tab butonları için icon spacing */
+.tab-btn i {
+    margin-right: 8px;
+}
+
+[dir="rtl"] .tab-btn i {
+    margin-right: 0;
+    margin-left: 8px;
+}

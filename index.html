@@ -877,72 +877,183 @@
             </div>
 
 
-            <!-- CONTACT FORM + YILDIZ DEĞERLENDİRME (WEB3FORMS) -->
+            <!-- CONTACT FORMS + YILDIZ DEĞERLENDİRME (WEB3FORMS) -->
 <section id="contact-form-section" class="contact-section">
     <div class="container">
         <h2 class="section-title">İletişim</h2>
-        <p class="section-description">Bir sorunuz mu var? Aşağıdaki formdan bana ulaşabilirsiniz.</p>
+        <p class="section-description">Bir sorunuz mu var? Aşağıdaki formlardan size uygun olanı seçebilirsiniz.</p>
         
-        <form id="contactForm" class="contact-form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              novalidate>
+        <!-- TAB CONTROLS -->
+        <div class="tab-controls">
+            <button class="tab-btn contact-tab-btn active" tabindex="0" onclick="switchContactTab('iletisim')" aria-selected="true">
+                <i class="fas fa-envelope"></i> İletişim Formu
+            </button>
+            <button class="tab-btn contact-tab-btn" tabindex="0" onclick="switchContactTab('oneri')" aria-selected="false">
+                <i class="fas fa-comment-dots"></i> Görüş & Öneri
+            </button>
+        </div>
 
-            <!-- WEB3FORMS GİZLİ AYARLAR -->
-            <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
-            <input type="hidden" name="subject" value="Yeni İletişim Formu Mesajı">
-            <input type="hidden" name="from_name" value="Eslem Nur Çetin Web Sitesi">
+        <!-- İLETİŞİM FORMU -->
+        <div id="group-iletisim" class="contact-form-group active">
+            <form id="contactForm" class="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
 
-            <!-- SPAM TUZAĞI (botlar doldurur, insanlar görmez) -->
-            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
-                   style="display:none !important" aria-hidden="true">
+                <!-- WEB3FORMS GİZLİ AYARLAR -->
+                <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
+                <input type="hidden" name="subject" value="Yeni İletişim Formu Mesajı">
+                <input type="hidden" name="from_name" value="Eslem Nur Çetin Web Sitesi">
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="contactName">Adınız *</label>
-                    <input type="text" id="contactName" name="name"
-                           placeholder="Adınız Soyadınız" required>
+                <!-- SPAM TUZAĞI -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="contactName">Adınız *</label>
+                        <input type="text" id="contactName" name="name"
+                               placeholder="Adınız Soyadınız" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">E-posta *</label>
+                        <input type="email" id="contactEmail" name="email"
+                               placeholder="ornek@email.com" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="contactEmail">E-posta *</label>
-                    <input type="email" id="contactEmail" name="email"
-                           placeholder="ornek@email.com" required>
+                    <label for="contactSubject">Konu *</label>
+                    <input type="text" id="contactSubject" name="subject"
+                           placeholder="Mesajınızın konusu" required>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="contactSubject">Konu *</label>
-                <input type="text" id="contactSubject" name="subject"
-                       placeholder="Mesajınızın konusu" required>
-            </div>
-
-            <div class="form-group">
-                <label for="contactMessage">Mesajınız *</label>
-                <textarea id="contactMessage" name="message"
-                          placeholder="Mesajınızı buraya yazın..." rows="6" required></textarea>
-            </div>
-
-            <!-- YILDIZ DEĞERLENDİRME (forma dahil) -->
-            <div class="feedback-section">
-                <h3>Web Sitemi Değerlendir</h3>
-                <div class="star-rating" id="starRating" role="radiogroup" aria-label="Site değerlendirmesi">
-                    <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 yıldız">★</span>
-                    <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 yıldız">★</span>
-                    <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 yıldız">★</span>
-                    <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 yıldız">★</span>
-                    <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 yıldız">★</span>
+                <div class="form-group">
+                    <label for="contactMessage">Mesajınız *</label>
+                    <textarea id="contactMessage" name="message"
+                              placeholder="Mesajınızı buraya yazın..." rows="6" required></textarea>
                 </div>
-                <p class="rating-text" id="ratingText">Henüz değerlendirmediniz</p>
-                <!-- Bu hidden input Web3Forms'a gönderilecek -->
-                <input type="hidden" name="rating" id="ratingValue" value="0">
-            </div>
 
-            <!-- GERİ BİLDİRİM ALANI -->
-            <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+                <!-- YILDIZ DEĞERLENDİRME -->
+                <div class="feedback-section">
+                    <h3>Web Sitemi Değerlendir</h3>
+                    <div class="star-rating" id="starRating" role="radiogroup" aria-label="Site değerlendirmesi">
+                        <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 yıldız">★</span>
+                        <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 yıldız">★</span>
+                        <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 yıldız">★</span>
+                        <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 yıldız">★</span>
+                        <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 yıldız">★</span>
+                    </div>
+                    <p class="rating-text" id="ratingText">Henüz değerlendirmediniz</p>
+                    <input type="hidden" name="rating" id="ratingValue" value="0">
+                </div>
 
-            <button type="submit" class="btn-primary">Gönder</button>
-        </form>
+                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Gönder</button>
+            </form>
+        </div>
+
+        <!-- GÖRÜŞ & ÖNERİ FORMU -->
+        <div id="group-oneri" class="contact-form-group hidden">
+            <form id="surveyForm" class="contact-form survey-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
+
+                <!-- WEB3FORMS GİZLİ AYARLAR -->
+                <input type="hidden" name="access_key" value="89cd6b30-1faa-4403-9ec4-e698874407d3">
+                <input type="hidden" name="subject" value="Yeni Görüş & Öneri Formu Mesajı">
+                <input type="hidden" name="from_name" value="Eslem Nur Çetin Web Sitesi">
+
+                <!-- SPAM TUZAĞI -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="surveyName">Adınız</label>
+                        <input type="text" id="surveyName" name="name"
+                               placeholder="Adınız Soyadınız" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surveyEmail">E-posta</label>
+                        <input type="email" id="surveyEmail" name="email"
+                               placeholder="ornek@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyAge">Yaşınız (isteğe bağlı)</label>
+                    <input type="number" id="surveyAge" name="age"
+                           placeholder="Yaş" min="10" max="99">
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyRole">Sizi en iyi tanımlayan nedir?</label>
+                    <select id="surveyRole" name="role">
+                        <option value="">Seçiniz</option>
+                        <option value="ilim-talebesi">İlim Talebesi</option>
+                        <option value="ogrenci">Öğrenci</option>
+                        <option value="calisan">Tam Zamanlı Çalışan</option>
+                        <option value="veli">Veli</option>
+                        <option value="diger">Diğer</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Siteyi bir yakınınıza tavsiye eder misiniz?</legend>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="kesinlikle" checked>
+                        <span>Kesinlikle</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="belki">
+                        <span>Belki</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="emin-degilim">
+                        <span>Emin değilim</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Neyi geliştirmemi istersiniz? (Birden fazla seçebilirsiniz)</legend>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="dijital-notlar">
+                        <span>Dijital Notlar</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="web-uygulamalari">
+                        <span>Web Uygulamaları</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="shop">
+                        <span>Shop Ürünleri</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="tasarim">
+                        <span>Tasarım ve Okunabilirlik</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="icerik">
+                        <span>Yeni İçerik</span>
+                    </label>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="surveyComments">Yorum ve önerileriniz</label>
+                    <textarea id="surveyComments" name="comments" rows="6"
+                              placeholder="Düşüncelerinizi buraya yazabilirsiniz..."></textarea>
+                </div>
+
+                <div id="surveyFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Gönder</button>
+            </form>
+        </div>
     </div>
 </section>
             

@@ -104,6 +104,256 @@ const uiMessages = {
     }
 };
 
+// --- FORM LABEL & PLACEHOLDER ÇEVİRİLERİ ---
+const formTranslations = {
+    contactForm: {
+        tr: {
+            title: 'İletişim',
+            description: 'Bir sorunuz mu var? Aşağıdaki formlardan size uygun olanı seçebilirsiniz.',
+            nameLabel: 'Adınız *',
+            namePlaceholder: 'Adınız Soyadınız',
+            emailLabel: 'E-posta *',
+            emailPlaceholder: 'ornek@email.com',
+            subjectLabel: 'Konu *',
+            subjectPlaceholder: 'Mesajınızın konusu',
+            messageLabel: 'Mesajınız *',
+            messagePlaceholder: 'Mesajınızı buraya yazın...',
+            ratingTitle: 'Web Sitemi Değerlendir',
+            sendButton: 'Gönder'
+        },
+        en: {
+            title: 'Contact',
+            description: 'Have a question? You can choose the suitable form below.',
+            nameLabel: 'Your Name *',
+            namePlaceholder: 'First and Last Name',
+            emailLabel: 'Email *',
+            emailPlaceholder: 'example@email.com',
+            subjectLabel: 'Subject *',
+            subjectPlaceholder: 'Message subject',
+            messageLabel: 'Your Message *',
+            messagePlaceholder: 'Write your message here...',
+            ratingTitle: 'Rate My Website',
+            sendButton: 'Send'
+        },
+        de: {
+            title: 'Kontakt',
+            description: 'Haben Sie eine Frage? Wählen Sie das passende Formular aus.',
+            nameLabel: 'Ihr Name *',
+            namePlaceholder: 'Vor- und Nachname',
+            emailLabel: 'E-Mail *',
+            emailPlaceholder: 'beispiel@email.com',
+            subjectLabel: 'Betreff *',
+            subjectPlaceholder: 'Nachrichtenthema',
+            messageLabel: 'Ihre Nachricht *',
+            messagePlaceholder: 'Schreiben Sie Ihre Nachricht hier...',
+            ratingTitle: 'Bewerten Sie meine Website',
+            sendButton: 'Senden'
+        },
+        fr: {
+            title: 'Contact',
+            description: 'Vous avez une question ? Choisissez le formulaire approprié ci-dessous.',
+            nameLabel: 'Votre nom *',
+            namePlaceholder: 'Prénom et nom',
+            emailLabel: 'E-mail *',
+            emailPlaceholder: 'exemple@email.com',
+            subjectLabel: 'Sujet *',
+            subjectPlaceholder: 'Objet du message',
+            messageLabel: 'Votre message *',
+            messagePlaceholder: 'Écrivez votre message ici...',
+            ratingTitle: 'Notez mon site web',
+            sendButton: 'Envoyer'
+        },
+        ar: {
+            title: 'تواصل',
+            description: 'هل لديك سؤال؟ يمكنك اختيار النموذج المناسب أدناه.',
+            nameLabel: 'اسمك *',
+            namePlaceholder: 'الاسم الكامل',
+            emailLabel: 'البريد الإلكتروني *',
+            emailPlaceholder: 'example@email.com',
+            subjectLabel: 'الموضوع *',
+            subjectPlaceholder: 'موضوع الرسالة',
+            messageLabel: 'رسالتك *',
+            messagePlaceholder: 'اكتب رسالتك هنا...',
+            ratingTitle: 'قيّم موقعي الإلكتروني',
+            sendButton: 'إرسال'
+        }
+    },
+    surveyForm: {
+        tr: {
+            title: 'Görüş & Öneri Formu',
+            description: 'Siteyi geliştirmeme yardımcı olmak için birkaç dakikanızı ayırır mısınız?',
+            nameLabel: 'Adınız',
+            namePlaceholder: 'Adınız Soyadınız',
+            emailLabel: 'E-posta',
+            emailPlaceholder: 'ornek@email.com',
+            ageLabel: 'Yaşınız (isteğe bağlı)',
+            agePlaceholder: 'Yaş',
+            roleLabel: 'Sizi en iyi tanımlayan nedir?',
+            roleSelect: 'Seçiniz',
+            roleIlimTalebesi: 'İlim Talebesi',
+            roleOgrenci: 'Öğrenci',
+            roleCalisan: 'Tam Zamanlı Çalışan',
+            roleVeli: 'Veli',
+            roleDiger: 'Diğer',
+            recommendLegend: 'Siteyi bir yakınınıza tavsiye eder misiniz?',
+            recommendKesinlikle: 'Kesinlikle',
+            recommendBelki: 'Belki',
+            recommendEminDegilim: 'Emin değilim',
+            improveLegend: 'Neyi geliştirmemi istersiniz? (Birden fazla seçebilirsiniz)',
+            improveNotlar: 'Dijital Notlar',
+            improveUygulamalar: 'Web Uygulamaları',
+            improveShop: 'Shop Ürünleri',
+            improveTasarim: 'Tasarım ve Okunabilirlik',
+            improveIcerik: 'Yeni İçerik',
+            commentsLabel: 'Yorum ve önerileriniz',
+            commentsPlaceholder: 'Düşüncelerinizi buraya yazabilirsiniz...',
+            sendButton: 'Gönder'
+        },
+        en: {
+            title: 'Feedback & Suggestions Form',
+            description: 'Would you spare a few minutes to help me improve the site?',
+            nameLabel: 'Your Name',
+            namePlaceholder: 'First and Last Name',
+            emailLabel: 'Email',
+            emailPlaceholder: 'example@email.com',
+            ageLabel: 'Age (optional)',
+            agePlaceholder: 'Age',
+            roleLabel: 'What best describes you?',
+            roleSelect: 'Select',
+            roleIlimTalebesi: 'Student of Knowledge',
+            roleOgrenci: 'Student',
+            roleCalisan: 'Full-time Worker',
+            roleVeli: 'Parent',
+            roleDiger: 'Other',
+            recommendLegend: 'Would you recommend this site to someone?',
+            recommendKesinlikle: 'Definitely',
+            recommendBelki: 'Maybe',
+            recommendEminDegilim: 'Not Sure',
+            improveLegend: 'What would you like me to improve? (Multiple selection allowed)',
+            improveNotlar: 'Digital Notes',
+            improveUygulamalar: 'Web Applications',
+            improveShop: 'Shop Products',
+            improveTasarim: 'Design and Readability',
+            improveIcerik: 'New Content',
+            commentsLabel: 'Your comments and suggestions',
+            commentsPlaceholder: 'You can write your thoughts here...',
+            sendButton: 'Submit'
+        },
+        de: {
+            title: 'Feedback & Vorschläge',
+            description: 'Würden Sie ein paar Minuten opfern, um mir zu helfen, die Seite zu verbessern?',
+            nameLabel: 'Ihr Name',
+            namePlaceholder: 'Vor- und Nachname',
+            emailLabel: 'E-Mail',
+            emailPlaceholder: 'beispiel@email.com',
+            ageLabel: 'Alter (freiwillig)',
+            agePlaceholder: 'Alter',
+            roleLabel: 'Was beschreibt Sie am besten?',
+            roleSelect: 'Auswählen',
+            roleIlimTalebesi: 'Wissenschaftsstudierender',
+            roleOgrenci: 'Schüler/Student',
+            roleCalisan: 'Vollzeitbeschäftigter',
+            roleVeli: 'Elternteil',
+            roleDiger: 'Andere',
+            recommendLegend: 'Würden Sie diese Seite jemandem empfehlen?',
+            recommendKesinliche: 'Auf jeden Fall',
+            recommendBelki: 'Vielleicht',
+            recommendEminDegilim: 'Nicht sicher',
+            improveLegend: 'Was möchten Sie, dass ich verbessere? (Mehrere Auswahl möglich)',
+            improveNotlar: 'Digitale Notizen',
+            improveUygulamalar: 'Web-Anwendungen',
+            improveShop: 'Shop-Produkte',
+            improveTasarim: 'Design und Lesbarkeit',
+            improveIcerik: 'Neue Inhalte',
+            commentsLabel: 'Ihre Kommentare und Vorschläge',
+            commentsPlaceholder: 'Sie können hier Ihre Gedanken schreiben...',
+            sendButton: 'Absenden'
+        },
+        fr: {
+            title: 'Formulaire de commentaires et suggestions',
+            description: 'Pourriez-vous consacrer quelques minutes à m\'aider à améliorer le site ?',
+            nameLabel: 'Votre nom',
+            namePlaceholder: 'Prénom et nom',
+            emailLabel: 'E-mail',
+            emailPlaceholder: 'exemple@email.com',
+            ageLabel: 'Âge (facultatif)',
+            agePlaceholder: 'Âge',
+            roleLabel: 'Quelle description vous correspond le mieux ?',
+            roleSelect: 'Sélectionner',
+            roleIlimTalebesi: 'Étudiant en connaissances',
+            roleOgrenci: 'Étudiant',
+            roleCalisan: 'Employé à temps plein',
+            roleVeli: 'Parent',
+            roleDiger: 'Autre',
+            recommendLegend: 'Recommanderiez-vous ce site à quelqu\'un ?',
+            recommendKesinlikle: 'Définitivement',
+            recommendBelki: 'Peut-être',
+            recommendEminDegilim: 'Pas sûr',
+            improveLegend: 'Que voudriez-vous que j\'améliore ? (Choix multiples autorisés)',
+            improveNotlar: 'Notes numériques',
+            improveUygulamalar: 'Applications web',
+            improveShop: 'Produits de la boutique',
+            improveTasarim: 'Design et lisibilité',
+            improveIcerik: 'Nouveau contenu',
+            commentsLabel: 'Vos commentaires et suggestions',
+            commentsPlaceholder: 'Vous pouvez écrire vos pensées ici...',
+            sendButton: 'Soumettre'
+        },
+        ar: {
+            title: 'استطلاع الآراء والاقتراحات',
+            description: 'هل تود تخصيص بضع دقائق لمساعدتي في تحسين الموقع؟',
+            nameLabel: 'اسمك',
+            namePlaceholder: 'الاسم الكامل',
+            emailLabel: 'البريد الإلكتروني',
+            emailPlaceholder: 'example@email.com',
+            ageLabel: 'العمر (اختياري)',
+            agePlaceholder: 'العمر',
+            roleLabel: 'ما الذي يصفك بشكل أفضل؟',
+            roleSelect: 'اختر',
+            roleIlimTalebesi: 'طالب علم',
+            roleOgrenci: 'طالب',
+            roleCalisan: 'عامل بدوام كامل',
+            roleVeli: 'ولي أمر',
+            roleDiger: 'آخر',
+            recommendLegend: 'هل تنصح بهذا الموقع لشخص ما؟',
+            recommendKesinlikle: 'بكل تأكيد',
+            recommendBelki: 'ربما',
+            recommendEminDegilim: 'غير متأكد',
+            improveLegend: 'ماذا تود أن أتحسن؟ (يمكن اختيار أكثر من واحد)',
+            improveNotlar: 'الملاحظات الرقمية',
+            improveUygulamalar: 'التطبيقات الويب',
+            improveShop: 'منتجات المتجر',
+            improveTasarim: 'التصميم والقابلية للقراءة',
+            improveIcerik: 'محتوى جديد',
+            commentsLabel: 'تعليقاتك واقتراحاتك',
+            commentsPlaceholder: 'يمكنك كتابة أفكارك هنا...',
+            sendButton: 'إرسال'
+        }
+    },
+    tabLabels: {
+        tr: {
+            iletisim: 'إتصال',
+            oneri: 'إتصال'
+        },
+        en: {
+            iletisim: 'Contact',
+            oneri: 'Feedback'
+        },
+        de: {
+            iletisim: 'Kontakt',
+            oneri: 'Feedback'
+        },
+        fr: {
+            iletisim: 'Contact',
+            oneri: 'Commentaires'
+        },
+        ar: {
+            iletisim: 'تواصل',
+            oneri: 'ملاحظات'
+        }
+    }
+};
+
 function getUiMessages() {
     const lang = getCurrentLanguage();
     return uiMessages[lang] || uiMessages.tr;
@@ -501,6 +751,23 @@ function toggleLangMenu() {
     }
 }
 
+// Dil Değişiminde Form Çevirilerini Güncelle
+function triggerFormTranslationUpdate() {
+    setTimeout(() => {
+        updateFormTranslations();
+        updateThemeIcon(getCurrentLanguage());
+    }, 100);
+}
+
+// Dil menüsü toggle'a ekleyin
+function toggleLangMenu() {
+    const langDropdown = document.getElementById('langDropdown');
+    if (langDropdown) {
+        langDropdown.classList.toggle('active');
+    }
+}
+
+
 document.addEventListener('click', function (e) {
     const langDropdown = document.getElementById('langDropdown');
     if (langDropdown && !langDropdown.contains(e.target)) {
@@ -778,6 +1045,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // İletişim tab'larının kaydedilen durumu
+const savedContactTab = safeGet('lastContactTab');
+const contactBtns = document.querySelectorAll('#contact-form-section .contact-tab-btn');
+const contactGroups = document.querySelectorAll('#contact-form-section .contact-form-group');
+
+if (contactGroups.length > 0) {
+    contactGroups.forEach(g => {
+        g.classList.add('hidden');
+        g.style.display = 'none';
+    });
+    contactBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+    });
+
+    if (savedContactTab) {
+        const btn = Array.from(contactBtns).find(b =>
+            b.getAttribute('onclick')?.includes(`'${savedContactTab}'`)
+        );
+        const grp = document.getElementById('group-' + savedContactTab);
+        if (btn && grp) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            grp.classList.remove('hidden');
+            grp.style.display = 'block';
+        }
+    } else {
+        const defBtn = Array.from(contactBtns).find(b =>
+            b.getAttribute('onclick')?.includes("'iletisim'")
+        );
+        const defGrp = document.getElementById('group-iletisim');
+        if (defBtn && defGrp) {
+            defBtn.classList.add('active');
+            defBtn.setAttribute('aria-selected', 'true');
+            defGrp.classList.remove('hidden');
+            defGrp.style.display = 'block';
+        }
+    }
+}
+
+
     // Initialize everything
     initTheme();
     initThemeToggle();
@@ -787,7 +1095,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initBackToTop();
     initProgressBar();
-    initContactForm();
+    // Formları başlat
+initContactForm();
+initSurveyForm();
+updateFormTranslations();
 
     // Navbar scroll effect
     window.addEventListener('scroll', handleNavbarScroll);
@@ -829,3 +1140,212 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- İLETİŞİM TAB YÖNETİMİ ---
+function switchContactTab(tabName) {
+    const buttons = document.querySelectorAll('#contact-form-section .contact-tab-btn');
+    const groups = document.querySelectorAll('#contact-form-section .contact-form-group');
+
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+    });
+
+    groups.forEach(group => {
+        group.classList.add('hidden');
+        group.style.display = 'none';
+    });
+
+    const targetGroup = document.getElementById('group-' + tabName);
+    const targetBtn = Array.from(buttons).find(b =>
+        b.getAttribute('onclick')?.includes(`'${tabName}'`)
+    );
+
+    if (targetGroup && targetBtn) {
+        targetGroup.classList.remove('hidden');
+        targetGroup.style.display = 'block';
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-selected', 'true');
+        safeSet('lastContactTab', tabName);
+    }
+}
+
+// --- ÖNERİ FORMU GÖNDERİMİ ---
+function initSurveyForm() {
+    const surveyForm = document.getElementById('surveyForm');
+
+    if (!surveyForm) return;
+
+    const ui = getUiMessages();
+    const feedbackDiv = document.getElementById('surveyFeedback');
+
+    surveyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = surveyForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = ui.formSubmitting;
+
+        // Honeypot spam kontrolü
+        const botCheck = surveyForm.querySelector('input[name="botcheck"]');
+        if (botCheck && botCheck.checked) {
+            console.warn('Bot tespit edildi!');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            return;
+        }
+
+        try {
+            const formData = new FormData(surveyForm);
+
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                if (feedbackDiv) {
+                    feedbackDiv.className = 'form-feedback success';
+                    feedbackDiv.style.display = 'block';
+                    feedbackDiv.textContent = '✅ ' + ui.formSuccess;
+                }
+
+                showToast(ui.formSuccess, 'success');
+                surveyForm.reset();
+
+                setTimeout(() => {
+                    if (feedbackDiv) feedbackDiv.style.display = 'none';
+                }, 8000);
+            } else {
+                throw new Error(result.message || 'Gönderim başarısız');
+            }
+
+        } catch (error) {
+            console.error('Form hatası:', error);
+
+            if (feedbackDiv) {
+                feedbackDiv.className = 'form-feedback error';
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.textContent = '❌ ' + ui.formError;
+            }
+
+            showToast(ui.formError, 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
+}
+
+// --- FORM TRANSLATION UPDATER ---
+function updateFormTranslations() {
+    const lang = getCurrentLanguage();
+    const contactTrans = formTranslations.contactForm[lang] || formTranslations.contactForm.tr;
+    const surveyTrans = formTranslations.surveyForm[lang] || formTranslations.surveyForm.tr;
+    const tabTrans = formTranslations.tabLabels[lang] || formTranslations.tabLabels.tr;
+
+    // İletişim Formu
+    const contactSectionTitle = document.querySelector('#contact-form-section .section-title');
+    const contactDescription = document.querySelector('#contact-form-section .section-description');
+    
+    if (contactSectionTitle) contactSectionTitle.textContent = contactTrans.title;
+    if (contactDescription) contactDescription.textContent = contactTrans.description;
+
+    // İletişim Formu Labels & Placeholders
+    const contactNameLabel = document.getElementById('contactName')?.parentElement?.querySelector('label');
+    const contactEmailLabel = document.getElementById('contactEmail')?.parentElement?.querySelector('label');
+    const contactSubjectLabel = document.getElementById('contactSubject')?.parentElement?.querySelector('label');
+    const contactMessageLabel = document.getElementById('contactMessage')?.parentElement?.querySelector('label');
+    const ratingTitle = document.querySelector('#starRating')?.parentElement?.querySelector('h3');
+    const contactSendBtn = document.querySelector('#group-iletisim button[type="submit"]');
+
+    if (contactNameLabel) contactNameLabel.textContent = contactTrans.nameLabel;
+    if (contactEmailLabel) contactEmailLabel.textContent = contactTrans.emailLabel;
+    if (contactSubjectLabel) contactSubjectLabel.textContent = contactTrans.subjectLabel;
+    if (contactMessageLabel) contactMessageLabel.textContent = contactTrans.messageLabel;
+    if (ratingTitle) ratingTitle.textContent = contactTrans.ratingTitle;
+    if (contactSendBtn) contactSendBtn.textContent = contactTrans.sendButton;
+
+    // Placeholder'lar
+    if (document.getElementById('contactName')) document.getElementById('contactName').placeholder = contactTrans.namePlaceholder;
+    if (document.getElementById('contactEmail')) document.getElementById('contactEmail').placeholder = contactTrans.emailPlaceholder;
+    if (document.getElementById('contactSubject')) document.getElementById('contactSubject').placeholder = contactTrans.subjectPlaceholder;
+    if (document.getElementById('contactMessage')) document.getElementById('contactMessage').placeholder = contactTrans.messagePlaceholder;
+
+    // Yıldız değerlendirme text
+    const ratingText = document.getElementById('ratingText');
+    if (ratingText) {
+        const value = parseInt(document.getElementById('ratingValue')?.value || '0');
+        ratingText.textContent = ratingMessages[lang]?.[value] || ratingMessages.tr[value];
+    }
+
+    // Anket Formu Labels & Placeholders
+    const surveyTitle = document.querySelector('#surveyForm')?.previousElementSibling?.querySelector('#title') || 
+                        document.querySelector('#surveyForm')?.parentElement?.querySelector('h1');
+    const surveyDesc = document.querySelector('#surveyForm')?.parentElement?.querySelector('#description');
+    const surveyNameLabel = document.getElementById('surveyName')?.parentElement?.querySelector('label');
+    const surveyEmailLabel = document.getElementById('surveyEmail')?.parentElement?.querySelector('label');
+    const surveyAgeLabel = document.getElementById('surveyAge')?.parentElement?.querySelector('label');
+    const surveyRoleLabel = document.getElementById('surveyRole')?.parentElement?.querySelector('label');
+    const surveyCommentsLabel = document.getElementById('surveyComments')?.parentElement?.querySelector('label');
+    const surveySendBtn = document.querySelector('#group-oneri button[type="submit"]');
+
+    if (surveyNameLabel) surveyNameLabel.textContent = surveyTrans.nameLabel;
+    if (surveyEmailLabel) surveyEmailLabel.textContent = surveyTrans.emailLabel;
+    if (surveyAgeLabel) surveyAgeLabel.textContent = surveyTrans.ageLabel;
+    if (surveyRoleLabel) surveyRoleLabel.textContent = surveyTrans.roleLabel;
+    if (surveyCommentsLabel) surveyCommentsLabel.textContent = surveyTrans.commentsLabel;
+    if (surveySendBtn) surveySendBtn.textContent = surveyTrans.sendButton;
+
+    // Placeholder'lar
+    if (document.getElementById('surveyName')) document.getElementById('surveyName').placeholder = surveyTrans.namePlaceholder;
+    if (document.getElementById('surveyEmail')) document.getElementById('surveyEmail').placeholder = surveyTrans.emailPlaceholder;
+    if (document.getElementById('surveyAge')) document.getElementById('surveyAge').placeholder = surveyTrans.agePlaceholder;
+    if (document.getElementById('surveyComments')) document.getElementById('surveyComments').placeholder = surveyTrans.commentsPlaceholder;
+
+    // Select option güncelleme
+    const roleSelect = document.getElementById('surveyRole');
+    if (roleSelect) {
+        const options = roleSelect.querySelectorAll('option');
+        if (options[1]) options[1].textContent = surveyTrans.roleSelect;
+        if (options[2]) options[2].textContent = surveyTrans.roleIlimTalebesi;
+        if (options[3]) options[3].textContent = surveyTrans.roleOgrenci;
+        if (options[4]) options[4].textContent = surveyTrans.roleCalisan;
+        if (options[5]) options[5].textContent = surveyTrans.roleVeli;
+        if (options[6]) options[6].textContent = surveyTrans.roleDiger;
+    }
+
+    // Fieldset legend ve checkbox labels güncelleme
+    const recommendFieldset = document.querySelector('#group-oneri fieldset:nth-of-type(1)');
+    const improveFieldset = document.querySelector('#group-oneri fieldset:nth-of-type(2)');
+
+    if (recommendFieldset) {
+        const legend = recommendFieldset.querySelector('legend');
+        const choices = recommendFieldset.querySelectorAll('.choice span');
+        if (legend) legend.textContent = surveyTrans.recommendLegend;
+        if (choices[0]) choices[0].textContent = surveyTrans.recommendKesinlikle;
+        if (choices[1]) choices[1].textContent = surveyTrans.recommendBelki;
+        if (choices[2]) choices[2].textContent = surveyTrans.recommendEminDegilim;
+    }
+
+    if (improveFieldset) {
+        const legend = improveFieldset.querySelector('legend');
+        const choices = improveFieldset.querySelectorAll('.choice span');
+        if (legend) legend.textContent = surveyTrans.improveLegend;
+        if (choices[0]) choices[0].textContent = surveyTrans.improveNotlar;
+        if (choices[1]) choices[1].textContent = surveyTrans.improveUygulamalar;
+        if (choices[2]) choices[2].textContent = surveyTrans.improveShop;
+        if (choices[3]) choices[3].textContent = surveyTrans.improveTasarim;
+        if (choices[4]) choices[4].textContent = surveyTrans.improveIcerik;
+    }
+
+    // Tab buton etiketleri
+    const tabButtons = document.querySelectorAll('#contact-form-section .contact-tab-btn');
+    if (tabButtons[0]) tabButtons[0].innerHTML = `<i class="fas fa-envelope"></i> ${tabTrans.iletisim}`;
+    if (tabButtons[1]) tabButtons[1].innerHTML = `<i class="fas fa-comment-dots"></i> ${tabTrans.oneri}`;
+}
