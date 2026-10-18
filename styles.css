@@ -2302,3 +2302,19 @@ select {
         flex-wrap: nowrap !important;
     }
 }
+
+/* KO-FI WIDGET İLE ÇAKIŞMA ÇÖZÜMÜ - ARAPÇA SAYFA İÇİN */
+[dir="rtl"] .back-to-top {
+    z-index: 99999 !important; /* Çok yüksek z-index */
+    bottom: 90px !important;   /* Widget'ın üstüne çıkarmak için mesafe */
+    right: 30px !important;    /* Sağda kalsın */
+    left: auto !important;
+}
+
+/* Mobilde daha fazla mesafe */
+@media (max-width: 768px) {
+    [dir="rtl"] .back-to-top {
+        bottom: 100px !important;
+        right: 20px !important;
+    }
+}
