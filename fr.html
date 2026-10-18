@@ -721,67 +721,183 @@
 </div> -->
             </div>
 
-           <!-- FORMULAIRE DE CONTACT + ÉVALUATION PAR ÉTOILES (WEB3FORMS) -->
+           <!-- FORMULAIRES DE CONTACT + ÉVALUATION PAR ÉTOILES (WEB3FORMS) -->
 <section id="contact-form-section" class="contact-section">
     <div class="container">
         <h2 class="section-title">Contact</h2>
-        <p class="section-description">Vous avez une question ? Vous pouvez me joindre via le formulaire ci-dessous.</p>
+        <p class="section-description">Vous avez une question ? Choisissez ci-dessous le formulaire qui vous convient.</p>
 
-        <form id="contactForm" class="contact-form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              novalidate>
+        <!-- COMMANDES DES ONGLETS -->
+        <div class="tab-controls">
+            <button class="tab-btn contact-tab-btn active" tabindex="0" onclick="switchContactTab('iletisim')" aria-selected="true">
+                <i class="fas fa-envelope"></i> Formulaire de contact
+            </button>
+            <button class="tab-btn contact-tab-btn" tabindex="0" onclick="switchContactTab('oneri')" aria-selected="false">
+                <i class="fas fa-comment-dots"></i> Commentaires & suggestions
+            </button>
+        </div>
 
-            <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
-            <input type="hidden" name="subject" value="Nouveau message du formulaire de contact">
-            <input type="hidden" name="from_name" value="Site Web d'Eslem Nur Çetin">
+        <!-- FORMULAIRE DE CONTACT -->
+        <div id="group-iletisim" class="contact-form-group active">
+            <form id="contactForm" class="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
 
-            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
-                   style="display:none !important" aria-hidden="true">
+                <!-- PARAMÈTRES MASQUÉS WEB3FORMS -->
+                <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
+                <input type="hidden" name="subject" value="Nouveau message du formulaire de contact">
+                <input type="hidden" name="from_name" value="Site d'Eslem Nur Çetin">
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="contactName">Votre nom *</label>
-                    <input type="text" id="contactName" name="name"
-                           placeholder="Prénom et Nom" required>
+                <!-- PIÈGE ANTI-SPAM -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="contactName">Votre nom *</label>
+                        <input type="text" id="contactName" name="name"
+                               placeholder="Prénom et nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">E-mail *</label>
+                        <input type="email" id="contactEmail" name="email"
+                               placeholder="exemple@email.com" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="contactEmail">E-mail *</label>
-                    <input type="email" id="contactEmail" name="email"
-                           placeholder="exemple@email.com" required>
+                    <label for="contactSubject">Sujet *</label>
+                    <input type="text" id="contactSubject" name="subject"
+                           placeholder="Objet de votre message" required>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="contactSubject">Sujet *</label>
-                <input type="text" id="contactSubject" name="subject"
-                       placeholder="Sujet de votre message" required>
-            </div>
-
-            <div class="form-group">
-                <label for="contactMessage">Votre message *</label>
-                <textarea id="contactMessage" name="message"
-                          placeholder="Écrivez votre message ici..." rows="6" required></textarea>
-            </div>
-
-            <div class="feedback-section">
-                <h3>Évaluez mon site web</h3>
-                <div class="star-rating" id="starRating" role="radiogroup" aria-label="Évaluation du site">
-                    <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 étoile">★</span>
-                    <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 étoiles">★</span>
-                    <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 étoiles">★</span>
-                    <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 étoiles">★</span>
-                    <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 étoiles">★</span>
+                <div class="form-group">
+                    <label for="contactMessage">Votre message *</label>
+                    <textarea id="contactMessage" name="message"
+                              placeholder="Écrivez votre message ici..." rows="6" required></textarea>
                 </div>
-                <p class="rating-text" id="ratingText">Vous n'avez pas encore noté</p>
-                <input type="hidden" name="rating" id="ratingValue" value="0">
-            </div>
 
-            <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+                <!-- ÉVALUATION PAR ÉTOILES -->
+                <div class="feedback-section">
+                    <h3>Notez mon site web</h3>
+                    <div class="star-rating" id="starRating" role="radiogroup" aria-label="Évaluation du site">
+                        <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 étoile">★</span>
+                        <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 étoiles">★</span>
+                        <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 étoiles">★</span>
+                        <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 étoiles">★</span>
+                        <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 étoiles">★</span>
+                    </div>
+                    <p class="rating-text" id="ratingText">Vous n'avez pas encore noté</p>
+                    <input type="hidden" name="rating" id="ratingValue" value="0">
+                </div>
 
-            <button type="submit" class="btn-primary">Envoyer</button>
-        </form>
+                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Envoyer</button>
+            </form>
+        </div>
+
+        <!-- FORMULAIRE DE COMMENTAIRES & SUGGESTIONS -->
+        <div id="group-oneri" class="contact-form-group hidden">
+            <form id="surveyForm" class="contact-form survey-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
+
+                <!-- PARAMÈTRES MASQUÉS WEB3FORMS -->
+                <input type="hidden" name="access_key" value="89cd6b30-1faa-4403-9ec4-e698874407d3">
+                <input type="hidden" name="subject" value="Nouveau message de commentaires & suggestions">
+                <input type="hidden" name="from_name" value="Site d'Eslem Nur Çetin">
+
+                <!-- PIÈGE ANTI-SPAM -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="surveyName">Votre nom</label>
+                        <input type="text" id="surveyName" name="name"
+                               placeholder="Prénom et nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surveyEmail">E-mail</label>
+                        <input type="email" id="surveyEmail" name="email"
+                               placeholder="exemple@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyAge">Âge (facultatif)</label>
+                    <input type="number" id="surveyAge" name="age"
+                           placeholder="Âge" min="10" max="99">
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyRole">Qu'est-ce qui vous décrit le mieux ?</label>
+                    <select id="surveyRole" name="role">
+                        <option value="">Sélectionner</option>
+                        <option value="ilim-talebesi">Étudiant en sciences islamiques</option>
+                        <option value="ogrenci">Étudiant</option>
+                        <option value="calisan">Salarié à temps plein</option>
+                        <option value="veli">Parent</option>
+                        <option value="diger">Autre</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Recommanderiez-vous ce site à quelqu'un ?</legend>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="kesinlikle" checked>
+                        <span>Certainement</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="belki">
+                        <span>Peut-être</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="emin-degilim">
+                        <span>Je ne sais pas</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Que souhaitez-vous que j'améliore ? (Plusieurs choix possibles)</legend>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="dijital-notlar">
+                        <span>Notes numériques</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="web-uygulamalari">
+                        <span>Applications web</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="shop">
+                        <span>Produits de la boutique</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="tasarim">
+                        <span>Design et lisibilité</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="icerik">
+                        <span>Nouveau contenu</span>
+                    </label>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="surveyComments">Vos commentaires et suggestions</label>
+                    <textarea id="surveyComments" name="comments" rows="6"
+                              placeholder="Vous pouvez écrire vos idées ici..."></textarea>
+                </div>
+
+                <div id="surveyFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Soumettre</button>
+            </form>
+        </div>
     </div>
 </section>
 

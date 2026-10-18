@@ -772,70 +772,185 @@
 </div> -->
             </div>
 
-           <!-- KONTAKTFORMULAR + STERNBEWERTUNG (WEB3FORMS) -->
+           <!-- KONTAKTFORMULARE + STERNBEWERTUNG (WEB3FORMS) -->
 <section id="contact-form-section" class="contact-section">
     <div class="container">
         <h2 class="section-title">Kontakt</h2>
-        <p class="section-description">Haben Sie eine Frage? Sie können mich über das untenstehende Formular erreichen.</p>
+        <p class="section-description">Haben Sie eine Frage? Wählen Sie unten das passende Formular.</p>
 
-        <form id="contactForm" class="contact-form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              novalidate>
+        <!-- TAB-STEUERUNG -->
+        <div class="tab-controls">
+            <button class="tab-btn contact-tab-btn active" tabindex="0" onclick="switchContactTab('iletisim')" aria-selected="true">
+                <i class="fas fa-envelope"></i> Kontaktformular
+            </button>
+            <button class="tab-btn contact-tab-btn" tabindex="0" onclick="switchContactTab('oneri')" aria-selected="false">
+                <i class="fas fa-comment-dots"></i> Feedback & Vorschläge
+            </button>
+        </div>
 
-            <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
-            <input type="hidden" name="subject" value="Neue Kontaktformular-Nachricht">
-            <input type="hidden" name="from_name" value="Eslem Nur Çetin Webseite">
+        <!-- KONTAKTFORMULAR -->
+        <div id="group-iletisim" class="contact-form-group active">
+            <form id="contactForm" class="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
 
-            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
-                   style="display:none !important" aria-hidden="true">
+                <!-- WEB3FORMS VERSTECKTE EINSTELLUNGEN -->
+                <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
+                <input type="hidden" name="subject" value="Neue Kontaktformular-Nachricht">
+                <input type="hidden" name="from_name" value="Eslem Nur Çetin Website">
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="contactName">Ihr Name *</label>
-                    <input type="text" id="contactName" name="name"
-                           placeholder="Vor- und Nachname" required>
+                <!-- SPAM-FALLE -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="contactName">Ihr Name *</label>
+                        <input type="text" id="contactName" name="name"
+                               placeholder="Vor- und Nachname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">E-Mail *</label>
+                        <input type="email" id="contactEmail" name="email"
+                               placeholder="beispiel@email.com" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="contactEmail">E-Mail *</label>
-                    <input type="email" id="contactEmail" name="email"
-                           placeholder="beispiel@email.com" required>
+                    <label for="contactSubject">Betreff *</label>
+                    <input type="text" id="contactSubject" name="subject"
+                           placeholder="Thema Ihrer Nachricht" required>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="contactSubject">Betreff *</label>
-                <input type="text" id="contactSubject" name="subject"
-                       placeholder="Betreff Ihrer Nachricht" required>
-            </div>
-
-            <div class="form-group">
-                <label for="contactMessage">Ihre Nachricht *</label>
-                <textarea id="contactMessage" name="message"
-                          placeholder="Schreiben Sie Ihre Nachricht hier..." rows="6" required></textarea>
-            </div>
-
-            <div class="feedback-section">
-                <h3>Bewerten Sie meine Webseite</h3>
-                <div class="star-rating" id="starRating" role="radiogroup" aria-label="Webseiten-Bewertung">
-                    <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 Stern">★</span>
-                    <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 Sterne">★</span>
-                    <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 Sterne">★</span>
-                    <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 Sterne">★</span>
-                    <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 Sterne">★</span>
+                <div class="form-group">
+                    <label for="contactMessage">Ihre Nachricht *</label>
+                    <textarea id="contactMessage" name="message"
+                              placeholder="Schreiben Sie Ihre Nachricht hier..." rows="6" required></textarea>
                 </div>
-                <p class="rating-text" id="ratingText">Noch nicht bewertet</p>
-                <input type="hidden" name="rating" id="ratingValue" value="0">
-            </div>
 
-            <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+                <!-- STERNBEWERTUNG -->
+                <div class="feedback-section">
+                    <h3>Bewerten Sie meine Website</h3>
+                    <div class="star-rating" id="starRating" role="radiogroup" aria-label="Website-Bewertung">
+                        <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 Stern">★</span>
+                        <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 Sterne">★</span>
+                        <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 Sterne">★</span>
+                        <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 Sterne">★</span>
+                        <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 Sterne">★</span>
+                    </div>
+                    <p class="rating-text" id="ratingText">Noch nicht bewertet</p>
+                    <input type="hidden" name="rating" id="ratingValue" value="0">
+                </div>
 
-            <button type="submit" class="btn-primary">Senden</button>
-        </form>
+                <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Senden</button>
+            </form>
+        </div>
+
+        <!-- FEEDBACK- & VORSCHLAGSFORMULAR -->
+        <div id="group-oneri" class="contact-form-group hidden">
+            <form id="surveyForm" class="contact-form survey-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate>
+
+                <!-- WEB3FORMS VERSTECKTE EINSTELLUNGEN -->
+                <input type="hidden" name="access_key" value="89cd6b30-1faa-4403-9ec4-e698874407d3">
+                <input type="hidden" name="subject" value="Neue Feedback- & Vorschlagsnachricht">
+                <input type="hidden" name="from_name" value="Eslem Nur Çetin Website">
+
+                <!-- SPAM-FALLE -->
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                       style="display:none !important" aria-hidden="true">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="surveyName">Ihr Name</label>
+                        <input type="text" id="surveyName" name="name"
+                               placeholder="Vor- und Nachname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surveyEmail">E-Mail</label>
+                        <input type="email" id="surveyEmail" name="email"
+                               placeholder="beispiel@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyAge">Alter (freiwillig)</label>
+                    <input type="number" id="surveyAge" name="age"
+                           placeholder="Alter" min="10" max="99">
+                </div>
+
+                <div class="form-group">
+                    <label for="surveyRole">Was beschreibt Sie am besten?</label>
+                    <select id="surveyRole" name="role">
+                        <option value="">Auswählen</option>
+                        <option value="ilim-talebesi">Wissenschaftsstudierender</option>
+                        <option value="ogrenci">Schüler/in oder Student/in</option>
+                        <option value="calisan">Vollzeitbeschäftigt</option>
+                        <option value="veli">Elternteil</option>
+                        <option value="diger">Andere</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Würden Sie diese Seite jemandem empfehlen?</legend>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="kesinlikle" checked>
+                        <span>Auf jeden Fall</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="belki">
+                        <span>Vielleicht</span>
+                    </label>
+                    <label class="choice">
+                        <input type="radio" name="recommend" value="emin-degilim">
+                        <span>Nicht sicher</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Was soll ich verbessern? (Mehrfachauswahl möglich)</legend>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="dijital-notlar">
+                        <span>Digitale Notizen</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="web-uygulamalari">
+                        <span>Web-Anwendungen</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="shop">
+                        <span>Shop-Produkte</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="tasarim">
+                        <span>Design und Lesbarkeit</span>
+                    </label>
+                    <label class="choice">
+                        <input type="checkbox" name="improve" value="icerik">
+                        <span>Neue Inhalte</span>
+                    </label>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="surveyComments">Ihre Kommentare und Vorschläge</label>
+                    <textarea id="surveyComments" name="comments" rows="6"
+                              placeholder="Hier können Sie Ihre Gedanken schreiben..."></textarea>
+                </div>
+
+                <div id="surveyFeedback" class="form-feedback" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">Absenden</button>
+            </form>
+        </div>
     </div>
 </section>
-
             <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Alle Rechte vorbehalten.</p>
             <p class="trademark-notice">
                 <strong>Marken:</strong> 
