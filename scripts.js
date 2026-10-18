@@ -1,7 +1,25 @@
 /* ============================================
-   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT (v2.0)
-   Class-Based Tab System - Optimize & Clean
+   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT (v2.1)
+   LocalStorage Safe + Init Sırası Düzeltildi
    ============================================ */
+
+// --- GÜVENLİ LOCALSPACE YARDIMCI ---
+function safeGet(key) {
+    try { 
+        return localStorage.getItem(key); 
+    } catch(e) { 
+        console.warn('LocalStorage kullanılamadı:', e); 
+        return null; 
+    }
+}
+
+function safeSet(key, value) {
+    try { 
+        localStorage.setItem(key, value); 
+    } catch(e) { 
+        console.warn('LocalStorage yazılamadı:', e); 
+    }
+}
 
 // --- DİL MESAJLARI (STAR RATING) ---
 const ratingMessages = {
@@ -47,7 +65,7 @@ const ratingMessages = {
     }
 };
 
-// --- ARAYÜZ METİNLERİ (YENİ ÖĞELER) ---
+// --- ARAYÜZ METİNLERİ ---
 const uiMessages = {
     tr: {
         backToTopLabel: 'Yukarı çık',
@@ -112,7 +130,11 @@ function getCurrentLanguage() {
 
 // --- TOAST NOTIFICATION ---
 function showToast(message, type = 'info') {
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) existingToast.remove();
+    
     const toast = document.createElement('div');
+    toast.className = 'toast-notification';
     toast.textContent = message;
     toast.style.cssText = `
         position: fixed;
@@ -221,24 +243,16 @@ function initStarRating() {
     }
     
     function saveRating(value) {
-        try {
-            localStorage.setItem('userRating_' + lang, value);
-        } catch(e) {
-            console.warn('LocalStorage kullanılamıyor:', e);
-        }
+        safeSet('userRating_' + lang, value);
     }
     
     function loadRating() {
-        try {
-            const saved = localStorage.getItem('userRating_' + lang);
-            if (saved) {
-                const value = parseInt(saved);
-                if (!isNaN(value)) {
-                    activateStars(value);
-                }
+        const saved = safeGet('userRating_' + lang);
+        if (saved) {
+            const value = parseInt(saved);
+            if (!isNaN(value)) {
+                activateStars(value);
             }
-        } catch(e) {
-            console.warn('LocalStorage okunamıyor:', e);
         }
     }
     
@@ -278,7 +292,7 @@ let themeInitialized = false;
 function initTheme() {
     if (themeInitialized) return;
     
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = safeGet('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
     themeInitialized = true;
@@ -436,7 +450,7 @@ function switchProjectTab(tabName) {
         targetGroup.style.display = 'grid';
         targetBtn.classList.add('active');
         targetBtn.setAttribute('aria-selected', 'true');
-        localStorage.setItem('lastProjectTab', tabName);
+        safeSet('lastProjectTab', tabName);
     }
 }
 
@@ -464,7 +478,7 @@ function switchShopTab(tabName) {
         targetGroup.style.display = 'grid';
         targetBtn.classList.add('active');
         targetBtn.setAttribute('aria-selected', 'true');
-        localStorage.setItem('lastShopTab', tabName);
+        safeSet('lastShopTab', tabName);
     }
 }
 
@@ -497,7 +511,7 @@ function initThemeToggle() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+            safeSet('theme', newTheme);
             updateThemeIcon(newTheme);
         });
     }
@@ -589,8 +603,7 @@ function initContactForm() {
 
 // --- DOM READY ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Sekmelerin varsayılan durumunu geri yükle
-    const savedProjectTab = localStorage.getItem('lastProjectTab');
+    const savedProjectTab = safeGet('lastProjectTab');
     const projectBtns = document.querySelectorAll('#projects .project-tab-btn');
     const projectGroups = document.querySelectorAll('#projects .project-group');
 
@@ -629,7 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Skill tabs - varsayılan dil
+    // Skill tabs
     const skillBtns = document.querySelectorAll('#skills .skill-tab-btn');
     const skillGroups = document.querySelectorAll('#skills .skill-group');
     const defaultTabs = {
@@ -666,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Shop tabs
-    const savedShopTab = localStorage.getItem('lastShopTab');
+    const savedShopTab = safeGet('lastShopTab');
     const shopBtns = document.querySelectorAll('#shop .shop-tab-btn');
     const shopGroups = document.querySelectorAll('#shop .shop-group');
 
@@ -746,7 +759,7 @@ window.addEventListener('error', (e) => {
     console.error('Global error:', e.error);
 });
 
-// CV Download Notification
+// --- CV Download Notification ---
 document.addEventListener('DOMContentLoaded', () => {
     const cvBtn = document.querySelector('.btn-cv');
     
