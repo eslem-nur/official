@@ -2095,10 +2095,10 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(4px, 1vw, 8px);
+    gap: 4px;
     direction: ltr;
     flex-wrap: nowrap;
-    max-width: 100%;
+    max-width: fit-content;
     margin: 0 auto;
     width: 100%;
 }
@@ -2313,5 +2313,33 @@ select {
     [dir="rtl"] .back-to-top {
         bottom: 100px !important;
         right: 20px !important;
+    }
+}
+
+/* ============================================
+   FEEDBACK SECTION BAŞLIK BOYUTU
+   ============================================ */
+
+.feedback-section h3 {
+    font-size: 1.1rem;        /* masaüstü */
+    margin-bottom: 12px;
+    margin-top: 0;
+    font-family: 'Inter', 'Amiri', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+/* Mobilde biraz daha küçük */
+@media (max-width: 768px) {
+    .feedback-section h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback-section h3 {
+        font-size: 0.95rem;
     }
 }
