@@ -4,7 +4,7 @@
    ============================================ */
 
 /* ============================================
-   1. ROOT VARIABLES & COLOR PALETTE
+   ROOT VARIABLES & COLOR PALETTE
    ============================================ */
 
 :root {
@@ -125,7 +125,7 @@
 }
 
 /* ============================================
-   2. BASE RESET & TYPOGRAPHY
+   1. BASE RESET & TYPOGRAPHY
    ============================================ */
 
 /* Reset Styles */
@@ -253,7 +253,7 @@ img {
 }
 
 /* ============================================
-   3. ACCESSIBILITY & FOCUS STATES
+   2. ACCESSIBILITY & FOCUS STATES
    ============================================ */
 
 /* Keyboard Focus Indicators */
@@ -316,7 +316,7 @@ img {
 }
 
 /* ============================================
-   4. CONTAINERS & LAYOUT
+   3. CONTAINERS & LAYOUT
    ============================================ */
 
 .container {
@@ -377,7 +377,7 @@ img {
 }
 
 /* ============================================
-   5. HEADER & NAVIGATION
+   4. HEADER & NAVIGATION
    ============================================ */
 
 header {
@@ -547,7 +547,7 @@ nav {
 }
 
 /* ============================================
-   6. HERO SECTION
+   5. HERO SECTION
    ============================================ */
 
 .hero {
@@ -661,7 +661,7 @@ nav {
 }
 
 /* ============================================
-   7. BUTTONS
+   6. BUTTONS
    ============================================ */
 
 .btn-primary {
@@ -765,7 +765,7 @@ nav {
 }
 
 /* ============================================
-   8. CARDS
+   7. CARDS
    ============================================ */
 
 .card {
@@ -810,7 +810,7 @@ nav {
 }
 
 /* ============================================
-   9. PROJECTS & SKILLS SECTION
+   8. PROJECTS & SKILLS SECTION
    ============================================ */
 
 .skills-container, .projects-grid, .shop-grid {
@@ -970,7 +970,7 @@ nav {
 }
 
 /* ============================================
-   10. TABS & SWITCHERS
+   9. TABS & SWITCHERS
    ============================================ */
 
 .tab-controls {
@@ -1034,7 +1034,7 @@ nav {
 }
 
 /* ============================================
-   11. ABOUT SECTION
+   10. ABOUT SECTION
    ============================================ */
 
 .about-grid {
@@ -1097,7 +1097,7 @@ nav {
 }
 
 /* ============================================
-   12. SHOP SECTION
+   11. SHOP SECTION
    ============================================ */
 
 .shop-info-box {
@@ -1117,7 +1117,7 @@ nav {
 }
 
 /* ============================================
-   13. FOOTER
+   12. FOOTER
    ============================================ */
 
 footer {
@@ -1207,7 +1207,7 @@ footer {
 
 
 /* ============================================
-   15. LOADING STATES
+   13. LOADING STATES
    ============================================ */
 
 @keyframes skeleton-loading {
@@ -1263,7 +1263,7 @@ footer {
 .stagger-4 { transition-delay: 0.4s; }
 
 /* ============================================
-   16. ARABIC & RTL SUPPORT
+   14. ARABIC & RTL SUPPORT
    ============================================ */
 
 [dir="rtl"] body {
@@ -1326,7 +1326,7 @@ footer {
 }
 
 /* ============================================
-   17. RESPONSIVE BREAKPOINTS
+   15. RESPONSIVE BREAKPOINTS
    ============================================ */
 
 /* Tablet Breakpoint */
@@ -1535,7 +1535,7 @@ footer {
 }
 
 /* ============================================
-   18. UTILITY CLASSES
+   16. UTILITY CLASSES
    ============================================ */
 
 /* Text Utilities */
@@ -1588,7 +1588,7 @@ footer {
 }
 
 /* ============================================
-   EMAIL COPY FUNCTIONALITY
+   17. EMAIL COPY FUNCTIONALITY
    ============================================ */
 
 .email-copy-wrapper {
@@ -1641,7 +1641,7 @@ footer {
 }
 
 /* ============================================
-   SECTION DESCRIPTION TEXT (MERKEZLEŞTİRME)
+   18. SECTION DESCRIPTION TEXT (MERKEZLEŞTİRME)
    ============================================ */
 
 .section-description {
@@ -2086,7 +2086,7 @@ select {
 }
 
 /* ============================================
-   YILDIZ DEĞERLENDİRME - FINAL SİLETTİRDİ
+   YILDIZ DEĞERLENDİRME 
    ============================================ */
 
 /* Genel Star Rating */
@@ -2224,7 +2224,6 @@ select {
     display: none !important;
 }
 
-/* Öneri formu özel stiller */
 .survey-form {
     width: 100%;
 }
@@ -2286,7 +2285,6 @@ select {
     }
 }
 
-/* Contact tab butonları için icon spacing */
 .tab-btn i {
     margin-right: 8px;
 }
@@ -2296,7 +2294,6 @@ select {
     margin-left: 8px;
 }
 
-/* Ekstra güvenlik için */
 @media (max-width: 360px) {
     .star-rating {
         flex-wrap: nowrap !important;
@@ -2305,9 +2302,9 @@ select {
 
 /* KO-FI WIDGET İLE ÇAKIŞMA ÇÖZÜMÜ - ARAPÇA SAYFA İÇİN */
 [dir="rtl"] .back-to-top {
-    z-index: 99999 !important; /* Çok yüksek z-index */
-    bottom: 90px !important;   /* Widget'ın üstüne çıkarmak için mesafe */
-    right: 30px !important;    /* Sağda kalsın */
+    z-index: 99999 !important; 
+    bottom: 90px !important;   
+    right: 30px !important;    
     left: auto !important;
 }
 
