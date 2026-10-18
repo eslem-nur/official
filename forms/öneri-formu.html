@@ -43,8 +43,8 @@
             --transition-fast: 0.15s ease;
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
+        [data-theme="dark"] {
+            
                 --primary-color: #CC8E98;
                 --primary-dark: #A06872;
                 --primary-light: #E0A4AC;
@@ -60,7 +60,7 @@
                 --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
                 --shadow-lg: 0 8px 35px rgba(0, 0, 0, 0.5);
             }
-        }
+        
 
         *, *::before, *::after {
             box-sizing: border-box;
@@ -473,35 +473,38 @@
         </form>
     </div>
   <script>
-  // TEMALAR YÖNETİMİ
-(function() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            updateThemeIcon(newTheme);
-        });
-    }
-})();
+ // --- TEMA YÖNETİMİ ---
+const themeToggle = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
 
 function updateThemeIcon(theme) {
-    const icon = document.querySelector('.theme-toggle i');
-    if (!icon) return;
-    
+    const icon = document.querySelector('#themeToggle i');
+    const btn = document.getElementById('themeToggle');
+    if (!icon || !btn) return;
+
     if (theme === 'light') {
         icon.className = 'fas fa-moon';
+        btn.setAttribute('aria-label', 'Koyu Temaya Geç');
     } else {
         icon.className = 'fas fa-sun';
+        btn.setAttribute('aria-label', 'Aydınlık Temaya Geç');
     }
 }
+
+// Başlangıçta kayıtlı temayı uygula
+applyTheme(localStorage.getItem('theme') || 'light');
+
+// Butona tıklama olayı
+themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
 
 // Sayfa yenilendiğinde icon güncelle
 document.addEventListener('DOMContentLoaded', () => {

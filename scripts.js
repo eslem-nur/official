@@ -1,23 +1,23 @@
 /* ============================================
-   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT (v2.1)
-   LocalStorage Safe + Init Sırası Düzeltildi
+   ESLEM NUR | İLİM VE KOD - GLOBAL JAVASCRIPT (v2.2)
+   Web3Forms Entegrasyonu + Yıldız Değerlendirme Formda
    ============================================ */
 
-// --- GÜVENLİ LOCALSPACE YARDIMCI ---
+// --- GÜVENLİ LOCALSTORAGE YARDIMCISI ---
 function safeGet(key) {
-    try { 
-        return localStorage.getItem(key); 
-    } catch(e) { 
-        console.warn('LocalStorage kullanılamadı:', e); 
-        return null; 
+    try {
+        return localStorage.getItem(key);
+    } catch (e) {
+        console.warn('LocalStorage kullanılamadı:', e);
+        return null;
     }
 }
 
 function safeSet(key, value) {
-    try { 
-        localStorage.setItem(key, value); 
-    } catch(e) { 
-        console.warn('LocalStorage yazılamadı:', e); 
+    try {
+        localStorage.setItem(key, value);
+    } catch (e) {
+        console.warn('LocalStorage yazılamadı:', e);
     }
 }
 
@@ -56,7 +56,7 @@ const ratingMessages = {
         5: 'Excellente! ⭐'
     },
     ar: {
-        0: 'لم يتم تقييم بعد',
+        0: 'لم يتم التقييم بعد',
         1: 'سيء جداً 😞',
         2: 'سيء',
         3: 'متوسط ✿',
@@ -71,36 +71,36 @@ const uiMessages = {
         backToTopLabel: 'Yukarı çık',
         cvOpening: '📄 CV açılıyor...',
         formSubmitting: 'Gönderiliyor...',
-        formSuccess: '✅ Mesajınız başarıyla gönderildi! Teşekkür ederim.',
-        formError: '❌ Bir hata oluştu. Lütfen tekrar deneyin.'
+        formSuccess: 'Mesajınız başarıyla gönderildi! Teşekkür ederim.',
+        formError: 'Bir hata oluştu. Lütfen tekrar deneyin.'
     },
     en: {
         backToTopLabel: 'Back to top',
         cvOpening: '📄 Opening CV...',
         formSubmitting: 'Sending...',
-        formSuccess: '✅ Your message was sent successfully! Thank you.',
-        formError: '❌ Something went wrong. Please try again.'
+        formSuccess: 'Your message was sent successfully! Thank you.',
+        formError: 'Something went wrong. Please try again.'
     },
     de: {
         backToTopLabel: 'Nach oben',
         cvOpening: '📄 Lebenslauf wird geöffnet...',
         formSubmitting: 'Wird gesendet...',
-        formSuccess: '✅ Ihre Nachricht wurde erfolgreich gesendet! Vielen Dank.',
-        formError: '❌ Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.'
+        formSuccess: 'Ihre Nachricht wurde erfolgreich gesendet! Vielen Dank.',
+        formError: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.'
     },
     fr: {
         backToTopLabel: 'Retour en haut',
         cvOpening: '📄 Ouverture du CV...',
         formSubmitting: 'Envoi en cours...',
-        formSuccess: '✅ Votre message a bien été envoyé ! Merci.',
-        formError: '❌ Une erreur est survenue. Veuillez réessayer.'
+        formSuccess: 'Votre message a bien été envoyé ! Merci.',
+        formError: 'Une erreur est survenue. Veuillez réessayer.'
     },
     ar: {
         backToTopLabel: 'العودة إلى الأعلى',
         cvOpening: '📄 جارٍ فتح السيرة الذاتية...',
         formSubmitting: 'جارٍ الإرسال...',
-        formSuccess: '✅ تم إرسال رسالتك بنجاح! شكرًا لك.',
-        formError: '❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
+        formSuccess: 'تم إرسال رسالتك بنجاح! شكرًا لك.',
+        formError: 'حدث خطأ. يرجى المحاولة مرة أخرى.'
     }
 };
 
@@ -112,19 +112,19 @@ function getUiMessages() {
 // --- MEVCUT DİLİ TESPİT ET ---
 function getCurrentLanguage() {
     const htmlLang = document.documentElement.getAttribute('lang');
-    
+
     if (htmlLang === 'tr') return 'tr';
     if (htmlLang === 'en') return 'en';
     if (htmlLang === 'de') return 'de';
     if (htmlLang === 'fr') return 'fr';
     if (htmlLang === 'ar') return 'ar';
-    
+
     const path = window.location.pathname.toLowerCase();
     if (path.includes('/en.html') || path.endsWith('en.html')) return 'en';
     if (path.includes('/de.html') || path.endsWith('de.html')) return 'de';
     if (path.includes('/fr.html') || path.endsWith('fr.html')) return 'fr';
     if (path.includes('/ar.html') || path.endsWith('ar.html')) return 'ar';
-    
+
     return 'tr';
 }
 
@@ -132,7 +132,7 @@ function getCurrentLanguage() {
 function showToast(message, type = 'info') {
     const existingToast = document.querySelector('.toast-notification');
     if (existingToast) existingToast.remove();
-    
+
     const toast = document.createElement('div');
     toast.className = 'toast-notification';
     toast.textContent = message;
@@ -153,9 +153,9 @@ function showToast(message, type = 'info') {
         max-width: 90%;
     `;
     document.body.appendChild(toast);
-    
+
     requestAnimationFrame(() => { toast.style.opacity = '1'; });
-    
+
     setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 300);
@@ -167,20 +167,20 @@ let backToTopInitialized = false;
 
 function initBackToTop() {
     if (backToTopInitialized) return;
-    
+
     const ui = getUiMessages();
-    
+
     const backToTopBtn = document.createElement('button');
     backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     backToTopBtn.className = 'back-to-top';
     backToTopBtn.setAttribute('aria-label', ui.backToTopLabel);
-    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+    backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(backToTopBtn);
-    
+
     window.addEventListener('scroll', () => {
         backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
     });
-    
+
     backToTopInitialized = true;
 }
 
@@ -189,19 +189,19 @@ let progressBarInitialized = false;
 
 function initProgressBar() {
     if (progressBarInitialized) return;
-    
+
     const progressBar = document.createElement('div');
     progressBar.id = 'progressBar';
     progressBar.style.cssText = 'width: 0%; height: 3px; background: var(--primary-color); position: fixed; top: 0; left: 0; z-index: 9999; transition: width 0.1s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
     document.body.insertBefore(progressBar, document.body.firstChild);
-    
+
     window.addEventListener('scroll', () => {
         const winScroll = document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         progressBar.style.width = scrolled + '%';
     });
-    
+
     progressBarInitialized = true;
 }
 
@@ -210,22 +210,22 @@ let ratingInitialized = false;
 
 function initStarRating() {
     if (ratingInitialized) return;
-    
+
     const stars = document.querySelectorAll('.star');
     const ratingValue = document.getElementById('ratingValue');
     const ratingText = document.getElementById('ratingText');
-    
+
     if (stars.length === 0 || !ratingValue || !ratingText) return;
-    
+
     const lang = getCurrentLanguage();
     const messages = ratingMessages[lang] || ratingMessages.tr;
-    
+
     function updateRatingText(value) {
         ratingText.textContent = messages[value] || messages[0];
     }
-    
+
     function highlightStars(value) {
-        stars.forEach((star, index) => {
+        stars.forEach((star) => {
             const starValue = parseInt(star.getAttribute('data-value'));
             if (starValue <= value) {
                 star.classList.add('active');
@@ -234,18 +234,18 @@ function initStarRating() {
             }
         });
     }
-    
+
     function activateStars(value) {
         ratingValue.value = value;
         highlightStars(value);
         updateRatingText(value);
         saveRating(value);
     }
-    
+
     function saveRating(value) {
         safeSet('userRating_' + lang, value);
     }
-    
+
     function loadRating() {
         const saved = safeGet('userRating_' + lang);
         if (saved) {
@@ -255,33 +255,44 @@ function initStarRating() {
             }
         }
     }
-    
+
     stars.forEach(star => {
-        star.addEventListener('click', function() {
+        star.addEventListener('click', function () {
             const value = parseInt(this.getAttribute('data-value'));
             if (!isNaN(value)) {
                 activateStars(value);
             }
         });
-        
-        star.addEventListener('mouseenter', function() {
+
+        star.addEventListener('mouseenter', function () {
             const tempValue = parseInt(this.getAttribute('data-value'));
             if (!isNaN(tempValue)) {
                 highlightStars(tempValue);
             }
         });
+
+        // Klavye erişilebilirliği
+        star.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const value = parseInt(this.getAttribute('data-value'));
+                if (!isNaN(value)) {
+                    activateStars(value);
+                }
+            }
+        });
     });
-    
+
     const starRatingContainer = document.getElementById('starRating');
     if (starRatingContainer) {
-        starRatingContainer.addEventListener('mouseleave', function() {
+        starRatingContainer.addEventListener('mouseleave', function () {
             const selected = parseInt(ratingValue.value);
             if (!isNaN(selected)) {
                 highlightStars(selected);
             }
         });
     }
-    
+
     loadRating();
     ratingInitialized = true;
 }
@@ -291,7 +302,7 @@ let themeInitialized = false;
 
 function initTheme() {
     if (themeInitialized) return;
-    
+
     const savedTheme = safeGet('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
@@ -302,7 +313,7 @@ function updateThemeIcon(theme) {
     const icon = document.querySelector('#themeToggle i');
     const btn = document.querySelector('#themeToggle');
     const lang = getCurrentLanguage();
-    
+
     const labels = {
         tr: { light: 'Koyu Temaya Geç', dark: 'Aydınlık Temaya Geç' },
         en: { light: 'Switch to Dark Mode', dark: 'Switch to Light Mode' },
@@ -310,7 +321,7 @@ function updateThemeIcon(theme) {
         fr: { light: 'Passer en Mode Sombre', dark: 'Passer en Mode Clair' },
         ar: { light: 'التحول للوضع الداكن', dark: 'التحول للوضع الفاتح' }
     };
-    
+
     if (icon && btn) {
         if (theme === 'light') {
             icon.className = 'fas fa-moon';
@@ -334,7 +345,7 @@ function toggleMenu() {
 
 function initMobileMenu() {
     if (menuInitialized) return;
-    
+
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
         navLinks.querySelectorAll('a').forEach(link => {
@@ -350,23 +361,23 @@ function initMobileMenu() {
 function copyEmail() {
     const email = 'eslemnur-official@proton.me';
     const feedback = document.getElementById('copyFeedback');
-    
+
     if (!feedback) return;
-    
+
     navigator.clipboard.writeText(email).then(() => {
         feedback.style.opacity = '1';
-        
+
         const lang = document.documentElement.lang || 'tr';
-        
+
         const feedbackMessages = {
             en: 'Copied!',
             de: 'Kopiert!',
             fr: 'Copié!',
             ar: 'نُسِخَ!'
         };
-        
+
         feedback.textContent = feedbackMessages[lang] || 'Kopyalandı!';
-        
+
         setTimeout(() => {
             feedback.style.opacity = '0';
         }, 2000);
@@ -378,7 +389,7 @@ function copyEmail() {
         tempInput.select();
         document.execCommand('copy');
         document.body.removeChild(tempInput);
-        
+
         feedback.style.opacity = '1';
         setTimeout(() => {
             feedback.style.opacity = '0';
@@ -402,22 +413,22 @@ document.addEventListener('DOMContentLoaded', () => {
 function switchSkillTab(tabName) {
     const buttons = document.querySelectorAll('#skills .skill-tab-btn');
     const groups = document.querySelectorAll('#skills .skill-group');
-    
+
     buttons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    
+
     groups.forEach(group => {
         group.classList.add('hidden');
         group.style.display = 'none';
     });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    const targetBtn = Array.from(buttons).find(b => 
+    const targetBtn = Array.from(buttons).find(b =>
         b.getAttribute('onclick')?.includes(`'${tabName}'`)
     );
-    
+
     if (targetGroup && targetBtn) {
         targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
@@ -429,22 +440,22 @@ function switchSkillTab(tabName) {
 function switchProjectTab(tabName) {
     const buttons = document.querySelectorAll('#projects .project-tab-btn');
     const groups = document.querySelectorAll('#projects .project-group');
-    
+
     buttons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    
+
     groups.forEach(group => {
         group.classList.add('hidden');
         group.style.display = 'none';
     });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    const targetBtn = Array.from(buttons).find(b => 
+    const targetBtn = Array.from(buttons).find(b =>
         b.getAttribute('onclick')?.includes(`'${tabName}'`)
     );
-    
+
     if (targetGroup && targetBtn) {
         targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
@@ -457,22 +468,22 @@ function switchProjectTab(tabName) {
 function switchShopTab(tabName) {
     const buttons = document.querySelectorAll('#shop .shop-tab-btn');
     const groups = document.querySelectorAll('#shop .shop-group');
-    
+
     buttons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
     });
-    
+
     groups.forEach(group => {
         group.classList.add('hidden');
         group.style.display = 'none';
     });
 
     const targetGroup = document.getElementById('group-' + tabName);
-    const targetBtn = Array.from(buttons).find(b => 
+    const targetBtn = Array.from(buttons).find(b =>
         b.getAttribute('onclick')?.includes(`'${tabName}'`)
     );
-    
+
     if (targetGroup && targetBtn) {
         targetGroup.classList.remove('hidden');
         targetGroup.style.display = 'grid';
@@ -490,7 +501,7 @@ function toggleLangMenu() {
     }
 }
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const langDropdown = document.getElementById('langDropdown');
     if (langDropdown && !langDropdown.contains(e.target)) {
         langDropdown.classList.remove('active');
@@ -522,12 +533,12 @@ let scrollRevealInitialized = false;
 
 function initScrollReveal() {
     if (scrollRevealInitialized) return;
-    
+
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -536,11 +547,11 @@ function initScrollReveal() {
             }
         });
     }, observerOptions);
-    
+
     document.querySelectorAll('.project-card, .shop-card, .skill-card').forEach(card => {
         revealObserver.observe(card);
     });
-    
+
     scrollRevealInitialized = true;
 }
 
@@ -549,8 +560,9 @@ let navbarScrolled = false;
 
 function handleNavbarScroll() {
     const header = document.querySelector('header');
+    if (!header) return;
     const scrollPosition = window.scrollY;
-    
+
     if (scrollPosition > 50) {
         if (!navbarScrolled) {
             header.classList.add('scrolled');
@@ -564,36 +576,84 @@ function handleNavbarScroll() {
     }
 }
 
-// --- CONTACT FORM SUBMIT ---
+// --- CONTACT FORM SUBMIT (WEB3FORMS) ---
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
-    
+
     if (!contactForm) return;
-    
+
     const ui = getUiMessages();
-    
+    const feedbackDiv = document.getElementById('formFeedback');
+
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        const formData = new FormData(contactForm);
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
+
         submitBtn.disabled = true;
         submitBtn.textContent = ui.formSubmitting;
-        
+
+        // Honeypot spam kontrolü
+        const botCheck = contactForm.querySelector('input[name="botcheck"]');
+        if (botCheck && botCheck.checked) {
+            console.warn('Bot tespit edildi!');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            return;
+        }
+
         try {
-            await fetch('/', {
+            const formData = new FormData(contactForm);
+
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
+                headers: { 'Accept': 'application/json' },
+                body: formData
+                // Content-Type elle ayarlanmaz; tarayıcı multipart boundary'yi kendi ekler
             });
-            
-            showToast(ui.formSuccess, 'success');
-            contactForm.reset();
+
+            const result = await response.json();
+
+            if (result.success) {
+                if (feedbackDiv) {
+                    feedbackDiv.className = 'form-feedback success';
+                    feedbackDiv.style.display = 'block';
+                    feedbackDiv.textContent = '✅ ' + ui.formSuccess;
+                }
+
+                showToast(ui.formSuccess, 'success');
+                contactForm.reset();
+
+                // Form sıfırlandıktan sonra yıldızları da sıfırla
+                const ratingValue = document.getElementById('ratingValue');
+                const ratingText = document.getElementById('ratingText');
+                const stars = document.querySelectorAll('.star');
+                if (ratingValue) ratingValue.value = '0';
+                stars.forEach(s => s.classList.remove('active'));
+                if (ratingText) {
+                    const lang = getCurrentLanguage();
+                    const messages = ratingMessages[lang] || ratingMessages.tr;
+                    ratingText.textContent = messages[0];
+                }
+
+                setTimeout(() => {
+                    if (feedbackDiv) feedbackDiv.style.display = 'none';
+                }, 8000);
+            } else {
+                throw new Error(result.message || 'Gönderim başarısız');
+            }
+
         } catch (error) {
+            console.error('Form hatası:', error);
+
+            if (feedbackDiv) {
+                feedbackDiv.className = 'form-feedback error';
+                feedbackDiv.style.display = 'block';
+                feedbackDiv.textContent = '❌ ' + ui.formError;
+            }
+
             showToast(ui.formError, 'error');
-            console.error('Form error:', error);
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -618,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (savedProjectTab) {
-            const btn = Array.from(projectBtns).find(b => 
+            const btn = Array.from(projectBtns).find(b =>
                 b.getAttribute('onclick')?.includes(`'${savedProjectTab}'`)
             );
             const grp = document.getElementById('group-' + savedProjectTab);
@@ -629,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 grp.style.display = 'grid';
             }
         } else {
-            const defBtn = Array.from(projectBtns).find(b => 
+            const defBtn = Array.from(projectBtns).find(b =>
                 b.getAttribute('onclick')?.includes("'pdf'")
             );
             const defGrp = document.getElementById('group-pdf');
@@ -655,7 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lang = getCurrentLanguage();
     const defTab = defaultTabs[lang] || 'yetenekler';
-    const defSkillBtn = Array.from(skillBtns).find(b => 
+    const defSkillBtn = Array.from(skillBtns).find(b =>
         b.getAttribute('onclick')?.includes(`'${defTab}'`)
     );
     const defSkillGrp = document.getElementById('group-' + defTab);
@@ -694,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (savedShopTab) {
-            const btn = Array.from(shopBtns).find(b => 
+            const btn = Array.from(shopBtns).find(b =>
                 b.getAttribute('onclick')?.includes(`'${savedShopTab}'`)
             );
             const grp = document.getElementById('group-' + savedShopTab);
@@ -705,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 grp.style.display = 'grid';
             }
         } else {
-            const defBtn = Array.from(shopBtns).find(b => 
+            const defBtn = Array.from(shopBtns).find(b =>
                 b.getAttribute('onclick')?.includes("'PDF'")
             );
             const defGrp = document.getElementById('group-PDF');
@@ -728,13 +788,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initProgressBar();
     initContactForm();
-    
+
     // Navbar scroll effect
     window.addEventListener('scroll', handleNavbarScroll);
-    
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -745,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     console.log('✨ İlim ve Kod - Portal initialized successfully');
 });
 
@@ -762,9 +822,9 @@ window.addEventListener('error', (e) => {
 // --- CV Download Notification ---
 document.addEventListener('DOMContentLoaded', () => {
     const cvBtn = document.querySelector('.btn-cv');
-    
+
     if (cvBtn) {
-        cvBtn.addEventListener('click', (e) => {
+        cvBtn.addEventListener('click', () => {
             showToast(getUiMessages().cvOpening, 'info');
         });
     }

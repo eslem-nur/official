@@ -721,55 +721,69 @@
 </div> -->
             </div>
 
-            <!-- STAR RATING -->
-<div class="feedback-section">
-    <h3>Notez Mon Site Web</h3>
-    <div class="star-rating" id="starRating">
-        <span class="star" data-value="1" aria-label="1 étoile">★</span>
-        <span class="star" data-value="2" aria-label="2 étoiles">★</span>
-        <span class="star" data-value="3" aria-label="3 étoiles">★</span>
-        <span class="star" data-value="4" aria-label="4 étoiles">★</span>
-        <span class="star" data-value="5" aria-label="5 étoiles">★</span>
-    </div>
-    <p class="rating-text" id="ratingText">Vous n'avez pas encore noté</p>
-    <input type="hidden" name="rating" id="ratingValue" value="0">
-</div>
-<!----
+           <!-- FORMULAIRE DE CONTACT + ÉVALUATION PAR ÉTOILES (WEB3FORMS) -->
 <section id="contact-form-section" class="contact-section">
     <div class="container">
         <h2 class="section-title">Contact</h2>
-        <p class="section-description">Une question ? Vous pouvez me joindre via le formulaire ci-dessous.</p>
-        
-        <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="contact">
-            <p hidden><label>Ne pas remplir : <input name="bot-field"></label></p>
-            
+        <p class="section-description">Vous avez une question ? Vous pouvez me joindre via le formulaire ci-dessous.</p>
+
+        <form id="contactForm" class="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              novalidate>
+
+            <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
+            <input type="hidden" name="subject" value="Nouveau message du formulaire de contact">
+            <input type="hidden" name="from_name" value="Site Web d'Eslem Nur Çetin">
+
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                   style="display:none !important" aria-hidden="true">
+
             <div class="form-grid">
                 <div class="form-group">
                     <label for="contactName">Votre nom *</label>
-                    <input type="text" id="contactName" name="name" placeholder="Nom et prénom" required>
+                    <input type="text" id="contactName" name="name"
+                           placeholder="Prénom et Nom" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="contactEmail">E-mail *</label>
-                    <input type="email" id="contactEmail" name="email" placeholder="exemple@email.com" required>
+                    <input type="email" id="contactEmail" name="email"
+                           placeholder="exemple@email.com" required>
                 </div>
             </div>
-            
+
             <div class="form-group">
-                <label for="contactSubject">Objet *</label>
-                <input type="text" id="contactSubject" name="subject" placeholder="Objet de votre message" required>
+                <label for="contactSubject">Sujet *</label>
+                <input type="text" id="contactSubject" name="subject"
+                       placeholder="Sujet de votre message" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="contactMessage">Votre message *</label>
-                <textarea id="contactMessage" name="message" placeholder="Écrivez votre message ici..." rows="6" required></textarea>
+                <textarea id="contactMessage" name="message"
+                          placeholder="Écrivez votre message ici..." rows="6" required></textarea>
             </div>
-            
+
+            <div class="feedback-section">
+                <h3>Évaluez mon site web</h3>
+                <div class="star-rating" id="starRating" role="radiogroup" aria-label="Évaluation du site">
+                    <span class="star" data-value="1" role="radio" tabindex="0" aria-label="1 étoile">★</span>
+                    <span class="star" data-value="2" role="radio" tabindex="0" aria-label="2 étoiles">★</span>
+                    <span class="star" data-value="3" role="radio" tabindex="0" aria-label="3 étoiles">★</span>
+                    <span class="star" data-value="4" role="radio" tabindex="0" aria-label="4 étoiles">★</span>
+                    <span class="star" data-value="5" role="radio" tabindex="0" aria-label="5 étoiles">★</span>
+                </div>
+                <p class="rating-text" id="ratingText">Vous n'avez pas encore noté</p>
+                <input type="hidden" name="rating" id="ratingValue" value="0">
+            </div>
+
+            <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+
             <button type="submit" class="btn-primary">Envoyer</button>
         </form>
     </div>
-</section> -->
+</section>
 
             <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin. Tous droits réservés.</p>
             <p class="trademark-notice">

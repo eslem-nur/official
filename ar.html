@@ -721,55 +721,69 @@
 </div> -->
             </div>
 
-            <!-- STAR RATING -->
-<div class="feedback-section">
-    <h3>قيّم موقعي</h3>
-    <div class="star-rating" id="starRating">
-        <span class="star" data-value="1" aria-label="1 نجمة">★</span>
-        <span class="star" data-value="2" aria-label="2 نجوم">★</span>
-        <span class="star" data-value="3" aria-label="3 نجوم">★</span>
-        <span class="star" data-value="4" aria-label="4 نجوم">★</span>
-        <span class="star" data-value="5" aria-label="5 نجوم">★</span>
-    </div>
-    <p class="rating-text">لم يتم تقييم بعد</p>
-    <input type="hidden" name="rating" id="ratingValue" value="0">
-</div>
-<!----
+            <!-- نموذج الاتصال + تقييم بالنجوم (WEB3FORMS) -->
 <section id="contact-form-section" class="contact-section">
     <div class="container">
-        <h2 class="section-title">التواصل</h2>
-        <p class="section-description">هل لديك سؤال؟ يمكنك التواصل معي عبر النموذج أدناه.</p>
-        
-        <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="contact">
-            <p hidden><label>لا تملأ هذا الحقل: <input name="bot-field"></label></p>
-            
+        <h2 class="section-title">اتصل بي</h2>
+        <p class="section-description">هل لديك سؤال؟ يمكنك التواصل معي من خلال النموذج أدناه.</p>
+
+        <form id="contactForm" class="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              novalidate>
+
+            <input type="hidden" name="access_key" value="d0e701bb-d62f-4f73-b9eb-ae260cb02a14">
+            <input type="hidden" name="subject" value="رسالة جديدة من نموذج الاتصال">
+            <input type="hidden" name="from_name" value="موقع إسلم نور تشيتين">
+
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"
+                   style="display:none !important" aria-hidden="true">
+
             <div class="form-grid">
                 <div class="form-group">
-                    <label for="contactName">الاسم *</label>
-                    <input type="text" id="contactName" name="name" placeholder="الاسم الكامل" required>
+                    <label for="contactName">اسمك *</label>
+                    <input type="text" id="contactName" name="name"
+                           placeholder="الاسم الأول والعائلي" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="contactEmail">البريد الإلكتروني *</label>
-                    <input type="email" id="contactEmail" name="email" placeholder="example@email.com" required>
+                    <input type="email" id="contactEmail" name="email"
+                           placeholder="example@email.com" required>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="contactSubject">الموضوع *</label>
-                <input type="text" id="contactSubject" name="subject" placeholder="موضوع رسالتك" required>
+                <input type="text" id="contactSubject" name="subject"
+                       placeholder="موضوع رسالتك" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="contactMessage">رسالتك *</label>
-                <textarea id="contactMessage" name="message" placeholder="اكتب رسالتك هنا..." rows="6" required></textarea>
+                <textarea id="contactMessage" name="message"
+                          placeholder="اكتب رسالتك هنا..." rows="6" required></textarea>
             </div>
-            
+
+            <div class="feedback-section">
+                <h3>قيّم موقعي الإلكتروني</h3>
+                <div class="star-rating" id="starRating" role="radiogroup" aria-label="تقييم الموقع">
+                    <span class="star" data-value="1" role="radio" tabindex="0" aria-label="نجمة واحدة">★</span>
+                    <span class="star" data-value="2" role="radio" tabindex="0" aria-label="نجمتان">★</span>
+                    <span class="star" data-value="3" role="radio" tabindex="0" aria-label="ثلاث نجوم">★</span>
+                    <span class="star" data-value="4" role="radio" tabindex="0" aria-label="أربع نجوم">★</span>
+                    <span class="star" data-value="5" role="radio" tabindex="0" aria-label="خمس نجوم">★</span>
+                </div>
+                <p class="rating-text" id="ratingText">لم يتم التقييم بعد</p>
+                <input type="hidden" name="rating" id="ratingValue" value="0">
+            </div>
+
+            <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+
             <button type="submit" class="btn-primary">إرسال</button>
         </form>
     </div>
-</section> -->
+</section>
 
             <p class="copyright">© <span id="current-year"></span> أسلم نور تتين. جميع الحقوق محفوظة.</p>
             <p class="trademark-notice">
