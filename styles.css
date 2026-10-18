@@ -2095,7 +2095,7 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: clamp(4px, 1vw, 8px);
     direction: ltr;
     flex-wrap: nowrap;
     max-width: fit-content;
