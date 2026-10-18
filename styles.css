@@ -2336,18 +2336,38 @@ select {
         font-size: 1rem;
         margin-bottom: 10px;
     }
-  .star-rating,
-.contact-form .star-rating {
-   max-width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
     .feedback-section h3 {
         font-size: 0.95rem;
     }
-  .star-rating,
+}
+
+/* ============================================
+   YILDIZLAR TEK SIRA - TÜM EKRANLAR
+   ============================================ */
+
+.star-rating,
 .contact-form .star-rating {
-   max-width: 100%;
-  }
+    flex-wrap: nowrap !important;  
+    max-width: fit-content !important;
+    margin: 0 auto;
+    gap: 2px;
+}
+
+.star,
+.contact-form .star {
+    flex: 0 0 auto !important;     
+    width: auto !important;
+    min-width: 0 !important;       
+    line-height: 1;
+}
+
+
+@media (max-width: 360px) {
+    .star,
+    .contact-form .star {
+        font-size: 1.2rem !important;
+    }
 }
