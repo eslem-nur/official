@@ -267,7 +267,7 @@ const formTranslations = {
             agePlaceholder: 'Alter',
             roleLabel: 'Was beschreibt Sie am besten?',
             roleSelect: 'Auswählen',
-            roleIlimTalebesi: 'Wissenschaftsstudierender',
+            roleIlimTalebesi: 'Ilm Schüler/in',
             roleOgrenci: 'Schüler/in oder Student/in', 
             roleCalisan: 'Vollzeitbeschäftigter',
             roleVeli: 'Elternteil',
