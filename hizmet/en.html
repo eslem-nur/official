@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://eslem-nur.github.io/official/hizmet/en.html">
+
+    <!-- Hreflang Alternatives -->
+    <link rel="alternate" hreflang="tr" href="https://eslem-nur.github.io/official/hizmet/index.html">
+    <link rel="alternate" hreflang="en" href="https://eslem-nur.github.io/official/hizmet/en.html">
+    <link rel="alternate" hreflang="de" href="https://eslem-nur.github.io/official/hizmet/de.html">
+    <link rel="alternate" hreflang="fr" href="https://eslem-nur.github.io/official/hizmet/fr.html">
+    <link rel="alternate" hreflang="ar" href="https://eslem-nur.github.io/official/hizmet/ar.html">
+    <link rel="alternate" hreflang="x-default" href="https://eslem-nur.github.io/official/hizmet/en.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "My Services • Eslem Nur Çetin",
+        "url": "https://eslem-nur.github.io/official/hizmet/en.html",
+        "description": "Web design and frontend development services. A separate detail page for each service.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Eslem Nur Çetin",
+            "url": "https://eslem-nur.github.io/official/"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eslem-nur.github.io/official/en.html" },
+                { "@type": "ListItem", "position": 2, "name": "Services" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../page.css">
+
+    <title>My Services • Eslem Nur Çetin</title>
+    <meta name="description" content="Web design and frontend development services offered by Eslem Nur Çetin. Visit the service page for detailed information, packages and a quote.">
+    <meta name="keywords" content="Web Design Service, Frontend Development, HTML CSS JavaScript, Corporate Website, Portfolio, Eslem Nur Çetin">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="My Services • Eslem Nur Çetin">
+    <meta property="og:description" content="Web design and frontend development services. A separate detail page for each service.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
+    <meta property="og:url" content="https://eslem-nur.github.io/official/hizmet/en.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" as="style">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon-96x96.png" />
+    <link rel="manifest" href="/official/PWA/manifest/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon.svg" />
+    <link rel="shortcut icon" href="/official/PWA/icon/favicon.ico" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
+            .then(reg => console.log('Service Worker successfully registered!', reg.scope))
+            .catch(err => console.log('Service Worker registration failed:', err));
+        });
+      }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../en.html" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
+                <div class="nav-controls">
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Change Language">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </button>
+                        <div class="lang-dropdown-menu">
+                            <a href="../index.html">Türkçe</a>
+                            <a href="../en.html">󠁧󠁢󠁥󠁮󠁧󠁿 English</a>
+                            <a href="../de.html">Deutsch</a>
+                            <a href="../fr.html">Français</a>
+                            <a href="../ar.html">العربية</a>
+                        </div>
+                    </div>
+
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="hamburger" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="../en.html#about">About</a>
+                    <a href="../en.html#skills">Skills</a>
+                    <a href="../projeler/en.html">Projects</a>
+                    <a href="en.html" class="current" aria-current="page">Services</a>
+                    <a href="../shop/en.html">Shop</a>
+                    <a href="../en.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../en.html">Home</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Services</span>
+            </div>
+            <h1 class="page-title">My Services</h1>
+            <p class="page-subtitle">
+                An overview of the services I offer. Each service has its own detail page —
+                packages, process, sample work and the quote form are all there.
+            </p>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <div class="container">
+
+            <h2 class="section-title">Currently Available</h2>
+            <p class="section-description">
+                The service I currently offer. New services will be added over time.
+            </p>
+
+            <!-- ============================================================
+                 ACTIVE SERVICE — to add a new service, copy this block and
+                 change the title/description/link values.
+                 ============================================================ -->
+            <div class="card service-card-active">
+                <div class="service-card-body">
+                    <div class="icon-box">🖥️</div>
+                    <div class="service-card-text">
+                        <h3>Web Design &amp; Frontend Development</h3>
+                        <p>
+                            Corporate websites, portfolios, personal sites and JavaScript-based
+                            web applications. Not a ready-made template — written entirely from scratch
+                            according to your wishes, mobile-friendly and multilingual.
+                        </p>
+                        <div class="hero-badges service-card-badges">
+                            <span class="badge">HTML5</span>
+                            <span class="badge">CSS3</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">Responsive</span>
+                            <span class="badge">Multilingual</span>
+                        </div>
+                        <div class="hero-actions service-card-actions">
+                            <a href="web-tasarim-en.html" class="btn-primary">
+                                <i class="fas fa-arrow-right" style="margin-right: 8px;"></i>
+                                View Details
+                            </a>
+                            <a href="web-tasarim-en.html#order" class="btn-outline">
+                                <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                                Request a Quote
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 COMING SOON — placeholder examples. Delete them or replace
+                 with your own services. Once ready, convert to the active
+                 block format above and connect the link.
+                 ============================================================ -->
+            <h2 class="section-title" style="margin-top: var(--spacing-2xl);">Coming Soon</h2>
+            <p class="section-description">
+                Services I am working on or planning. They will become active here once ready.
+            </p>
+
+            <div class="projects-grid">
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Coming Soon</span>
+                        <div class="project-title">Logo &amp; Brand Identity</div>
+                        <p class="project-desc">
+                            Simple logo design, colour palette and typography set. A visual identity that harmonises with your website.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>In preparation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Coming Soon</span>
+                        <div class="project-title">Digital Template Design</div>
+                        <p class="project-desc">
+                            GoodNotes notebooks, PDF planners and note templates — tailored to your own brand.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>In preparation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Coming Soon</span>
+                        <div class="project-title">Maintenance &amp; Update Support</div>
+                        <p class="project-desc">
+                            Content updates, bug fixes and small improvements for your existing site.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>In preparation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PAGE CALL TO ACTION -->
+            <div class="page-cta">
+                <h3>Didn't find the service you were looking for?</h3>
+                <p>
+                    If you have a different project in mind, write to me — let us assess the scope together.
+                </p>
+                <div class="hero-actions">
+                    <a href="../en.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        Get in Touch
+                    </a>
+                    <a href="../projeler/en.html" class="btn-outline">
+                        <i class="fas fa-folder-open" style="margin-right: 8px;"></i>
+                        Browse My Projects
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+            <p class="footer-quote">Oh Allah, increase us in knowledge.</p>
+
+            <div class="social-links">
+                <a href="https://eslem-nur.github.io/Business-Card/index.html" target="_blank" rel="noopener noreferrer" class="social-link" title="Business-Card" aria-label="Business-Card">
+                    <i class="fa fa-vcard"></i>
+                </a>
+                <a href="https://www.freecodecamp.org/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="freeCodeCamp" aria-label="freeCodeCamp">
+                    <i class="fa-brands fa-free-code-camp"></i>
+                </a>
+            </div>
+
+            <div class="back-home-bar">
+                <a href="../en.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+
+            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin | Personal Portfolio. All rights reserved.</p>
+            <p class="trademark-notice">
+                <strong>Brands:</strong>
+                <span class="brand-badge">Eslem Nur Notes™</span>
+                <span class="separator">•</span>
+                <span class="brand-badge">Eslem Nur Kalligrafie™</span>
+            </p>
+
+            <p class="legal-links">
+                <a href="../legal/impressum-en.html" class="btn-outline">Imprint</a>
+                <span class="dot">•</span>
+                <a href="../legal/datenschutz-en.html" class="btn-outline">Privacy Policy</a>
+            </p>
+
+            <p class="legal-note">™ indicates an unregistered trademark. Personal branding project • Germany</p>
+        </div>
+
+        <!-- Ko-fi Widget -->
+        <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+        <script>
+            kofiWidgetOverlay.draw('eslemnur_notes', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Support',
+                'floating-chat.donateButton.background-color': '#D4A5A5',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
+        </script>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>

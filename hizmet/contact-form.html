@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-en.html">
+
+    <!-- Hreflang Alternatives -->
+    <link rel="alternate" hreflang="tr" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu.html">
+    <link rel="alternate" hreflang="en" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-en.html">
+    <link rel="alternate" hreflang="de" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-de.html">
+    <link rel="alternate" hreflang="fr" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-fr.html">
+    <link rel="alternate" hreflang="ar" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-ar.html">
+    <link rel="alternate" hreflang="x-default" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu-en.html">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../page.css">
+
+    <title>Request a Quote • Services</title>
+    <meta name="description" content="Describe your project and receive a quote within 24 hours. Web design and frontend development by Eslem Nur Çetin.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Request a Quote • Services">
+    <meta property="og:description" content="Describe your project and receive a quote within 24 hours.">
+    <meta property="og:url" content="https://eslem-nur.github.io/official/hizmet/iletisim-formu-en.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- PWA & Fonts (same pattern) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../en.html" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
+                <div class="nav-links">
+                    <a href="../en.html">Home</a>
+                    <a href="en.html">Services</a>
+                    <a href="../en.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../en.html">Home</a>
+                <span class="sep">/</span>
+                <a href="en.html">Services</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Request a Quote</span>
+            </div>
+            <h1 class="page-title">Tell Me About Your Project</h1>
+            <p class="page-subtitle">
+                Write what kind of website you have in mind — I'll get back to you within 24 hours.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <form id="orderForm" class="order-form" action="https://api.web3forms.com/submit" method="POST">
+
+                <input type="hidden" name="access_key" value="BURAYA-KENDİ-ACCESS-KEYINI-YAZ">
+                <input type="hidden" name="subject" value="New Website Order">
+                <input type="hidden" name="from_name" value="Ilm and Code Order Form">
+                <input type="checkbox" name="botcheck" tabindex="-1" style="display:none !important" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="orderName">Your Name *</label>
+                        <input type="text" id="orderName" name="name" placeholder="First and last name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderEmail">Email *</label>
+                        <input type="email" id="orderEmail" name="email" placeholder="example@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderType">What kind of site are you looking for? *</label>
+                    <select id="orderType" name="site_type" required>
+                        <option value="">Please select</option>
+                        <option value="kurumsal">Corporate / Multi-page Site</option>
+                        <option value="portfolyo">Portfolio / Personal Site</option>
+                        <option value="islami">Website with Islamic Content</option>
+                        <option value="uygulama">Web Application</option>
+                        <option value="bilmiyorum">I'm not sure yet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderDetails">Describe the site you have in mind *</label>
+                    <textarea id="orderDetails" name="details" rows="8"
+                              placeholder="E.g.: We run a small bakery. I'd like an elegant site showing our menu, photos and location. Something in soft pink tones..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">
+                    <i class="fas fa-paper-plane"></i> Send Quote Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="back-home-bar">
+                <a href="en.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Services
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>
