@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://eslem-nur.github.io/official/hizmet/iletisim-formu.html">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../page.css">
+
+    <title>Teklif İste • Hizmetler</title>
+
+    <!-- PWA & Fontlar (aynı kalıbı kullan) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
+                <div class="nav-links">
+                    <a href="../index.html">Ana Sayfa</a>
+                    <a href="index.html">Hizmetler</a>
+                    <a href="../index.html#contact">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Ana Sayfa</a>
+                <span class="sep">/</span>
+                <a href="index.html">Hizmetler</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Teklif İste</span>
+            </div>
+            <h1 class="page-title">Projeni Anlat</h1>
+            <p class="page-subtitle">
+                Nasıl bir website istediğini yaz — 24 saat içinde dönüş yaparım.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <form id="orderForm" class="order-form" action="https://api.web3forms.com/submit" method="POST">
+                
+                <input type="hidden" name="access_key" value="BURAYA-KENDİ-ACCESS-KEYINI-YAZ">
+                <input type="hidden" name="subject" value="Yeni Website Siparişi">
+                <input type="hidden" name="from_name" value="İlim ve Kod Sipariş Formu">
+                <input type="checkbox" name="botcheck" tabindex="-1" style="display:none !important" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="orderName">Adınız *</label>
+                        <input type="text" id="orderName" name="name" placeholder="Adınız Soyadınız" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderEmail">E-posta *</label>
+                        <input type="email" id="orderEmail" name="email" placeholder="ornek@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderType">Nasıl bir site istiyorsunuz? *</label>
+                    <select id="orderType" name="site_type" required>
+                        <option value="">Seçiniz</option>
+                        <option value="kurumsal">Kurumsal / Çoklu Sayfa Site</option>
+                        <option value="portfolyo">Portfolyo / Kişisel Site</option>
+                        <option value="islami">İslami İçerikli Site</option>
+                        <option value="uygulama">Web Uygulaması</option>
+                        <option value="bilmiyorum">Henüz emin değilim</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderDetails">Hayalindeki siteyi tarif et *</label>
+                    <textarea id="orderDetails" name="details" rows="8"
+                              placeholder="Örn: Küçük bir pastanemiz var. Menümüzü, fotoğraflarımızı ve konumumuzu gösteren şık bir site istiyorum. Renk olarak pembemsi tonlar olsun..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">
+                    <i class="fas fa-paper-plane"></i> Teklif İsteği Gönder
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="back-home-bar">
+                <a href="index.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Hizmetlere Dön
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://eslem-nur.github.io/official/hizmet/index.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Hizmetlerim • Eslem Nur Çetin",
+        "url": "https://eslem-nur.github.io/official/hizmet/index.html",
+        "description": "Web tasarım ve frontend geliştirme hizmetleri. Her hizmet için ayrı detay sayfası.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Eslem Nur Çetin",
+            "url": "https://eslem-nur.github.io/official/"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://eslem-nur.github.io/official/index.html" },
+                { "@type": "ListItem", "position": 2, "name": "Hizmetler" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../page.css">
+
+    <title>Hizmetlerim • Eslem Nur Çetin</title>
+    <meta name="description" content="Eslem Nur Çetin'in sunduğu web tasarım ve frontend geliştirme hizmetleri. Detaylı bilgi, paketler ve teklif için hizmet sayfasına geçin.">
+    <meta name="keywords" content="Web Tasarım Hizmeti, Frontend Geliştirme, HTML CSS JavaScript, Kurumsal Site, Portfolyo, Eslem Nur Çetin">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Hizmetlerim • Eslem Nur Çetin">
+    <meta property="og:description" content="Web tasarım ve frontend geliştirme hizmetleri. Her hizmet için ayrı detay sayfası.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
+    <meta property="og:url" content="https://eslem-nur.github.io/official/hizmet/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" as="style">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon-96x96.png" />
+    <link rel="manifest" href="/official/PWA/manifest/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon.svg" />
+    <link rel="shortcut icon" href="/official/PWA/icon/favicon.ico" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
+            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+        });
+      }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVIGASYON -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo"><span>بسم الله</span> Eslem Nur Çetin</a>
+                <div class="nav-controls">
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Dili Değiştir">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </button>
+                        <div class="lang-dropdown-menu">
+                            <a href="../index.html">Türkçe</a>
+                            <a href="../en.html">English</a>
+                            <a href="../de.html">Deutsch</a>
+                            <a href="../fr.html">Français</a>
+                            <a href="../ar.html">العربية</a>
+                        </div>
+                    </div>
+
+                    <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+
+                    <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="../index.html#about">Hakkımda</a>
+                    <a href="../index.html#skills">Yetenekler</a>
+                    <a href="../projeler/index.html">Projeler</a>
+                    <a href="index.html" class="current" aria-current="page">Hizmetler</a>
+                    <a href="../shop/index.html">Shop</a>
+                    <a href="../index.html#contact">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SAYFA BAŞLIĞI -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Ana Sayfa</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Hizmetler</span>
+            </div>
+            <h1 class="page-title">Hizmetlerim</h1>
+            <p class="page-subtitle">
+                Sunduğum hizmetlerin genel görünümü. Her hizmetin kendi detay sayfası vardır —
+                paketler, süreç, örnek çalışmalar ve teklif formu orada yer alır.
+            </p>
+        </div>
+    </section>
+
+    <!-- HİZMETLER -->
+    <section id="services" class="section">
+        <div class="container">
+
+            <h2 class="section-title">Aktif Hizmetler</h2>
+            <p class="section-description">
+                Şu anda sunduğum hizmet. Zamanla yeni hizmetler eklenecek.
+            </p>
+
+            <!-- ============================================================
+                 AKTİF HİZMET — yeni hizmet eklemek için bu bloğu kopyalayın,
+                 başlık/açıklama/link değerlerini değiştirin.
+                 ============================================================ -->
+            <div class="card service-card-active">
+                <div class="service-card-body">
+                    <div class="icon-box">🖥️</div>
+                    <div class="service-card-text">
+                        <h3>Web Tasarım &amp; Frontend Geliştirme</h3>
+                        <p>
+                            Kurumsal siteler, portfolyolar, kişisel websiteleri ve JavaScript tabanlı
+                            web uygulamaları. Hazır şablon değil — tamamen sizin isteğinize göre,
+                            sıfırdan yazılmış, mobil uyumlu ve çok dilli siteler.
+                        </p>
+                        <div class="hero-badges service-card-badges">
+                            <span class="badge">HTML5</span>
+                            <span class="badge">CSS3</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">Responsive</span>
+                            <span class="badge">Çok Dilli</span>
+                        </div>
+                        <div class="hero-actions service-card-actions">
+                            <a href="web-tasarim.html" class="btn-primary">
+                                <i class="fas fa-arrow-right" style="margin-right: 8px;"></i>
+                                Detayları Gör
+                            </a>
+                            <a href="web-tasarim.html#order" class="btn-outline">
+                                <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                                Teklif İste
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 YAKINDA — örnek yer tutucular. Silin veya kendi hizmetlerinizle
+                 değiştirin. Hazır olduğunda yukarıdaki aktif blok formatına
+                 çevirip linkini bağlayın.
+                 ============================================================ -->
+            <h2 class="section-title" style="margin-top: var(--spacing-2xl);">Yakında</h2>
+            <p class="section-description">
+                Üzerinde çalıştığım veya planladığım hizmetler. Hazır olduklarında burada aktif olacaklar.
+            </p>
+
+            <div class="projects-grid">
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Yakında</span>
+                        <div class="project-title">Logo &amp; Marka Kimliği</div>
+                        <p class="project-desc">
+                            Basit logo tasarımı, renk paleti ve tipografi seti. Web sitesiyle uyumlu görsel kimlik.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>Hazırlanıyor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Yakında</span>
+                        <div class="project-title">Dijital Şablon Tasarımı</div>
+                        <p class="project-desc">
+                            GoodNotes defterleri, PDF planlayıcılar ve not şablonları — sizin markanıza özel.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>Hazırlanıyor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card service-soon">
+                    <div class="project-content">
+                        <span class="soon-badge">Yakında</span>
+                        <div class="project-title">Bakım &amp; Güncelleme Desteği</div>
+                        <p class="project-desc">
+                            Mevcut sitenizin içerik güncellemesi, hata düzeltmesi ve küçük iyileştirmeleri.
+                        </p>
+                        <div class="repo-link">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>Hazırlanıyor</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SAYFA SONU ÇAĞRI -->
+            <div class="page-cta">
+                <h3>Aradığınız hizmeti bulamadınız mı?</h3>
+                <p>
+                    Aklınızda farklı bir proje varsa yazın — kapsamı birlikte değerlendirelim.
+                </p>
+                <div class="hero-actions">
+                    <a href="../index.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        İletişime Geç
+                    </a>
+                    <a href="../projeler/index.html" class="btn-outline">
+                        <i class="fas fa-folder-open" style="margin-right: 8px;"></i>
+                        Projelerime Bak
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+            <p class="footer-quote">Rabbim, ilmimizi arttır.</p>
+
+            <div class="social-links">
+                <a href="https://eslem-nur.github.io/Business-Card/index.html" target="_blank" rel="noopener noreferrer" class="social-link" title="Business-Card" aria-label="Business-Card">
+                    <i class="fa fa-vcard"></i>
+                </a>
+                <a href="https://www.freecodecamp.org/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="freeCodeCamp" aria-label="freeCodeCamp">
+                    <i class="fa-brands fa-free-code-camp"></i>
+                </a>
+            </div>
+
+            <div class="back-home-bar">
+                <a href="../index.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+            </div>
+
+            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin | Kişisel Portfolyo. Tüm hakları saklıdır.</p>
+            <p class="trademark-notice">
+                <strong>Markalar:</strong>
+                <span class="brand-badge">Eslem Nur Notes™</span>
+                <span class="separator">•</span>
+                <span class="brand-badge">Eslem Nur Kalligrafie™</span>
+            </p>
+
+            <p class="legal-links">
+                <a href="../legal/impressum.html" class="btn-outline">Impressum</a>
+                <span class="dot">•</span>
+                <a href="../legal/datenschutz.html" class="btn-outline">Datenschutz</a>
+            </p>
+
+            <p class="legal-note">™ tescilsiz ticari marka anlamına gelir. Kişisel marka projesi • Almanya</p>
+        </div>
+
+        <!-- Ko-fi Widget -->
+        <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+        <script>
+            kofiWidgetOverlay.draw('eslemnur_notes', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Destekle',
+                'floating-chat.donateButton.background-color': '#D4A5A5',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
+        </script>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>
