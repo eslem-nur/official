@@ -72,6 +72,37 @@ faqItems.forEach(item => {
     });
 });
 
+/* ============================================
+   TEMA DEĞİŞTİRİCİ
+   ============================================ */
+
+(function () {
+    var toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    var icon = toggle.querySelector('i');
+
+    function sync(theme) {
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        toggle.setAttribute('aria-label',
+            theme === 'dark' ? 'Açık moda geç' : 'Koyu moda geç');
+    }
+
+    // Sayfa açılışında ikonu doğru ayarla
+    sync(document.documentElement.getAttribute('data-theme') || 'light');
+
+    toggle.addEventListener('click', function () {
+        var now = document.documentElement.getAttribute('data-theme');
+        var next = now === 'dark' ? 'light' : 'dark';
+
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        sync(next);
+    });
+})();
+
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
@@ -82,7 +113,7 @@ if (hamburger && navLinks) {
     });
 }
 
-// Scroll Reveal Animation — observer tanımlaması ÖNCE yapılıyor
+// Scroll Reveal Animation — observer tanımlaması 
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -97,7 +128,6 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Şimdi güvenle observe edebiliriz
 document.querySelectorAll('.feature-card, .step-item, .pricing-card, .testimonial-card, .example-card, .single-payment').forEach(el => {
     el.classList.add('reveal-on-scroll');
     revealObserver.observe(el);
