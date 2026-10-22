@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nur Kartları | Eslem Nur Çetin</title>
+  <meta name="author" content="Eslem Nur Çetin">
+  <meta name="description" content="Hicri takvimin on iki ayı — ana site tasarım diliyle hazırlanmış bilgi kartları.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+   NUR KARTLARI — Hicri Takvim
+   Ana Site Design System Uyarlanmış
+   ============================================ */
+
+/* --------------------------------------------
+   1. ROOT VARIABLES
+   -------------------------------------------- */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+    
+    --secondary-color: #FDF5E6;
+    --accent-color: #9E7F7F;
+    --accent-warm: #E6C9C9;
+    
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+    
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+    
+    --border-color: #F0E6E6;
+    --divider: #F5E8E8;
+    
+    --shadow-sm: 0 2px 8px rgba(183, 110, 121, 0.1);
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+    --shadow-lg: 0 8px 25px rgba(183, 110, 121, 0.2);
+    
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* --------------------------------------------
+   2. BASE RESET
+   -------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Arabic Font */
+.arabic {
+    font-family: 'Scheherazade New', serif;
+    direction: rtl;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --------------------------------------------
+   3. PAGE HEADER
+   -------------------------------------------- */
+
+.page-header {
+    text-align: center;
+    padding: clamp(40px, 6vw, 60px) var(--spacing-lg);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-header .bismillah {
+    font-family: 'Scheherazade New', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.page-header h1 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-header > p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------
+   4. CARD CONTAINER
+   -------------------------------------------- */
+
+#playing-cards {
+    display: flex;
+    justify-content: center;
+    gap: clamp(16px, 3vw, 24px);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* --------------------------------------------
+   5. CARD STYLES
+   -------------------------------------------- */
+
+.card {
+    background: var(--card-bg);
+    width: clamp(160px, 28vw, 200px);
+    min-height: 280px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: all var(--transition-base);
+    cursor: default;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+}
+
+/* Corner elements */
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.left {
+    align-self: flex-start;
+    text-align: left;
+}
+
+.right {
+    align-self: flex-end;
+    text-align: right;
+    transform: rotate(180deg);
+}
+
+.num {
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+}
+
+.glyph {
+    color: var(--accent-color);
+}
+
+/* Center content */
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    flex: 1;
+}
+
+.arabic {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.latin {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: var(--spacing-xs) 0;
+}
+
+.note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-top: var(--spacing-xs);
+}
+
+/* Special card types */
+.card.sacred {
+    border-color: var(--primary-color);
+    border-width: 3px;
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-secondary) 100%); 
+}
+
+.card.sacred .glyph {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.card.ramadan {
+    border-color: var(--primary-color);
+    border-width: 3px;
+    background: linear-gradient(135deg, var(--card-bg) 0%, #F5F5DC 100%);
+    box-shadow: var(--shadow-md);
+}
+
+.card.ramadan .glyph {
+    color: #6B4F4F;
+    font-size: 2rem;
+}
+
+/* --------------------------------------------
+   6. LEGEND / FOOTER
+   -------------------------------------------- */
+
+.legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.legend-item .glyph {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.legend-item + .legend-item {
+    position: relative;
+    padding-left: var(--spacing-lg);
+}
+
+.legend-item + .legend-item::before {
+    content: '|';
+    position: absolute;
+    left: 0;
+    color: var(--divider);
+}
+
+/* --------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------- */
+
+@media (max-width: 768px) {
+    .card {
+        width: clamp(140px, 40vw, 160px);
+        min-height: 240px;
+        padding: var(--spacing-sm);
+    }
+    
+    .page-header {
+        padding: var(--spacing-lg);
+    }
+    
+    .page-header .bismillah {
+        font-size: 1.4rem;
+    }
+    
+    .legend {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+    
+    .legend-item + .legend-item {
+        padding-left: 0;
+        padding-top: var(--spacing-md);
+    }
+    
+    .legend-item + .legend-item::before {
+        content: '';
+        width: 1px;
+        height: 12px;
+        left: 50%;
+        top: 0;
+        bottom: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 120px;
+        min-height: 200px;
+        padding: 8px;
+    }
+    
+    .arabic {
+        font-size: 1.2rem;
+    }
+    
+    .latin {
+        font-size: 0.95rem;
+    }
+    
+    .num {
+        font-size: 1rem;
+    }
+    
+    .left, .right {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   ETKİLEŞİM KATMANI STİLLERİ
+   ============================================ */
+
+/* Bugünün hicri tarihi */
+.hijri-today {
+    margin-top: var(--spacing-md);
+    padding: 10px 18px;
+    display: inline-block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.hijri-today strong {
+    color: var(--primary-color);
+}
+
+/* Bu ay rozeti */
+.current-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.card.is-current {
+    border-color: var(--primary-color);
+    border-width: 3px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Filtre çubuğu */
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 760px;
+    margin: 0 auto var(--spacing-md);
+    padding: 0 var(--spacing-lg);
+}
+
+.filter-btn {
+    font-family: inherit;
+    font-size: 0.88rem;
+    padding: 9px 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 30px;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.filter-btn.is-active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Gizlenen kart */
+.card.is-hidden {
+    display: none;
+}
+
+/* Rastgele butonu */
+.random-btn {
+    display: block;
+    margin: var(--spacing-lg) auto 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 13px 28px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.random-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Kart tıklanabilir olduğunda */
+.js-enabled .card {
+    cursor: pointer;
+}
+
+.js-enabled .card:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 4px;
+}
+
+/* Detay penceresi */
+.detail-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: rgba(78, 52, 46, 0.45);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+}
+
+.detail-overlay.is-open {
+    opacity: 1;
+}
+
+.detail-panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+    text-align: center;
+    transform: translateY(16px) scale(0.97);
+    transition: transform 0.22s ease;
+}
+
+.detail-overlay.is-open .detail-panel {
+    transform: translateY(0) scale(1);
+}
+
+.detail-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.detail-close:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.detail-badge {
+    display: inline-block;
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.detail-arabic {
+    display: block;
+    font-family: 'Scheherazade New', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.detail-panel h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.detail-lead {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.detail-facts {
+    list-style: none;
+    text-align: left;
+    border-top: 1px solid var(--divider);
+    padding-top: var(--spacing-md);
+}
+
+.detail-facts li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+}
+
+.detail-facts li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--primary-light);
+    font-size: 0.7rem;
+    top: 4px;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Scroll animasyonu */
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.js-enabled .card.reveal {
+    opacity: 0;
+}
+
+.js-enabled .card.reveal.is-visible {
+    animation: cardIn 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js-enabled .card.reveal {
+        opacity: 1;
+    }
+    .js-enabled .card.reveal.is-visible {
+        animation: none;
+    }
+    .detail-overlay,
+    .detail-panel {
+        transition: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-panel {
+        padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm);
+    }
+    .detail-arabic {
+        font-size: 1.8rem;
+    }
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+    }
+}
+
+/* .detail-overlay kuralının HEMEN ALTINA */
+.detail-overlay[hidden] {
+    display: none;
+}
+
+/* ============================================
+   COPYRIGHT STILI (Opsiyonel)
+   ============================================ */
+
+#copyright-year {
+  font-weight: 600;
+  color: var(--primary-color, #A06872);
+}
+
+/* Footer içindeyse */
+.site-footer .copyright-line {
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid var(--border-color, #F0E6E6);
+  color: var(--text-muted, #A89080);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0 0 8px 0;
+}
+    </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <span class="bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+    <h1>Nur Kartları</h1>
+    <p>Hicri takvimin on iki ayı. Her kart bir ayı, Arapça adını ve o aya dair bir hatırlatmayı taşır.</p>
+  </header>
+
+  <main id="playing-cards">
+
+    <!-- 1 · MUHARREM (saygın ay) -->
+    <article class="card sacred">
+      <div class="left" aria-hidden="true">
+        <span class="num">1</span>
+        <span class="glyph">✦</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">مُحَرَّم</span>
+        <h2 class="latin">Muharrem</h2>
+        <span class="note">Aşure · 10. gün</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">1</span>
+        <span class="glyph">✦</span>
+      </div>
+      <span class="sr-only">Hicri yılın ilk ayı. Saygın (haram) aylardan biridir.</span>
+    </article>
+
+    <!-- 2 · SAFER -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">2</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">صَفَر</span>
+        <h2 class="latin">Safer</h2>
+        <span class="note">Hicri yılın 2. ayı</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">2</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 3 · REBÎÜLEVVEL -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">3</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">رَبيع الأَوَّل</span>
+        <h2 class="latin">Rebîülevvel</h2>
+        <span class="note">Mevlid · 12. gün</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">3</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 4 · REBÎÜLÂHİR -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">4</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">رَبيع الآخِر</span>
+        <h2 class="latin">Rebîülâhir</h2>
+        <span class="note">Hicri yılın 4. ayı</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">4</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 5 · CEMÂZİYELEVVEL -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">5</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">جُمادى الأولى</span>
+        <h2 class="latin">Cemâziyelevvel</h2>
+        <span class="note">Hicri yılın 5. ayı</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">5</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 6 · CEMÂZİYELÂHİR -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">6</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">جُمادى الآخِرة</span>
+        <h2 class="latin">Cemâziyelâhir</h2>
+        <span class="note">Hicri yılın 6. ayı</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">6</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 7 · RECEP (saygın ay) -->
+    <article class="card sacred">
+      <div class="left" aria-hidden="true">
+        <span class="num">7</span>
+        <span class="glyph">✦</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">رَجَب</span>
+        <h2 class="latin">Recep</h2>
+        <span class="note">Regâib · Mi'râc 27.</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">7</span>
+        <span class="glyph">✦</span>
+      </div>
+      <span class="sr-only">Hicri yılın yedinci ayı. Saygın (haram) aylardan biridir.</span>
+    </article>
+
+    <!-- 8 · ŞABAN -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">8</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">شَعْبان</span>
+        <h2 class="latin">Şaban</h2>
+        <span class="note">Berat · 15. gün</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">8</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 9 · RAMAZAN (özel) -->
+    <article class="card ramadan">
+      <div class="left" aria-hidden="true">
+        <span class="num">9</span>
+        <span class="glyph">☾</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">رَمَضان</span>
+        <h2 class="latin">Ramazan</h2>
+        <span class="note">Oruç · Kadir Gecesi</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">9</span>
+        <span class="glyph">☾</span>
+      </div>
+      <span class="sr-only">Hicri yılın dokuzuncu ayı. Oruç ayıdır.</span>
+    </article>
+
+    <!-- 10 · ŞEVVAL -->
+    <article class="card">
+      <div class="left" aria-hidden="true">
+        <span class="num">10</span>
+        <span class="glyph">❁</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">شَوّال</span>
+        <h2 class="latin">Şevval</h2>
+        <span class="note">Bayram · 1. gün</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">10</span>
+        <span class="glyph">❁</span>
+      </div>
+    </article>
+
+    <!-- 11 · ZİLKADE (saygın ay) -->
+    <article class="card sacred">
+      <div class="left" aria-hidden="true">
+        <span class="num">11</span>
+        <span class="glyph">✦</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">ذو القِعْدة</span>
+        <h2 class="latin">Zilkade</h2>
+        <span class="note">Hac aylarının ilki</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">11</span>
+        <span class="glyph">✦</span>
+      </div>
+      <span class="sr-only">Hicri yılın on birinci ayı. Saygın (haram) aylardan biridir.</span>
+    </article>
+
+    <!-- 12 · ZİLHİCCE (saygın ay) -->
+    <article class="card sacred">
+      <div class="left" aria-hidden="true">
+        <span class="num">12</span>
+        <span class="glyph">✦</span>
+      </div>
+      <div class="middle">
+        <span class="arabic" lang="ar" dir="rtl">ذو الحِجّة</span>
+        <h2 class="latin">Zilhicce</h2>
+        <span class="note">Kurban · 10. gün · Hac</span>
+      </div>
+      <div class="right" aria-hidden="true">
+        <span class="num">12</span>
+        <span class="glyph">✦</span>
+      </div>
+      <span class="sr-only">Hicri yılın on ikinci ayı. Saygın (haram) aylardan biridir.</span>
+    </article>
+
+  </main>
+
+
+  <footer class="legend">
+    <span class="legend-item"><span class="glyph">✦</span> Saygın (Haram) aylar</span>
+    <span class="legend-item"><span class="glyph">❁</span> Diğer aylar</span>
+    <span class="legend-item"><span class="glyph">☾</span> Ramazan</span>
+    <p class="legend-item">&copy; <span id="copyright-year"></span> Eslem Nur Çetin. Tüm hakları saklıdır.</p>
+
+<script>
+  // Otomatik yıl güncelleme
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+</script>
+  </footer>
+
+  <script>
+    /* ============================================
+   NUR KARTLARI — Etkileşim Katmanı (v2)
+   Düzeltilmiş versiyon
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  // Hata yakalama
+  window.addEventListener('error', function (e) {
+    console.error('[Nur Kartları] JS hatası:', e.message);
+  });
+
+  // DOM yüklendikten sonra başlat
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 10);
+  }
+
+  function init() {
+    console.log('[Nur Kartları] Başlatılıyor...');
+    document.documentElement.classList.add('js-enabled');
+
+    const cards = document.querySelectorAll('.card');
+    if (!cards.length) {
+      console.warn('[Nur Kartları] Hiç .card elementi bulunamadı!');
+      return;
+    }
+
+    console.log('[Nur Kartları] ' + cards.length + ' kart bulundu.');
+
+    try {
+      buildOverlay();
+      initTodayHighlight(cards);
+      initCardClicks(cards);
+      initFilters(cards);
+      initRandomButton(cards);
+      initReveal(cards);
+      console.log('[Nur Kartları] Başarılı!');
+    } catch (err) {
+      console.error('[Nur Kartları] Başlatma hatası:', err);
+    }
+  }
+
+  /* ------------------------------------------
+     AY VERİSİ (Değişmedi)
+     ------------------------------------------ */
+
+  const MONTHS = {
+    1: {
+      latin: 'Muharrem',
+      arabic: 'مُحَرَّم',
+      type: 'sacred',
+      badge: 'Saygın ay',
+      lead: 'Hicri yılın ilk ayı ve dört saygın aydan biridir.',
+      facts: [
+        'Hicri takvimin başlangıç ayıdır.',
+        'Aşure günü 10 Muharrem\'e denk gelir.',
+        'Hicri yıl hesabı, Hz. Peygamber\'in Mekke\'den Medine\'ye hicretini esas alır.'
+      ]
+    },
+    2: {
+      latin: 'Safer',
+      arabic: 'صَفَر',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın ikinci ayıdır.',
+      facts: [
+        'Cahiliye döneminde uğursuz sayılırdı; İslam bu anlayışı reddetmiştir.',
+        'Haram aylardan biri değildir.',
+        'Hacamat ve umre gibi uygulamalar için özel bir ay değildir.'
+      ]
+    },
+    3: {
+      latin: 'Rebîülevvel',
+      arabic: 'رَبيع الأَوَّل',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın üçüncü ayıdır.',
+      facts: [
+        'Mevlid Kandili, 12 Rebîülevvel gecesine denk gelir.',
+        'Hz. Peygamber\'in doğumu bu ayda kutlanır.',
+        'Doğumun tam günü konusunda tarihçiler arasında farklı görüşler vardır.'
+      ]
+    },
+    4: {
+      latin: 'Rebîülâhir',
+      arabic: 'رَبيع الآخِر',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın dördüncü ayıdır.',
+      facts: [
+        'Rebîülevvel\'in ardından gelir.',
+        'Haram aylardan biri değildir.',
+        'Özel bir ibadet günü bulunmaz.'
+      ]
+    },
+    5: {
+      latin: 'Cemâziyelevvel',
+      arabic: 'جُمادى الأولى',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın beşinci ayıdır.',
+      facts: [
+        'Adı, Arapça "donmak" anlamındaki cemâzâ kökünden gelir.',
+        'Haram aylardan biri değildir.',
+        'İslam öncesi Arap toplumunda da kullanılan bir ay adıdır.'
+      ]
+    },
+    6: {
+      latin: 'Cemâziyelâhir',
+      arabic: 'جُمادى الآخِرة',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın altıncı ayıdır.',
+      facts: [
+        'Cemâziyelevvel\'in ardından gelir.',
+        'Haram aylardan biri değildir.',
+        'Hicri yılın ilk yarısını bu ayla tamamlar.'
+      ]
+    },
+    7: {
+      latin: 'Recep',
+      arabic: 'رَجَب',
+      type: 'sacred',
+      badge: 'Saygın ay',
+      lead: 'Hicri yılın yedinci ayı ve dört saygın aydan biridir.',
+      facts: [
+        'Haram aylardan biri olarak kabul edilir.',
+        'Mi\'râc Kandili 27 Recep gecesine denk gelir.',
+        'Üç ayların ilkidir (Recep, Şaban, Ramazan).'
+      ]
+    },
+    8: {
+      latin: 'Şaban',
+      arabic: 'شَعْбан',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın sekizinci ayı ve Ramazan\'a hazırlık ayıdır.',
+      facts: [
+        'Üç ayların ikincisidir.',
+        'Berat Kandili, halk arasında 15 Şaban gecesi olarak anılır.',
+        'Bu geceye özel ibadetlerin hükmü konusunda âlimler arasında farklı görüşler vardır.',
+        'Hz. Peygamber\'in bu ayda çok oruç tuttuğu rivayet edilir.'
+      ]
+    },
+    9: {
+      latin: 'Ramazan',
+      arabic: 'رَمَضان',
+      type: 'ramadan',
+      badge: 'Oruç ayı',
+      lead: 'Hicri yılın dokuzuncu ayı ve oruç ayıdır.',
+      facts: [
+        'Kur\'an\'ın indirilmeye başlandığı aydır.',
+        'Kadir Gecesi, son on gecenin içinde aranır; yaygın kanaat 27. gecedir.',
+        'Oruç, bu ayın farz ibadetidir.'
+      ]
+    },
+    10: {
+      latin: 'Şevval',
+      arabic: 'شَوّال',
+      type: 'regular',
+      badge: 'Normal ay',
+      lead: 'Hicri yılın onuncu ayıdır.',
+      facts: [
+        'Ramazan Bayramı 1 Şevval\'de kutlanır.',
+        'Bayramdan sonra altı gün oruç tutmak mendup kabul edilir.',
+        'Haram aylardan biri değildir.'
+      ]
+    },
+    11: {
+      latin: 'Zilkade',
+      arabic: 'ذو القِعْدة',
+      type: 'sacred',
+      badge: 'Saygın ay',
+      lead: 'Hicri yılın on birinci ayı ve dört saygın aydan biridir.',
+      facts: [
+        'Hac aylarının ilkidir.',
+        'Haram aylardan biri olarak kabul edilir.',
+        'Cahiliye döneminde bu ayda savaş yapılmazdı.'
+      ]
+    },
+    12: {
+      latin: 'Zilhicce',
+      arabic: 'ذو الحِجّة',
+      type: 'sacred',
+      badge: 'Saygın ay',
+      lead: 'Hicri yılın son ayı ve dört saygın aydan biridir.',
+      facts: [
+        'Hac ibadeti bu ayda yapılır.',
+        'Arefe günü 9 Zilhicce\'dir.',
+        'Kurban Bayramı 10 Zilhicce\'de kutlanır.'
+      ]
+    }
+  };
+
+  /* ------------------------------------------
+     YARDIMCI FONKSİYONLAR
+     ------------------------------------------ */
+
+  function gregorianToHijri(date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let m = month;
+
+    if (m < 3) {
+      year -= 1;
+      m += 12;
+    }
+
+    const a = Math.floor(year / 100);
+    let b = 2 - a + Math.floor(a / 4);
+
+    const gregorianCut =
+      year > 1582 ||
+      (year === 1582 && (m > 10 || (m === 10 && day >= 15)));
+
+    if (!gregorianCut) b = 0;
+
+    const jd =
+      Math.floor(365.25 * (year + 4716)) +
+      Math.floor(30.6001 * (m + 1)) +
+      day +
+      b -
+      1524;
+
+    let l = jd - 1948440 + 10632;
+    const n = Math.floor((l - 1) / 10631);
+    l = l - 10631 * n + 354;
+
+    const j =
+      Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) +
+      Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
+
+    l =
+      l -
+      Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) -
+      Math.floor(j / 16) * Math.floor((15238 * j) / 43) +
+      29;
+
+    const hMonth = Math.floor((24 * l) / 709);
+    const hDay = l - Math.floor((709 * hMonth) / 24);
+    const hYear = 30 * n + j - 30;
+
+    return { day: hDay, month: hMonth, year: hYear };
+  }
+
+  function safeGet(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      return v === null ? fallback : v;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function safeSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  function getMonthNumber(card) {
+    if (card.dataset.month) return parseInt(card.dataset.month, 10);
+    const numEl = card.querySelector('.num');
+    return numEl ? parseInt(numEl.textContent.trim(), 10) : NaN;
+  }
+
+  /* ------------------------------------------
+     DETAY OVERLAY
+     ------------------------------------------ */
+
+  let overlay = null;
+  let lastFocused = null;
+
+  function buildOverlay() {
+    if (document.querySelector('.detail-overlay')) {
+      console.log('[Nur Kartları] Overlay zaten mevcut.');
+      overlay = document.querySelector('.detail-overlay');
+      return;
+    }
+
+    overlay = document.createElement('div');
+    overlay.className = 'detail-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'detailTitle');
+
+    overlay.innerHTML =
+      '<div class="detail-panel">' +
+      '  <button type="button" class="detail-close" aria-label="Kapat">&times;</button>' +
+      '  <span class="detail-badge"></span>' +
+      '  <span class="detail-arabic" lang="ar" dir="rtl"></span>' +
+      '  <h2 id="detailTitle"></h2>' +
+      '  <p class="detail-lead"></p>' +
+      '  <ul class="detail-facts"></ul>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+	overlay.hidden = true;
+    console.log('[Nur Kartları] Overlay oluşturuldu.');
+
+    overlay.querySelector('.detail-close').addEventListener('click', closeDetail);
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) {
+        closeDetail();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+       if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+        closeDetail();
+      }
+    });
+  }
+
+  function openDetail(monthNumber) {
+    if (!overlay || !MONTHS[monthNumber]) {
+      console.warn('[Nur Kartları] Detay açılamadı: month=' + monthNumber);
+      return;
+    }
+
+    const meta = MONTHS[monthNumber];
+    lastFocused = document.activeElement;
+
+    overlay.querySelector('.detail-badge').textContent = meta.badge;
+    overlay.querySelector('.detail-arabic').textContent = meta.arabic;
+    overlay.querySelector('#detailTitle').textContent = meta.latin;
+    overlay.querySelector('.detail-lead').textContent = meta.lead;
+
+    const list = overlay.querySelector('.detail-facts');
+    list.innerHTML = '';
+    meta.facts.forEach(function (fact) {
+      var li = document.createElement('li');
+      li.textContent = fact;
+      list.appendChild(li);
+    });
+
+    overlay.hidden = false;
+    requestAnimationFrame(function () {
+      overlay.classList.add('is-open');
+    });
+    document.body.classList.add('no-scroll');
+
+    setTimeout(function () {
+      overlay.querySelector('.detail-close').focus();
+    }, 100);
+  }
+
+  function closeDetail() {
+    if (!overlay) return;
+
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+
+    setTimeout(function () {
+      overlay.hidden = true;
+    }, 220);
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+  }
+
+  function initCardClicks(cards) {
+    cards.forEach(function (card) {
+      const num = getMonthNumber(card);
+
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+
+      if (MONTHS[num]) {
+        card.setAttribute(
+          'aria-label',
+          MONTHS[num].latin + ' ayı — detaylar için aç'
+        );
+      }
+
+      card.addEventListener('click', function () {
+        console.log('[Nur Kartları] Karta tıklandı:', num);
+        openDetail(num);
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          console.log('[Nur Kartları] Klavye ile açıldı:', num);
+          openDetail(num);
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------
+     BUGÜNÜN AYI
+     ------------------------------------------ */
+
+  function initTodayHighlight(cards) {
+    const today = gregorianToHijri(new Date());
+    const target = Array.from(cards).find(function (c) {
+      return getMonthNumber(c) === today.month;
+    });
+
+    const header = document.querySelector('.page-header');
+    if (!header) return;
+
+    const banner = document.createElement('p');
+    banner.className = 'hijri-today';
+
+    if (target && MONTHS[today.month]) {
+      target.classList.add('is-current');
+
+      const tag = document.createElement('span');
+      tag.className = 'current-tag';
+      tag.textContent = 'Bu ay';
+      target.appendChild(tag);
+
+      banner.innerHTML =
+        'Bugün yaklaşık olarak <strong>' +
+        today.day +
+        ' ' +
+        MONTHS[today.month].latin +
+        ' ' +
+        today.year +
+        '</strong> (aritmetik hesap)';
+    } else {
+      banner.textContent = 'Hicri tarih hesaplanamadı.';
+    }
+
+    header.appendChild(banner);
+  }
+
+  /* ------------------------------------------
+     FİLTRE ÇUBUĞU
+     ------------------------------------------ */
+
+  const FILTERS = [
+    { id: 'all', label: 'Tüm aylar' },
+    { id: 'sacred', label: '✦ Saygın aylar' },
+    { id: 'ramadan', label: '☾ Ramazan' },
+    { id: 'regular', label: '❁ Diğer aylar' }
+  ];
+
+  function initFilters(cards) {
+    const container = document.getElementById('playing-cards');
+    if (!container) {
+      console.warn('[Nur Kartları] #playing-cards bulunamadı!');
+      return;
+    }
+
+    const bar = document.createElement('div');
+    bar.className = 'filter-bar';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Ay filtresi');
+
+    FILTERS.forEach(function (f) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-btn';
+      btn.dataset.filter = f.id;
+      btn.textContent = f.label;
+      btn.setAttribute('aria-pressed', 'false');
+
+      btn.addEventListener('click', function () {
+        console.log('[Nur Kartları] Filtre seçildi:', f.id);
+        applyFilter(f.id);
+      });
+
+      bar.appendChild(btn);
+    });
+
+    container.parentNode.insertBefore(bar, container);
+    console.log('[Nur Kartları] Filtre çubuğu oluşturuldu.');
+
+    const saved = safeGet('nurCards.filter', 'all');
+    applyFilter(FILTERS.some(function (f) {
+      return f.id === saved;
+    }) ? saved : 'all');
+  }
+
+  function applyFilter(filterId) {
+    const cards = document.querySelectorAll('.card');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    buttons.forEach(function (btn) {
+      const isActive = btn.dataset.filter === filterId;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+
+    cards.forEach(function (card) {
+      const num = getMonthNumber(card);
+      const meta = MONTHS[num];
+      if (!meta) return;
+
+      const show = filterId === 'all' || meta.type === filterId;
+      card.classList.toggle('is-hidden', !show);
+
+	if (show && card.classList.contains('reveal')) {
+        card.classList.add('is-visible');
+      }
+    });
+
+    safeSet('nurCards.filter', filterId);
+  }
+
+  /* ------------------------------------------
+     RASTGELE BUTONU
+     ------------------------------------------ */
+
+  function initRandomButton(cards) {
+    const container = document.getElementById('playing-cards');
+    if (!container) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'random-btn';
+    btn.innerHTML = '🎲 Rastgele bir ay göster';
+
+    btn.addEventListener('click', function () {
+      const visible = Array.from(cards).filter(function (c) {
+        return !c.classList.contains('is-hidden');
+      });
+      if (!visible.length) {
+        console.warn('[Nur Kartları] Görünür kart yok.');
+        return;
+      }
+
+      const pick = visible[Math.floor(Math.random() * visible.length)];
+      pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () {
+        openDetail(getMonthNumber(pick));
+      }, 320);
+    });
+
+    container.parentNode.insertBefore(btn, container.nextSibling);
+    console.log('[Nur Kartları] Rastgele butonu oluşturuldu.');
+  }
+
+  /* ------------------------------------------
+     SCROLL ANİMASYONU
+     ------------------------------------------ */
+
+  function initReveal(cards) {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    cards.forEach(function (card, i) {
+      card.classList.add('reveal');
+      card.style.animationDelay = (i % 4) * 70 + 'ms';
+    });
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          const card = entry.target;
+          card.classList.add('is-visible');
+
+          card.addEventListener(
+            'animationend',
+            function () {
+              card.classList.remove('reveal', 'is-visible');
+              card.style.animationDelay = '';
+            },
+            { once: true }
+          );
+
+          observer.unobserve(card);
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    cards.forEach(function (card) {
+      observer.observe(card);
+    });
+  }
+})();
+  </script>
+</body>
+</html>

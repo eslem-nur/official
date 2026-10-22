@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kütüphane Envanteri | İslami İlimler</title>
+  <meta name="description" content="Klasik İslami eserlerden oluşan kişisel kütüphane envanteri — okuma durumu ve değerlendirme.">
+  <meta name="author" content="Eslem Nur Çetin">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+   KÜTÜPHANE ENVANTERİ — İslami İlimler
+   Ana Site Design System Uyarlanmış
+   ============================================ */
+
+/* --------------------------------------------
+   1. ROOT VARIABLES
+   -------------------------------------------- */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+
+    --note-bg: #FFF0F5;
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+
+    --border-color: #F0E6E6;
+    --divider: #F5E8E8;
+
+    --gold: #D4A24C;
+    --gold-light: #EFD9A8;
+
+    --success-color: #388E3C;
+    --info-color: #1976D2;
+
+    --shadow-sm: 0 2px 8px rgba(183, 110, 121, 0.1);
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* --------------------------------------------
+   2. BASE RESET
+   -------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+}
+
+/* Ekran okuyucu için gizli */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --------------------------------------------
+   3. PAGE HEADER
+   -------------------------------------------- */
+
+.page-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto var(--spacing-xl);
+    padding: var(--spacing-md);
+}
+
+.page-header .bismillah {
+    display: block;
+    font-family: 'Scheherazade New', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------
+   4. TABLE WRAPPER (mobil yatay kaydırma)
+   -------------------------------------------- */
+
+.table-wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+/* --------------------------------------------
+   5. TABLE
+   -------------------------------------------- */
+
+table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    background: var(--card-bg);
+}
+
+th,
+td {
+    padding: 16px 18px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background: var(--primary-color);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+th:first-child {
+    border-top-left-radius: var(--radius-lg);
+}
+
+th:last-child {
+    border-top-right-radius: var(--radius-lg);
+}
+
+td {
+    border-bottom: 1px solid var(--divider);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* İlk sütun (eser adı) vurgulu */
+td:first-child {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text-primary);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+/* --------------------------------------------
+   6. SATIR DURUM RENKLERİ
+   (attribute seçicisi yerine class — daha güvenli)
+   -------------------------------------------- */
+
+tr.read {
+    background-image: linear-gradient(90deg, #F2F8F2 0%, #E4F0E4 100%);
+}
+
+tr.in-progress {
+    background-image: linear-gradient(90deg, #F1F6FA 0%, #E1ECF5 100%);
+}
+
+tr.to-read {
+    background-image: linear-gradient(90deg, #FDF6F8 0%, #F8E9EE 100%);
+}
+
+tbody tr:hover {
+    background-image: none;
+    background-color: var(--note-bg);
+}
+
+/* --------------------------------------------
+   7. DURUM ROZETİ (status)
+   -------------------------------------------- */
+
+.status {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.5;
+}
+
+tr.read .status {
+    color: #2E6B33;
+    background: #DCEEDD;
+    border: 1px solid #A8CBA9;
+}
+
+tr.in-progress .status {
+    color: #14568C;
+    background: #DCE9F5;
+    border: 1px solid #A3C3DE;
+}
+
+tr.to-read .status {
+    color: #96545F;
+    background: #FBE7EC;
+    border: 1px solid #E5BAC4;
+}
+
+/* --------------------------------------------
+   8. DEĞERLENDİRME (rate)
+   -------------------------------------------- */
+
+.rate {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    vertical-align: middle;
+}
+
+.rate > span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color var(--transition-fast);
+}
+
+/* Dolu noktalar */
+.rate.one > span:nth-child(1),
+.rate.two > span:nth-child(-n + 2),
+.rate.three > span:nth-child(-n + 3) {
+    background-color: var(--gold);
+    background-image: linear-gradient(180deg, var(--gold-light), var(--gold));
+}
+
+/* --------------------------------------------
+   9. AÇIKLAMA (legend)
+   -------------------------------------------- */
+
+.legend {
+    max-width: 1080px;
+    margin: var(--spacing-xl) auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.legend-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.legend-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.92rem;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.read {
+    background: #A8CBA9;
+    border: 1px solid #7FA981;
+}
+
+.dot.in-progress {
+    background: #A3C3DE;
+    border: 1px solid #7BA3C4;
+}
+
+.dot.to-read {
+    background: #E5BAC4;
+    border: 1px solid #C9939F;
+}
+
+/* --------------------------------------------
+   10. FOOTER
+   -------------------------------------------- */
+
+.site-footer {
+    max-width: 720px;
+    margin: var(--spacing-xl) auto 0;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.site-footer p {
+    margin-bottom: 6px;
+}
+
+#copyright-year {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.footer-note {
+    font-size: 0.82rem;
+    font-style: italic;
+}
+
+/* --------------------------------------------
+   11. RESPONSIVE
+   -------------------------------------------- */
+
+@media (max-width: 640px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    th,
+    td {
+        padding: 12px 14px;
+        font-size: 0.88rem;
+    }
+
+    td:first-child {
+        font-size: 0.96rem;
+    }
+
+    .legend {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        align-items: flex-start;
+    }
+
+    .legend-group {
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Seçili satır */
+tbody tr.is-selected {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+}
+
+tbody tr:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: -2px;
+}
+    </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <span class="bismillah" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+    <h1>Kütüphane Envanteri</h1>
+    <p>Klasik İslami ilimlerden seçilmiş eserler. Her satır bir kitabı, okuma durumunu ve değerlendirmemi taşır.</p>
+  </header>
+
+  <main>
+    <div class="table-wrapper">
+      <table>
+        <caption class="sr-only">İslami ilimler kütüphane envanteri: kitap adı, müellif, ilim dalı, okuma durumu ve değerlendirme</caption>
+
+        <thead>
+          <tr>
+            <th scope="col">Eser</th>
+            <th scope="col">Müellif</th>
+            <th scope="col">İlim Dalı</th>
+            <th scope="col">Durum</th>
+            <th scope="col">Değerlendirme</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- OKUNDU -->
+          <tr class="read">
+            <td data-label="Eser">Sahîh-i Buhârî</td>
+            <td data-label="Müellif">İmâm el-Buhârî</td>
+            <td data-label="İlim Dalı">Hadis</td>
+            <td data-label="Durum"><span class="status">Okundu</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate three" role="img" aria-label="3 üzerinden 3">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- OKUNACAK -->
+          <tr class="to-read">
+            <td data-label="Eser">Tefsîru İbn Kesîr</td>
+            <td data-label="Müellif">İbn Kesîr</td>
+            <td data-label="İlim Dalı">Tefsir</td>
+            <td data-label="Durum"><span class="status">Okunacak</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate one" role="img" aria-label="3 üzerinden 1">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- DEVAM EDİYOR -->
+          <tr class="in-progress">
+            <td data-label="Eser">Riyâzü's-Sâlihîn</td>
+            <td data-label="Müellif">İmâm Nevevî</td>
+            <td data-label="İlim Dalı">Hadis · Ahlâk</td>
+            <td data-label="Durum"><span class="status">Devam ediyor</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate two" role="img" aria-label="3 üzerinden 2">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- OKUNDU -->
+          <tr class="read">
+            <td data-label="Eser">Sîretü İbn Hişâm</td>
+            <td data-label="Müellif">İbn Hişâm</td>
+            <td data-label="İlim Dalı">Siyer</td>
+            <td data-label="Durum"><span class="status">Okundu</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate three" role="img" aria-label="3 üzerinden 3">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- DEVAM EDİYOR -->
+          <tr class="in-progress">
+            <td data-label="Eser">İhyâu Ulûmi'd-Dîn</td>
+            <td data-label="Müellif">İmâm Gazâlî</td>
+            <td data-label="İlim Dalı">Ahlâk · Tasavvuf</td>
+            <td data-label="Durum"><span class="status">Devam ediyor</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate two" role="img" aria-label="3 üzerinden 2">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- OKUNACAK -->
+          <tr class="to-read">
+            <td data-label="Eser">el-Muvatta</td>
+            <td data-label="Müellif">İmâm Mâlik</td>
+            <td data-label="İlim Dalı">Fıkıh · Hadis</td>
+            <td data-label="Durum"><span class="status">Okunacak</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate one" role="img" aria-label="3 üzerinden 1">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- OKUNACAK -->
+          <tr class="to-read">
+            <td data-label="Eser">Elfiyyetü İbn Mâlik</td>
+            <td data-label="Müellif">İbn Mâlik</td>
+            <td data-label="İlim Dalı">Arapça · Nahiv</td>
+            <td data-label="Durum"><span class="status">Okunacak</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate one" role="img" aria-label="3 üzerinden 1">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+          <!-- OKUNDU -->
+          <tr class="read">
+            <td data-label="Eser">Fıkhu's-Sünne</td>
+            <td data-label="Müellif">Seyyid Sâbık</td>
+            <td data-label="İlim Dalı">Fıkıh</td>
+            <td data-label="Durum"><span class="status">Okundu</span></td>
+            <td data-label="Değerlendirme">
+              <span class="rate three" role="img" aria-label="3 üzerinden 3">
+                <span></span><span></span><span></span>
+              </span>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- AÇIKLAMA -->
+    <div class="legend">
+      <div class="legend-group">
+        <span class="legend-title">Durum</span>
+        <span class="legend-item"><span class="dot read"></span> Okundu</span>
+        <span class="legend-item"><span class="dot in-progress"></span> Devam ediyor</span>
+        <span class="legend-item"><span class="dot to-read"></span> Okunacak</span>
+      </div>
+
+      <div class="legend-group">
+        <span class="legend-title">Değerlendirme</span>
+        <span class="legend-item"><span class="rate three"><span></span><span></span><span></span></span> 3 — Çok faydalı</span>
+        <span class="legend-item"><span class="rate two"><span></span><span></span><span></span></span> 2 — Faydalı</span>
+        <span class="legend-item"><span class="rate one"><span></span><span></span><span></span></span> 1 — Henüz okunmadı</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="copyright-year"></span> Eslem Nur Çetin. Tüm hakları saklıdır.</p>
+    <p class="footer-note">
+      Bu envanter kişisel okuma takibidir. Dini konularda ehil âlimlere danışınız.
+    </p>
+  </footer>
+
+  <script>
+    /* ============================================
+   KÜTÜPHANE ENVANTERİ — Etkileşim
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  /* ------------------------------------------
+     1. COPYRIGHT YILI
+     ------------------------------------------ */
+
+  function initCopyrightYear() {
+    const el = document.getElementById('copyright-year');
+    if (el) {
+      el.textContent = new Date().getFullYear();
+    }
+  }
+
+  /* ------------------------------------------
+     2. SATIRA TIKLAYINCA VURGULAMA
+     ------------------------------------------ */
+
+  function initRowHighlight() {
+    const rows = document.querySelectorAll('tbody tr');
+    if (!rows.length) return;
+
+    rows.forEach(function (row) {
+      row.setAttribute('tabindex', '0');
+
+      row.addEventListener('click', function () {
+        rows.forEach(function (r) {
+          r.classList.remove('is-selected');
+        });
+        row.classList.add('is-selected');
+      });
+
+      row.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          row.click();
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------
+     3. BAŞLAT
+     ------------------------------------------ */
+
+  function init() {
+    initCopyrightYear();
+    initRowHighlight();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</body>
+</html>

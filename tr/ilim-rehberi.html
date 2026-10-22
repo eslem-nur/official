@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlim Rehberi | Eslem Nur Çetin</title>
+    <meta name="author" content="Eslem Nur Çetin">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <style>
+                /* ============================================
+           İLİM REHBERİ - İSLAMİ DOKÜMANTASYON
+           Main Site Design System Applied
+           ============================================ */
+
+        /* --------------------------------------------
+           1. ROOT VARIABLES
+           -------------------------------------------- */
+        :root {
+            /* Primary Colors */
+            --primary-color: #A06872;
+            --primary-dark: #8E5A65;
+            --primary-light: #CC8E98;
+            
+            /* Secondary & Accent */
+            --secondary-color: #FDF5E6;
+            --accent-color: #9E7F7F;
+            --accent-warm: #E6C9C9;
+            --accent-cool: #D8C3CD;
+            
+            /* Backgrounds */
+            --bg-color: #FFF9F9;
+            --bg-secondary: #FFF0F5;
+            --card-bg: #FFFFFF;
+            --card-secondary: #FDF5F5;
+            --note-bg: #FFF5F5; 
+            
+            /* Text Colors */
+            --text-primary: #4E342E;
+            --text-secondary: #8D6E63;
+            --text-muted: #A89080;
+            
+            /* Borders */
+            --border-color: #F0E6E6;
+            --border-focus: #A06872;
+            --divider: #F5E8E8;
+            
+            /* Status Colors */
+            --success-color: #388E3C;
+            --success-bg: #E8F5E9;
+            --warning-color: #F57C00;
+            --info-color: #1976D2;
+            --error-color: #D32F2F;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(183, 110, 121, 0.1);
+            --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+            --shadow-lg: 0 8px 25px rgba(183, 110, 121, 0.2);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.3s ease;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-full: 50%;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            
+            /* Sidebar Width */
+            --sidebar-width: 280px;
+        }
+
+        /* --------------------------------------------
+           2. BASE RESET
+           -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Arabic Font */
+        .arabic-text, .basmala, .arabic-highlight, .logo-ar {
+            font-family: 'Scheherazade New', serif;
+            direction: rtl;
+        }
+
+        /* --------------------------------------------
+           3. SIDEBAR NAVIGATION
+           -------------------------------------------- */
+        #navbar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--card-bg);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            padding: var(--spacing-lg);
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-header .logo-ar {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .sidebar-search {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-search input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            font-size: 0.9rem;
+        }
+
+        .sidebar-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            background: var(--note-bg);
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .progress-container {
+            text-align: center;
+        }
+
+        .progress-container > span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border-color);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: var(--radius-full);
+            transition: width var(--transition-base);
+        }
+
+        /* --------------------------------------------
+           4. MAIN CONTENT
+           -------------------------------------------- */
+        #main-doc {
+            margin-left: var(--sidebar-width);
+            padding: var(--spacing-xl);
+            max-width: calc(100% - var(--sidebar-width));
+            background: var(--bg-color);
+        }
+
+        .main-section {
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-section:last-child {
+            border-bottom: none;
+        }
+
+        .main-section header {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .main-section header::after {
+            content: '✿';
+            position: absolute;
+            right: 0;
+            bottom: -5px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .basmala {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: var(--spacing-md) 0;
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--note-bg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary-color);
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .arabic-highlight {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--note-bg) 100%);
+            border-radius: var(--radius-md);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-box i {
+            font-size: 2rem;
+            opacity: 0.3;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .quote-box p {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .quote-box span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .benefits-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--divider);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefits-list li i {
+            color: var(--success-color);
+            font-size: 1.2rem;
+        }
+
+        /* --------------------------------------------
+           5. METHOD CARDS
+           -------------------------------------------- */
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .method-card {
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .method-card h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* --------------------------------------------
+           6. CODE EXAMPLES
+           -------------------------------------------- */
+        .code-example {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-lg) 0;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .code-header .language {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 6px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .copy-btn:hover {
+            background: var(--note-bg);
+            color: var(--primary-color);
+        }
+
+        .code-example pre {
+            padding: var(--spacing-lg);
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        .code-example code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* --------------------------------------------
+           7. TABLES
+           -------------------------------------------- */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* --------------------------------------------
+           8. NOTE BOXES
+           -------------------------------------------- */
+        .note-box {
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-lg) 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+
+        .note-box.warning {
+            background: #FFF3E0;
+            border-left: 4px solid var(--warning-color);
+            color: var(--text-primary);
+        }
+
+        .note-box.warning i {
+            color: var(--warning-color);
+            font-size: 1.3rem;
+        }
+
+        /* --------------------------------------------
+           9. HADITH BOOKS LIST
+           -------------------------------------------- */
+        .hadith-books {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .hadith-books li {
+            padding: 14px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+        }
+
+        .hadith-books li i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .hadith-books li strong {
+            color: var(--text-primary);
+        }
+
+        /* --------------------------------------------
+           10. MADHHAB GRID
+           -------------------------------------------- */
+        .madhhab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .madhhab-card {
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .madhhab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .madhhab-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .madhhab-card h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .madhhab-card p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .madhhab-card .region {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --------------------------------------------
+           11. GRAMMAR GRID
+           -------------------------------------------- */
+        .grammar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .grammar-card {
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .grammar-card h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .grammar-card ul {
+            list-style: disc;
+            padding-left: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        /* --------------------------------------------
+           12. TIMELINE
+           -------------------------------------------- */
+        .timeline-v {
+            position: relative;
+            margin: var(--spacing-xl) 0;
+            padding-left: var(--spacing-xl);
+        }
+
+        .timeline-v::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .node-number {
+            position: absolute;
+            left: -65px;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .node-content {
+            background: var(--card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .node-content h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* --------------------------------------------
+           13. PROGRESS SECTION
+           -------------------------------------------- */
+        .progress-section {
+            background: var(--note-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .progress-item {
+            padding: 16px;
+            border-radius: var(--radius-md);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all var(--transition-base);
+        }
+
+        .progress-item.completed {
+            border-color: var(--success-color);
+            background: var(--success-bg);
+        }
+
+        .progress-item.completed i {
+            color: var(--success-color);
+        }
+
+        .progress-item.in-progress {
+            border-color: var(--info-color);
+        }
+
+        .progress-item.in-progress i {
+            color: var(--info-color);
+        }
+
+        .progress-item.pending {
+            color: var(--text-muted);
+        }
+
+        .progress-item.pending i {
+            color: var(--text-muted);
+        }
+
+        .duabox {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .duabox i {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .duabox p {
+            color: white;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* --------------------------------------------
+           14. RESPONSIVE DESIGN
+           -------------------------------------------- */
+        @media (max-width: 1024px) {
+            #navbar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: var(--spacing-md);
+            }
+            
+            #main-doc {
+                margin-left: 0;
+                max-width: 100%;
+                padding: var(--spacing-lg);
+            }
+            
+            .sidebar-search {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #main-doc {
+                padding: var(--spacing-md);
+            }
+            
+            .main-section header {
+                font-size: 1.6rem;
+            }
+            
+            .method-cards,
+            .madhhab-grid,
+            .grammar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-table {
+                font-size: 0.9rem;
+            }
+            
+            .info-table th,
+            .info-table td {
+                padding: 12px 8px;
+            }
+            
+            .timeline-v {
+                padding-left: var(--spacing-lg);
+            }
+            
+            .node-number {
+                left: -55px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #main-doc {
+                padding: var(--spacing-sm);
+            }
+            
+            .main-section header {
+                font-size: 1.4rem;
+            }
+            
+            .code-example pre {
+                padding: var(--spacing-sm);
+                font-size: 0.85rem;
+            }
+        }
+
+        #copyright-year {
+          font-weight: 600;
+          color: var(--primary-color, #A06872);
+        }
+        </style>
+
+    
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav id="navbar">
+        <div class="sidebar-header">
+            <div class="logo-ar">بسم الله</div>
+            <h2>İlim Rehberi</h2>
+        </div>
+        
+        <div class="sidebar-search">
+            <input type="text" placeholder="Konu ara..." id="search-input">
+            <i class="fas fa-search"></i>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#intro" class="nav-link active"><i class="fas fa-book-open"></i> Giriş</a></li>
+            <li><a href="#quran" class="nav-link"><i class="fas fa-quran"></i> Kur'an İlmi</a></li>
+            <li><a href="#tafsir" class="nav-link"><i class="fas fa-comments"></i> Tefsir Usûlü</a></li>
+            <li><a href="#hadith" class="nav-link"><i class="fas fa-hands-praying"></i> Hadis Bilgisi</a></li>
+            <li><a href="#fiqh" class="nav-link"><i class="fas fa-balance-scale"></i> Fıkıh Temelleri</a></li>
+            <li><a href="#arabic" class="nav-link"><i class="fas fa-language"></i> Arapça Gramer</a></li>
+            <li><a href="#history" class="nav-link"><i class="fas fa-history"></i> İslam Tarihi</a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="progress-container">
+                <span>İlerleme</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 35%"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-doc">
+        <!-- Introduction Section -->
+        <section class="main-section" id="intro">
+            <header>Giriş</header>
+            <div class="basmala">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <p>İslami ilimler, Allah'ın vahyi olan Kur'an-ı Kerim'i anlamak ve hayata tatbik etmek için geliştirilmiş sistemli bilgi alanlarıdır.</p>
+            <p>Bu rehber, geleneksel ilim geleneğini modern öğrenme metodolojileriyle birleştirerek size yol gösterecek.</p>
+            
+            <div class="quote-box">
+                <i class="fas fa-quote-left"></i>
+                <p>"RABBİM, BENİ İLMDE ZİYADE KILIR."</p>
+                <span>- Taha Suresi, 114. Ayet</span>
+            </div>
+            
+            <h3>Neden İslami İlimler?</h3>
+            <ul class="benefits-list">
+                <li><i class="fas fa-check-circle"></i> Kur'an ve Sünnet'e doğru anlayış</li>
+                <li><i class="fas fa-check-circle"></i> Günlük ibadetlerde bilinçli uygulama</li>
+                <li><i class="fas fa-check-circle"></i> Modern sorulara fıkhi cevaplar</li>
+                <li><i class="fas fa-check-circle"></i> İslam medeniyeti mirasını tanıma</li>
+            </ul>
+        </section>
+
+        <!-- Quran Studies Section -->
+        <section class="main-section" id="quran">
+            <header>Kur'an İlmi</header>
+            <div class="arabic-highlight">كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ</div>
+            <p>Kur'an-ı Kerim, Allah'ın kelamı olarak Müslümanlar için temel kaynaktır. Onu okumak, anlamak ve yaşamak her müminin görevidir.</p>
+            
+            <h3>Kur'an Öğrenme Yöntemleri</h3>
+            <div class="method-cards">
+                <div class="method-card">
+                    <div class="method-icon">📖</div>
+                    <h4>Tilavet</h4>
+                    <p>Ayete uygun telaffuzla okuma. Tecvid kurallarını öğrenme.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">🧠</div>
+                    <h4>Tedebbür</h4>
+                    <p>Ayetlerin anlamlarını düşünme ve hayatımıza uygular.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">📚</div>
+                    <h4>Tefsir</h4>
+                    <p>Ayetlerin iniş sebeplerini ve yorumlarını çalışma.</p>
+                </div>
+            </div>
+            
+            <div class="code-example">
+                <div class="code-header">
+                    <span class="language">Kur'an Kaynakları</span>
+                    <span class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></span>
+                </div>
+                <pre><code>// Temel Kaynaklar
+const quranSources = {
+    primary: "Kur'an-ı Kerim",
+    secondary: [
+        "Sahih Hadis Koleksiyonları",
+        "İcma (Alimlerin Consensus)",
+        "Kıyas (Analojik Akıl)"
+    ],
+    tafsir: [
+        "İbn Kesir Tefsiri",
+        "Elmalılı Hamdi Yazır",
+        "Taberi Tefsiri"
+    ]
+};
+
+// Hatim Programı
+const dailyPlan = {
+    morning: "Juz 1-2 (Fatiha-Bakara)",
+    evening: "Juz 30 (Nebe-Nas)",
+    weekly: "Cumartesi - Tefsir Dersi"
+};</code></pre>
+            </div>
+        </section>
+
+        <!-- Tafsir Section -->
+        <section class="main-section" id="tafsir">
+            <header>Tefsir Usûlü</header>
+            <p>Tefsir, Kur'an ayetlerinin anlamlarını açıklamak ve yorumlamak için kullanılan ilim dalıdır.</p>
+            
+            <h3>Tefsir Türleri</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Tür</th>
+                        <th>Açıklama</th>
+                        <th>Örnek Eser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tefsir bi'l-Me'tsur</td>
+                        <td>Sahabe ve Tabiin rivayetleriyle açıklama</td>
+                        <td>Tefsir Ibnu Kesir</td>
+                    </tr>
+                    <tr>
+                        <td>Tefsir bi'l-Ra'y</td>
+                        <td>Alimin içtihadıyla açıklama</td>
+                        <td>Razi Mefatihu'l-Gayb</td>
+                    </tr>
+                    <tr>
+                        <td>Tefsir-i İshari</td>
+                        <td>Işıltı/İşaret tefsiri (Tasavvufi)</td>
+                        <td>Kurşunoğlu Tefsiri</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Önemli:</strong> Tefsir çalışırken güvenilir kaynaklardan ve ehil alimlerden faydalanmalısınız.
+            </div>
+        </section>
+
+        <!-- Hadith Section -->
+        <section class="main-section" id="hadith">
+            <header>Hadis Bilgisi</header>
+            <div class="arabic-highlight">إِنَّما الْأَعْمَالُ بِالنِّيَّاتِ</div>
+            <p>Hadis, Peygamber Efendimiz'in (s.a.v.) sözleri, fiiller ve takrirlerinden oluşan ikinci temel kaynaktır.</p>
+            
+            <h3>Sahih Hadis Kitapları (Kütüb-i Sitte)</h3>
+            <ul class="hadith-books">
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>Buhari</strong> - En sahih hadis koleksiyonu
+                </li>
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>Müslim</strong> - Hadis ilminde ikinci otorite
+                </li>
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>Tirmizi</strong> - Fıkhi hadisler ağırlıklı
+                </li>
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>Abu Davud</strong> - Fıkıh odaklı
+                </li>
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>Nesai</strong> - Namaz ve ibadet hadisleri
+                </li>
+                <li>
+                    <i class="fas fa-book"></i>
+                    <strong>İbn Mace</strong> - Kapsamlı koleksiyon
+                </li>
+            </ul>
+            
+            <div class="code-example">
+                <div class="code-header">
+                    <span class="language">Hadis Sıhhat Kriterleri</span>
+                </div>
+                <pre><code>interface HadithCriteria {
+    isnad: {
+        continuity: boolean;  // Senet bağlantısı kesintisiz mi?
+        integrity: boolean;   // Rijal (rivayet edenler) adil mi?
+        precision: boolean;   // Hatasız mı?
+    };
+    matn: {
+        noShadh: boolean;     // Shühud (tek başına) değil mi?
+        noIllah: boolean;     // Hidden flaw yok mu?
+        coherence: boolean;   // Diğer hadislerle uyumlu mu?
+    };
+}
+
+// Sahih Hadis = ALL conditions true</code></pre>
+            </div>
+        </section>
+
+        <!-- Fiqh Section -->
+        <section class="main-section" id="fiqh">
+            <header>Fıkıh Temelleri</header>
+            <p>Fıkıh, İslam hukuku olup ameli (fiili) hükümleri araştırır. Günümüzde en yaygın 4 mezhep:</p>
+            
+            <div class="madhhab-grid">
+                <div class="madhhab-card hanafi">
+                    <div class="madhhab-icon">🟤</div>
+                    <h4>Hanefi Mezhebi</h4>
+                    <p>İmam Ebu Hanife (ö. 150 H.)</p>
+                    <p class="region">Türkiye, Balkanlar, Orta Asya</p>
+                </div>
+                
+                <div class="madhhab-card shafii">
+                    <div class="madhhab-icon">🔵</div>
+                    <h4>Şafii Mezhebi</h4>
+                    <p>İmam Şafii (ö. 204 H.)</p>
+                    <p class="region">G. Asya, Afrika, Doğu Afrika</p>
+                </div>
+                
+                <div class="madhhab-card maliki">
+                    <div class="madhhab-icon">🟢</div>
+                    <h4>Maliki Mezhebi</h4>
+                    <p>İmam Malik (ö. 179 H.)</p>
+                    <p class="region">Kuzey Afrika, Batı Afrika</p>
+                </div>
+                
+                <div class="madhhab-card hanbali">
+                    <div class="madhhab-icon">🟣</div>
+                    <h4>Hanbeli Mezhebi</h4>
+                    <p>İmam Ahmed bin Hanbel (ö. 241 H.)</p>
+                    <p class="region">Suudi Arabistan, Körfez</p>
+                </div>
+            </div>
+            
+            <h3>Ahkâm Türleri</h3>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Hüküm</th>
+                        <th>Açıklama</th>
+                        <th>Örnek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vacip/Farz</td>
+                        <td>Yapılması gerekli, terk edilirse günah</td>
+                        <td>5 vakit namaz, oruç</td>
+                    </tr>
+                    <tr>
+                        <td>Mendup/Müstehap</td>
+                        <td>Takdir edilir, yapmayan günahkar olmaz</td>
+                        <td>Sünnet namazlar, sadaka</td>
+                    </tr>
+                    <tr>
+                        <td>Mubah</td>
+                        <td>Ne sevap ne günah</td>
+                        <td>Normal yemek, içmek</td>
+                    </tr>
+                    <tr>
+                        <td>Mekruh</td>
+                        <td>Terk edilmesi daha iyi</td>
+                        <td>Yemek yerken konuşma</td>
+                    </tr>
+                    <tr>
+                        <td>Haram</td>
+                        <td>Yapılması yasak, yapan günahkar</td>
+                        <td>Zina, içki, faiz</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Arabic Grammar Section -->
+        <section class="main-section" id="arabic">
+            <header>Arapça Gramer</header>
+            <div class="arabic-highlight">ٱلْعَرَبِيَّةُ لِسَانُ الْقُرْآنِ</div>
+            <p>Arapça, Kur'an'ın dili olduğundan ilim öğrenmenin temel taşlarından biridir. Gramer (nahiv-sarf) olmadan doğru anlamaya ulaşmak zordur.</p>
+            
+            <h3>Kelimelerin Üç Tipi</h3>
+            <div class="grammar-grid">
+                <div class="grammar-card ism">
+                    <h4>İsm (İsim)</h4>
+                    <p>Zaman almayan kelime</p>
+                    <ul>
+                        <li>Kitap, okul, öğretmen</li>
+                        <li>Kendi başına anlam taşır</li>
+                    </ul>
+                </div>
+                
+                <div class="grammar-card fi'l">
+                    <h4>Fi'l (Fiil)</h4>
+                    <p>Zaman taşıyan kelime</p>
+                    <ul>
+                        <li>Gitti, gelecek, gidiyor</li>
+                        <li>Mazi, Müşarret, Muzari</li>
+                    </ul>
+                </div>
+                
+                <div class="grammar-card harf">
+                    <h4>Harf (Edat)</h4>
+                    <p>Tam anlamı olmayan kelime</p>
+                    <ul>
+                        <li>'den', 'için', 'ile'</li>
+                        <li>Diğer kelimelerle birlikte anlam kazanır</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="code-example">
+                <div class="code-header">
+                    <span class="language">Arapça Kelime Türleri</span>
+                </div>
+                <pre><code>enum WordType {
+    ISM,    // İsim (Noun)
+    FI_L,   // Fiil (Verb)
+    HARF    // Harf (Particle)
+}
+
+interface ArabicWord {
+    word: string;
+    type: WordType;
+    tense?: 'Mazi' | 'Mudari' | 'Amr';
+    case?: 'Fetha' | 'Damma' | 'Kesra';
+}
+
+// Örnek analiz
+const sentence = [
+    { word: 'ذَهَبَ', type: WordType.FI_L, tense: 'Mazi' },
+    { word: 'الطالب', type: WordType.ISM, case: 'Fetha' }
+];
+// "Öğrenci gitti"</code></pre>
+            </div>
+        </section>
+
+        <!-- Islamic History Section -->
+        <section class="main-section" id="history">
+            <header>İslam Tarihi</header>
+            <p>İslam tarihi, Hz. Muhammed'in (s.a.v.) doğuşundan günümüze kadar olan Müslüman medeniyetinin gelişimini kapsar.</p>
+            
+            <h3>Önemli Tarih Dönemleri</h3>
+            <div class="timeline-v">
+                <div class="timeline-node">
+                    <div class="node-number">570</div>
+                    <div class="node-content">
+                        <h4>Peygamberimizin Doğumu</h4>
+                        <p>Hz. Muhammed (s.a.v.) Mekke'de dünyaya gelir.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node">
+                    <div class="node-number">610</div>
+                    <div class="node-content">
+                        <h4>İlk Vahiy</h4>
+                        <p>Hira Mağarası'nda ilk vahiy iner (Alak Suresi).</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node">
+                    <div class="node-number">622</div>
+                    <div class="node-content">
+                        <h4>Hicret</h4>
+                        <p>Mekke'den Medine'ye hicret. İslam takviminin başlangıcı.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node">
+                    <div class="node-number">632</div>
+                    <div class="node-content">
+                        <h4>Veda Haccı ve Vefat</h4>
+                        <p>Peygamberimizin veda hutbesi ve vefatı.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node">
+                    <div class="node-number">661-1258</div>
+                    <div class="node-content">
+                        <h4>Abbasi Halifeliği</h4>
+                        <p>İslam altın çağı, bilim ve kültür merkezi Bağdat.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-node">
+                    <div class="node-number">1453</div>
+                    <div class="node-content">
+                        <h4>İstanbul'un Fethi</h4>
+                        <p>Fatih Sultan Mehmet İstanbul'u fetheder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="main-section progress-section">
+            <header>İlerlemenizi Takip Edin</header>
+            <p>Her bölümü tamamladıkça ilerlemenizi kaydedin. Allah için yapılan her ilmî çalışma sevaptır.</p>
+            
+            <div class="progress-grid">
+                <!-- data-id attribute ekledik ki JS buna göre eşleşsin -->
+                <div class="progress-item completed" data-id="intro">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Giriş</span>
+                </div>
+                <div class="progress-item completed" data-id="quran">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Kur'an İlmi</span>
+                </div>
+                <div class="progress-item in-progress" data-id="tafsir">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Tefsir Usûlü</span>
+                </div>
+                <div class="progress-item pending" data-id="hadith">
+                    <i class="far fa-circle"></i>
+                    <span>Hadis Bilgisi</span>
+                </div>
+                <div class="progress-item pending" data-id="fiqh">
+                    <i class="far fa-circle"></i>
+                    <span>Fıkıh Temelleri</span>
+                </div>
+                <div class="progress-item pending" data-id="arabic">
+                    <i class="far fa-circle"></i>
+                    <span>Arapça Gramer</span>
+                </div>
+            </div>
+            
+            <div class="duabox">
+                <i class="fas fa-hands-praying"></i>
+                <p>"Allah'ım, bana faydalı ilim öğret, rızkımı genişlet ve hatalarımdan bağışla."</p>
+            </div>
+            <p style="text-align: center; margin-top: 2rem;">&copy; <span id="copyright-year"></span> Eslem Nur Çetin | İlim Rehberi. Tüm hakları saklıdır.</p>
+</section>
+    </main>
+
+        <script>
+                    // Otomatik yıl güncelleme
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Copy Code Script
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            });
+        }
+
+        // Active Link Highlighting
+        const sections = document.querySelectorAll('.main-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const sections = document.querySelectorAll('.main-section');
+                
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+                       // --- GÜNCELLENMİŞ İLERLEME TAKİP SİSTEMİ ---
+        const progressItems = document.querySelectorAll('.progress-item');
+
+        function saveProgress(id, status) {
+            const normalizedId = id.toLowerCase().trim();
+            localStorage.setItem(`progress_${normalizedId}`, status);
+        }
+
+        function loadProgress() {
+            progressItems.forEach(item => {
+                const id = item.getAttribute('data-id');
+                if (!id) return;
+
+                const normalizedId = id.toLowerCase().trim();
+                const savedStatus = localStorage.getItem(`progress_${normalizedId}`);
+                
+                if (savedStatus) {
+                    item.classList.remove('completed', 'in-progress', 'pending');
+                    item.classList.add(savedStatus);
+                    
+                    const icon = item.querySelector('i');
+                    if (icon) {
+                        if (savedStatus === 'completed') {
+                            icon.className = 'fas fa-check-circle';
+                        } else if (savedStatus === 'in-progress') {
+                            icon.className = 'fas fa-spinner fa-spin';
+                        } else {
+                            icon.className = 'far fa-circle';
+                        }
+                    }
+                }
+            });
+        }
+
+        // Bölüm göründüğünde kaydet (Threshold 0.1'e düşürüldü)
+        sections.forEach(section => {
+            const sectionId = section.getAttribute('id');
+            
+            // Her bölüm için ayrı bir observer oluşturuyoruz
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Ekrana girerse (en az %10'u görünürse)
+                    if (entry.isIntersecting) {
+                        console.log(`Bölüm tamamlandı: ${sectionId}`); // Hata ayıklama için
+                        saveProgress(sectionId, 'completed');
+                        
+                        const normalizedId = sectionId.toLowerCase().trim();
+                        const item = document.querySelector(`.progress-item[data-id="${normalizedId}"]`);
+                        
+                        if (item) {
+                            item.classList.remove('in-progress', 'pending');
+                            item.classList.add('completed');
+                            const icon = item.querySelector('i');
+                            if (icon) {
+                                icon.className = 'fas fa-check-circle';
+                            }
+                        }
+                    }
+                });
+            }, { 
+                threshold: 0.1, // %10 görünürse tetikle (önceki 0.5 çok yüksekti)
+                rootMargin: "0px 0px -50px 0px" // Alt kısmı biraz daha erken algılasın
+            });
+            
+            sectionObserver.observe(section);
+        });
+// Sayfa yüklendiğinde kayıtlı durumu yükle
+        loadProgress();
+        
+     
+        </script>
+
+</body>
+</html>

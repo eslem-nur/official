@@ -1,0 +1,303 @@
+/* ============================================
+   TIC-TAC-TOE — Nur Kartları Tasarım Dili
+   Ana Site Design System Uyarlanmış
+   ============================================ */
+
+/* --------------------------------------------
+   1. ROOT VARIABLES
+   -------------------------------------------- */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+
+    --secondary-color: #FDF5E6;
+    --accent-color: #9E7F7F;
+    --accent-warm: #E6C9C9;
+
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+
+    --border-color: #F0E6E6;
+    --divider: #F5E8E8;
+
+    --shadow-sm: 0 2px 8px rgba(183, 110, 121, 0.1);
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+    --shadow-lg: 0 8px 25px rgba(183, 110, 121, 0.2);
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* --------------------------------------------
+   2. BASE RESET
+   -------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(
+        circle at 50% 0%,
+        var(--bg-secondary) 0%,
+        var(--bg-color) 55%
+    );
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+/* --------------------------------------------
+   3. PANEL
+   -------------------------------------------- */
+
+#tic-tac-toe {
+    width: 100%;
+    max-width: 430px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Panel başlığı — markup'a dokunmadan, sadece CSS ile */
+#tic-tac-toe::before {
+    content: 'Tic-Tac-Toe';
+    width: 100%;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--divider);
+}
+
+/* --------------------------------------------
+   4. STATUS
+   -------------------------------------------- */
+
+#status {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: var(--primary-color);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 8px 24px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+/* --------------------------------------------
+   5. BOARD
+   -------------------------------------------- */
+
+#board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.board-row {
+    display: flex;
+    gap: 10px;
+}
+
+.square {
+    width: clamp(72px, 22vw, 92px);
+    height: clamp(72px, 22vw, 92px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Boş kareler: hover'da kartlar gibi havalanır */
+.square:empty:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-light);
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+.square:empty:active {
+    transform: translateY(-1px);
+}
+
+/* Dolu kareler: sabit, hafif tonlu zemin */
+.square:not(:empty) {
+    cursor: default;
+    background: var(--bg-secondary);
+    border-color: var(--primary-light);
+    animation: markIn 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.square:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 3px;
+}
+
+@keyframes markIn {
+    from {
+        opacity: 0;
+        transform: scale(0.62);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --------------------------------------------
+   6. RESET BUTTON
+   -------------------------------------------- */
+
+#reset {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 12px 34px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+#reset:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+#reset:active {
+    transform: translateY(0);
+}
+
+#reset:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------- */
+
+@media (max-width: 390px) {
+    #tic-tac-toe {
+        padding: var(--spacing-md) var(--spacing-sm) var(--spacing-sm);
+    }
+
+    #board,
+    .board-row {
+        gap: 8px;
+    }
+
+    .square {
+        width: 66px;
+        height: 66px;
+        font-size: 1.6rem;
+    }
+
+    #status {
+        font-size: 0.9rem;
+        padding: 7px 18px;
+    }
+}
+
+/* --------------------------------------------
+   8. REDUCED MOTION
+   -------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .square,
+    #reset,
+    #status {
+        transition: none;
+    }
+
+    .square:empty:hover,
+    #reset:hover {
+        transform: none;
+    }
+
+    .square:not(:empty) {
+        animation: none;
+    }
+}
+
+/* ============================================
+   COPYRIGHT STILI (Opsiyonel)
+   ============================================ */
+
+#copyright-year {
+  font-weight: 600;
+  color: var(--primary-color, #A06872);
+}
+
+.site-footer .copyright-line {
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid var(--border-color, #F0E6E6);
+  color: var(--text-muted, #A89080);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0 0 8px 0;
+}
