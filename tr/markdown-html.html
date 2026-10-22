@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İslami Not Dönüştürücü — Markdown → HTML</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+   İSLAMİ NOT DÖNÜŞTÜRÜCÜ — Nur Kartları Tasarım Dili
+   ============================================ */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+
+    --secondary-color: #FDF5E6;
+    --accent-color: #9E7F7F;
+    --accent-warm: #E6C9C9;
+
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+
+    --border-color: #F0E6E6;
+    --divider: #F5E8E8;
+
+    --shadow-sm: 0 2px 8px rgba(183, 110, 121, 0.1);
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+    --shadow-lg: 0 8px 25px rgba(183, 110, 121, 0.2);
+
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: radial-gradient(
+        circle at 50% 0%,
+        var(--bg-secondary) 0%,
+        var(--bg-color) 55%
+    );
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+}
+
+/* --------------------------------------------
+   SAYFA BAŞLIĞI
+   -------------------------------------------- */
+
+.page-header {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+}
+
+.bismillah {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    opacity: 0.75;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 1px;
+}
+
+.page-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.3px;
+    line-height: 1.25;
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-header p {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------
+   PANEL IZGARASI
+   -------------------------------------------- */
+
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 880px) {
+    #container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* --------------------------------------------
+   PANELLER
+   -------------------------------------------- */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-md);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.container:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+.container h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 0.2px;
+    padding-bottom: 10px;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--divider);
+}
+
+/* --------------------------------------------
+   MARKDOWN GİRİŞİ
+   -------------------------------------------- */
+
+#markdown-input {
+    flex: 1;
+    width: 100%;
+    min-height: 280px;
+    padding: 14px 16px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    resize: vertical;
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+#markdown-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+#markdown-input:hover {
+    border-color: var(--primary-light);
+    background-color: var(--bg-secondary);
+}
+
+#markdown-input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(160, 104, 114, 0.15);
+}
+
+/* --------------------------------------------
+   ÇIKTI VE ÖNİZLEME KUTULARI
+   -------------------------------------------- */
+
+#html-output,
+#preview {
+    flex: 1;
+    width: 100%;
+    min-height: 280px;
+    max-height: 560px;
+    overflow-y: auto;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-secondary);
+    white-space: pre-wrap;
+    word-break: break-word;
+    transition: border-color var(--transition-base);
+}
+
+#html-output:hover,
+#preview:hover {
+    border-color: var(--primary-light);
+}
+
+/* Ham HTML — okunaklılık için tek aralıklı yazı */
+#html-output {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+/* Önizleme — normal tipografi */
+#preview {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Boş durum ipuçları */
+#html-output:empty::before,
+#preview:empty::before {
+    content: 'Çıktı burada görünecek…';
+    color: var(--text-muted);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* İnce kaydırma çubuğu */
+#html-output::-webkit-scrollbar,
+#preview::-webkit-scrollbar,
+#markdown-input::-webkit-scrollbar {
+    width: 8px;
+}
+
+#html-output::-webkit-scrollbar-track,
+#preview::-webkit-scrollbar-track,
+#markdown-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#html-output::-webkit-scrollbar-thumb,
+#preview::-webkit-scrollbar-thumb,
+#markdown-input::-webkit-scrollbar-thumb {
+    background: var(--accent-warm);
+    border-radius: 4px;
+}
+
+#html-output::-webkit-scrollbar-thumb:hover,
+#preview::-webkit-scrollbar-thumb:hover,
+#markdown-input::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* --------------------------------------------
+   ÖNİZLEME İÇİ RENDER EDİLEN ETİKETLER
+   -------------------------------------------- */
+
+#preview h1,
+#preview h2,
+#preview h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--primary-color);
+    line-height: 1.35;
+    margin: var(--spacing-sm) 0 6px;
+}
+
+#preview h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--divider);
+}
+
+#preview h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#preview h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+#preview h1:first-child,
+#preview h2:first-child,
+#preview h3:first-child {
+    margin-top: 0;
+}
+
+#preview blockquote {
+    margin: var(--spacing-sm) 0;
+    padding: 10px 16px;
+    background: var(--card-bg);
+    border-left: 3px solid var(--primary-light);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+#preview strong {
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+#preview em {
+    color: var(--text-secondary);
+}
+
+#preview a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-warm);
+    text-underline-offset: 2px;
+    transition: color var(--transition-fast);
+}
+
+#preview a:hover {
+    color: var(--primary-dark);
+    text-decoration-color: var(--primary-color);
+}
+
+#preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+/* --------------------------------------------
+   ALT BİLGİ
+   -------------------------------------------- */
+
+.page-footer {
+    max-width: 720px;
+    margin: var(--spacing-lg) auto 0;
+    text-align: center;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------
+   RESPONSIVE
+   -------------------------------------------- */
+
+@media (max-width: 879px) {
+    #markdown-input,
+    #html-output,
+    #preview {
+        min-height: 210px;
+        max-height: 380px;
+    }
+}
+
+@media (max-width: 540px) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .page-header {
+        padding: var(--spacing-md) var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    #markdown-input,
+    #html-output,
+    #preview {
+        min-height: 170px;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    #html-output {
+        font-size: 0.76rem;
+    }
+}
+
+/* --------------------------------------------
+   AZALTILMIŞ HAREKET
+   -------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .container,
+    #markdown-input,
+    #html-output,
+    #preview,
+    #preview a {
+        transition: none;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <span class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>
+        <h1>İslami Not Dönüştürücü</h1>
+        <p>Ders notlarınızı, hutbe taslaklarınızı veya ilmî metinlerinizi Markdown ile yazın; anında HTML'e dönüşsün.</p>
+    </header>
+
+    <div id="container">
+        <div class="container">
+            <h2>Markdown Girişi</h2>
+            <textarea id="markdown-input"
+                placeholder="# Başlık&#10;## Alt başlık&#10;**kalın**, *italik*&#10;> alıntı&#10;[bağlantı](https://ornek.com)"></textarea>
+        </div>
+
+        <div class="container">
+            <h2>Ham HTML Çıktısı</h2>
+            <div id="html-output"></div>
+        </div>
+
+        <div class="container">
+            <h2>HTML Önizleme</h2>
+            <div id="preview"></div>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        Tüm dönüşüm tarayıcınızda gerçekleşir; yazdıklarınız hiçbir sunucuya gönderilmez.
+    </footer>
+
+    <script>
+        function convertMarkdown() {
+    // 1. Element abrufen und Wert sichern
+    const inputElement = document.getElementById('markdown-input');
+    if (!inputElement) return "";
+    
+    let markdown = inputElement.value;
+
+    // 2. Zeilenweise Verarbeitung für Block-Elemente (Überschriften & Quotes)
+    let lines = markdown.split('\n');
+    let processedLines = lines.map(line => {
+        if (line.startsWith('### ')) {
+            return `===H3===${line.slice(4)}===/H3===`;
+        }
+        if (line.startsWith('## ')) {
+            return `===H2===${line.slice(3)}===/H2===`;
+        }
+        if (line.startsWith('# ')) {
+            return `===H1===${line.slice(2)}===/H1===`;
+        }
+        if (line.startsWith('> ')) {
+            return `===BQ===${line.slice(2)}===/BQ===`;
+        }
+        return line;
+    });
+    
+    let html = processedLines.join('');
+
+    // 3. Inline-Elemente konvertieren (Nicht-gierige RegEx mit .*? oder [^*]+)
+    // Bilder: ![alt](src)
+    html = html.replace(/!\[([^\]]*)]\(([^)]*)\)/g, '<img alt="$1" src="$2">');
+    
+    // Links: [text](url)
+    html = html.replace(/\[([^\]]+)]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+    // Fett (Bold): **text** oder __text__ (Verwendung von .*? erlaubt Verschachtelung)
+    html = html.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([\s\S]*?)__/g, '<strong>$1</strong>');
+
+    // Kursiv (Italic): *text* oder _text_
+    html = html.replace(/\*([\s\S]*?)\*/g, '<em>$1</em>');
+    html = html.replace(/_([\s\S]*?)_/g, '<em>$1</em>');
+
+    // 4. Temporäre Block-Platzhalter in HTML-Tags umwandeln
+    html = html.replace(/===H3===/g, '<h3>').replace(/===\/H3===/g, '</h3>');
+    html = html.replace(/===H2===/g, '<h2>').replace(/===\/H2===/g, '</h2>');
+    html = html.replace(/===H1===/g, '<h1>').replace(/===\/H1===/g, '</h1>');
+    html = html.replace(/===BQ===/g, '<blockquote>').replace(/===\/BQ===/g, '</blockquote>');
+
+    // 5. DOM-Elemente aktualisieren
+    const htmlOutput = document.getElementById('html-output');
+    const preview = document.getElementById('preview');
+
+    if (htmlOutput) {
+        // textContent stellt sicher, dass der HTML-Code als ROHTEXT angezeigt wird
+        htmlOutput.textContent = html; 
+    }
+    if (preview) {
+        // innerHTML rendert die echten HTML-Elemente für die Vorschau
+        preview.innerHTML = html;
+    }
+
+    return html;
+}
+
+// 6. Event-Listener für automatische Tests binden
+const inputArea = document.getElementById('markdown-input');
+if (inputArea) {
+    inputArea.addEventListener('input', convertMarkdown);
+    inputArea.addEventListener('keyup', convertMarkdown);
+    inputArea.addEventListener('change', convertMarkdown);
+}
+    </script>
+</body>
+
+</html>
