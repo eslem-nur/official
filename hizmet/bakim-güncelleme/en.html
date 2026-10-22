@@ -35,6 +35,10 @@
 
     <!-- Header -->
     <header id="header">
+        <div class="demo-notice-bar">
+    <i class="fas fa-circle-info"></i>
+    This page is a <strong>portfolio project</strong> — no real services are sold.
+</div>
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
@@ -80,6 +84,11 @@
                 </a>
             </div>
             <div class="trust-badges">
+                <span class="badge" style="background:#E89EB8; border-color:#E89EB8; color:#fff;">
+    <i class="fas fa-flask" style="color:#fff;"></i> Portfolio Project
+</span>
+
+<span class="badge"><i class="fas fa-check"></i> Free Trial</span>
                 <span class="badge"><i class="fas fa-clock"></i> Monthly or Hourly</span>
                 <span class="badge"><i class="fas fa-shield-halved"></i> Security Checks</span>
                 <span class="badge"><i class="fas fa-file-lines"></i> Monthly Report</span>
@@ -213,6 +222,13 @@
                 A monthly subscription or one-off hourly work. No commitment — you can stop any month you like.
             </p>
 
+            <div class="demo-inline-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div>
+        <strong>Prices shown are placeholders.</strong>
+        They are part of a design concept and do not reflect an actual offer.
+    </div>
+</div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-badge">BASIC</div>
@@ -434,10 +450,15 @@
                 </div>
 
                 <div id="orderFeedback" class="form-feedback" style="display: none;"></div>
-
-                <button type="submit" class="btn btn-primary full-width">
-                    <i class="fas fa-screwdriver-wrench"></i> Send Support Request
-                </button>
+<div class="demo-inline-notice">
+    <i class="fas fa-ban"></i>
+    <div>
+        This form <strong>does not work</strong> — for demo purposes only, submitted data is not recorded.
+    </div>
+</div>
+                <button type="submit" class="btn btn-primary full-width" disabled>
+    <i class="fas fa-paper-plane"></i> Submit Request (Demo)
+</button>
             </form>
         </div>
     </section>
@@ -551,7 +572,7 @@
                 <div class="footer-social">
                     <h4>Contact</h4>
                     <a href="mailto:eslemnur-official@proton.me" class="footer-email">
-                        <i class="fas fa-envelope"></i> eslemnur-official@proton.me
+                        <i class="fas fa-envelope"></i> demo@example.com
                     </a>
                     <div class="social-icons">
                         <a href="https://github.com/eslem-nur" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -562,8 +583,10 @@
 
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year"></span> Ilm &amp; Code — Eslem Nur Çetin. All rights reserved.</p>
-                <p class="disclaimer">Work is approached with diligence, and clients with a sense of amanah.</p>
-            </div>
+<p class="disclaimer">
+    This page is a portfolio / design project. No real services are sold.
+    Prices, packages and customer testimonials are for example purposes only.
+</p>            </div>
         </div>
     </footer>
 

@@ -11,6 +11,10 @@
 <body>
     <!-- Header -->
     <header id="header">
+        <div class="demo-notice-bar">
+    <i class="fas fa-circle-info"></i>
+    This page is a <strong>portfolio project</strong> — no real services are sold.
+</div>
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
@@ -45,6 +49,11 @@
                 <a href="#curriculum" class="btn btn-outline">Explore Content</a>
             </div>
             <div class="trust-badges">
+                <span class="badge" style="background:#E89EB8; border-color:#E89EB8; color:#fff;">
+    <i class="fas fa-flask" style="color:#fff;"></i> Portfolio Project
+</span>
+
+<span class="badge"><i class="fas fa-check"></i> Free Trial</span>
                 <span class="badge"><i class="fas fa-check"></i> Free Trial</span>
                 <span class="badge"><i class="fas fa-check"></i> 24/7 Support</span>
                 <span class="badge"><i class="fas fa-check"></i> Certificate</span>
@@ -177,6 +186,13 @@
                 Options suitable for every need. Don't let financial barriers stop seeking knowledge.
             </p>
             
+            <div class="demo-inline-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div>
+        <strong>Prices shown are placeholders.</strong>
+        They are part of a design concept and do not reflect an actual offer.
+    </div>
+</div>
             <div class="pricing-grid">
                 <!-- Free Tier -->
                 <div class="pricing-card featured">
@@ -239,13 +255,14 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Student Reviews</h2>
+            <h2 class="section-title">Sample Review Section</h2>
             <p class="section-description">
                 Experiences from students continuing their learning journey at Nur Mektebi.
             </p>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "I was reading the Quran without understanding it. Thanks to Nur Mektebi, I now see the depth in every verse. May Allah reward you."
@@ -260,6 +277,7 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "I finally understood Arabic grammar! I tried for 2 years before but this method really works."
@@ -274,6 +292,7 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Being online is a big advantage for me. I attend lessons comfortably at home after work. The community feeling is wonderful."
@@ -346,7 +365,7 @@
             <p>Start your journey today. It's never too late to seek knowledge.</p>
             <div class="cta-actions">
                 <a href="#membership" class="btn btn-large">Create Free Account</a>
-                <a href="mailto:info@nurmektebi.com" class="btn btn-outline">Contact Us</a>
+                <a href="mailto:demo@example.com" class="btn btn-outline">Contact Us</a>
             </div>
         </div>
     </section>
@@ -401,8 +420,10 @@
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 
-                <p class="disclaimer">™ Educational content only. Consult relevant theologians for fatwas.</p>
-            </div>
+<p class="disclaimer">
+    This page is a portfolio / design project. No real services are sold.
+    Prices, packages and customer testimonials are for example purposes only.
+</p>            </div>
         </div>
     </footer>
 

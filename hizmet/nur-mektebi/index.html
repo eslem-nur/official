@@ -12,6 +12,10 @@
 <body>
     <!-- Header -->
     <header id="header">
+        <div class="demo-notice-bar">
+        <i class="fas fa-circle-info"></i>
+        Bu sayfa bir <strong>portfolyo çalışmasıdır</strong> — gerçek hizmet satışı yapılmamaktadır.
+    </div>
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
@@ -46,6 +50,11 @@
                 <a href="#curriculum" class="btn btn-outline">İçeriği Keşfet</a>
             </div>
             <div class="trust-badges">
+                <span class="badge" style="background:#E89EB8; border-color:#E89EB8; color:#fff;">
+        <i class="fas fa-flask" style="color:#fff;"></i> Portfolyo Projesi
+    </span>
+
+    <span class="badge"><i class="fas fa-check"></i> Serbest Deneme</span>
                 <span class="badge"><i class="fas fa-check"></i> Serbest Deneme</span>
                 <span class="badge"><i class="fas fa-check"></i> 7/24 Destek</span>
                 <span class="badge"><i class="fas fa-check"></i> Sertifika</span>
@@ -178,6 +187,13 @@
                 Her ihtiyaca uygun seçenek. İlim öğrenmek için maddi güçlük çıkarma.
             </p>
             
+            <div class="demo-inline-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div>
+        <strong>Bu fiyatlar örnektir.</strong>
+        Sayfa bir portfolyo çalışmasıdır; gerçek bir hizmet satışı, ödeme alımı veya sipariş kabulü yapılmamaktadır.
+    </div>
+</div>
             <div class="pricing-grid">
                 <!-- Free Tier -->
                 <div class="pricing-card featured">
@@ -240,13 +256,15 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Öğrenci Görüşleri</h2>
+            <h2 class="section-title">Örnek Yorum Bölümü</h2>
             <p class="section-description">
                 Nur Mektebi'nde öğrenmeye devam edenlerin deneyimleri.
             </p>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
+                <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Kur'an'ı anlamadan okuyordum. Nur Mektebi sayesinde şimdi her ayetteki derinliği görüyorum. Allah razı olsun."
@@ -261,6 +279,8 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Arapça gramerini finally kavradım! Daha önce 2 yıl denemiştim ama buradaki yöntem gerçekten işe yarıyor."
@@ -275,6 +295,8 @@
                 </div>
                 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Online olması benim için büyük avantaj. İşten sonra evimde rahatça derslere katılıyorum. Cemaat hissi çok güzel."
@@ -347,7 +369,7 @@
             <p>Yolculuğuna bugün başla. İlim öğrenmek için asla geç değil.</p>
             <div class="cta-actions">
                 <a href="#membership" class="btn btn-large">Ücretsiz Hesap Oluştur</a>
-                <a href="mailto:info@nurmektebi.com" class="btn btn-outline">Bizimle İletişime Geç</a>
+                <a href="mailto:demo@example.com" class="btn btn-outline">Bizimle İletişime Geç</a>
             </div>
         </div>
     </section>
@@ -403,7 +425,10 @@
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 
-                <p class="disclaimer">™ Eğitim amaçlı içerikler. Fetva için ilgili ilahiyatçılara danışınız.</p>
+                <p class="disclaimer">
+    Bu sayfa bir portfolyo / tasarım çalışmasıdır. Gerçek hizmet satışı yapılmamaktadır.
+    Fiyatlar, paketler ve müşteri yorumları örnek amaçlıdır.
+</p>
             </div>
         </div>
     </footer>

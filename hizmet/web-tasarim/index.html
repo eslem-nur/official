@@ -30,6 +30,10 @@
 
     <!-- Header -->
 <header id="header">
+    <div class="demo-notice-bar">
+        <i class="fas fa-circle-info"></i>
+        Bu sayfa bir <strong>portfolyo çalışmasıdır</strong> — gerçek hizmet satışı yapılmamaktadır.
+    </div>
     <div class="container">
         <nav class="navbar">
             <a href="#" class="logo">
@@ -76,6 +80,11 @@
                 </a>
             </div>
             <div class="trust-badges">
+                <span class="badge" style="background:#E89EB8; border-color:#E89EB8; color:#fff;">
+        <i class="fas fa-flask" style="color:#fff;"></i> Portfolyo Projesi
+    </span>
+
+    <span class="badge"><i class="fas fa-check"></i> Serbest Deneme</span>
                 <span class="badge"><i class="fas fa-mobile-screen"></i> Mobil Uyumlu</span>
                 <span class="badge"><i class="fas fa-bolt"></i> Hızlı Teslim</span>
                 <span class="badge"><i class="fas fa-handshake"></i> Emanet Bilinciyle</span>
@@ -206,6 +215,13 @@
                 Her projeye göre özel fiyatlandırma yapılır; bunlar başlangıç noktalarıdır. Öğrenci ve hayır kurumlarına indirim uygulanır.
             </p>
 
+            <div class="demo-inline-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div>
+        <strong>Bu fiyatlar örnektir.</strong>
+        Sayfa bir portfolyo çalışmasıdır; gerçek bir hizmet satışı, ödeme alımı veya sipariş kabulü yapılmamaktadır.
+    </div>
+</div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-badge">TEMEL</div>
@@ -343,10 +359,12 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section-alt">
         <div class="container">
-            <h2 class="section-title">Müşteri Görüşleri</h2>
+            <h2 class="section-title">Örnek Yorum Bölümü</h2>
 
             <div class="testimonials-grid">
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Derneğimiz için site istemiştik, sadece bir paragraf yazdım. Birkaç gün sonra tam hayal ettiğimiz gibi bir site geldi. Çok memnun kaldık, Allah razı olsun."
@@ -361,6 +379,8 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Diğer yerlerden aldığım hazır şablonlar hep aynı duruyordu. Burada tamamen kendime özel, hızlı ve mobilde kusursuz çalışan bir site aldım. Fiyat da gayet uygundu."
@@ -375,6 +395,8 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Örnek</span>
+
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Zamanında teslim, her revizyon isteğim sabırla karşılandı. Teknik bilmeyen biri olarak bile süreci gayet net takip ettim. Çalışması da çok temiz."
@@ -490,10 +512,15 @@
                 </div>
 
                 <div id="orderFeedback" class="form-feedback" style="display: none;"></div>
-
-                <button type="submit" class="btn btn-primary full-width">
-                    <i class="fas fa-paper-plane"></i> Teklif İsteği Gönder
-                </button>
+<div class="demo-inline-notice">
+    <i class="fas fa-ban"></i>
+    <div>
+        Bu form <strong>çalışmamaktadır</strong> — demo amaçlıdır, gönderilen veri kaydedilmez.
+    </div>
+</div>
+                <button type="submit" class="btn btn-primary full-width" disabled>
+    <i class="fas fa-paper-plane"></i> Teklif İsteği Gönder (Demo)
+</button>
             </form>
         </div>
     </section>
@@ -608,7 +635,7 @@
                 <div class="footer-social">
                     <h4>İletişim</h4>
                     <a href="mailto:eslemnur-official@proton.me" class="footer-email">
-                        <i class="fas fa-envelope"></i> eslemnur-official@proton.me
+                        <i class="fas fa-envelope"></i> demo@example.com
                     </a>
                     <div class="social-icons">
                         <a href="https://github.com/eslem-nur" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -619,7 +646,10 @@
 
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year"></span> İlim ve Kod — Eslem Nur Çetin. Tüm hakları saklıdır.</p>
-                <p class="disclaimer">İşe emekle, müşteriye emanet bilinciyle yaklaşılır.</p>
+                <p class="disclaimer">
+    Bu sayfa bir portfolyo / tasarım çalışmasıdır. Gerçek hizmet satışı yapılmamaktadır.
+    Fiyatlar, paketler ve müşteri yorumları örnek amaçlıdır.
+</p>
             </div>
         </div>
     </footer>

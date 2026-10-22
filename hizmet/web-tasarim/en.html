@@ -31,6 +31,10 @@
 
     <!-- Header -->
     <header id="header">
+        <div class="demo-notice-bar">
+    <i class="fas fa-circle-info"></i>
+    This page is a <strong>portfolio project</strong> — no real services are sold.
+</div>
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
@@ -77,6 +81,11 @@
                 </a>
             </div>
             <div class="trust-badges">
+                <span class="badge" style="background:#E89EB8; border-color:#E89EB8; color:#fff;">
+    <i class="fas fa-flask" style="color:#fff;"></i> Portfolio Project
+</span>
+
+<span class="badge"><i class="fas fa-check"></i> Free Trial</span>
                 <span class="badge"><i class="fas fa-mobile-screen"></i> Mobile-Friendly</span>
                 <span class="badge"><i class="fas fa-bolt"></i> Fast Delivery</span>
                 <span class="badge"><i class="fas fa-handshake"></i> Guided by Amanah</span>
@@ -207,6 +216,13 @@
                 Pricing is tailored to each project; these are starting points. Discounts apply for students and charitable organisations.
             </p>
 
+            <div class="demo-inline-notice">
+    <i class="fas fa-triangle-exclamation"></i>
+    <div>
+        <strong>Prices shown are placeholders.</strong>
+        They are part of a design concept and do not reflect an actual offer.
+    </div>
+</div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-badge">BASIC</div>
@@ -340,10 +356,11 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section-alt">
         <div class="container">
-            <h2 class="section-title">Client Feedback</h2>
+            <h2 class="section-title">Sample Review Section</h2>
 
             <div class="testimonials-grid">
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "We asked for a site for our association and only wrote a single paragraph. A few days later, a site arrived exactly as we had imagined it. We were very pleased — may Allah be pleased with her."
@@ -358,6 +375,7 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "The ready-made templates I got elsewhere all looked the same. Here I received something entirely my own — fast and flawless on mobile. The price was very reasonable too."
@@ -372,6 +390,7 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <span class="badge" style="background:#E89EB8; color:#fff; font-size:0.65rem; padding:2px 8px; margin-bottom:8px;">Sample Only</span>
                     <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                     <blockquote>
                         "Delivered on time, and every revision request was met with patience. Even as someone with no technical background, I followed the process perfectly clearly. The work is very clean too."
@@ -487,10 +506,15 @@
                 </div>
 
                 <div id="orderFeedback" class="form-feedback" style="display: none;"></div>
-
-                <button type="submit" class="btn btn-primary full-width">
-                    <i class="fas fa-paper-plane"></i> Send Quote Request
-                </button>
+<div class="demo-inline-notice">
+    <i class="fas fa-ban"></i>
+    <div>
+        This form <strong>does not work</strong> — for demo purposes only, submitted data is not recorded.
+    </div>
+</div>
+                <button type="submit" class="btn btn-primary full-width" disabled>
+    <i class="fas fa-paper-plane"></i> Submit Request (Demo)
+</button>
             </form>
         </div>
     </section>
@@ -605,7 +629,7 @@
                 <div class="footer-social">
                     <h4>Contact</h4>
                     <a href="mailto:eslemnur-official@proton.me" class="footer-email">
-                        <i class="fas fa-envelope"></i> eslemnur-official@proton.me
+                        <i class="fas fa-envelope"></i> demo@example.com
                     </a>
                     <div class="social-icons">
                         <a href="https://github.com/eslem-nur" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -616,8 +640,10 @@
 
             <div class="footer-bottom">
                 <p>&copy; <span id="current-year"></span> Ilm &amp; Code — Eslem Nur Çetin. All rights reserved.</p>
-                <p class="disclaimer">Work is approached with diligence, and clients with a sense of amanah.</p>
-            </div>
+<p class="disclaimer">
+    This page is a portfolio / design project. No real services are sold.
+    Prices, packages and customer testimonials are for example purposes only.
+</p>            </div>
         </div>
     </footer>
 
