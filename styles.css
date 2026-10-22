@@ -2316,7 +2316,6 @@ select {
     cursor: pointer;
 }
 
-/* Mobilde responsive */
 @media (max-width: 768px) {
     .survey-form .form-row {
         grid-template-columns: 1fr;
