@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anket Sistemi • İlim ve Kod</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+   POLL ANKET SİSTEMİ - CSS
+   ============================================ */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+    --card-secondary: #FDF5F5;
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+    --border-color: #F0E6E6;
+    --border-focus: #A06872;
+    --success-color: #388E3C;
+    --error-color: #D32F2F;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.poll-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.basmala {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    direction: rtl;
+}
+
+.poll-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.poll-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   CONTROL PANELS
+   ============================================ */
+
+.poll-controls {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.control-group {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.control-group h2 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.input-group input,
+.input-group select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.btn-add {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-add:hover {
+    background: var(--primary-dark);
+}
+
+.btn-vote {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-vote:hover {
+    background: #2E7D32;
+}
+
+.btn-results {
+    background: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn-results:hover {
+    background: var(--primary-dark);
+}
+
+.btn-test {
+    background: var(--primary-light);
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-test:hover {
+    background: var(--primary-color);
+}
+
+/* ============================================
+   MESSAGES
+   ============================================ */
+
+.message {
+    margin-top: 1rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    display: none;
+}
+
+.message.show {
+    display: block;
+}
+
+.message.success {
+    background: var(--bg-secondary);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.message.error {
+    background: #FFE6E6;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+/* ============================================
+   RESULTS AREA
+   ============================================ */
+
+.results-area {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    min-height: 100px;
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.results-area pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   SAMPLE DATA SECTION
+   ============================================ */
+
+.poll-sample {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.poll-sample h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.poll-sample p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.poll-sample .note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .poll-header {
+        padding: 2rem 1rem;
+    }
+    
+    .poll-title {
+        font-size: 2rem;
+    }
+    
+    .control-group {
+        padding: 1.5rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group input,
+    .input-group select,
+    .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+[data-theme="dark"] {
+    --bg-color: #0D0D0D;
+    --bg-secondary: #141414;
+    --card-bg: #1A1A1A;
+    --card-secondary: #222222;
+    --text-primary: #F5F5F0;
+    --text-secondary: #B0B0B0;
+    --text-muted: #808080;
+    --border-color: #2A2A2A;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0D0D0D 0%, #141414 100%);
+}
+
+[data-theme="dark"] .poll-header,
+[data-theme="dark"] .control-group,
+[data-theme="dark"] .poll-sample {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .results-area {
+    background: var(--card-secondary);
+}
+    </style>
+</head>
+<body>
+
+    <div class="poll-container container">
+        <!-- Başlık -->
+        <section class="poll-header">
+            <div class="basmala">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <h1 class="poll-title">Anket Sistemi</h1>
+            <p class="poll-subtitle">Seçenek ekle, oy kullan, sonuçları görüntüle</p>
+        </section>
+
+        <!-- Kontrol Paneli -->
+        <section class="poll-controls">
+            <div class="control-group">
+                <h2>1. Seçenek Ekle</h2>
+                <div class="input-group">
+                    <input type="text" id="optionInput" placeholder="Seçenek adı (örn: Türkiye)">
+                    <button onclick="handleAddOption()" class="btn btn-add">
+                        <i class="fas fa-plus"></i> Ekle
+                    </button>
+                </div>
+                <div id="optionMessage" class="message"></div>
+            </div>
+
+            <div class="control-group">
+                <h2>2. Oy Kullan</h2>
+                <div class="input-group">
+                    <select id="optionSelect">
+                        <option value="">Bir seçenek seçin</option>
+                    </select>
+                    <input type="text" id="voterInput" placeholder="Oy verene ID (örn: traveler1)">
+                    <button onclick="handleVote()" class="btn btn-vote">
+                        <i class="fas fa-check"></i> Oy At
+                    </button>
+                </div>
+                <div id="voteMessage" class="message"></div>
+            </div>
+
+            <div class="control-group">
+                <h2>3. Sonuçları Göster</h2>
+                <button onclick="handleResults()" class="btn btn-results">
+                    <i class="fas fa-chart-bar"></i> Sonuçları Göster
+                </button>
+                <div id="resultsDisplay" class="results-area"></div>
+            </div>
+        </section>
+
+        <!-- Şimdilik Hazırlanmış Veriler -->
+        <section class="poll-sample">
+            <h2>Test Verileri</h2>
+            <p>
+                Sistem şu an hazır durumda. Aşağıdaki butonu tıklayarak test verilerini yükleyebilirsiniz:
+            </p>
+            <button onclick="loadTestData()" class="btn btn-test">
+                <i class="fas fa-database"></i> Test Verilerini Yükle
+            </button>
+            <p class="note">
+                Turkey: 2 oy, Morocco: 1 oy (varsayılan test verileri)
+            </p>
+        </section>
+    </div>
+
+    <script>
+const poll = new Map();
+
+function addOption(option) {
+    if (!option || option.trim() === "") {
+        return "Option cannot be empty.";
+    }
+    
+    if (poll.has(option)) {
+        return `Option "${option}" already exists.`;
+    }
+    
+    poll.set(option, new Set());
+    return `Option "${option}" added to the poll.`;
+}
+
+function vote(option, voterId) {
+    if (!poll.has(option)) {
+        return `Option "${option}" does not exist.`;
+    }
+    
+    const voters = poll.get(option);
+    
+    if (voters.has(voterId)) {
+        return `Voter ${voterId} has already voted for "${option}".`;
+    }
+    
+    voters.add(voterId);
+    return `Voter ${voterId} voted for "${option}".`;
+}
+
+function displayResults() {
+    let resultString = "Poll Results:";
+    
+    for (let [option, voters] of poll.entries()) {
+        resultString += `\n${option}: ${voters.size} votes`;
+    }
+    
+    return resultString;
+}
+
+addOption("Turkey");
+addOption("Morocco");
+addOption("Spain");
+
+vote("Turkey", "traveler1");
+vote("Turkey", "traveler2");
+vote("Morocco", "traveler3");
+    
+    
+    function handleAddOption() {
+        const input = document.getElementById('optionInput');
+        const message = document.getElementById('optionMessage');
+        const select = document.getElementById('optionSelect');
+        
+        const result = addOption(input.value);
+        message.textContent = result;
+        message.className = result.includes('error') || result.includes('already') ? 'message error' : 'message success';
+        
+        if (result.includes('added')) {
+            const option = document.createElement('option');
+            option.value = input.value;
+            option.textContent = input.value;
+            select.appendChild(option);
+            input.value = '';
+        }
+        
+        setTimeout(() => message.textContent = '', 3000);
+    }
+    
+    function handleVote() {
+        const option = document.getElementById('optionSelect').value;
+        const voter = document.getElementById('voterInput').value;
+        const message = document.getElementById('voteMessage');
+        
+        if (!option || !voter) {
+            message.textContent = 'Lütfen hem seçenek hem de ID girin.';
+            message.className = 'message error';
+            setTimeout(() => message.textContent = '', 3000);
+            return;
+        }
+        
+        const result = vote(option, voter);
+        message.textContent = result;
+        message.className = result.includes('already') || result.includes('does not exist') ? 'message error' : 'message success';
+        
+        if (result.includes('already')) {
+            setTimeout(() => message.textContent = '', 3000);
+        } else if (result.includes('voted')) {
+            updateResultsDisplay();
+            setTimeout(() => message.textContent = '', 3000);
+        }
+    }
+    
+    function handleResults() {
+        const display = document.getElementById('resultsDisplay');
+        const raw = displayResults();
+        display.innerHTML = '<pre>' + formatResults(raw) + '</pre>';
+        updateResultsDisplay();
+    }
+    
+    function formatResults(text) {
+        return text.replace(/\n/g, '<br>').replace(/(\w+):/g, '<strong>$1:</strong>');
+    }
+    
+    function updateResultsDisplay() {
+        const display = document.getElementById('resultsDisplay');
+        const raw = displayResults();
+        display.innerHTML = '<pre>' + formatResults(raw) + '</pre>';
+    }
+    
+    function loadTestData() {
+        // JS dosyasındaki varsayılan test verilerini yükler
+        addOption("Turkey");
+        addOption("Morocco");
+        addOption("Spain");
+        
+        vote("Turkey", "traveler1");
+        vote("Turkey", "traveler2");
+        vote("Morocco", "traveler3");
+        
+        updateResultsDisplay();
+        alert('Test verileri yüklendi: Turkey (2), Morocco (1), Spain (0)');
+    }
+    </script>
+</body>
+</html>
