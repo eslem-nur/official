@@ -120,7 +120,7 @@ The contents in this project (notes, templates, web applications) are shared wit
 
 #### Let's build something.
 
-<sub>`˖⊹𖥔` Germany &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub>
+<sub>`˖⊹𖥔` Germany &nbsp;·&nbsp; [eslemnur-official@proton.me](mailto:eslemnur-official@proton.me) &nbsp;·&nbsp; <code>eslem@dev$ _</code></sub> 
 
 [![Business Card](https://img.shields.io/badge/Business_Card-0d1117?style=for-the-badge&logo=github&logoColor=c583a0)](https://eslem-nur.github.io/Business-Card/en.html)
 
