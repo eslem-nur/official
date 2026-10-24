@@ -97,6 +97,7 @@ Hedefim: إن شاء الله ilmi sadece kağıtta bırakmamak, dijital dünyad
 © 2026 Eslem Nur Çetin. Tüm hakları saklıdır.
 
 **Bu portfolyo altındaki markalar:**
+- **Ilm & Code™** — web uygulamaları, web araçları
 - **Eslem Nur Notes™** — Dijital notlar, çalışma materyalleri
 - **Eslem Nur Kalligrafie™** — Hat sanatı, tuval işleri
 
