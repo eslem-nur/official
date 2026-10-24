@@ -12,7 +12,7 @@
 
 
 
-# 🌸 Eslem Nur Çetin | Knowledge & Code
+# 🌸 Eslem Nur Çetin | Ilm & Code
 
 [English](./README.md) | [Türkçe](./README.tr.md)
 
@@ -101,6 +101,7 @@ My goal: إن شاء الله to not leave knowledge only on paper, but to sprea
 © 2026 Eslem Nur Çetin. All rights reserved.
 
 **Brands under this portfolio:**
+- **Ilm & Code™** — web applications, web tools
 - **Eslem Nur Notes™** — Digital notes, study materials
 - **Eslem Nur Kalligrafie™** — Calligraphy, canvas art
 
