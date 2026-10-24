@@ -1,0 +1,320 @@
+        /* ============================================
+   POLL ANKET SİSTEMİ - CSS
+   ============================================ */
+
+:root {
+    --primary-color: #A06872;
+    --primary-dark: #8E5A65;
+    --primary-light: #CC8E98;
+    --bg-color: #FFF9F9;
+    --bg-secondary: #FFF0F5;
+    --card-bg: #FFFFFF;
+    --card-secondary: #FDF5F5;
+    --text-primary: #4E342E;
+    --text-secondary: #8D6E63;
+    --text-muted: #A89080;
+    --border-color: #F0E6E6;
+    --border-focus: #A06872;
+    --success-color: #388E3C;
+    --error-color: #D32F2F;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --shadow-md: 0 4px 15px rgba(183, 110, 121, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.poll-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.basmala {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    direction: rtl;
+}
+
+.poll-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.poll-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   CONTROL PANELS
+   ============================================ */
+
+.poll-controls {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.control-group {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.control-group h2 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.input-group input,
+.input-group select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.btn-add {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-add:hover {
+    background: var(--primary-dark);
+}
+
+.btn-vote {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-vote:hover {
+    background: #2E7D32;
+}
+
+.btn-results {
+    background: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn-results:hover {
+    background: var(--primary-dark);
+}
+
+.btn-test {
+    background: var(--primary-light);
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-test:hover {
+    background: var(--primary-color);
+}
+
+/* ============================================
+   MESSAGES
+   ============================================ */
+
+.message {
+    margin-top: 1rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    display: none;
+}
+
+.message.show {
+    display: block;
+}
+
+.message.success {
+    background: var(--bg-secondary);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.message.error {
+    background: #FFE6E6;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+/* ============================================
+   RESULTS AREA
+   ============================================ */
+
+.results-area {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    min-height: 100px;
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.results-area pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   SAMPLE DATA SECTION
+   ============================================ */
+
+.poll-sample {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.poll-sample h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.poll-sample p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.poll-sample .note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .poll-header {
+        padding: 2rem 1rem;
+    }
+    
+    .poll-title {
+        font-size: 2rem;
+    }
+    
+    .control-group {
+        padding: 1.5rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group input,
+    .input-group select,
+    .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+[data-theme="dark"] {
+    --bg-color: #0D0D0D;
+    --bg-secondary: #141414;
+    --card-bg: #1A1A1A;
+    --card-secondary: #222222;
+    --text-primary: #F5F5F0;
+    --text-secondary: #B0B0B0;
+    --text-muted: #808080;
+    --border-color: #2A2A2A;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0D0D0D 0%, #141414 100%);
+}
+
+[data-theme="dark"] .poll-header,
+[data-theme="dark"] .control-group,
+[data-theme="dark"] .poll-sample {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .results-area {
+    background: var(--card-secondary);
+}
