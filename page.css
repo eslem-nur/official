@@ -254,3 +254,14 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+.language-badge {
+    display: inline-block;
+    background: #E89EB8;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
