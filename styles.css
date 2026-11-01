@@ -2414,7 +2414,7 @@ select {
    ============================================ */
 
 .site-logo {
-    height: clamp(52px, 6vw, 70px);
+    height: clamp(80px, 8vw, 100px);
     width: auto;
     flex-shrink: 0;
     display: block;
