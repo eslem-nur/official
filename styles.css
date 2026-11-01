@@ -2414,7 +2414,7 @@ select {
    ============================================ */
 
 .site-logo {
-    height: clamp(34px, 4vw, 46px);
+    height: clamp(52px, 6vw, 70px);
     width: auto;
     flex-shrink: 0;
     display: block;
@@ -2426,12 +2426,10 @@ select {
     transform: scale(1.06);
 }
 
-/* Dark mode: koyu logo siyah zeminde kaybolmasın */
 [data-theme="dark"] .site-logo {
     filter: brightness(1.15) contrast(1.05);
 }
 
-/* Logo ile yazı arasındaki boşluk */
 .logo {
     gap: var(--spacing-xs);
 }
