@@ -2408,3 +2408,39 @@ select {
         font-size: 1.2rem !important;
     }
 }
+
+/* ============================================
+   HEADER LOGO (PNG) + İSİM
+   ============================================ */
+
+.site-logo {
+    height: clamp(34px, 4vw, 46px);
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+    transition: transform var(--transition-base);
+}
+
+.logo:hover .site-logo {
+    transform: scale(1.06);
+}
+
+/* Dark mode: koyu logo siyah zeminde kaybolmasın */
+[data-theme="dark"] .site-logo {
+    filter: brightness(1.15) contrast(1.05);
+}
+
+/* Logo ile yazı arasındaki boşluk */
+.logo {
+    gap: var(--spacing-xs);
+}
+
+/* Mobil */
+@media (max-width: 640px) {
+    .site-logo { height: 32px; }
+}
+
+@media (max-width: 460px) {
+    .site-logo { height: 28px; }
+}
