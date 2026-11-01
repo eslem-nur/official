@@ -2436,9 +2436,9 @@ select {
 
 /* Mobil */
 @media (max-width: 640px) {
-    .site-logo { height: 32px; }
+    .site-logo { height: 78px; }
 }
 
 @media (max-width: 460px) {
-    .site-logo { height: 28px; }
+    .site-logo { height: 74px; }
 }
