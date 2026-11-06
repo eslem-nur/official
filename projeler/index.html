@@ -7,9 +7,14 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://eslem-nur.github.io/official/projeler/index.html">
 
-    <!-- Not: Bu sayfanın henüz en/de/fr/ar çevirisi olmadığı için
-         hreflang etiketleri kasıtlı olarak eklenmedi.
-         Çeviriler hazır olduğunda buraya ekleyin. -->
+    <!-- Hreflang Alternatives -->
+    <link rel="alternate" hreflang="tr" href="https://eslem-nur.github.io/official/projeler/index.html">
+    <link rel="alternate" hreflang="en" href="https://eslem-nur.github.io/official/projeler/en.html">
+    <link rel="alternate" hreflang="de" href="https://eslem-nur.github.io/official/projeler/de.html">
+    <link rel="alternate" hreflang="fr" href="https://eslem-nur.github.io/official/projeler/fr.html">
+    <link rel="alternate" hreflang="ar" href="https://eslem-nur.github.io/official/projeler/ar.html">
+    <link rel="alternate" hreflang="x-default" href="https://eslem-nur.github.io/official/projeler/en.html">
+    
 
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -175,7 +180,7 @@
                         <div class="project-content">
                             <div class="project-title">Tefsir Notlarım (Özet)</div>
                             <p class="project-desc">Tefsir derslerimin özetleri.</p>
-                            <a href="https://heyzine.com/flip-book/be4fb6ca40.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <a href="https://heyzine.com/flip-book/9f19cecb5f.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
                             <div class="repo-link">
                                 <i class="fas fa-book"></i>
                                 <span>FlipBook • Heyzine</span>
@@ -190,7 +195,7 @@
                         <div class="project-content">
                             <div class="project-title">Tecvid Notlarım (Özet)</div>
                             <p class="project-desc">Tecvid derslerimin özetleri.</p>
-                            <a href="https://heyzine.com/flip-book/c796c9f840.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <a href="https://heyzine.com/flip-book/c738b7becf.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
                             <div class="repo-link">
                                 <i class="fas fa-book"></i>
                                 <span>FlipBook • Tecvid Kuralları</span>
@@ -205,7 +210,7 @@
                         <div class="project-content">
                             <div class="project-title">Arapça Gramer Notlarım</div>
                             <p class="project-desc">Arapça derslerimin özetleri.</p>
-                            <a href="https://heyzine.com/flip-book/4501c64c59.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <a href="https://heyzine.com/flip-book/710de0b033.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
                             <div class="repo-link">
                                 <i class="fas fa-book"></i>
                                 <span>FlipBook • Arapça</span>
@@ -705,5 +710,17 @@
     </footer>
 
     <script src="../scripts.js"></script>
+
+    <!-- FLIPBOOK MODAL -->
+<div id="flipbookModal" class="fb-modal" aria-hidden="true">
+    <div class="fb-modal-backdrop" onclick="closeFlipbook()"></div>
+    <div class="fb-modal-box">
+        <button class="fb-modal-close" onclick="closeFlipbook()" aria-label="Kapat">✕</button>
+        <iframe id="flipbookFrame" allowfullscreen
+                allow="autoplay; fullscreen; clipboard-write"
+                scrolling="no" title="Flipbook Görüntüleyici">
+        </iframe>
+    </div>
+</div>
 </body>
 </html>

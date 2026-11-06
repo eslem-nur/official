@@ -1457,3 +1457,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ============================================
+// 31. FLIPBOOK MODAL GÖRÜNTÜLEYİCİ
+// ============================================
+
+function openFlipbook(url) {
+    const modal = document.getElementById('flipbookModal');
+    const frame = document.getElementById('flipbookFrame');
+
+    // Modal bu sayfada yoksa sessizce çık (normal linke izin ver)
+    if (!modal || !frame) {
+        window.open(url, '_blank', 'noopener');
+        return;
+    }
+
+    frame.src = url;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFlipbook() {
+    const modal = document.getElementById('flipbookModal');
+    const frame = document.getElementById('flipbookFrame');
+    if (!modal) return;
+
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (frame) frame.src = '';
+}
+
+// Heyzine linklerini yakala (event delegation — butonlara dokunmaya gerek yok)
+document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href*="heyzine.com"]');
+    if (!link) return;
+    e.preventDefault();
+    openFlipbook(link.href);
+});
+
+// ESC ile kapatma
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeFlipbook();
+});

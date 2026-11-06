@@ -265,3 +265,99 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+/* ============================================
+   FLIPBOOK MODAL GÖRÜNTÜLEYİCİ
+   ============================================ */
+
+.fb-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000; /* header (1000) ve dropdown'ların üstünde */
+}
+
+.fb-modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn var(--transition-fast) ease;
+}
+
+.fb-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-bg);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.fb-modal-box {
+    position: relative;
+    width: min(960px, 92vw);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    animation: fbSlideUp 0.3s var(--transition-bounce);
+}
+
+@keyframes fbSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fb-modal-box iframe {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: none;
+    display: block;
+    background: var(--card-secondary);
+}
+
+.fb-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.fb-modal-close:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+/* Küçük ekranlarda neredeyse tam ekran */
+@media (max-width: 640px) {
+    .fb-modal-box {
+        width: 96vw;
+        max-height: 88vh;
+        border-radius: var(--radius-md);
+    }
+
+    .fb-modal-box iframe {
+        aspect-ratio: 3 / 4; /* mobilde sayfa çevirme alanı yüksek kalsın */
+    }
+}
