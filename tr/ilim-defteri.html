@@ -398,7 +398,7 @@ try{ CUSTOM_BOOKS=JSON.parse(sGet(K_CUSTOM)||"[]"); if(!Array.isArray(CUSTOM_BOO
 function getBooks(){ return CUSTOM_BOOKS.concat(BASE_BOOKS); }
 function saveCustomBooks(){ sSet(K_CUSTOM,JSON.stringify(CUSTOM_BOOKS)); }
 
-const ICON_CHOICES=["fa-book","fa-feather","fa-language","fa-scroll","fa-scale-balanced","fa-star-and-crescent","fa-mosque","fa-graduation-cap","fa-pen-nib","fa-globe","fa-heart","fa-calculator"];
+const ICON_CHOICES=["fa-book","fa-feather","fa-language","fa-scroll","fa-scale-balanced","fa-star-and-crescent","fa-mosque","fa-graduation-cap","fa-pen-nib","fa-globe","fa-heart","fa-calculator", "fa-kaaba", "fa-pray", "fa-school", "fa-book-reader" ];
 
 /* ---------- Durum ---------- */
 let DB=null, ACTIVE_ID=null, CURRENT_BOOK=null, currentIdx=-1;
