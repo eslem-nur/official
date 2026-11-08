@@ -23,7 +23,7 @@
     --header-bg:rgba(255,249,249,.95);
     --transition-fast:.15s ease; --transition-base:.3s ease;
     --transition-bounce:.4s cubic-bezier(.175,.885,.32,1.27);
-    --radius-sm:8px; --radius-md:16px; --radius-lg:20px; --radius-xl:30px;
+    --radius-sm:8px; --radius-md:16px; --radius-lg:20px; --radius-xl:30px; --radius-full:50%;
     --spacing-xs:.5rem; --spacing-sm:1rem; --spacing-md:1.5rem; --spacing-lg:2rem; --spacing-xl:3rem; --spacing-2xl:4rem;
     /* Defter çizgileri */
     --line-h:30px; --line-color:#EBDDE2;
@@ -348,7 +348,7 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 
 <footer>
     <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
-    <div class="copyright">© 2026 İlim ve Kod • Defterleriniz yalnızca bu cihazda saklanır</div>
+    <div class="copyright">© 2026 Eslem Nur Çetin • Defterleriniz yalnızca bu cihazda saklanır</div>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -417,7 +417,13 @@ function bookData(bid){
 }
 
 /* ---------- Tema ---------- */
-function applyTheme(t){ document.documentElement.setAttribute("data-theme",t); document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙"; sSet(K_THEME,t); }
+function applyTheme(t){
+    document.documentElement.setAttribute("data-theme",t);
+    document.getElementById("themeBtn").innerHTML = t==="dark"
+        ? '<i class="fas fa-sun" aria-hidden="true"></i>'
+        : '<i class="fas fa-moon" aria-hidden="true"></i>';
+    sSet(K_THEME,t);
+}
 document.getElementById("themeBtn").onclick=()=>applyTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
 applyTheme(sGet(K_THEME)||"light");
 
