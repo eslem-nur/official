@@ -268,7 +268,17 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
         <p>Hangi defterde çalışmak istersin? Notların otomatik kaydedilir, kaldığın yerden devam edersin.</p>
     </div>
     <div class="overall"><span>Genel ilerleme (Sure)</span><div class="track"><i id="overallBar" style="width:0%"></i></div><span id="overallPct">0%</span></div>
-    <div class="container"><div class="books-grid" id="booksGrid"></div></div>
+    <div class="container"><div class="books-grid" id="booksGrid"></div>
+
+    <div class="container">
+    <div class="topic-add no-print" style="margin-top:0">
+        <input class="field" id="newBookName" placeholder="Yeni defter adı (ör. Tefsir, Akaid, Sarf...)" maxlength="40">
+        <select class="field" id="newBookIcon" style="flex:0 0 auto;width:auto;min-width:170px"></select>
+        <button class="btn-primary" onclick="addCustomBook()"><i class="fas fa-plus"></i> Defter Ekle</button>
+    </div>
+</div>
+
+</div>
 </section>
 
 <!-- SURE DEFTERİ -->
@@ -376,12 +386,19 @@ function sDel(k){ try{ localStorage.removeItem(k);}catch(e){} delete MEM[k]; }
 const SURES=[["الفاتحة","Fâtiha"],["البقرة","Bakara"],["آل عمران","Âl-i İmrân"],["النساء","Nisâ"],["المائدة","Mâide"],["الأنعام","En'âm"],["الأعراف","A'râf"],["الأنفال","Enfâl"],["التوبة","Tevbe"],["يونس","Yûnus"],["هود","Hûd"],["يوسف","Yûsuf"],["الرعد","Ra'd"],["إبراهيم","İbrâhîm"],["الحجر","Hicr"],["النحل","Nahl"],["الإسراء","İsrâ"],["الكهف","Kehf"],["مريم","Meryem"],["طه","Tâhâ"],["الأنبياء","Enbiyâ"],["الحج","Hac"],["المؤمنون","Mü'minûn"],["النور","Nûr"],["الفرقان","Furkân"],["الشعراء","Şuarâ"],["النمل","Neml"],["القصص","Kasas"],["العنكبوت","Ankebût"],["الروم","Rûm"],["لقمان","Lokmân"],["السجدة","Secde"],["الأحزاب","Ahzâb"],["سبأ","Sebe"],["فاطر","Fâtır"],["يس","Yâsin"],["الصافات","Sâffât"],["ص","Sâd"],["الزمر","Zümer"],["غافر","Gâfir"],["فصلت","Fussilet"],["الشورى","Şûrâ"],["الزخرف","Zuhruf"],["الدخان","Duhân"],["الجاثية","Câsiye"],["الأحقاف","Ahkâf"],["محمد","Muhammed"],["الفتح","Fetih"],["الحجرات","Hucurât"],["ق","Kâf"],["الذاريات","Zâriyât"],["الطور","Tûr"],["النجم","Necm"],["القمر","Kamer"],["الرحمن","Rahmân"],["الواقعة","Vâkıa"],["الحديد","Hadîd"],["المجادلة","Mücâdele"],["الحشر","Haşr"],["الممتحنة","Mümtehine"],["الصف","Saff"],["الجمعة","Cuma"],["المنافقون","Münâfikûn"],["التغابن","Tagâbün"],["الطلاق","Talâk"],["التحريم","Tehrîm"],["الملك","Mülk"],["القلم","Kalem"],["الحاقة","Hâkka"],["المعارج","Meâric"],["نوح","Nûh"],["الجن","Cin"],["المزمل","Müzzemmil"],["المدثر","Müddessir"],["القيامة","Kıyâme"],["الإنسان","İnsân"],["المرسلات","Mürselât"],["النبأ","Nebe"],["النازعات","Nâziât"],["عبس","Abese"],["التكوير","Tekvîr"],["الانفطار","İnfitâr"],["المطففين","Mutaffifîn"],["الانشقاق","İnşikâk"],["البروج","Burûc"],["الطارق","Târik"],["الأعلى","A'lâ"],["الغاشية","Gâşiye"],["الفجر","Fecr"],["البلد","Beled"],["الشمس","Şems"],["الليل","Leyl"],["الضحى","Duhâ"],["الشرح","İnşirâh"],["التين","Tîn"],["العلق","Alak"],["القدر","Kadr"],["البينة","Beyyine"],["الزلزلة","Zilzâl"],["العاديات","Âdiyât"],["القارعة","Kâria"],["التكاثر","Tekâsür"],["العصر","Asr"],["الهمزة","Hümeze"],["الفيل","Fîl"],["قريش","Kureyş"],["الماعون","Mâûn"],["الكوثر","Kevser"],["الكافرون","Kâfirûn"],["النصر","Nasr"],["اللهب","Leheb"],["الإخلاص","İhlâs"],["الفلق","Felak"],["الناس","Nâs"]];
 
 /* ---------- Ders defterleri ---------- */
-const BOOKS=[
+const BASE_BOOKS=[
  {id:"surah",  name:"Sure Defteri", desc:"114 sure için kişisel çalışma defteri", icon:"fa-book-quran"},
  {id:"arapca", name:"Arapça",       desc:"Sarf, nahiv, kelime ve çeviri notları", icon:"fa-language"},
  {id:"fikih",  name:"Fıkıh",        desc:"İbadetler, hükümler ve meseleler", icon:"fa-scale-balanced"},
  {id:"hadis",  name:"Hadis",        desc:"Hadisler, raviler ve şerhler", icon:"fa-scroll"}
 ];
+const K_CUSTOM="ilimCustomBooks";
+let CUSTOM_BOOKS=[];
+try{ CUSTOM_BOOKS=JSON.parse(sGet(K_CUSTOM)||"[]"); if(!Array.isArray(CUSTOM_BOOKS))CUSTOM_BOOKS=[]; }catch(e){ CUSTOM_BOOKS=[]; }
+function getBooks(){ return CUSTOM_BOOKS.concat(BASE_BOOKS); }
+function saveCustomBooks(){ sSet(K_CUSTOM,JSON.stringify(CUSTOM_BOOKS)); }
+
+const ICON_CHOICES=["fa-book","fa-feather","fa-language","fa-scroll","fa-scale-balanced","fa-star-and-crescent","fa-mosque","fa-graduation-cap","fa-pen-nib","fa-globe","fa-heart","fa-calculator"];
 
 /* ---------- Durum ---------- */
 let DB=null, ACTIVE_ID=null, CURRENT_BOOK=null, currentIdx=-1;
@@ -495,7 +512,7 @@ function renderHome(){
     const total=countDone(p), pct=Math.round(total/114*100);
     document.getElementById("overallBar").style.width=pct+"%";
     document.getElementById("overallPct").textContent=pct+"%";
-    BOOKS.forEach(b=>{
+    getBooks().forEach(b=>{
         const card=document.createElement("div"); card.className="book-card";
         let progHtml="", meta="";
         if(b.id==="surah"){
@@ -508,7 +525,8 @@ function renderHome(){
             progHtml=`<div class="book-progress"><i style="width:${lp}%"></i></div>`;
             meta=`<div class="book-meta">${topics.length?`${dn} / ${topics.length} konu tamamlandı`:"Henüz konu eklenmedi"}</div>`;
         }
-        card.innerHTML=`<div class="book-icon"><i class="fas ${b.icon}"></i></div><h3>${b.name}</h3><small>${b.desc}</small>${progHtml}${meta}`;
+        card.innerHTML=`<div class="book-icon"><i class="fas ${b.icon}"></i></div><h3>${b.name}</h3><small>${b.desc}</small>${progHtml}${meta}`
+    +(b.id.startsWith("cb_")?`<button class="small-btn danger" title="Defteri sil" onclick="event.stopPropagation();askDeleteCustomBook('${b.id}')"><i class="fas fa-trash"></i></button>`:"");
         card.onclick=()=>openBook(b.id);
         grid.appendChild(card);
     });
@@ -578,7 +596,7 @@ function bindAutosave(ids){
 
 /* ---------- Ders defterleri ---------- */
 function renderLesson(){
-    const b=BOOKS.find(x=>x.id===CURRENT_BOOK); if(!b)return;
+    const b=getBooks().find(x=>x.id===CURRENT_BOOK); if(!b)return;
     const topics=(bookData(CURRENT_BOOK).topics)||[];
     document.getElementById("lessonTitle").innerHTML=`<i class="fas ${b.icon}"></i> ${b.name} Defteri`;
     const dn=topics.filter(t=>t.done).length;
@@ -620,6 +638,37 @@ function askDeleteTopic(i){
     modalCb=()=>{ bookData(CURRENT_BOOK).topics.splice(i,1); saveDB(); renderLesson(); toast("Konu silindi"); };
 }
 
+function fillIconSelect(){
+    const sel=document.getElementById("newBookIcon"); sel.innerHTML="";
+    ICON_CHOICES.forEach(ic=>{ const o=document.createElement("option"); o.value=ic; o.textContent=ic.replace("fa-",""); sel.appendChild(o); });
+}
+function addCustomBook(){
+    const inp=document.getElementById("newBookName"), name=inp.value.trim();
+    if(!name){ toast("Defter adı yaz 🙂",true); return; }
+    const id="cb_"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+    CUSTOM_BOOKS.push({id,name:name.charAt(0).toUpperCase()+name.slice(1),
+        desc:"Kendi oluşturduğun defter",icon:document.getElementById("newBookIcon").value});
+    saveCustomBooks(); inp.value=""; renderHome(); toast("Defter eklendi ✓");
+}
+function askDeleteCustomBook(id){
+    const b=CUSTOM_BOOKS.find(x=>x.id===id); if(!b)return;
+    openModal(`${b.name} defterini sil`, `Bu defterdeki <b>tüm konular ve notlar</b> silinecek.<br><br>Bu işlem geri alınamaz.`);
+    modalCb=()=>{
+        CUSTOM_BOOKS=CUSTOM_BOOKS.filter(x=>x.id!==id); saveCustomBooks();
+        Object.values(DB).forEach(p=>{
+            if(p.data&&p.data.books&&p.data.books[id]){
+                const bk=p.data.books[id];
+                const empty=!bk.topics||!bk.topics.length;
+                if(!empty&&!confirm(`${p.name} kişisinin "${b.name}" defterinde notlar var. Yine de silinsin mi?`))return;
+                delete p.data.books[id];
+            }
+        });
+        saveDB(); if(CURRENT_BOOK===id){ CURRENT_BOOK=null; renderHome(); show("screenHome"); } else renderHome();
+        toast("Defter silindi");
+    };
+}
+fillIconSelect();
+
 /* ---------- Yazdırma ---------- */
 function printStyle(){ return `<style>body{font-family:Lato,sans-serif;color:#333;max-width:800px;margin:0 auto;padding:24px}h1,h2,h3{font-family:'Playfair Display',serif;color:#A06872}.ar{font-family:'Scheherazade New',serif;font-size:2.4rem;color:#A06872;text-align:center;direction:rtl}.orn{text-align:center;color:#E6C9C9;letter-spacing:8px}.pb{page-break-before:always}div{white-space:pre-wrap}</style>`; }
 function wopen(html){ const w=window.open("","_blank"); if(!w){toast("Pop-up engellendi",true);return;} w.document.write(html); w.document.close(); setTimeout(()=>w.print(),400); }
@@ -634,7 +683,7 @@ function surahPage(i){
 function printSurah(i){ wopen(`<html><head><title>${SURES[i][1]}</title>${printStyle()}</head><body>${surahPage(i)}</body></html>`); }
 function printSurahBook(){ let pages=""; SURES.forEach((s,i)=>pages+=surahPage(i)); wopen(`<html><head><title>Sure Defteri</title>${printStyle()}</head><body>${pages}</body></html>`); }
 function printLesson(){
-    const b=BOOKS.find(x=>x.id===CURRENT_BOOK), topics=(bookData(CURRENT_BOOK).topics)||[];
+    const b=getBooks().find(x=>x.id===CURRENT_BOOK), topics=(bookData(CURRENT_BOOK).topics)||[];
     let pages=`<div class="ar">${b.name}</div><div class="orn">◆ ─── ❖ ─── ◆</div><h1 style="text-align:center">${b.name} Defteri</h1><div class="pb"></div>`;
     topics.forEach(t=>{ pages+=`<h2>${t.done?"✓ ":""}${esc(t.title)}</h2><div>${esc(t.text||"")}</div><div class="pb"></div>`; });
     wopen(`<html><head><title>${b.name} Defteri</title>${printStyle()}</head><body>${pages}</body></html>`);
@@ -712,7 +761,7 @@ function renderBands(){
     const p=active(); if(!p)return;
     if(sGet(K_SNOOZE)&&Date.now()<Number(sGet(K_SNOOZE)))return;
     const last=Number(sGet(K_BAK)||0), days=Math.floor((Date.now()-last)/86400000);
-    const hasContent=countDone(p)>0||countNotes(p)>0||BOOKS.some(b=>b.id!=="surah"&&((p.data.books[b.id]||{}).topics||[]).some(t=>t.text));
+    const hasContent=countDone(p)>0||countNotes(p)>0||getBooks().some(b=>b.id!=="surah"&&((p.data.books[b.id]||{}).topics||[]).some(t=>t.text));
     if(hasContent&&(!last||days>=7)){
         const msg=!last?"Bu defterin henüz hiç yedeği alınmamış.":`Son yedeklemenin üzerinden ${days} gün geçti.`;
         el.insertAdjacentHTML("beforeend",`<div class="band warn"><i class="fas fa-triangle-exclamation"></i> ${msg} <button onclick="doBackup()">⬇ Şimdi yedekle</button> <button class="ghost" onclick="snooze()">Bugün hatırlatma</button></div>`);
