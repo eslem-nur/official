@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tefsir Defterim • Eslem Nur Çetin</title>
+<meta name="description" content="114 sure için kişisel çalışma defteri: not alın, ilerlemenizi takip edin, PDF olarak yazdırın. Verileriniz yalnızca kendi cihazınızda saklanır.">
+<meta name="author" content="Eslem Nur Çetin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ============================================
+   Tefsir Defterim | Ana site tasarım sistemi
+   (styles.css değişken adlarıyla uyumlu)
+   ============================================ */
+:root {
+    --primary-color: #B76E79;
+    --primary-dark: #9E5A66;
+    --primary-light: #E8C7CD;
+    --bg-color: #FFF0F5;
+    --card-bg: #FFFFFF;
+    --card-secondary: #F5EDEA;
+    --note-bg: #F3E7E4;
+    --text-primary: #2D2826;
+    --text-secondary: #6B625D;
+    --text-muted: #A59C97;
+    --border-color: #E7DCD8;
+    --overlay-bg: rgba(45, 40, 38, 0.55);
+    --success: #4C8C5C;
+    --warning-bg: #FBF3DD;
+    --warning-border: #E0C96B;
+    --warning-accent: #C99A2E;
+    --danger-bg: #FBE3E0;
+    --danger-border: #E08A80;
+    --danger-accent: #B3402F;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 999px;
+    --shadow-sm: 0 2px 8px rgba(45, 40, 38, 0.07);
+    --shadow-md: 0 6px 18px rgba(45, 40, 38, 0.10);
+    --shadow-lg: 0 12px 32px rgba(45, 40, 38, 0.16);
+    --transition-fast: 0.15s;
+    --transition-base: 0.25s;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 32px;
+    --spacing-xl: 56px;
+}
+[data-theme="dark"] {
+    --primary-color: #D98F9B;
+    --primary-dark: #C17987;
+    --primary-light: #4A3036;
+    --bg-color: #0F0D0D;
+    --card-bg: #1A1717;
+    --card-secondary: #242020;
+    --note-bg: #2A2224;
+    --text-primary: #F0EAE8;
+    --text-secondary: #BDB2AF;
+    --text-muted: #837A77;
+    --border-color: #352D2C;
+    --overlay-bg: rgba(0, 0, 0, 0.65);
+    --success: #7FC492;
+    --warning-bg: #3A3220;
+    --warning-border: #6B5A2E;
+    --warning-accent: #E0B653;
+    --danger-bg: #3B2321;
+    --danger-border: #7A4640;
+    --danger-accent: #E88877;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.35);
+    --shadow-md: 0 6px 18px rgba(0,0,0,0.45);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background:var(--bg-color);
+    color:var(--text-primary);
+    font-family:'Lato',sans-serif;
+    line-height:1.6;
+    min-height:100vh;
+    transition:background var(--transition-base), color var(--transition-base);
+}
+h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.3; }
+.arabic { font-family:'Scheherazade New',serif; }
+
+.container { max-width:1040px; margin:0 auto; padding:0 20px; }
+
+/* ---------- HEADER (site nav uyumlu) ---------- */
+header {
+    position:sticky; top:0; z-index:1000;
+    background:var(--card-bg);
+    border-bottom:1px solid var(--border-color);
+    box-shadow:var(--shadow-sm);
+}
+header .container {
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px; gap:14px; flex-wrap:wrap;
+}
+.logo {
+    display:flex; align-items:center; gap:10px;
+    font-family:'Playfair Display',serif; font-weight:600;
+    color:var(--text-primary); text-decoration:none; font-size:1.05rem;
+}
+.logo i { color:var(--primary-color); font-size:1.2rem; }
+.header-controls { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+.profile-select {
+    background:var(--card-secondary); color:var(--text-primary);
+    border:1px solid var(--border-color); border-radius:var(--radius-sm);
+    padding:8px 10px; font-family:'Lato',sans-serif; font-size:.9rem; cursor:pointer;
+}
+.icon-btn {
+    width:40px; height:40px; border-radius:var(--radius-full);
+    background:var(--card-secondary); border:1px solid var(--border-color);
+    color:var(--text-primary); cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:all var(--transition-base);
+}
+.icon-btn:hover { background:var(--primary-color); color:#fff; border-color:var(--primary-color); }
+.icon-btn.danger:hover { background:var(--danger-accent); border-color:var(--danger-accent); }
+.text-btn {
+    background:var(--primary-color); color:#fff; border:none;
+    padding:10px 18px; border-radius:var(--radius-full); cursor:pointer;
+    font-family:'Lato',sans-serif; font-weight:600; font-size:.9rem;
+    transition:all var(--transition-base);
+    display:inline-flex; align-items:center; gap:8px;
+}
+.text-btn:hover { background:var(--primary-dark); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.text-btn.outline {
+    background:transparent; color:var(--primary-color);
+    border:1.5px solid var(--primary-color);
+}
+.text-btn.outline:hover { background:var(--primary-color); color:#fff; }
+.text-btn.success { background:var(--success); }
+.text-btn.neutral { background:var(--card-secondary); color:var(--text-primary); border:1px solid var(--border-color); }
+.text-btn.neutral:hover { background:var(--primary-color); color:#fff; border-color:var(--primary-color); }
+.text-btn.danger { background:var(--danger-accent); }
+.text-btn.danger:hover { background:var(--danger-accent); filter:brightness(.9); }
+.text-btn.small { padding:7px 14px; font-size:.82rem; }
+
+/* ---------- PAGE HERO (page.css uyumlu) ---------- */
+.page-hero {
+    padding:clamp(50px, 9vw, 80px) 0 clamp(20px, 4vw, 34px);
+    text-align:center;
+    background:linear-gradient(135deg, var(--bg-color) 0%, var(--note-bg) 100%);
+    position:relative; overflow:hidden;
+}
+.page-hero::before {
+    content:''; position:absolute; top:-50%; right:-50%;
+    width:100%; height:200%;
+    background:radial-gradient(circle, rgba(183,110,121,0.12) 0%, transparent 70%);
+    animation:pulse 8s ease-in-out infinite; pointer-events:none;
+}
+@keyframes pulse {
+    0%,100% { transform:scale(1); opacity:.7; }
+    50% { transform:scale(1.08); opacity:1; }
+}
+.breadcrumb {
+    display:flex; justify-content:center; align-items:center; gap:8px;
+    font-size:.85rem; color:var(--text-muted);
+    margin-bottom:var(--spacing-sm); position:relative; z-index:1; flex-wrap:wrap;
+}
+.breadcrumb a { color:var(--text-secondary); font-weight:600; text-decoration:none; }
+.breadcrumb a:hover { color:var(--primary-color); }
+.breadcrumb .sep { color:var(--text-muted); opacity:.6; }
+.breadcrumb [aria-current="page"] { color:var(--primary-color); font-weight:600; }
+.page-title {
+    font-size:clamp(2rem, 5vw, 3rem); margin-bottom:var(--spacing-sm);
+    position:relative; z-index:1;
+    background:linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.page-subtitle {
+    max-width:680px; margin:0 auto; color:var(--text-secondary);
+    font-size:clamp(.95rem, 2vw, 1.05rem); line-height:1.8; position:relative; z-index:1;
+}
+
+/* ---------- UYARI BANTLARI ---------- */
+.banner {
+    display:none;
+    border-radius:var(--radius-md); padding:14px 18px;
+    font-size:.9rem; margin:var(--spacing-md) auto 0;
+    align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.banner.visible { display:flex; }
+.banner.warn { background:var(--warning-bg); border:1px solid var(--warning-border); color:var(--text-primary); }
+.banner.danger { background:var(--danger-bg); border:1px solid var(--danger-border); color:var(--text-primary); }
+.banner b { display:block; margin-bottom:3px; }
+.banner .later {
+    background:none; border:none; color:var(--text-secondary);
+    cursor:pointer; text-decoration:underline; padding:4px; font-family:'Lato',sans-serif; font-size:.85rem;
+}
+
+/* ---------- KART & PANEL ORTAK ---------- */
+.panel {
+    background:var(--card-bg); border:1px solid var(--border-color);
+    border-radius:var(--radius-lg); box-shadow:var(--shadow-sm);
+}
+
+/* ---------- GİRİŞ EKRANI ---------- */
+#welcome, #pinBox { max-width:460px; margin:var(--spacing-xl) auto; padding:clamp(26px,5vw,40px); text-align:center; }
+#welcome h2, #pinBox h3 { color:var(--primary-color); margin-bottom:var(--spacing-sm); }
+#welcome p { color:var(--text-secondary); font-size:.95rem; margin-bottom:var(--spacing-md); }
+#welcome input, #pinBox input {
+    width:100%; padding:12px; border:1px solid var(--border-color);
+    border-radius:var(--radius-sm); background:var(--card-secondary);
+    color:var(--text-primary); font-family:'Lato',sans-serif; font-size:1rem;
+    text-align:center; margin-bottom:var(--spacing-sm); transition:border var(--transition-base);
+}
+#welcome input:focus, #pinBox input:focus { outline:none; border-color:var(--primary-color); }
+#welcome input.pin, #pinBox input.pin { letter-spacing:8px; font-size:1.2rem; }
+.pinRow { display:flex; gap:10px; }
+.pinRow input:first-child { flex:1; }
+.pinRow input.pin { max-width:120px; }
+.hint { font-size:.78rem; color:var(--text-muted); text-align:left; margin-top:2px; }
+#pinBox { display:none; }
+#pinBox .who { color:var(--text-secondary); font-size:.88rem; margin-bottom:var(--spacing-md); }
+#pinBox .err { color:var(--danger-accent); font-size:.82rem; min-height:18px; margin-bottom:6px; }
+#existingProfiles { margin-top:var(--spacing-md); text-align:left; }
+.exLabel { font-size:.8rem; color:var(--text-muted); margin:6px 0 10px; }
+.profItem {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:var(--card-secondary); border:1px solid var(--border-color);
+    border-radius:var(--radius-md); padding:12px 14px; margin-bottom:10px;
+    transition:border var(--transition-base);
+}
+.profItem:hover { border-color:var(--primary-color); }
+.profItem .pname { font-size:.98rem; color:var(--text-primary); font-weight:600; }
+.profItem .pname small { display:block; font-size:.75rem; color:var(--text-muted); font-weight:400; }
+.profItem .acts { display:flex; gap:8px; flex-shrink:0; }
+.del-mini {
+    width:34px; height:34px; border-radius:var(--radius-full);
+    background:transparent; border:1px solid var(--border-color);
+    color:var(--danger-accent); cursor:pointer; font-size:.85rem;
+    display:flex; align-items:center; justify-content:center; transition:all var(--transition-base);
+}
+.del-mini:hover { background:var(--danger-accent); color:#fff; border-color:var(--danger-accent); }
+
+/* ---------- ANA GÖRÜNÜM ---------- */
+.view-section { padding:var(--spacing-lg) 0 var(--spacing-xl); }
+.greet { text-align:center; margin-bottom:var(--spacing-lg); }
+.greet h1 { font-size:clamp(1.5rem, 4vw, 2rem); margin-bottom:6px; }
+.greet .sub { color:var(--text-secondary); font-size:.9rem; }
+
+.progress-wrap { margin-bottom:var(--spacing-lg); }
+.progress-bar {
+    height:10px; background:var(--card-secondary);
+    border:1px solid var(--border-color); border-radius:var(--radius-full); overflow:hidden;
+}
+.progress-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--primary-color),var(--primary-dark)); border-radius:var(--radius-full); transition:width .3s; }
+.progress-text { font-size:.85rem; color:var(--text-secondary); margin-top:8px; }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:16px; }
+.card {
+    background:var(--card-bg); border:1px solid var(--border-color);
+    border-radius:var(--radius-lg); padding:22px 16px;
+    box-shadow:var(--shadow-sm); cursor:pointer;
+    transition:transform var(--transition-base), box-shadow var(--transition-base), border var(--transition-base);
+    position:relative; text-align:center;
+}
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:var(--primary-color); }
+.card.done { background:var(--note-bg); border-color:var(--primary-color); }
+.num { font-size:.72rem; letter-spacing:2px; color:var(--text-muted); margin-bottom:8px; }
+.card .ar {
+    font-family:'Scheherazade New',serif; font-size:2rem; line-height:1.5;
+    color:var(--text-primary); direction:rtl; margin-bottom:6px;
+}
+.card .tr { font-size:.82rem; letter-spacing:1px; color:var(--text-secondary); font-weight:600; }
+.check {
+    position:absolute; top:12px; right:14px; width:22px; height:22px; border-radius:50%;
+    border:2px solid var(--border-color); font-size:.72rem; color:transparent;
+    display:flex; align-items:center; justify-content:center; transition:all var(--transition-base);
+}
+.card.done .check { border-color:var(--success); background:var(--success); color:#fff; }
+.hasnotes {
+    position:absolute; top:16px; left:16px; width:8px; height:8px; border-radius:50%;
+    background:var(--primary-color); display:none;
+}
+.card.has-notes .hasnotes { display:block; }
+
+/* ---------- SURE ÇALIŞMA GÖRÜNÜMÜ ---------- */
+.view-head {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:var(--spacing-md); flex-wrap:wrap; gap:10px;
+}
+.view-head .titles { text-align:center; flex:1; min-width:220px; }
+.view-head h2 { font-size:clamp(1.2rem, 3vw, 1.6rem); color:var(--primary-color); }
+.view-head .sub { color:var(--text-muted); font-size:.82rem; }
+.head-actions { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+
+.sheet { margin-bottom:var(--spacing-md); padding:clamp(20px, 4vw, 30px); }
+.cover-mini { text-align:center; padding:44px 24px 36px; }
+.cover-mini .sn { font-size:.75rem; letter-spacing:4px; color:var(--text-muted); margin-bottom:16px; }
+.cover-mini .ar { font-family:'Scheherazade New',serif; font-size:3.4rem; font-weight:700; direction:rtl; line-height:1.4; color:var(--text-primary); }
+.divider { width:60%; margin:18px auto 0; border-top:2px solid var(--primary-color); position:relative; }
+.divider::before {
+    content:'◆'; position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+    background:var(--card-bg); padding:0 10px; font-size:.8rem; color:var(--primary-color);
+}
+.cover-mini .trn { font-size:.95rem; color:var(--text-secondary); margin-top:12px; letter-spacing:1px; }
+
+.badge {
+    display:inline-block; background:var(--primary-color); color:#fff;
+    font-family:'Lato',sans-serif; font-weight:600; font-size:.95rem;
+    padding:8px 26px; border-radius:var(--radius-full);
+    box-shadow:var(--shadow-sm); margin-bottom:var(--spacing-md);
+}
+.badge-center { text-align:center; }
+.sheet-label { font-size:.72rem; letter-spacing:2px; color:var(--text-muted); margin-bottom:10px; font-weight:600; }
+
+.lined {
+    width:100%; min-height:280px; outline:none; white-space:pre-wrap;
+    background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--border-color) 27px, var(--border-color) 28px);
+    line-height:28px; font-size:.98rem; color:var(--text-primary);
+    caret-color:var(--primary-color); border-radius:var(--radius-sm);
+}
+.notebox {
+    width:100%; min-height:300px; outline:none; white-space:pre-wrap;
+    background:var(--card-secondary); border-radius:var(--radius-md);
+    padding:16px; font-size:.98rem; color:var(--text-primary);
+    caret-color:var(--primary-color); border:1px solid var(--border-color);
+}
+.two-col { display:flex; gap:18px; flex-wrap:wrap; }
+.two-col .col { flex:1; min-width:260px; }
+.saved-ind {
+    font-size:.78rem; color:var(--success); opacity:0; transition:opacity .4s;
+    margin-top:10px; text-align:right; font-weight:600;
+}
+.saved-ind.show { opacity:1; }
+.saved-ind.nostorage { color:var(--danger-accent); opacity:1; }
+
+/* ---------- FOOTER (site uyumlu) ---------- */
+footer {
+    border-top:1px solid var(--border-color);
+    background:var(--card-bg);
+    padding:var(--spacing-xl) 0 var(--spacing-lg);
+    text-align:center; margin-top:var(--spacing-xl);
+}
+.footer-arabic { font-family:'Scheherazade New',serif; font-size:2rem; color:var(--primary-color); margin-bottom:8px; }
+.footer-quote { color:var(--text-secondary); font-size:.92rem; margin-bottom:var(--spacing-md); }
+.back-home-bar { margin-bottom:var(--spacing-md); }
+.copyright { color:var(--text-muted); font-size:.8rem; margin-top:var(--spacing-md); }
+.legal-note { color:var(--text-muted); font-size:.72rem; margin-top:6px; }
+
+/* ---------- YAZDIRMA ---------- */
+#printArea { display:none; }
+@media print {
+    body { background:#fff; color:#111; }
+    body > *:not(#printArea) { display:none !important; }
+    #printArea { display:block; }
+    #printArea .p-page {
+        width:210mm; min-height:290mm; padding:22mm 20mm;
+        page-break-after:always; position:relative; overflow:hidden;
+        background:#fff; color:#111;
+    }
+    .p-cover { text-align:center; padding-top:50mm; }
+    .p-cover .sn { font-size:12pt; letter-spacing:4px; margin-bottom:14mm; color:#444; }
+    .p-cover .ar { font-family:'Scheherazade New',serif; font-size:52pt; font-weight:700; direction:rtl; line-height:1.4; }
+    .p-cover .dv { width:60%; margin:14mm auto 0; border-top:2px solid #B76E79; }
+    .p-cover .trn { font-size:14pt; margin-top:10mm; letter-spacing:1px; color:#333; }
+    .p-badge {
+        display:inline-block; background:#B76E79; color:#fff;
+        font-size:13pt; padding:4mm 14mm; border-radius:20mm;
+        margin-bottom:8mm; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .p-center { text-align:center; }
+    .p-text { white-space:pre-wrap; font-size:12pt; line-height:1.7; font-family:'Lato',sans-serif; }
+    .p-cols { display:flex; gap:10mm; }
+    .p-cols > div { flex:1; }
+    .p-box { background:#F5EDEA; min-height:200mm; padding:8mm; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+
+@media (max-width:640px) {
+    .head-actions { justify-content:center; width:100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <a class="logo" href="../index.html">
+            <i class="fas fa-book-quran"></i> Tefsir Defterim
+        </a>
+        <div class="header-controls">
+            <select id="profileSelect" class="profile-select" style="display:none" onchange="switchProfile(this.value)"></select>
+            <button id="btnLogout" class="icon-btn" style="display:none" onclick="logout()" title="Çıkış" aria-label="Çıkış"><i class="fas fa-right-from-bracket"></i></button>
+            <button id="btnAdd" class="icon-btn" style="display:none" onclick="addProfile()" title="Yeni profil" aria-label="Yeni profil"><i class="fas fa-user-plus"></i></button>
+            <button id="btnPin" class="icon-btn" style="display:none" onclick="changePin()" title="PIN değiştir" aria-label="PIN değiştir"><i class="fas fa-key"></i></button>
+            <button id="btnDel" class="icon-btn danger" style="display:none" onclick="deleteProfile()" title="Profil sil" aria-label="Profil sil"><i class="fas fa-trash-can"></i></button>
+            <button id="btnBackup" class="icon-btn" style="display:none" onclick="backupData(true)" title="Yedekle" aria-label="Yedekle"><i class="fas fa-download"></i></button>
+            <button id="btnRestore" class="icon-btn" style="display:none" onclick="document.getElementById('restoreFile').click()" title="Geri yükle" aria-label="Geri yükle"><i class="fas fa-upload"></i></button>
+            <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreData(event)">
+            <button id="btnTheme" class="icon-btn" onclick="toggleTheme()" aria-label="Temayı Değiştir"><i class="fas fa-moon"></i></button>
+            <button id="btnPrint" class="text-btn" style="display:none" onclick="printAll()"><i class="fas fa-print"></i> PDF Yazdır</button>
+        </div>
+    </div>
+</header>
+
+<!-- SURE GÖRÜNÜMÜ -->
+<section id="surahView" class="view-section" style="display:none">
+    <div class="container">
+        <div class="banner warn" id="backupBanner" style="margin:0 auto var(--spacing-md)">
+            <div id="backupMsg"></div>
+            <div style="display:flex;gap:8px;align-items:center">
+                <button class="text-btn small" onclick="backupData(true)"><i class="fas fa-download"></i> Şimdi yedekle</button>
+                <button class="later" onclick="snoozeBackup()">Bugün hatırlatma</button>
+            </div>
+        </div>
+
+        <div class="view-head">
+            <button class="text-btn outline" onclick="goHome()"><i class="fas fa-arrow-left"></i> Tüm Sureler</button>
+            <div class="titles">
+                <h2 id="svTitle"></h2>
+                <div class="sub" id="svSub"></div>
+            </div>
+            <div class="head-actions">
+                <button class="text-btn success" id="doneBtn" onclick="toggleDone()"><i class="fas fa-check"></i> Tamamlandı</button>
+                <button class="text-btn neutral" onclick="printOne()"><i class="fas fa-print"></i> Bu sureyi yazdır</button>
+            </div>
+        </div>
+
+        <div class="panel sheet cover-mini">
+            <div class="sn" id="cvNo"></div>
+            <div class="ar" id="cvAr"></div>
+            <div class="divider"></div>
+            <div class="trn" id="cvTr"></div>
+        </div>
+
+        <div class="panel sheet">
+            <div class="sheet-label">NOTLARIM</div>
+            <div class="lined" id="edNotes" contenteditable="true"></div>
+            <div class="saved-ind" id="ind1">Kaydedildi ✓</div>
+        </div>
+
+        <div class="panel sheet">
+            <div class="two-col">
+                <div class="col">
+                    <div class="badge-center"><span class="badge">Faydaları</span></div>
+                    <div class="lined" id="edFayda" contenteditable="true"></div>
+                </div>
+                <div class="col">
+                    <div class="badge-center"><span class="badge">Önemi</span></div>
+                    <div class="lined" id="edOnem" contenteditable="true"></div>
+                </div>
+            </div>
+            <div class="saved-ind" id="ind2">Kaydedildi ✓</div>
+        </div>
+
+        <div class="panel sheet">
+            <div class="badge-center"><span class="badge">Ek-Notlar</span></div>
+            <div class="notebox" id="edEk" contenteditable="true"></div>
+            <div class="saved-ind" id="ind3">Kaydedildi ✓</div>
+        </div>
+    </div>
+</section>
+
+<!-- PAGE HERO + GİRİŞ -->
+<section id="welcomeSection">
+    <div class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../projeler/index.html">Projeler</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Tefsir Defterim</span>
+            </div>
+            <h1 class="page-title">Kur'an Sureleri Çalışma Defteri</h1>
+            <p class="page-subtitle">
+                114 surenin her biri için kişisel not defteriniz. Notlarınız ve ilerlemeniz
+                yalnızca kendi cihazınızda saklanır — hiçbir sunucuya gönderilmez.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Depo uyarısı -->
+        <div class="banner danger" id="storageWarn" style="margin-top:var(--spacing-lg)">
+            <div>
+                <b><i class="fas fa-triangle-exclamation"></i> Kayıt şu an yapılamıyor</b>
+                Bu önizleme/gizli pencere ortamında kalıcı depo kapalı. Notlar yalnızca bu oturum boyunca tutulur.
+                Kalıcı kayıt için bu sayfayı normal tarayıcı sekmesinde açın.
+            </div>
+        </div>
+
+        <!-- GİRİŞ -->
+        <div id="welcome" class="panel">
+            <h2><i class="fas fa-book-open" style="color:var(--primary-color)"></i> Kendi Çalışma Defteriniz</h2>
+            <p>Adınızı yazarak kişisel defterinizi oluşturun. İsteğe bağlı bir PIN belirleyerek defterinizi kilitleyin — aynı ismi kullananlar bile ayrı defterlere sahip olur.</p>
+            <div class="pinRow">
+                <input id="nameInput" placeholder="Adınız..." maxlength="30">
+                <input id="pinInput" class="pin" placeholder="PIN" maxlength="4" inputmode="numeric">
+            </div>
+            <div class="hint">PIN boş bırakılırsa defter korunmasız olur (bu cihazda herkes açabilir).</div>
+            <br>
+            <button class="text-btn" style="width:100%;justify-content:center" onclick="createProfile()">
+                <i class="fas fa-book"></i> Defteri Aç
+            </button>
+            <div id="existingProfiles"></div>
+        </div>
+
+        <!-- PIN -->
+        <div id="pinBox" class="panel">
+            <h3><i class="fas fa-lock" style="color:var(--primary-color)"></i> PIN Gerekli</h3>
+            <div class="who" id="pinWho"></div>
+            <input id="pinEnter" class="pin" maxlength="4" inputmode="numeric" placeholder="••••">
+            <div class="err" id="pinErr"></div>
+            <button class="text-btn" style="width:100%;justify-content:center" onclick="submitPin()">Aç</button>
+            <br><br>
+            <button class="later" style="background:none;border:none;color:var(--text-muted);cursor:pointer;text-decoration:underline;font-family:'Lato'" onclick="cancelPin()">← Geri</button>
+        </div>
+    </div>
+</section>
+
+<!-- ANA GÖRÜNÜM -->
+<section id="homeView" class="view-section" style="display:none">
+    <div class="page-hero" style="padding-bottom:var(--spacing-md)">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../projeler/index.html">Projeler</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Tefsir Defterim</span>
+            </div>
+            <h1 class="page-title" id="greetName" style="font-size:clamp(1.6rem,4vw,2.2rem)"></h1>
+            <p class="page-subtitle">Bir sureye tıklayarak notlarınızı açın • ✓ tamamlananlar • pembe nokta = not var</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="banner warn" id="backupBannerHome">
+            <div id="backupMsgHome"></div>
+            <div style="display:flex;gap:8px;align-items:center">
+                <button class="text-btn small" onclick="backupData(true)"><i class="fas fa-download"></i> Şimdi yedekle</button>
+                <button class="later" onclick="snoozeBackup()">Bugün hatırlatma</button>
+            </div>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="pf"></div></div>
+            <div class="progress-text" id="pt"></div>
+        </div>
+        <div class="grid" id="grid"></div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+        <p class="footer-quote">Rabbim, ilmimizi arttır.</p>
+        <div class="back-home-bar">
+            <a href="../projeler/index.html" class="text-btn outline" style="text-decoration:none">
+                <i class="fas fa-arrow-left"></i> Projelere Dön
+            </a>
+        </div>
+        <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin | Tefsir Defterim — ücretsiz ve verileriniz cihazınızda.</p>
+        <p class="legal-note">Notlarınız tarayıcı deposunda saklanır, hiçbir sunucuya gönderilmez.</p>
+    </div>
+</footer>
+
+<div id="printArea"></div>
+
+<script>
+const sures = [
+["الفاتحة","Fâtiha"],["البقرة","Bakara"],["آل عمران","Âl-i İmrân"],["النساء","Nisâ"],
+["المائدة","Mâide"],["الأنعام","En'âm"],["الأعراف","A'râf"],["الأنفال","Enfâl"],
+["التوبة","Tevbe"],["يونس","Yûnus"],["هود","Hûd"],["يوسف","Yûsuf"],
+["الرعد","Ra'd"],["إبراهيم","İbrâhîm"],["الحجر","Hicr"],["النحل","Nahl"],
+["الإسراء","İsrâ"],["الكهف","Kehf"],["مريم","Meryem"],["طه","Tâhâ"],
+["الأنبياء","Enbiyâ"],["الحج","Hac"],["المؤمنون","Mü'minûn"],["النور","Nûr"],
+["الفرقان","Furkân"],["الشعراء","Şuarâ"],["النمل","Neml"],["القصص","Kasas"],
+["العنكبوت","Ankebût"],["الروم","Rûm"],["لقمان","Lokman"],["السجدة","Secde"],
+["الأحزاب","Ahzâb"],["سبأ","Sebe'"],["فاطر","Fâtır"],["يس","Yâsîn"],
+["الصافات","Sâffât"],["ص","Sâd"],["الزمر","Zümer"],["غافر","Gâfir"],
+["فصلت","Fussilet"],["الشورى","Şûrâ"],["الزخرف","Zuhruf"],["الدخان","Duhân"],
+["الجاثية","Câsiye"],["الأحقاف","Ahkâf"],["محمد","Muhammed"],["الفتح","Fetih"],
+["الحجرات","Hucurât"],["ق","Kâf"],["الذاريات","Zâriyât"],["الطور","Tûr"],
+["النجم","Necm"],["القمر","Kamer"],["الرحمن","Rahmân"],["الواقعة","Vâkıa"],
+["الحديد","Hadîd"],["المجادلة","Mücâdele"],["الحشر","Haşr"],["الممتحنة","Mümtehine"],
+["الصف","Saff"],["الجمعة","Cuma"],["المنافقون","Münâfikûn"],["التغابن","Tağâbün"],
+["الطلاق","Talâk"],["التحريم","Tahrîm"],["الملك","Mülk"],["القلم","Kalem"],
+["الحاقة","Hâkka"],["المعارج","Meâric"],["نوح","Nûh"],["الجن","Cin"],
+["المزمل","Müzzemmil"],["المدثر","Müddessir"],["القيامة","Kıyâmet"],["الإنسان","İnsân"],
+["المرسلات","Murselât"],["النبأ","Nebe'"],["النازعات","Nâziât"],["عبس","Abese"],
+["التكوير","Tekvîr"],["الانفطار","İnfitâr"],["المطففين","Mutaffifîn"],["الانشقاق","İnşikâk"],
+["البروج","Burûc"],["الطارق","Târık"],["الأعلى","A'lâ"],["الغاشية","Gâşiye"],
+["الفجر","Fecr"],["البلد","Beled"],["الشمس","Şems"],["الليل","Leyl"],
+["الضحى","Duhâ"],["الشرح","İnşirâh"],["التين","Tîn"],["العلق","Alak"],
+["القدر","Kadr"],["البينة","Beyyine"],["الزلزلة","Zelzele"],["العاديات","Âdiyât"],
+["القارعة","Kâria"],["التكاثر","Tekâsür"],["العصر","Asr"],["الهمزة","Hümeze"],
+["الفيل","Fîl"],["قريش","Kureyş"],["الماعون","Mâûn"],["الكوثر","Kevser"],
+["الكافرون","Kâfirûn"],["النصر","Nasr"],["المسد","Tebbet"],["الإخلاص","İhlâs"],
+["الفلق","Felak"],["الناس","Nâs"]
+];
+
+/* ---------- Tema (ana site scripts.js uyumlu davranış) ---------- */
+function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    const ic = document.querySelector('#btnTheme i');
+    if(ic){ ic.className = t==='dark' ? 'fas fa-sun' : 'fas fa-moon'; }
+}
+function toggleTheme(){
+    const cur = document.documentElement.getAttribute('data-theme') || 'light';
+    const nxt = cur==='dark' ? 'light' : 'dark';
+    applyTheme(nxt);
+    try{ localStorage.setItem('sd_theme', nxt); }catch{}
+}
+applyTheme((function(){ try{ return localStorage.getItem('sd_theme') || 'light'; }catch{ return 'light'; } })());
+
+/* ---------- Güvenli depo katmanı ---------- */
+const memStore = {};
+let storageOK = true;
+try {
+  localStorage.setItem('__sd_test','1'); localStorage.removeItem('__sd_test');
+} catch { storageOK = false; }
+function lsGet(k, fb){ if(storageOK){ const v=localStorage.getItem(k); return v===null?fb:v; } return (k in memStore)?memStore[k]:fb; }
+function lsSet(k, v){ if(storageOK){ localStorage.setItem(k,v); } else { memStore[k]=v; } }
+
+let profiles = [];
+try { profiles = JSON.parse(lsGet('sd_profiles_v2','[]')); } catch { profiles = []; }
+if(!Array.isArray(profiles)) profiles = [];
+let currentId = lsGet('sd_current_v2','') || null;
+
+const BACKUP_KEY='sd_last_backup', BACKUP_DAYS=7, SNOOZE_KEY='sd_backup_snooze';
+
+function me(){ return profiles.find(p=>p.id===currentId)||null; }
+function persist(){ lsSet('sd_profiles_v2', JSON.stringify(profiles)); lsSet('sd_current_v2', currentId||''); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function newEntry(){ return {notes:'',fayda:'',onemi:'',ek:''}; }
+function entry(i){ const m=me(); if(!m.notes[i]) m.notes[i]=newEntry(); return m.notes[i]; }
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function show(id,on){ document.getElementById(id).style.display = on?'block':'none'; }
+function showEls(on){
+  ['profileSelect','btnLogout','btnAdd','btnPin','btnDel','btnBackup','btnRestore','btnPrint'].forEach(id=>{
+    document.getElementById(id).style.display = on ? (id==='profileSelect'?'inline-block':'inline-flex') : 'none';
+  });
+}
+if(!storageOK){ document.getElementById('storageWarn').classList.add('visible'); }
+
+/* ---------- Yedek hatırlatıcı ---------- */
+function hasAnyContent(){
+  return profiles.some(p =>
+    Object.values(p.notes||{}).some(e=>((e.notes||'')+(e.fayda||'')+(e.onemi||'')+(e.ek||'')).trim()) ||
+    Object.values(p.done||{}).some(Boolean));
+}
+function daysSince(ts){ return Math.floor((Date.now()-ts)/86400000); }
+function setBanner(id,msgOn){
+  const b=document.getElementById(id);
+  if(msgOn) b.classList.add('visible'); else b.classList.remove('visible');
+}
+function checkBackupReminder(){
+  if(!storageOK || !hasAnyContent()){ setBanner('backupBannerHome',false); return; }
+  const snoozed=Number(lsGet(SNOOZE_KEY,'0'));
+  if(Date.now()<snoozed){ setBanner('backupBannerHome',false); return; }
+  const last=Number(lsGet(BACKUP_KEY,'0'));
+  const msg=document.getElementById('backupMsgHome');
+  if(!last){
+    msg.innerHTML='<b><i class="fas fa-triangle-exclamation"></i> Bu defterin henüz hiç yedeği alınmamış.</b><br>Tarayıcı verisi silinirse notlar kaybolabilir — yedek dosyası indirip saklayın (ör. Proton Drive).';
+    setBanner('backupBannerHome',true);
+  } else {
+    const d=daysSince(last);
+    if(d>=BACKUP_DAYS){
+      msg.innerHTML=`<b><i class="fas fa-clock"></i> Son yedeklemenin üzerinden ${d} gün geçti.</b><br>Bir güncel yedek almanız iyi olur.`;
+      setBanner('backupBannerHome',true);
+    } else setBanner('backupBannerHome',false);
+  }
+}
+function snoozeBackup(){ lsSet(SNOOZE_KEY,String(Date.now()+86400000)); setBanner('backupBannerHome',false); }
+
+/* ---------- Kaydedildi göstergesi ---------- */
+function flash(id){
+  const el=document.getElementById(id);
+  if(!storageOK){
+    el.classList.add('nostorage');
+    el.innerHTML='<i class="fas fa-triangle-exclamation"></i> Kayıt yapılamıyor — sayfayı normal tarayıcıda açın';
+    clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2500);
+  } else {
+    el.classList.remove('nostorage');
+    el.innerHTML='Kaydedildi ✓';
+    el.classList.add('show');
+    clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),1400);
+  }
+}
+
+/* ---------- Giriş ekranı ---------- */
+function renderWelcome(){
+  show('welcomeSection',true); show('homeView',false); show('surahView',false);
+  showEls(false);
+  const ex=profiles.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));
+  const box=document.getElementById('existingProfiles');
+  box.innerHTML = ex.length
+    ? '<div class="exLabel">Bu cihazdaki defterler (🔒/🗑: kilidi ve silme için):</div>'
+      + ex.map(p=>`<div class="profItem">
+          <div class="pname">${esc(p.name)}${p.pin?' <i class="fas fa-lock" style="font-size:.75rem;color:var(--primary-color)"></i>':''}<small>${countDone(p)} / 114 tamamlandı</small></div>
+          <div class="acts">
+            <button class="text-btn small" onclick="requestOpen('${p.id}')">Aç</button>
+            <button class="del-mini" title="${p.pin?'Bu defteri silmek için PIN gerekli':'Bu defteri sil'}" onclick="deleteProfileById('${p.id}')"><i class="fas fa-trash-can"></i></button>
+          </div>
+        </div>`).join('')
+    : '';
+}
+function countDone(p){ return Object.values(p.done||{}).filter(Boolean).length; }
+function validPin(pin){ return pin===''||/^\d{4}$/.test(pin); }
+function profStats(p){
+  const notes=Object.values(p.notes||{}).filter(e=>((e.notes||'')+(e.fayda||'')+(e.onemi||'')+(e.ek||'')).trim()).length;
+  return `${countDone(p)} sure tamamlandı • ${notes} surede not var`;
+}
+
+function createProfile(){
+  const n=document.getElementById('nameInput').value.trim();
+  const pin=document.getElementById('pinInput').value.trim();
+  if(!n) return alert('Lütfen adınızı yazın.');
+  if(!validPin(pin)) return alert('PIN 4 haneli olmalı (veya boş bırakın).');
+  const sameCount=profiles.filter(p=>p.name.toLowerCase()===n.toLowerCase()).length;
+  if(sameCount>0 && !pin){
+    if(!confirm(`"${n}" adında ${sameCount} defter zaten var.\nPIN olmadan aynı isimli defterler karışabilir. Yine de yeni bir ayrı defter oluşturulsun mu?`)) return;
+  }
+  profiles.push({id:uid(),name:n,pin:pin,notes:{},done:{},created:new Date().toISOString()});
+  currentId=profiles[profiles.length-1].id; persist(); startApp();
+}
+let pendingId=null, pendingDelete=null;
+function requestOpen(id){
+  const p=profiles.find(x=>x.id===id); if(!p) return;
+  if(p.pin){
+    pendingId=id; pendingDelete=false;
+    show('welcome',false); show('pinBox',true);
+    document.getElementById('pinWho').textContent=`Defter: ${p.name}`;
+    document.getElementById('pinErr').textContent='';
+    document.getElementById('pinEnter').value='';
+    setTimeout(()=>document.getElementById('pinEnter').focus(),50);
+  } else { currentId=id; persist(); startApp(); }
+}
+function submitPin(){
+  const p=profiles.find(x=>x.id===pendingId); if(!p) return cancelPin();
+  const v=document.getElementById('pinEnter').value.trim();
+  if(v===p.pin){
+    if(pendingDelete){ reallyDelete(pendingId); pendingDelete=false; }
+    else { currentId=pendingId; persist(); startApp(); }
+  }
+  else { document.getElementById('pinErr').textContent='Hatalı PIN, tekrar deneyin.'; document.getElementById('pinEnter').value=''; }
+}
+function cancelPin(){ pendingId=null; pendingDelete=false; show('pinBox',false); show('welcome',true); }
+
+/* ---------- Profil yönetimi ---------- */
+function addProfile(){
+  const n=prompt('Yeni profil adı:'); if(!n) return;
+  const pin=prompt('Bu defter için 4 haneli PIN (boş = korumasız):','')||'';
+  if(!validPin(pin.trim())) return alert('PIN 4 haneli olmalı.');
+  profiles.push({id:uid(),name:n.trim(),pin:pin.trim(),notes:{},done:{},created:new Date().toISOString()});
+  currentId=profiles[profiles.length-1].id; persist(); startApp();
+}
+function switchProfile(id){
+  if(id===currentId) return;
+  const p=profiles.find(x=>x.id===id); if(!p) return;
+  if(p.pin){ requestOpen(id); } else { currentId=id; persist(); renderHome(); }
+  refreshSel();
+}
+function logout(){
+  if(confirm('Çıkılsın mı? (Notlar kayıtlı kalır)')){ currentId=null; persist(); show('homeView',false); show('surahView',false); renderWelcome(); }
+}
+function changePin(){
+  const m=me(); if(!m) return;
+  if(m.pin){ const old=prompt('Mevcut PIN:'); if(old!==m.pin) return alert('Mevcut PIN hatalı.'); }
+  const np=prompt('Yeni 4 haneli PIN (boş = korumasız):','')||'';
+  if(!validPin(np.trim())) return alert('PIN 4 haneli olmalı.');
+  m.pin=np.trim(); persist();
+  alert(m.pin?'PIN güncellendi ✓':'PIN kaldırıldı.');
+}
+function refreshSel(){
+  const sel=document.getElementById('profileSelect');
+  sel.innerHTML=profiles.map(p=>`<option value="${p.id}" ${p.id===currentId?'selected':''}>${esc(p.name)}${p.pin?' 🔒':''}</option>`).join('');
+}
+
+/* ---------- Profil silme ---------- */
+function deleteProfile(){
+  // Aktif profili sil (üst çubuktaki 🗑)
+  if(currentId) deleteProfileById(currentId);
+}
+function deleteProfileById(id){
+  const p=profiles.find(x=>x.id===id); if(!p) return;
+  if(p.pin && id!==currentId && pendingDelete!==id){
+    // Listeden silme: PIN doğrulaması gerek
+    pendingId=id; pendingDelete=id;
+    show('welcome',false); show('pinBox',true);
+    document.getElementById('pinWho').textContent=`"${p.name}" defterini silmek için PIN girin`;
+    document.getElementById('pinErr').textContent='';
+    document.getElementById('pinEnter').value='';
+    setTimeout(()=>document.getElementById('pinEnter').focus(),50);
+    return;
+  }
+  if(p.pin && id===currentId && pendingDelete!==id){
+    const chk=prompt('Aktif defteri silmek için mevcut PIN\'i girin:');
+    if(chk===null) return;
+    if(chk!==p.pin) return alert('PIN hatalı — silme iptal edildi.');
+    reallyDelete(id); return;
+  }
+  const stats=profStats(p);
+  if(!confirm(`"${p.name}" defteri kalıcı olarak silinsin mi?\n\n${stats}\n\nBu işlem GERİ ALINAMAZ — notlarınız sonsuza dek kaybolur.\n\nÖnce yedek almak isterseniz iptal edip ⬇ düğmesini kullanın.`)) return;
+  reallyDelete(id);
+}
+function reallyDelete(id){
+  const p=profiles.find(x=>x.id===id); if(!p) return;
+  profiles=profiles.filter(x=>x.id!==id);
+  if(currentId===id){
+    currentId = profiles.length ? profiles[0].id : null;
+  }
+  persist();
+  if(currentId){ startApp(); }
+  else { show('homeView',false); show('surahView',false); renderWelcome(); }
+}
+
+/* ---------- Uygulama ---------- */
+function startApp(){
+  show('welcomeSection',false);
+  showEls(true); refreshSel(); renderHome(); checkBackupReminder();
+}
+function renderHome(){
+  show('surahView',false); show('homeView',true);
+  document.getElementById('greetName').textContent=`Bismillah — Hoş geldin, ${me().name}`;
+  renderGrid();
+}
+function renderGrid(){
+  const m=me();
+  document.getElementById('grid').innerHTML=sures.map((s,i)=>{
+    const e=m.notes[i]||{};
+    const hasNotes=((e.notes||'')+(e.fayda||'')+(e.onemi||'')+(e.ek||'')).trim().length>0;
+    return `<div class="card ${m.done[i]?'done':''} ${hasNotes?'has-notes':''}" onclick="openSurah(${i})">
+              <div class="hasnotes" title="Not var"></div>
+              <div class="check"><i class="fas fa-check"></i></div>
+              <div class="num">${i+1} · SURE</div>
+              <div class="ar">${s[0]}</div>
+              <div class="tr">${s[1]}</div>
+            </div>`;
+  }).join('');
+  updateProgress();
+}
+function updateProgress(){
+  const c=Object.values(me().done).filter(Boolean).length;
+  document.getElementById('pf').style.width=(c/114*100)+'%';
+  document.getElementById('pt').textContent=`${c} / 114 sure tamamlandı — her sure bir adım.`;
+}
+
+/* ---------- Sure görünümü ---------- */
+function openSurah(i){
+  curIdx=i;
+  const s=sures[i], e=entry(i);
+  show('homeView',false); show('surahView',true);
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('svTitle').textContent=`${i+1}. ${s[1]} Suresi`;
+  document.getElementById('svSub').textContent='Notlarınız yazarken otomatik kaydedilir';
+  document.getElementById('cvNo').textContent=`${i+1} · SURE`;
+  document.getElementById('cvAr').textContent=s[0];
+  document.getElementById('cvTr').textContent=s[1]+' Suresi';
+  const nEl=document.getElementById('edNotes'), fEl=document.getElementById('edFayda'),
+        oEl=document.getElementById('edOnem'), kEl=document.getElementById('edEk');
+  nEl.textContent=e.notes||''; fEl.textContent=e.fayda||''; oEl.textContent=e.onemi||''; kEl.textContent=e.ek||'';
+  nEl.oninput=()=>{ e.notes=nEl.innerText; persist(); flash('ind1'); };
+  fEl.oninput=()=>{ e.fayda=fEl.innerText; persist(); flash('ind2'); };
+  oEl.oninput=()=>{ e.onemi=oEl.innerText; persist(); flash('ind2'); };
+  kEl.oninput=()=>{ e.ek=kEl.innerText; persist(); flash('ind3'); };
+  refreshDoneBtn();
+}
+let curIdx=-1;
+function refreshDoneBtn(){
+  const b=document.getElementById('doneBtn');
+  const is=!!me().done[curIdx];
+  b.innerHTML = is ? '<i class="fas fa-check-double"></i> Tamamlandı (kaldır)' : '<i class="fas fa-check"></i> Tamamlandı olarak işaretle';
+}
+function toggleDone(){
+  const m=me(); m.done[curIdx]=!m.done[curIdx]; persist(); refreshDoneBtn();
+}
+function goHome(){ renderHome(); checkBackupReminder(); }
+
+/* ---------- PDF yazdırma ---------- */
+function coverPage(i){
+  const s=sures[i];
+  return `<div class="p-page p-cover">
+    <div class="sn">${i+1} · SURE</div>
+    <div class="ar">${s[0]}</div>
+    <div class="dv"></div>
+    <div class="trn">${s[1]} Suresi</div>
+  </div>`;
+}
+function contentPages(i){
+  const s=sures[i], e=(me().notes[i]||{});
+  let h='';
+  if((e.notes||'').trim()){
+    h+=`<div class="p-page"><div class="p-center"><span class="p-badge">${s[1]} — Notlarım</span></div>
+      <div class="p-text">${esc(e.notes)}</div></div>`;
+  }
+  if((e.fayda||'').trim()||(e.onemi||'').trim()){
+    h+=`<div class="p-page"><div class="p-cols">
+      <div><div class="p-center"><span class="p-badge">Faydaları</span></div><div class="p-text">${esc(e.fayda||'—')}</div></div>
+      <div><div class="p-center"><span class="p-badge">Önemi</span></div><div class="p-text">${esc(e.onemi||'—')}</div></div>
+    </div></div>`;
+  }
+  if((e.ek||'').trim()){
+    h+=`<div class="p-page"><div class="p-center"><span class="p-badge">Ek-Notlar</span></div>
+      <div class="p-box"><div class="p-text">${esc(e.ek)}</div></div></div>`;
+  }
+  return h;
+}
+function printOne(){
+  document.getElementById('printArea').innerHTML=coverPage(curIdx)+contentPages(curIdx);
+  window.print();
+}
+function printAll(){
+  if(!confirm('Tüm defter (114 surenin kapağı + yazdığınız notlar) yazdırılacak. Devam?')) return;
+  let h='';
+  for(let i=0;i<114;i++) h+=coverPage(i)+contentPages(i);
+  document.getElementById('printArea').innerHTML=h;
+  window.print();
+}
+
+/* ---------- Yedekleme ---------- */
+function backupData(fromReminder){
+  if(!storageOK) return alert('Bu ortamda yedekleme yapılamıyor çünkü veri henüz kalıcı olarak saklanmıyor.\nLütfen sayfayı normal tarayıcı sekmesinde açın.');
+  const blob=new Blob([JSON.stringify(profiles,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`sure-defteri-yedek-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  lsSet(BACKUP_KEY,String(Date.now()));
+  setBanner('backupBannerHome',false);
+  if(fromReminder) alert('Yedek indirildi ✓\nDosyayı güvenli bir yerde saklayın (ör. Proton Drive).\nSonraki hatırlatma 7 gün sonra.');
+}
+function restoreData(ev){
+  const f=ev.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      const d=JSON.parse(r.result);
+      if(!Array.isArray(d)||!d.length) throw 0;
+      for(const p of d) if(!p.id) p.id=uid();
+      profiles=d; persist(); alert('Yedek geri yüklendi ✓');
+      currentId=profiles[0].id; persist(); startApp();
+    }catch{ alert('Dosya okunamadı.'); }
+  };
+  r.readAsText(f);
+}
+
+/* ---------- Başlangıç ---------- */
+document.getElementById('current-year').textContent=new Date().getFullYear();
+currentId && profiles.find(p=>p.id===currentId) ? startApp() : renderWelcome();
+</script>
+</body>
+</html>
