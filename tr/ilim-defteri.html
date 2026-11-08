@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İlim Defterleri | Eslem Nur Çetin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+    --primary-color:#A06872; --primary-dark:#8E5A65; --primary-light:#CC8E98;
+    --secondary-color:#FDF5E6; --accent-color:#9E7F7F; --accent-warm:#E6C9C9;
+    --bg-color:#FFF9F9; --bg-secondary:#FFF0F5; --card-bg:#FFFFFF; --card-secondary:#FDF5F5;
+    --text-primary:#4E342E; --text-secondary:#8D6E63; --text-muted:#A89080;
+    --border-color:#F0E6E6; --border-focus:#A06872; --divider:#F5E8E8;
+    --button-bg:#D4A5A5; --button-hover:#C58F8F; --button-active:#B77F7F;
+    --note-bg:#FFF0F5; --error-bg:#FFE6E6; --error-color:#D32F2F;
+    --success-bg:#E8F5E9; --success-color:#388E3C;
+    --shadow-sm:0 2px 8px rgba(183,110,121,.1); --shadow-md:0 4px 15px rgba(183,110,121,.15);
+    --shadow-lg:0 8px 25px rgba(183,110,121,.2); --shadow-xl:0 12px 40px rgba(183,110,121,.25);
+    --header-bg:rgba(255,249,249,.95);
+    --transition-fast:.15s ease; --transition-base:.3s ease;
+    --transition-bounce:.4s cubic-bezier(.175,.885,.32,1.27);
+    --radius-sm:8px; --radius-md:16px; --radius-lg:20px; --radius-xl:30px;
+    --spacing-xs:.5rem; --spacing-sm:1rem; --spacing-md:1.5rem; --spacing-lg:2rem; --spacing-xl:3rem; --spacing-2xl:4rem;
+    /* Defter çizgileri */
+    --line-h:30px; --line-color:#EBDDE2;
+}
+[data-theme="dark"]{
+    --primary-color:#CC8E98; --primary-dark:#A06872; --primary-light:#E0A4AC;
+    --bg-color:#0D0D0D; --bg-secondary:#141414; --card-bg:#1A1A1A; --card-secondary:#222222;
+    --text-primary:#F5F5F0; --text-secondary:#B0B0B0; --text-muted:#808080;
+    --border-color:#2A2A2A; --border-focus:#CC8E98; --divider:#333333;
+    --button-bg:#A07070; --button-hover:#805050; --button-active:#6D4A4A;
+    --note-bg:#252525; --error-bg:#4A1919; --success-bg:#1A3820;
+    --shadow-sm:0 2px 8px rgba(0,0,0,.3); --shadow-md:0 4px 20px rgba(0,0,0,.4);
+    --shadow-lg:0 8px 35px rgba(0,0,0,.5); --shadow-xl:0 12px 50px rgba(0,0,0,.6);
+    --header-bg:rgba(13,13,13,.95);
+    --line-color:#3A3235;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-size:16px}
+body{font-family:'Lato',sans-serif;background:var(--bg-color);color:var(--text-primary);line-height:1.7;min-height:100vh;transition:background-color var(--transition-base),color var(--transition-base)}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.3;color:var(--text-primary)}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 clamp(15px,3vw,40px)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--primary-color);outline-offset:3px;border-radius:4px}
+header{background:var(--header-bg);backdrop-filter:blur(10px);position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border-color);padding:clamp(10px,2vw,15px) 0}
+nav{display:flex;justify-content:space-between;align-items:center;gap:var(--spacing-md)}
+.logo{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;color:var(--primary-color);display:flex;align-items:center;gap:var(--spacing-sm);white-space:nowrap}
+.logo span{font-family:'Scheherazade New',serif;color:var(--accent-color)}
+.nav-controls{display:flex;align-items:center;gap:var(--spacing-sm);flex-wrap:wrap}
+.tool-btn{background:transparent;border:2px solid var(--border-color);color:var(--text-primary);min-width:44px;min-height:44px;width:40px;height:40px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all var(--transition-base)}
+.tool-btn:hover{background:var(--note-bg);border-color:var(--primary-color);color:var(--primary-color);transform:scale(1.05)}
+.tool-btn.danger{color:var(--error-color);border-color:var(--error-bg)}
+.tool-btn.danger:hover{background:var(--error-bg)}
+.page-hero{text-align:center;padding:clamp(40px,8vw,70px) 0 clamp(20px,4vw,35px);background:linear-gradient(135deg,var(--bg-color) 0%,var(--note-bg) 100%)}
+.page-hero .arabic-title{font-family:'Scheherazade New',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);direction:rtl;background:linear-gradient(90deg,var(--primary-color),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);margin:.4rem 0}
+.page-hero p{color:var(--text-secondary);max-width:650px;margin:0 auto}
+.books-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--spacing-lg);padding:var(--spacing-lg) 0}
+.book-card{background:var(--card-bg);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-color);text-align:center;padding:var(--spacing-lg) var(--spacing-md);transition:all var(--transition-bounce);cursor:pointer}
+.book-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl)}
+.book-icon{font-size:2.4rem;color:var(--primary-color);width:70px;height:70px;display:flex;align-items:center;justify-content:center;background:var(--note-bg);border-radius:var(--radius-md);margin:0 auto var(--spacing-sm)}
+.book-card h3{font-size:1.25rem;color:var(--primary-color);margin-bottom:.3rem}
+.book-card small{color:var(--text-muted);display:block;font-size:.85rem}
+.book-progress{margin-top:var(--spacing-sm);height:8px;background:var(--bg-secondary);border-radius:8px;overflow:hidden}
+.book-progress i{display:block;height:100%;background:var(--primary-color);border-radius:8px;transition:width var(--transition-base)}
+.book-meta{margin-top:6px;font-size:.8rem;color:var(--text-secondary)}
+.top-band{max-width:1100px;margin:var(--spacing-sm) auto 0;padding:0 clamp(15px,3vw,40px)}
+.band{border-radius:var(--radius-md);padding:12px 16px;font-size:.9rem;font-weight:600;display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.band.warn{background:#FFF6D6;color:#8A6D00;border:1px solid #EAD79A}
+.band.err{background:var(--error-bg);color:var(--error-color);border:1px solid var(--error-color)}
+.band button{border:none;border-radius:20px;padding:6px 14px;font-weight:700;font-size:.8rem;background:var(--primary-color);color:#fff}
+.band button.ghost{background:transparent;color:inherit;border:1px solid currentColor}
+.overall{display:flex;align-items:center;gap:12px;padding:14px clamp(15px,3vw,40px);max-width:1100px;margin:0 auto;color:var(--text-secondary);font-size:.9rem}
+.overall .track{flex:1;height:10px;background:var(--bg-secondary);border-radius:10px;overflow:hidden}
+.overall .track i{display:block;height:100%;background:linear-gradient(90deg,var(--primary-color),var(--primary-dark))}
+.work-head{display:flex;align-items:center;gap:var(--spacing-sm);flex-wrap:wrap;padding:var(--spacing-md) 0 var(--spacing-xs)}
+.work-head h2{font-size:clamp(1.4rem,3vw,1.9rem);color:var(--primary-color);flex:1;min-width:200px}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border:2px solid var(--primary-color);color:var(--primary-color);border-radius:25px;font-weight:600;font-size:.9rem;background:transparent;transition:all var(--transition-base)}
+.btn-outline:hover{background:var(--primary-color);color:#fff;transform:translateY(-2px)}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 28px;background:var(--primary-color);color:#fff;border:none;border-radius:30px;font-weight:600;font-size:.95rem;box-shadow:var(--shadow-md);transition:all var(--transition-bounce)}
+.btn-primary:hover{background:var(--button-hover);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.login-wrap{max-width:520px;margin:0 auto;padding:var(--spacing-xl) clamp(15px,3vw,40px)}
+.login-card{background:var(--card-bg);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);border:1px solid var(--border-color);padding:var(--spacing-xl);text-align:center}
+.login-card .arabic{font-family:'Scheherazade New',serif;font-size:1.8rem;color:var(--primary-color)}
+.login-card h2{color:var(--primary-color);margin:.4rem 0 .2rem}
+.login-card>p{color:var(--text-secondary);font-size:.95rem;margin-bottom:var(--spacing-md)}
+.profile-list{display:flex;flex-direction:column;gap:10px;margin-bottom:var(--spacing-md);text-align:left}
+.profile-row{display:flex;align-items:center;gap:10px;background:var(--card-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;transition:all var(--transition-base)}
+.profile-row:hover{border-color:var(--primary-color);box-shadow:var(--shadow-sm)}
+.profile-row .p-info{flex:1;cursor:pointer}
+.profile-row .p-name{font-weight:700;color:var(--text-primary)}
+.profile-row .p-sub{font-size:.8rem;color:var(--text-muted)}
+.row-btn{background:none;border:2px solid var(--border-color);color:var(--text-primary);width:38px;height:38px;min-width:38px;min-height:38px;border-radius:50%;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all var(--transition-base)}
+.row-btn:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.row-btn.danger{color:var(--error-color)}
+.row-btn.danger:hover{background:var(--error-bg);border-color:var(--error-color)}
+.field{width:100%;padding:12px 16px;border:2px solid var(--border-color);border-radius:var(--radius-sm);background:var(--card-bg);color:var(--text-primary);font-size:1rem;font-family:inherit;min-height:48px;transition:all var(--transition-fast)}
+.field:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(160,104,114,.15)}
+.field::placeholder{color:var(--text-muted)}
+
+/* ============ NOT DEFTERİ GÖRÜNÜMLÜ ALANLAR ============ */
+.note-paper{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);margin-bottom:var(--spacing-lg);overflow:hidden}
+.note-lines{position:relative;background:var(--card-bg)}
+/* Kırmızı kenar boşluğu çizgisi (klasik defter) */
+.note-lines::before{content:'';position:absolute;top:0;bottom:0;left:46px;width:1.5px;background:var(--primary-light);opacity:.55;pointer-events:none;z-index:1}
+/* Çizgili kağıt: metin satır aralığı çizgilerle birebir hizalı */
+textarea.lined{
+    width:100%;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    background:
+        linear-gradient(to right, transparent 0 46px, transparent 46px),
+        repeating-linear-gradient(to bottom, transparent 0 calc(var(--line-h) - 1px), var(--line-color) calc(var(--line-h) - 1px) var(--line-h)),
+        var(--card-bg);
+    line-height:var(--line-h);
+    font-family:'Lato',sans-serif;
+    font-size:1rem;
+    color:var(--text-primary);
+    padding:0 24px 0 62px;
+    min-height:calc(var(--line-h) * 8);
+    resize:vertical;
+    background-attachment:local;
+}
+textarea.lined::placeholder{color:var(--text-muted);opacity:.8}
+textarea.lined:focus{outline:none;box-shadow:none;background-attachment:local}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:var(--spacing-md) 0}
+.cell{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:14px 10px;text-align:center;cursor:pointer;box-shadow:var(--shadow-sm);transition:all var(--transition-base);position:relative}
+.cell:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary-color)}
+.cell .num{position:absolute;top:8px;left:10px;font-size:.7rem;color:var(--text-muted)}
+.cell .ar{font-family:'Scheherazade New',serif;font-size:1.5rem;color:var(--primary-color);line-height:1.4}
+.cell .tr{font-size:.82rem;color:var(--text-secondary);margin-top:2px}
+.cell.done{border-color:var(--success-color)}
+.cell.done::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--success-color);font-weight:700}
+.cell .dot{position:absolute;top:9px;right:24px;width:8px;height:8px;border-radius:50%;background:var(--primary-light)}
+.paper{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:var(--spacing-lg);margin-bottom:var(--spacing-lg)}
+.cover{text-align:center}
+.cover .ar-name{font-family:'Scheherazade New',serif;font-size:clamp(2.4rem,7vw,3.6rem);color:var(--primary-color);direction:rtl;line-height:1.5}
+.cover .ornament{color:var(--accent-warm);letter-spacing:8px;font-size:.9rem;margin:6px 0}
+.cover .sub{color:var(--text-secondary);font-size:.95rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-md)}
+@media(max-width:768px){.two-col{grid-template-columns:1fr}}
+.paper h4{color:var(--primary-color);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.paper h4 i{color:var(--primary-light)}
+.ribbon{display:inline-block;background:var(--primary-color);color:#fff;font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:0 14px 14px 0;margin-bottom:12px}
+.topic-add{display:flex;gap:10px;margin-bottom:var(--spacing-md);flex-wrap:wrap}
+.topic-add .field{flex:1;min-width:200px}
+.topic-item{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);margin-bottom:14px;overflow:hidden;transition:all var(--transition-base)}
+.topic-item:hover{box-shadow:var(--shadow-md)}
+.topic-bar{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--card-secondary)}
+.topic-bar input[type=checkbox]{width:20px;height:20px;min-width:20px;accent-color:var(--primary-color);cursor:pointer}
+.topic-bar .t-name{flex:1;font-weight:700;border:none;background:transparent;font-family:inherit;font-size:1rem;color:var(--text-primary)}
+.topic-bar .t-name:focus{outline:none;border-bottom:2px solid var(--primary-color)}
+.topic-body{padding:0}
+.topic-body textarea.lined{min-height:calc(var(--line-h) * 5)}
+.small-btn{background:none;border:2px solid var(--border-color);color:var(--text-secondary);width:36px;height:36px;min-width:36px;border-radius:50%;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all var(--transition-base)}
+.small-btn:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.small-btn.danger{color:var(--error-color)}
+.small-btn.danger:hover{background:var(--error-bg);border-color:var(--error-color)}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--success-bg);color:var(--success-color);border:1px solid var(--success-color);padding:10px 18px;border-radius:22px;font-weight:700;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:2000}
+.toast.show{opacity:1}
+.toast.error{background:var(--error-bg);color:var(--error-color);border-color:var(--error-color)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:1500;padding:16px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card-bg);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:440px;width:100%;padding:var(--spacing-lg);text-align:center;border-top:4px solid var(--primary-color)}
+.modal h3{color:var(--primary-color);margin-bottom:10px}
+.modal p{color:var(--text-secondary);font-size:.92rem;margin-bottom:var(--spacing-sm)}
+.modal .modal-btns{display:flex;gap:10px;justify-content:center;margin-top:var(--spacing-sm);flex-wrap:wrap}
+.btn-danger{display:inline-flex;align-items:center;padding:10px 22px;background:var(--error-color);color:#fff;border:none;border-radius:25px;font-weight:600}
+.btn-danger:hover{filter:brightness(.9)}
+footer{background:var(--card-bg);border-top:1px solid var(--border-color);padding:clamp(30px,5vw,50px) 0;text-align:center;margin-top:var(--spacing-2xl)}
+.footer-arabic{font-family:'Scheherazade New',serif;font-size:clamp(1.4rem,3vw,1.7rem);color:var(--primary-color);direction:rtl}
+.copyright{font-size:.85rem;color:var(--text-muted);margin-top:8px}
+.hidden{display:none!important}
+@media(max-width:768px){
+    .note-lines::before{left:34px}
+    textarea.lined{padding-left:48px;padding-right:14px}
+}
+@media print{
+    header,.top-band,footer,.toast,.modal-overlay,.no-print{display:none!important}
+    body{background:#fff}
+    .paper,.note-paper{box-shadow:none;border:1px solid #ccc;page-break-after:always}
+}
+</style>
+</head>
+<body>
+
+<header>
+    <nav class="container">
+        <div class="logo">
+                    <img src="../png/logo/logo.png"  class="site-logo">
+                    Eslem Nur Çetin
+                </div>
+        <div class="nav-controls">
+            <button class="tool-btn" id="themeBtn" title="Tema değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
+            <button class="tool-btn" id="backupBtn" title="Yedekle"><i class="fas fa-download"></i></button>
+            <button class="tool-btn" id="restoreBtn" title="Geri yükle"><i class="fas fa-upload"></i></button>
+            <button class="tool-btn" id="pinBtn" title="PIN değiştir"><i class="fas fa-key"></i></button>
+            <button class="tool-btn danger" id="delProfileBtn" title="Profil sil"><i class="fas fa-trash"></i></button>
+            <button class="tool-btn danger" id="logoutBtn" title="Çıkış"><i class="fas fa-door-open"></i></button>
+        </div>
+    </nav>
+</header>
+
+<input type="file" id="restoreFile" accept=".json" class="hidden">
+<div class="top-band" id="bands"></div>
+
+<!-- GİRİŞ -->
+<section id="screenLogin" class="login-wrap">
+    <div class="login-card">
+        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <h2>İlim Defterleri</h2>
+        <p>Defterini aç veya bu cihazda yeni bir defter oluştur.</p>
+        <div class="profile-list" id="profileList"></div>
+        <input class="field" id="newName" placeholder="Adın (ör. Ayşe)" maxlength="30">
+        <p class="hint">İsteğe bağlı: aynı isimden birden fazla defter olabilir; PIN koyarsan yalnızca PIN'i bilen açar.</p>
+        <input class="field" id="newPin" placeholder="4 haneli PIN (isteğe bağlı)" inputmode="numeric" maxlength="4">
+        <div style="height:12px"></div>
+        <button class="btn-primary" style="width:100%" onclick="createProfile()"><i class="fas fa-plus"></i> Defteri Aç / Oluştur</button>
+    </div>
+</section>
+
+<!-- ANA SAYFA -->
+<section id="screenHome" class="hidden">
+    <div class="page-hero">
+        <div class="arabic-title">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
+        <h1 id="homeTitle">Hoş geldin</h1>
+        <p>Hangi defterde çalışmak istersin? Notların otomatik kaydedilir, kaldığın yerden devam edersin.</p>
+    </div>
+    <div class="overall"><span>Genel ilerleme (Sure)</span><div class="track"><i id="overallBar" style="width:0%"></i></div><span id="overallPct">0%</span></div>
+    <div class="container"><div class="books-grid" id="booksGrid"></div></div>
+</section>
+
+<!-- SURE DEFTERİ -->
+<section id="screenSurah" class="container hidden">
+    <div class="work-head">
+        <h2><i class="fas fa-book-quran"></i> Sure Defteri</h2>
+        <span id="surahProgress" style="color:var(--text-secondary);font-size:.9rem;font-weight:700"></span>
+        <button class="btn-outline no-print" onclick="printSurahBook()"><i class="fas fa-print"></i> Tüm defteri PDF yazdır</button>
+        <button class="btn-outline" onclick="goHome()"><i class="fas fa-arrow-left"></i> Defterler</button>
+    </div>
+    <div class="grid" id="surahGrid"></div>
+</section>
+
+<section id="screenSurahDetail" class="container hidden">
+    <div class="work-head">
+        <h2 id="sdTitle"></h2>
+        <button class="btn-outline no-print" onclick="printSurah(currentIdx)"><i class="fas fa-print"></i> Bu sureyi yazdır</button>
+        <button class="btn-outline" onclick="closeSurahDetail()"><i class="fas fa-arrow-left"></i> Listeye dön</button>
+    </div>
+    <div class="paper cover">
+        <div class="ar-name" id="sdAr"></div>
+        <div class="ornament">◆ ─── ❖ ─── ◆</div>
+        <div class="sub" id="sdTr"></div>
+    </div>
+
+    <div class="note-paper">
+        <div class="ribbon">NOTLARIM</div>
+        <div class="note-lines">
+            <textarea class="lined" id="sdNotes" placeholder="Bu sureden aldığın notlar, ayetlerden etkilenmelerin..."></textarea>
+        </div>
+    </div>
+
+    <div class="paper">
+        <div class="ribbon">FAYDALARI / ÖNEMİ</div>
+        <div class="two-col">
+            <div>
+                <h4><i class="fas fa-seedling"></i> Faydaları</h4>
+                <div class="note-lines" style="border:1px solid var(--border-color);border-radius:var(--radius-sm)">
+                    <textarea class="lined" id="sdFayda" placeholder="Sureyi okumak ne fayda sağlar?"></textarea>
+                </div>
+            </div>
+            <div>
+                <h4><i class="fas fa-star"></i> Önemi</h4>
+                <div class="note-lines" style="border:1px solid var(--border-color);border-radius:var(--radius-sm)">
+                    <textarea class="lined" id="sdOnem" placeholder="Sureye dair bilgiler, hadisler..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-paper">
+        <div class="ribbon">EK-NOTLAR</div>
+        <div class="note-lines">
+            <textarea class="lined" id="sdExtra" placeholder="Hatim planı, ezber takibi, soruların..."></textarea>
+        </div>
+    </div>
+
+    <div class="paper" style="text-align:center">
+        <button class="btn-primary" id="sdDoneBtn" onclick="toggleSurahDone()"><i class="fas fa-check"></i> <span>Tamamlandı olarak işaretle</span></button>
+    </div>
+</section>
+
+<!-- DERS DEFTERLERİ -->
+<section id="screenLesson" class="container hidden">
+    <div class="work-head">
+        <h2 id="lessonTitle"></h2>
+        <span id="lessonProgress" style="color:var(--text-secondary);font-size:.9rem;font-weight:700"></span>
+        <button class="btn-outline no-print" onclick="printLesson()"><i class="fas fa-print"></i> Defteri PDF yazdır</button>
+        <button class="btn-outline" onclick="goHome()"><i class="fas fa-arrow-left"></i> Defterler</button>
+    </div>
+    <div class="topic-add no-print">
+        <input class="field" id="topicInput" placeholder="Yeni konu başlığı (ör. Sıfatlar, Namaz vakitleri...)" maxlength="80" onkeydown="if(event.key==='Enter')addTopic()">
+        <button class="btn-primary" onclick="addTopic()"><i class="fas fa-plus"></i> Konu Ekle</button>
+    </div>
+    <div id="topicList"></div>
+</section>
+
+<footer>
+    <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+    <div class="copyright">© 2026 İlim ve Kod • Defterleriniz yalnızca bu cihazda saklanır</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <h3 id="modalTitle"></h3>
+        <p id="modalBody"></p>
+        <input class="field hidden" id="modalPin" placeholder="Defterin PIN'i" inputmode="numeric" maxlength="4" style="text-align:center">
+        <div class="modal-btns">
+            <button class="btn-outline" onclick="closeModal()">Vazgeç</button>
+            <button class="btn-danger" id="modalOk">Onayla</button>
+        </div>
+    </div>
+</div>
+
+<script>
+'use strict';
+/* ---------- Depo ---------- */
+var STORE_OK=true, MEM={};
+function sGet(k){ try{ return localStorage.getItem(k);}catch(e){STORE_OK=false;return (k in MEM)?MEM[k]:null;} }
+function sSet(k,v){ try{ localStorage.setItem(k,v);return true;}catch(e){STORE_OK=false;MEM[k]=v;return false;} }
+function sDel(k){ try{ localStorage.removeItem(k);}catch(e){} delete MEM[k]; }
+
+/* ---------- 114 sure ---------- */
+const SURES=[["الفاتحة","Fâtiha"],["البقرة","Bakara"],["آل عمران","Âl-i İmrân"],["النساء","Nisâ"],["المائدة","Mâide"],["الأنعام","En'âm"],["الأعراف","A'râf"],["الأنفال","Enfâl"],["التوبة","Tevbe"],["يونس","Yûnus"],["هود","Hûd"],["يوسف","Yûsuf"],["الرعد","Ra'd"],["إبراهيم","İbrâhîm"],["الحجر","Hicr"],["النحل","Nahl"],["الإسراء","İsrâ"],["الكهف","Kehf"],["مريم","Meryem"],["طه","Tâhâ"],["الأنبياء","Enbiyâ"],["الحج","Hac"],["المؤمنون","Mü'minûn"],["النور","Nûr"],["الفرقان","Furkân"],["الشعراء","Şuarâ"],["النمل","Neml"],["القصص","Kasas"],["العنكبوت","Ankebût"],["الروم","Rûm"],["لقمان","Lokmân"],["السجدة","Secde"],["الأحزاب","Ahzâb"],["سبأ","Sebe"],["فاطر","Fâtır"],["يس","Yâsin"],["الصافات","Sâffât"],["ص","Sâd"],["الزمر","Zümer"],["غافر","Gâfir"],["فصلت","Fussilet"],["الشورى","Şûrâ"],["الزخرف","Zuhruf"],["الدخان","Duhân"],["الجاثية","Câsiye"],["الأحقاف","Ahkâf"],["محمد","Muhammed"],["الفتح","Fetih"],["الحجرات","Hucurât"],["ق","Kâf"],["الذاريات","Zâriyât"],["الطور","Tûr"],["النجم","Necm"],["القمر","Kamer"],["الرحمن","Rahmân"],["الواقعة","Vâkıa"],["الحديد","Hadîd"],["المجادلة","Mücâdele"],["الحشر","Haşr"],["الممتحنة","Mümtehine"],["الصف","Saff"],["الجمعة","Cuma"],["المنافقون","Münâfikûn"],["التغابن","Tagâbün"],["الطلاق","Talâk"],["التحريم","Tehrîm"],["الملك","Mülk"],["القلم","Kalem"],["الحاقة","Hâkka"],["المعارج","Meâric"],["نوح","Nûh"],["الجن","Cin"],["المزمل","Müzzemmil"],["المدثر","Müddessir"],["القيامة","Kıyâme"],["الإنسان","İnsân"],["المرسلات","Mürselât"],["النبأ","Nebe"],["النازعات","Nâziât"],["عبس","Abese"],["التكوير","Tekvîr"],["الانفطار","İnfitâr"],["المطففين","Mutaffifîn"],["الانشقاق","İnşikâk"],["البروج","Burûc"],["الطارق","Târik"],["الأعلى","A'lâ"],["الغاشية","Gâşiye"],["الفجر","Fecr"],["البلد","Beled"],["الشمس","Şems"],["الليل","Leyl"],["الضحى","Duhâ"],["الشرح","İnşirâh"],["التين","Tîn"],["العلق","Alak"],["القدر","Kadr"],["البينة","Beyyine"],["الزلزلة","Zilzâl"],["العاديات","Âdiyât"],["القارعة","Kâria"],["التكاثر","Tekâsür"],["العصر","Asr"],["الهمزة","Hümeze"],["الفيل","Fîl"],["قريش","Kureyş"],["الماعون","Mâûn"],["الكوثر","Kevser"],["الكافرون","Kâfirûn"],["النصر","Nasr"],["اللهب","Leheb"],["الإخلاص","İhlâs"],["الفلق","Felak"],["الناس","Nâs"]];
+
+/* ---------- Ders defterleri ---------- */
+const BOOKS=[
+ {id:"surah",  name:"Sure Defteri", desc:"114 sure için kişisel çalışma defteri", icon:"fa-book-quran"},
+ {id:"arapca", name:"Arapça",       desc:"Sarf, nahiv, kelime ve çeviri notları", icon:"fa-language"},
+ {id:"fikih",  name:"Fıkıh",        desc:"İbadetler, hükümler ve meseleler", icon:"fa-scale-balanced"},
+ {id:"hadis",  name:"Hadis",        desc:"Hadisler, raviler ve şerhler", icon:"fa-scroll"}
+];
+
+/* ---------- Durum ---------- */
+let DB=null, ACTIVE_ID=null, CURRENT_BOOK=null, currentIdx=-1;
+const K_DB="ilimDefterleriV1", K_ACT="ilimActive", K_THEME="ilimTheme", K_BAK="ilimLastBackup", K_SNOOZE="ilimSnooze";
+
+function migrateProfile(p){
+    if(!p||typeof p!=="object")return;
+    if(!p.data||typeof p.data!=="object")p.data={};
+    if(!p.data.surah||typeof p.data.surah!=="object")p.data.surah={done:{},notes:{}};
+    if(!p.data.surah.done||typeof p.data.surah.done!=="object")p.data.surah.done={};
+    if(!p.data.surah.notes||typeof p.data.surah.notes!=="object")p.data.surah.notes={};
+    if(!p.data.books||typeof p.data.books!=="object")p.data.books={};
+    Object.keys(p.data.books).forEach(k=>{
+        const b=p.data.books[k];
+        if(!b||typeof b!=="object")p.data.books[k]={topics:[]};
+        else if(!Array.isArray(b.topics))b.topics=[];
+    });
+}
+function loadDB(){
+    try{ DB=JSON.parse(sGet(K_DB)||"{}"); }catch(e){ DB={}; }
+    if(!DB||typeof DB!=="object")DB={};
+    Object.values(DB).forEach(migrateProfile);
+    saveDB();
+}
+function saveDB(){ sSet(K_DB,JSON.stringify(DB)); }
+function active(){ return ACTIVE_ID&&DB[ACTIVE_ID]?DB[ACTIVE_ID]:null; }
+function blankProfileData(){ return {surah:{done:{},notes:{}},books:{}}; }
+function bookData(bid){
+    const p=active(); if(!p)return {surah:{done:{},notes:{}},books:{},topics:[],__dummy:true};
+    if(bid==="surah")return p.data.surah;
+    if(!p.data.books[bid])p.data.books[bid]={topics:[]};
+    return p.data.books[bid];
+}
+
+/* ---------- Tema ---------- */
+function applyTheme(t){ document.documentElement.setAttribute("data-theme",t); document.getElementById("themeBtn").textContent=t==="dark"?"☀️":"🌙"; sSet(K_THEME,t); }
+document.getElementById("themeBtn").onclick=()=>applyTheme(document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark");
+applyTheme(sGet(K_THEME)||"light");
+
+/* ---------- Toast ---------- */
+let toastTimer=null;
+function toast(msg,err){ const t=document.getElementById("toast"); t.textContent=msg; t.className="toast show"+(err?" error":""); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),2200); }
+
+/* ---------- Modal ---------- */
+let modalCb=null;
+function openModal(title,body,pin){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalBody").innerHTML=body; const mp=document.getElementById("modalPin"); mp.classList.toggle("hidden",!pin); if(pin)mp.value=""; document.getElementById("modalOverlay").classList.add("open"); }
+function closeModal(){ document.getElementById("modalOverlay").classList.remove("open"); modalCb=null; }
+document.getElementById("modalOk").onclick=()=>{ const pin=document.getElementById("modalPin").value; const cb=modalCb; modalCb=null; document.getElementById("modalOverlay").classList.remove("open"); if(cb)cb(pin); };
+document.getElementById("modalOverlay").onclick=e=>{ if(e.target.id==="modalOverlay")closeModal(); };
+
+function show(id){ ["screenLogin","screenHome","screenSurah","screenSurahDetail","screenLesson"].forEach(s=>document.getElementById(s).classList.add("hidden")); document.getElementById(id).classList.remove("hidden"); window.scrollTo({top:0}); }
+
+/* ---------- Giriş ---------- */
+function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function countDone(p){ return Object.values((p.data&&p.data.surah&&p.data.surah.done)||{}).filter(Boolean).length; }
+function countNotes(p){ return Object.values((p.data&&p.data.surah&&p.data.surah.notes)||{}).filter(v=>v&&(v.notes||v.fayda||v.onem||v.extra)).length; }
+
+function renderProfiles(){
+    const el=document.getElementById("profileList"); el.innerHTML="";
+    const ids=Object.keys(DB);
+    if(!ids.length){ el.innerHTML='<p style="color:var(--text-muted);font-size:.9rem;text-align:center">Bu cihazda henüz defter yok. Aşağıdan oluştur ↓</p>'; return; }
+    ids.sort((a,b)=>(DB[a].createdAt||0)-(DB[b].createdAt||0)).forEach(id=>{
+        const p=DB[id];
+        const row=document.createElement("div"); row.className="profile-row";
+        row.innerHTML=`<div class="p-info"><div class="p-name">${esc(p.name)}${p.pin?' <i class="fas fa-lock" style="font-size:.75rem;color:var(--primary-light)"></i>':''}</div><div class="p-sub">${countDone(p)} sure tamamlandı • ${countNotes(p)} surede not</div></div>
+            <button class="row-btn" title="Aç"><i class="fas fa-book-open"></i></button>
+            <button class="row-btn danger" title="Sil"><i class="fas fa-trash"></i></button>`;
+        row.querySelector(".row-btn").onclick=()=>openProfile(id);
+        row.querySelector(".row-btn.danger").onclick=()=>askDeleteProfile(id);
+        row.querySelector(".p-info").onclick=()=>openProfile(id);
+        el.appendChild(row);
+    });
+}
+function createProfile(){
+    const name=document.getElementById("newName").value.trim();
+    if(!name){ toast("Lütfen adını yaz 🙂",true); return; }
+    let pin=document.getElementById("newPin").value.trim();
+    if(pin&&!/^\d{4}$/.test(pin)){ toast("PIN 4 haneli olmalı",true); return; }
+    const hash=pin?simpleHash(pin):null;
+    const sameName=Object.values(DB).filter(p=>(p.name||"").toLowerCase()===name.toLowerCase());
+    if(!hash&&sameName.length&&!confirm(`"${name}" adında ${sameName.length} defter zaten var. PIN olmadan yine de oluşturulsun mu?`))return;
+    const id="p"+Date.now()+Math.random().toString(36).slice(2,6);
+    DB[id]={id,name,pin:hash,createdAt:Date.now(),data:blankProfileData()};
+    saveDB(); document.getElementById("newName").value=""; document.getElementById("newPin").value="";
+    openProfile(id);
+}
+function simpleHash(s){ let h=0; for(const c of s)h=(h*31+c.charCodeAt(0))>>>0; return "h"+h.toString(36); }
+function checkPin(p,given){ return !p.pin||p.pin===simpleHash(given||""); }
+function openProfile(id){
+    const p=DB[id]; if(!p)return;
+    if(p.pin){
+        openModal(`${p.name} — PIN`,"Bu defter PIN korumalı. PIN'i gir:",true);
+        modalCb=given=>{ if(given&&checkPin(p,given)){ ACTIVE_ID=id; sSet(K_ACT,id); enterApp(); } else toast("Yanlış PIN",true); };
+        return;
+    }
+    ACTIVE_ID=id; sSet(K_ACT,id); enterApp();
+}
+function enterApp(){ renderHome(); show("screenHome"); checkStorage(); renderBands(); }
+
+/* ---------- Ana sayfa ---------- */
+function renderHome(){
+    const p=active(); if(!p)return;
+    document.getElementById("homeTitle").textContent=`Hoş geldin, ${p.name} 🌸`;
+    const grid=document.getElementById("booksGrid"); grid.innerHTML="";
+    const total=countDone(p), pct=Math.round(total/114*100);
+    document.getElementById("overallBar").style.width=pct+"%";
+    document.getElementById("overallPct").textContent=pct+"%";
+    BOOKS.forEach(b=>{
+        const card=document.createElement("div"); card.className="book-card";
+        let progHtml="", meta="";
+        if(b.id==="surah"){
+            progHtml=`<div class="book-progress"><i style="width:${pct}%"></i></div>`;
+            meta=`<div class="book-meta">${total} / 114 sure tamamlandı</div>`;
+        }else{
+            const topics=(bookData(b.id).topics)||[];
+            const dn=topics.filter(t=>t.done).length;
+            const lp=topics.length?Math.round(dn/topics.length*100):0;
+            progHtml=`<div class="book-progress"><i style="width:${lp}%"></i></div>`;
+            meta=`<div class="book-meta">${topics.length?`${dn} / ${topics.length} konu tamamlandı`:"Henüz konu eklenmedi"}</div>`;
+        }
+        card.innerHTML=`<div class="book-icon"><i class="fas ${b.icon}"></i></div><h3>${b.name}</h3><small>${b.desc}</small>${progHtml}${meta}`;
+        card.onclick=()=>openBook(b.id);
+        grid.appendChild(card);
+    });
+}
+function openBook(bid){
+    if(bid==="surah"){ CURRENT_BOOK="surah"; renderSurahGrid(); show("screenSurah"); return; }
+    CURRENT_BOOK=bid; renderLesson(); show("screenLesson");
+}
+function goHome(){ CURRENT_BOOK=null; renderHome(); show("screenHome"); }
+
+/* ---------- Sure Defteri ---------- */
+function renderSurahGrid(){
+    const data=bookData("surah"), grid=document.getElementById("surahGrid"); grid.innerHTML="";
+    let done=0;
+    SURES.forEach((s,i)=>{
+        const isDone=!!data.done[i], n=data.notes[i]||{};
+        const hasNotes=n.notes||n.fayda||n.onem||n.extra;
+        if(isDone)done++;
+        const cell=document.createElement("div"); cell.className="cell"+(isDone?" done":"");
+        cell.innerHTML=`<span class="num">${i+1}</span>${hasNotes?'<span class="dot"></span>':""}<div class="ar">${s[0]}</div><div class="tr">${s[1]}</div>`;
+        cell.onclick=()=>openSurah(i);
+        grid.appendChild(cell);
+    });
+    document.getElementById("surahProgress").textContent=`${done} / 114 tamamlandı`;
+}
+function openSurah(i){
+    currentIdx=i;
+    const n=(bookData("surah").notes[i])||{}, s=SURES[i];
+    document.getElementById("sdTitle").textContent=`${i+1}. ${s[1]}`;
+    document.getElementById("sdAr").textContent=s[0];
+    document.getElementById("sdTr").textContent=s[1];
+    document.getElementById("sdNotes").value=n.notes||"";
+    document.getElementById("sdFayda").value=n.fayda||"";
+    document.getElementById("sdOnem").value=n.onem||"";
+    document.getElementById("sdExtra").value=n.extra||"";
+    updateDoneBtn(); show("screenSurahDetail");
+    bindAutosave(["sdNotes","sdFayda","sdOnem","sdExtra"]);
+}
+function closeSurahDetail(){ renderSurahGrid(); show("screenSurah"); }
+function updateDoneBtn(){
+    const isDone=!!bookData("surah").done[currentIdx];
+    document.querySelector("#sdDoneBtn span").textContent=isDone?"Tamamlandı işaretini kaldır":"Tamamlandı olarak işaretle";
+    document.querySelector("#sdDoneBtn i").className=isDone?"fas fa-rotate-left":"fas fa-check";
+}
+function toggleSurahDone(){ const d=bookData("surah"); d.done[currentIdx]=!d.done[currentIdx]; saveDB(); updateDoneBtn(); }
+
+var mapSavePending=false;
+function bindAutosave(ids){
+    ids.forEach(id=>{
+        document.getElementById(id).oninput=()=>{
+            if(mapSavePending)return;
+            mapSavePending=true;
+            setTimeout(()=>{ mapSavePending=false;
+                const d=bookData("surah");
+                d.notes[currentIdx]=Object.assign({},d.notes[currentIdx]||{},{
+                    notes:document.getElementById("sdNotes").value,
+                    fayda:document.getElementById("sdFayda").value,
+                    onem:document.getElementById("sdOnem").value,
+                    extra:document.getElementById("sdExtra").value
+                });
+                saveDB();
+                if(STORE_OK)toast("Kaydedildi ✓"); else toast("⚠️ Kayıt yapılamıyor — dosyayı indirip tarayıcıda açın",true);
+            },400);
+        };
+    });
+}
+
+/* ---------- Ders defterleri ---------- */
+function renderLesson(){
+    const b=BOOKS.find(x=>x.id===CURRENT_BOOK); if(!b)return;
+    const topics=(bookData(CURRENT_BOOK).topics)||[];
+    document.getElementById("lessonTitle").innerHTML=`<i class="fas ${b.icon}"></i> ${b.name} Defteri`;
+    const dn=topics.filter(t=>t.done).length;
+    document.getElementById("lessonProgress").textContent=topics.length?`${dn} / ${topics.length} konu`:"";
+    const list=document.getElementById("topicList"); list.innerHTML="";
+    if(!topics.length){ list.innerHTML='<div class="paper" style="text-align:center;color:var(--text-muted)">Henüz konu yok. Yukarıdan ilk konunu ekle ✍️</div>'; return; }
+    topics.forEach((t,i)=>{
+        const item=document.createElement("div"); item.className="topic-item";
+        item.innerHTML=`
+            <div class="topic-bar">
+                <input type="checkbox" ${t.done?"checked":""} title="Tamamlandı">
+                <input class="t-name" value="${esc(t.title)}" maxlength="80">
+                <button class="small-btn prt" title="Bu konuyu yazdır"><i class="fas fa-print"></i></button>
+                <button class="small-btn danger del" title="Konuyu sil"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="topic-body note-lines">
+                <textarea class="lined" placeholder="Bu konuya dair notların...">${esc(t.text||"")}</textarea>
+            </div>`;
+        const cb=item.querySelector("[type=checkbox]");
+        cb.onchange=()=>{ t.done=cb.checked; saveDB(); renderLesson(); };
+        const nameEl=item.querySelector(".t-name");
+        nameEl.oninput=()=>{ t.title=nameEl.value; saveDB(); };
+        item.querySelector(".del").onclick=()=>askDeleteTopic(i);
+        item.querySelector(".prt").onclick=()=>printTopic(i);
+        const ta=item.querySelector("textarea");
+        ta.oninput=()=>{ t.text=ta.value; saveDB(); if(!STORE_OK)toast("⚠️ Kayıt yapılamıyor — dosyayı indirip tarayıcıda açın",true); };
+        list.appendChild(item);
+    });
+}
+function addTopic(){
+    const inp=document.getElementById("topicInput"), title=inp.value.trim();
+    if(!title)return;
+    bookData(CURRENT_BOOK).topics.push({title,text:"",done:false});
+    saveDB(); inp.value=""; renderLesson();
+}
+function askDeleteTopic(i){
+    const t=bookData(CURRENT_BOOK).topics[i];
+    openModal("Konuyu sil",`<b>${esc(t.title)}</b> konusu ve notları silinecek.<br><br>Bu işlem geri alınamaz.`);
+    modalCb=()=>{ bookData(CURRENT_BOOK).topics.splice(i,1); saveDB(); renderLesson(); toast("Konu silindi"); };
+}
+
+/* ---------- Yazdırma ---------- */
+function printStyle(){ return `<style>body{font-family:Lato,sans-serif;color:#333;max-width:800px;margin:0 auto;padding:24px}h1,h2,h3{font-family:'Playfair Display',serif;color:#A06872}.ar{font-family:'Scheherazade New',serif;font-size:2.4rem;color:#A06872;text-align:center;direction:rtl}.orn{text-align:center;color:#E6C9C9;letter-spacing:8px}.pb{page-break-before:always}div{white-space:pre-wrap}</style>`; }
+function wopen(html){ const w=window.open("","_blank"); if(!w){toast("Pop-up engellendi",true);return;} w.document.write(html); w.document.close(); setTimeout(()=>w.print(),400); }
+function surahPage(i){
+    const s=SURES[i], n=(bookData("surah").notes[i])||{};
+    return `<div class="ar">${s[0]}</div><div class="orn">◆ ─── ❖ ─── ◆</div><h1 style="text-align:center">${i+1}. ${s[1]}</h1>
+        ${n.notes?`<h3>Notlarım</h3><div>${esc(n.notes)}</div>`:""}
+        ${n.fayda?`<h3>Faydaları</h3><div>${esc(n.fayda)}</div>`:""}
+        ${n.onem?`<h3>Önemi</h3><div>${esc(n.onem)}</div>`:""}
+        ${n.extra?`<h3>Ek-Notlar</h3><div>${esc(n.extra)}</div>`:""}<div class="pb"></div>`;
+}
+function printSurah(i){ wopen(`<html><head><title>${SURES[i][1]}</title>${printStyle()}</head><body>${surahPage(i)}</body></html>`); }
+function printSurahBook(){ let pages=""; SURES.forEach((s,i)=>pages+=surahPage(i)); wopen(`<html><head><title>Sure Defteri</title>${printStyle()}</head><body>${pages}</body></html>`); }
+function printLesson(){
+    const b=BOOKS.find(x=>x.id===CURRENT_BOOK), topics=(bookData(CURRENT_BOOK).topics)||[];
+    let pages=`<div class="ar">${b.name}</div><div class="orn">◆ ─── ❖ ─── ◆</div><h1 style="text-align:center">${b.name} Defteri</h1><div class="pb"></div>`;
+    topics.forEach(t=>{ pages+=`<h2>${t.done?"✓ ":""}${esc(t.title)}</h2><div>${esc(t.text||"")}</div><div class="pb"></div>`; });
+    wopen(`<html><head><title>${b.name} Defteri</title>${printStyle()}</head><body>${pages}</body></html>`);
+}
+function printTopic(i){
+    const t=bookData(CURRENT_BOOK).topics[i];
+    wopen(`<html><head><title>${esc(t.title)}</title>${printStyle()}</head><body><h1>${t.done?"✓ ":""}${esc(t.title)}</h1><div>${esc(t.text||"")}</div></body></html>`);
+}
+
+/* ---------- Profil silme / çıkış / PIN ---------- */
+function askDeleteProfile(id){
+    const p=DB[id]; if(!p)return;
+    if(p.pin){
+        openModal(`${p.name} defterini sil`,"Bu defter PIN korumalı. Silmek için PIN'i gir:",true);
+        modalCb=given=>{ if(given&&checkPin(p,given))reallyDelete(id); else toast("Yanlış PIN",true); };
+        return;
+    }
+    openModal(`${p.name} defterini sil`,`Bu defterde <b>${countDone(p)}</b> sure tamamlandı, <b>${countNotes(p)}</b> surede not var.<br><br>Önce <b>⬇ Yedekle</b> ile yedek alman önerilir. Bu işlem geri alınamaz.`);
+    modalCb=()=>reallyDelete(id);
+}
+function reallyDelete(id){
+    delete DB[id]; saveDB();
+    if(id===ACTIVE_ID){
+        ACTIVE_ID=Object.keys(DB)[0]||null;
+        if(ACTIVE_ID){ sSet(K_ACT,ACTIVE_ID); enterApp(); } else { sDel(K_ACT); logoutToLogin(); }
+    } else renderProfiles();
+    toast("Defter silindi");
+}
+document.getElementById("delProfileBtn").onclick=()=>{ if(ACTIVE_ID)askDeleteProfile(ACTIVE_ID); };
+document.getElementById("logoutBtn").onclick=()=>{ ACTIVE_ID=null; CURRENT_BOOK=null; sDel(K_ACT); logoutToLogin(); };
+function logoutToLogin(){ renderProfiles(); show("screenLogin"); }
+document.getElementById("pinBtn").onclick=()=>{
+    const p=active(); if(!p)return;
+    openModal("PIN değiştir", p.pin?"Eski PIN'i gir:":"Yeni 4 haneli PIN belirle:",true);
+    modalCb=given=>{
+        if(p.pin&&!checkPin(p,given)){ toast("Eski PIN yanlış",true); return; }
+        const np=prompt("Yeni 4 haneli PIN (boş bırakırsan PIN kaldırılır):");
+        if(np===null)return;
+        if(np&&!/^\d{4}$/.test(np)){ toast("PIN 4 haneli olmalı",true); return; }
+        p.pin=np?simpleHash(np):null; saveDB(); toast(p.pin?"PIN güncellendi ✓":"PIN kaldırıldı");
+    };
+};
+
+/* ---------- Yedekle / Geri yükle ---------- */
+function doBackup(){
+    if(!Object.keys(DB).length){ toast("Yedeklenecek defter yok",true); return; }
+    const blob=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+    a.download="ilim-defterleri-yedek-"+new Date().toISOString().slice(0,10)+".json"; a.click();
+    sSet(K_BAK,String(Date.now())); sDel(K_SNOOZE); renderBands(); toast("Yedek indirildi ✓");
+}
+document.getElementById("backupBtn").onclick=doBackup;
+document.getElementById("restoreBtn").onclick=()=>document.getElementById("restoreFile").click();
+document.getElementById("restoreFile").onchange=e=>{
+    const f=e.target.files[0]; if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{
+        try{
+            const d=JSON.parse(r.result);
+            if(!d||typeof d!=="object")throw 0;
+            const merged=Object.assign({},DB);
+            if(Array.isArray(d)){ d.forEach(p=>{ if(p&&p.id){ migrateProfile(p); merged[p.id]=p; } }); }
+            else{ Object.keys(d).forEach(k=>{ if(d[k]&&d[k].data!==undefined){ migrateProfile(d[k]); merged[k]=d[k]; } }); }
+            DB=merged; saveDB(); renderProfiles(); toast("Geri yüklendi ✓");
+        }catch(err){ toast("Geçersiz yedek dosyası",true); }
+        e.target.value="";
+    };
+    r.readAsText(f);
+};
+
+/* ---------- Bantlar ---------- */
+function renderBands(){
+    const el=document.getElementById("bands"); el.innerHTML="";
+    if(!STORE_OK)el.innerHTML=`<div class="band err">⚠️ Kayıt şu an yapılamıyor — bu önizleme/gizli pencere ortamında kalıcı depo kapalı. Dosyayı indirip tarayıcıda açın.</div>`;
+    const p=active(); if(!p)return;
+    if(sGet(K_SNOOZE)&&Date.now()<Number(sGet(K_SNOOZE)))return;
+    const last=Number(sGet(K_BAK)||0), days=Math.floor((Date.now()-last)/86400000);
+    const hasContent=countDone(p)>0||countNotes(p)>0||BOOKS.some(b=>b.id!=="surah"&&((p.data.books[b.id]||{}).topics||[]).some(t=>t.text));
+    if(hasContent&&(!last||days>=7)){
+        const msg=!last?"Bu defterin henüz hiç yedeği alınmamış.":`Son yedeklemenin üzerinden ${days} gün geçti.`;
+        el.insertAdjacentHTML("beforeend",`<div class="band warn"><i class="fas fa-triangle-exclamation"></i> ${msg} <button onclick="doBackup()">⬇ Şimdi yedekle</button> <button class="ghost" onclick="snooze()">Bugün hatırlatma</button></div>`);
+    }
+}
+function snooze(){ sSet(K_SNOOZE,String(Date.now()+86400000)); renderBands(); }
+window.doBackup=doBackup; window.snooze=snooze;
+function checkStorage(){ if(!STORE_OK)toast("⚠️ Kalıcı depo kapalı — kayıt yapılamıyor",true); }
+(function(){ try{ localStorage.setItem("__t","1"); localStorage.removeItem("__t"); }catch(e){ STORE_OK=false; } })();
+
+window.onerror=function(msg){
+    try{
+        document.getElementById("bands").insertAdjacentHTML("afterbegin",`<div class="band err">⚠️ Beklenmeyen bir hata oluştu: ${esc(msg)}</div>`);
+    }catch(e){}
+};
+
+/* ---------- Başlat ---------- */
+loadDB();
+try{
+    const savedAct=sGet(K_ACT);
+    ACTIVE_ID=(savedAct&&DB[savedAct])?savedAct:null;
+    if(ACTIVE_ID)enterApp(); else { renderProfiles(); show("screenLogin"); }
+}catch(err){
+    renderProfiles(); show("screenLogin");
+}
+</script>
+</body>
+</html>
