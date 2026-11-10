@@ -1337,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active');
                 btn.setAttribute('aria-selected', 'true');
                 grp.classList.remove('hidden');
-                grp.style.display = 'grid';
+                grp.style.display = 'block';
             }
         } else {
             const defBtn = Array.from(shopBtns).find(b =>
@@ -1348,7 +1348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 defBtn.classList.add('active');
                 defBtn.setAttribute('aria-selected', 'true');
                 defGrp.classList.remove('hidden');
-                defGrp.style.display = 'grid';
+                defGrp.style.display = 'block';
             }
         }
     }
@@ -1593,6 +1593,13 @@ function initShopSliders() {
 
         window.addEventListener('resize', updateUI);
         buildDots();
+    });
+
+        window.addEventListener('load', () => {
+        document.querySelectorAll('.shop-slider').forEach(slider => {
+            const track = slider.querySelector('[data-track]');
+            if (track) track.dispatchEvent(new Event('scroll'));
+        });
     });
 
     shopSliderInitialized = true;
