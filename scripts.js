@@ -819,7 +819,7 @@ function switchShopTab(tabName) {
     
     if (targetGroup && targetBtn) {
         targetGroup.classList.remove('hidden');
-        targetGroup.style.display = 'grid';
+        targetGroup.style.display = 'block';
         targetBtn.classList.add('active');
         targetBtn.setAttribute('aria-selected', 'true');
         safeSet('lastShopTab', tabName);
@@ -1404,6 +1404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProgressBar();
     initContactForm();
     initSurveyForm();
+    initShopSliders();
     
     // 🔥 KRITIK: Form çevirilerini başlat
     updateFormTranslations();
@@ -1501,3 +1502,98 @@ document.addEventListener('click', function (e) {
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeFlipbook();
 });
+
+// ============================================
+// 32. SHOP SLIDER (CAROUSEL)
+// ============================================
+
+let shopSliderInitialized = false;
+
+function initShopSliders() {
+    if (shopSliderInitialized) return;
+
+    document.querySelectorAll('.shop-slider').forEach(slider => {
+        const track = slider.querySelector('[data-track]');
+        const prevBtn = slider.querySelector('[data-prev]');
+        const nextBtn = slider.querySelector('[data-next]');
+        const dotsWrap = slider.querySelector('[data-dots]');
+
+        if (!track) return;
+
+        const getCards = () => track.querySelectorAll('.shop-card');
+
+        function stepSize() {
+            const card = track.querySelector('.shop-card');
+            if (!card) return track.clientWidth;
+            const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+            return card.offsetWidth + gap;
+        }
+
+        function maxScroll() {
+            return track.scrollWidth - track.clientWidth;
+        }
+
+        function currentIndex() {
+            return Math.round(Math.abs(track.scrollLeft) / stepSize());
+        }
+
+        function goTo(index) {
+            const total = getCards().length;
+            index = Math.max(0, Math.min(index, total - 1));
+            const left = track.scrollLeft < 0 ? -(index * stepSize()) : index * stepSize();
+            track.scrollTo({ left: left, behavior: 'smooth' });
+        }
+
+        function updateUI() {
+            const index = currentIndex();
+            if (prevBtn) prevBtn.disabled = Math.abs(track.scrollLeft) <= 2;
+            if (nextBtn) nextBtn.disabled = Math.abs(track.scrollLeft) >= maxScroll() - 2;
+            if (dotsWrap) {
+                dotsWrap.querySelectorAll('.slider-dot').forEach((d, i) =>
+                    d.classList.toggle('active', i === index)
+                );
+            }
+        }
+
+        function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    getCards().forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'slider-dot';
+
+        const dotLabels = {
+            tr: `${i + 1}. ürüne git`,
+            en: `Go to product ${i + 1}`,
+            de: `Zu Produkt ${i + 1} gehen`,
+            fr: `Aller au produit ${i + 1}`,
+            ar: `الانتقال إلى المنتج ${i + 1}`
+        };
+        dot.setAttribute('aria-label', dotLabels[getCurrentLanguage()] || dotLabels.tr);
+
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+    });
+    updateUI();
+}
+
+        if (prevBtn) prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
+
+        track.addEventListener('scroll', () => requestAnimationFrame(updateUI), { passive: true });
+
+        // Klavye erişilebilirliği
+        track.setAttribute('tabindex', '0');
+        track.setAttribute('role', 'region');
+        track.setAttribute('aria-label', 'Ürün galerisi');
+        track.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex() - 1); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex() + 1); }
+        });
+
+        window.addEventListener('resize', updateUI);
+        buildDots();
+    });
+
+    shopSliderInitialized = true;
+}
