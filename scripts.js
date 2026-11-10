@@ -824,6 +824,7 @@ function switchShopTab(tabName) {
         targetBtn.setAttribute('aria-selected', 'true');
         safeSet('lastShopTab', tabName);
     }
+	initShopDescToggle();
 }
 
 // ============================================
@@ -1618,18 +1619,34 @@ function initShopDescToggle() {
         fr: { more: 'Afficher plus', less: 'Afficher moins' },
         ar: { more: 'المزيد', less: 'أقل' }
     };
-    const lang = getCurrentLanguage();
+    const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'tr';
     const t = labels[lang] || labels.tr;
 
     document.querySelectorAll('.shop-card .shop-desc').forEach(desc => {
-        const card = desc.closest('.shop-card');
-        if (!card) return;
 
-        desc.classList.add('desc-clamped');
-        const overflowing = desc.scrollHeight > desc.clientHeight + 2;
+        // Tekrar çağrıma karşı: eski butonu temizle
+        desc.querySelectorAll('.desc-more').forEach(b => b.remove());
 
-        if (!overflowing) {
-            desc.classList.remove('desc-clamped'); 
+        // Metni iç span'e taşı — clamp BU span'e uygulanacak
+        let textSpan = desc.querySelector('.desc-text');
+        if (!textSpan) {
+            textSpan = document.createElement('span');
+            textSpan.className = 'desc-text';
+            while (desc.firstChild) textSpan.appendChild(desc.firstChild);
+            desc.appendChild(textSpan);
+        }
+
+        textSpan.classList.add('desc-clamped');
+
+        // Gizli sekmede (display:none) ölçüm 0 döner → bu kartı atla
+        if (desc.offsetParent === null) {
+            textSpan.classList.remove('desc-clamped');
+            return;
+        }
+
+        // Kısa metin → clamp kaldır, buton yok
+        if (textSpan.scrollHeight <= textSpan.clientHeight + 2) {
+            textSpan.classList.remove('desc-clamped');
             return;
         }
 
@@ -1640,11 +1657,17 @@ function initShopDescToggle() {
         btn.setAttribute('aria-expanded', 'false');
 
         btn.addEventListener('click', () => {
-            const clamped = desc.classList.toggle('desc-clamped');
-            btn.textContent = clamped ? t.more : t.less;
-            btn.setAttribute('aria-expanded', String(!clamped));
+            const clamping = textSpan.classList.toggle('desc-clamped');
+            btn.textContent = clamping ? t.more : t.less;
+            btn.setAttribute('aria-expanded', String(!clamping));
         });
 
-        desc.insertAdjacentElement('afterend', btn);
+        desc.appendChild(btn);
     });
+}
+
+// Fontlar/görseller yüklendikten sonra bir kez daha kontrol et
+window.addEventListener('load', () => initShopDescToggle());
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => initShopDescToggle());
 }
