@@ -500,3 +500,36 @@
         scroll-behavior: auto;
     }
 }
+
+/* ============================================
+   SHOP KART YÜKSEKLİK DENGELEMESİ
+   ============================================ */
+
+
+.shop-card .shop-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.shop-card .shop-desc {
+    flex-grow: 1;              
+    margin-bottom: var(--spacing-md);
+}
+
+.shop-card .btn-outline {
+    margin-top: auto;          
+    align-self: flex-start;
+}
+
+.shop-card .repo-link {
+    margin-top: var(--spacing-sm);
+}
+
+
+.shop-card .shop-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
