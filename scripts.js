@@ -1404,9 +1404,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initProgressBar();
     initContactForm();
     initSurveyForm();
+    initShopDescToggle();
     initShopSliders();
     
-    // 🔥 KRITIK: Form çevirilerini başlat
+    // KRITIK: Form çevirilerini başlat
     updateFormTranslations();
     
     // ===== NAVBAR SCROLL EFFECT =====
@@ -1603,4 +1604,47 @@ function initShopSliders() {
     });
 
     shopSliderInitialized = true;
+}
+
+// ============================================
+// 33. SHOP AÇIKLAMA "DAHA FAZLA" TOGGLE
+// ============================================
+
+function initShopDescToggle() {
+    const labels = {
+        tr: { more: 'Daha fazla', less: 'Daha az' },
+        en: { more: 'Show more', less: 'Show less' },
+        de: { more: 'Mehr anzeigen', less: 'Weniger anzeigen' },
+        fr: { more: 'Afficher plus', less: 'Afficher moins' },
+        ar: { more: 'المزيد', less: 'أقل' }
+    };
+    const lang = getCurrentLanguage();
+    const t = labels[lang] || labels.tr;
+
+    document.querySelectorAll('.shop-card .shop-desc').forEach(desc => {
+        const card = desc.closest('.shop-card');
+        if (!card) return;
+
+        desc.classList.add('desc-clamped');
+        const overflowing = desc.scrollHeight > desc.clientHeight + 2;
+
+        if (!overflowing) {
+            desc.classList.remove('desc-clamped'); 
+            return;
+        }
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'desc-more';
+        btn.textContent = t.more;
+        btn.setAttribute('aria-expanded', 'false');
+
+        btn.addEventListener('click', () => {
+            const clamped = desc.classList.toggle('desc-clamped');
+            btn.textContent = clamped ? t.more : t.less;
+            btn.setAttribute('aria-expanded', String(!clamped));
+        });
+
+        desc.insertAdjacentElement('afterend', btn);
+    });
 }

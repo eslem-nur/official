@@ -527,9 +527,34 @@
 }
 
 
-.shop-card .shop-desc {
+/* Clamp JS ile kontrol edilir: sadece .desc-clamped class'ı olan kartlar kırpılır */
+.shop-card .shop-desc.desc-clamped {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* Daha Fazla / Daha Az butonu */
+.desc-more {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 4px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition-fast);
+    min-height: 32px;
+}
+
+.desc-more:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+[dir="rtl"] .desc-more {
+    text-align: right;
 }
