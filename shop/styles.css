@@ -1,0 +1,62 @@
+/* ============================================
+   SHOP CARD — EŞİT YÜKSEKLİK (UX: başlık tam görünür,
+   desc 2 satırda kesilir, "Daha fazla" ile açılır)
+   ============================================ */
+
+.shop-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.6em;          
+}
+
+/* Desc metni: varsayılan olarak 2 satırda kırpılır */
+.desc-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    min-height: 3.4em;          
+    line-height: 1.7;
+    transition: opacity var(--transition-fast);
+}
+
+/* Genişletilmiş durum: clamp kalkar, alan serbest büyür */
+.desc-text:not(.desc-clamped) {
+    -webkit-line-clamp: unset;
+    display: block;
+    min-height: 0;
+}
+
+/* "Daha fazla / Show more" butonu */
+.desc-more {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 4px;
+    text-align: start;
+}
+
+.desc-more:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* RTL (ar.html): buton metni sağa hizalı kalsın */
+[dir="rtl"] .desc-more {
+    text-align: right;
+    align-self: flex-end;
+}
+
+/* Hareket azaltma tercihine saygı */
+@media (prefers-reduced-motion: reduce) {
+    .desc-text {
+        transition: none;
+    }
+}
+
