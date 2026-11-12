@@ -97,6 +97,40 @@ details.dev pre{background:var(--note);border-radius:10px;padding:14px;font-size
 .hidden{display:none!important}
 footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}.controls{flex-direction:column;align-items:center}}
+
+/* ============================================
+   HEADER LOGO (PNG) + İSİM
+   ============================================ */
+
+.site-logo {
+    height: clamp(80px, 8vw, 100px);
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+    transition: transform var(--transition-base);
+}
+
+.logo:hover .site-logo {
+    transform: scale(1.06);
+}
+
+[data-theme="dark"] .site-logo {
+    filter: brightness(1.15) contrast(1.05);
+}
+
+.logo {
+    gap: var(--spacing-xs);
+}
+
+/* Mobil */
+@media (max-width: 640px) {
+    .site-logo { height: 78px; }
+}
+
+@media (max-width: 460px) {
+    .site-logo { height: 74px; }
+}
 </style>
 </head>
 <body>
@@ -167,7 +201,10 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
 <div id="dashScreen" class="hidden">
   <header>
     <div class="container"><nav>
-      <a class="logo" href="index.html">✿ Panel</a>
+      <a href="#" class="logo">
+                    <img src="png/logo/logo.png" alt="Logo" class="site-logo">
+                    Ilm & Code
+                </a>
       <div style="display:flex;align-items:center;gap:12px">
         <div class="user-chip">
           <div class="avatar" id="avatarEl">?</div>
@@ -212,11 +249,7 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
       <div class="row">
         <button class="btn btn-sm btn-danger" onclick="deleteAccount()" data-i18n="setDelete">🗑 Profili ve tüm verilerini sil</button>
       </div>
-      <details class="dev">
-        <summary data-i18n="devSummary">🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?</summary>
-        <p style="margin:12px 0 0;font-size:.85rem" data-i18n="devDesc">Her uygulama sayfasının <code>&lt;head&gt;</code> bölümüne, diğer scriptlerden <b>önce</b> şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder.</p>
-        <pre id="snippetEl"></pre>
-      </details>
+      
     </div>
   </div>
   <footer>رَبِّ زِدْنَا عِلْمًا · Rabbim, ilmimizi arttır</footer>
@@ -258,8 +291,6 @@ tr:{
   tabWeb:'Web Uygulamaları',tabOther:'Diğer Projeler',
   setTitle:'⚙ Profil Ayarları',setDesc:'Bu profilin tüm verileri cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.',
   setDelete:'🗑 Profili ve tüm verilerini sil',
-  devSummary:'🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?',
-  devDesc:'Her uygulama sayfasının <head> bölümüne, diğer scriptlerden önce şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder.',
   open:'Aç →',isNew:'✨ Yeni',openedTimes:function(n){return '📁 '+n+' kez açtınız'},
   hello:function(n){return 'Merhaba, '+n+'! ✿'},
   memberSince:function(d){return 'Üye: '+d},
@@ -287,8 +318,6 @@ en:{
   tabWeb:'Web Apps',tabOther:'Other Projects',
   setTitle:'⚙ Profile Settings',setDesc:'All data of this profile lives in your browser storage. The actions below affect only this profile.',
   setDelete:'🗑 Delete profile and all its data',
-  devSummary:'🔧 Dev note: how do I connect apps to this panel?',
-  devDesc:'Add the following single line to the <head> of every app page, before other scripts. The app then saves into the namespace of the logged-in user.',
   open:'Open →',isNew:'✨ New',openedTimes:function(n){return '📁 opened '+n+'×'},
   hello:function(n){return 'Hello, '+n+'! ✿'},
   memberSince:function(d){return 'Member since: '+d},
@@ -319,7 +348,7 @@ de:{
   open:'Öffnen →',isNew:'✨ Neu',openedTimes:function(n){return '📁 '+n+'× geöffnet'},
   hello:function(n){return 'Hallo, '+n+'! ✿'},
   memberSince:function(d){return 'Mitglied seit: '+d},
-  errNoUser:'Kein solches Profil gefunden.',errPass:'Falsches Passwort.',
+  errNoUser:'Profil nicht gefunden.',errPass:'Falsches Passwort.',
   errUserFmt:'Der Benutzername muss 2–24 Zeichen haben (Buchstaben, Zahlen, Leerzeichen).',
   errExists:'Dieser Benutzername existiert auf diesem Gerät bereits.',errMatch:'PINs stimmen nicht überein.',
   okCreated:'Konto erstellt! Du kannst dich jetzt anmelden ✿',
