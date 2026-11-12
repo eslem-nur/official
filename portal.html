@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="tr" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel • Eslem Nur Çetin</title>
-<meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin. Personal learning panel for your apps. Persönliches Lern-Panel.">
-<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel • Eslem Nur Çetin</title>
+  <meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin. Personal learning panel for your apps. Persönliches Lern-Panel.">
+  <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- PWA Manifest  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon2.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon2-96x96.png" />
+    <link rel="manifest" href="/official/PWA/manifest/site2.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon2.svg" />
+    <link rel="shortcut icon" href="/official/PWA/icon/favicon2.ico" />
+
+    <!-- PWA Service Worker Kaydı -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          
+          navigator.serviceWorker.register('/official/PWA/js-files/sw2.js', { scope: '/official/' })
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
+            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+        });
+      }
+    </script>
+
 <style>
 :root{
   --primary:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
