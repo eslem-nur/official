@@ -499,11 +499,16 @@ var currentUser=null;
 function getMeta(u){try{return JSON.parse(lsGet(META_P+u)||'{}')}catch(e){return{}}}
 function saveMeta(u,m){lsSet(META_P+u,JSON.stringify(m))}
 function appUrl(a){
-  if(typeof a.url==='string')return a.url;         /* eski format güvenliği */
-  return a.url[cur]||a.url.tr;                      /* dilde yoksa TR'ye düş */
+  if(a.variants){
+    var v0=a.variants[0].url;
+    return (typeof v0==='string')?v0:(v0[cur]||v0.tr);
+  }
+  if(typeof a.url==='string')return a.url;
+  return a.url[cur]||a.url.tr;
 }
 function isFallback(a){
-  return !(typeof a.url==='string') && !a.url[cur] && cur!=='tr';
+  if(a.variants)return false;
+  return !(typeof a.url==='string') && a.url && !a.url[cur] && cur!=='tr';
 }
 function enterPanel(key){
   currentUser=key;
@@ -568,7 +573,7 @@ function renderApps(){
         b.className='btn btn-sm btn-solid';
         b.style.marginLeft='6px';
         b.href=vu; b.target='_blank'; b.rel='noopener';
-        b.textContent=v.label[cur]||v.label.tr;
+        b.textContent=(typeof v.label==='string')?v.label:(v.label[cur]||v.label.tr);
         b.addEventListener('click',function(){launch(vu)});
         vwrap.appendChild(b);
       });
