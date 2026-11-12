@@ -6,6 +6,7 @@
 <title>Panel • Eslem Nur Çetin</title>
 <meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin. Personal learning panel for your apps. Persönliches Lern-Panel.">
 <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 :root{
   --primary:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
@@ -120,14 +121,18 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
       </a>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="lang-dropdown">
-          <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false" aria-label="Dil / Language / Sprache">🌐</button>
+          <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false" aria-label="Dil / Language / Sprache">
+  <i class="fa-solid fa-globe"></i>
+</button>
           <div class="lang-menu" id="langMenu">
             <button onclick="setLang('tr')" data-lang="tr">🇹🇷 Türkçe</button>
             <button onclick="setLang('en')" data-lang="en">🇬🇧 English</button>
             <button onclick="setLang('de')" data-lang="de">🇩🇪 Deutsch</button>
           </div>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Tema">🌙</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">
+  <i class="fa-solid fa-moon"></i>
+</button>
       </div>
     </nav></div>
   </header>
@@ -196,14 +201,18 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
           <div><b id="userNameEl" style="color:var(--text)"></b><br><span style="font-size:.75rem" id="userSinceEl"></span></div>
         </div>
         <div class="lang-dropdown">
-          <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false" aria-label="Dil / Language / Sprache">🌐</button>
+          <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false" aria-label="Dil / Language / Sprache">
+  <i class="fa-solid fa-globe"></i>
+</button>
           <div class="lang-menu" id="langMenuDash">
             <button onclick="setLang('tr')" data-lang="tr">🇹🇷 Türkçe</button>
             <button onclick="setLang('en')" data-lang="en">🇬🇧 English</button>
             <button onclick="setLang('de')" data-lang="de">🇩🇪 Deutsch</button>
           </div>
         </div>
-        <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">🌙</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">
+  <i class="fa-solid fa-moon"></i>
+</button>
         <button class="btn btn-sm" onclick="logout()" data-i18n="btnLogout">Çıkış</button>
       </div>
     </nav></div>
@@ -389,7 +398,13 @@ document.addEventListener('click',function(e){
 })();
 
 /* ═══════ 3. Tema ═══════ */
-function applyTheme(){var th=lsGet('theme')||'light';document.documentElement.setAttribute('data-theme',th);document.querySelectorAll('.theme-toggle').forEach(function(b){b.textContent=th==='light'?'🌙':'☀️'})}
+function applyTheme(){
+  var th=lsGet('theme')||'light';
+  document.documentElement.setAttribute('data-theme',th);
+  document.querySelectorAll('.theme-toggle').forEach(function(b){
+    b.innerHTML = th==='light' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+  });
+}
 function toggleTheme(){var th=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';lsSet('theme',th);applyTheme()}
 applyTheme();
 
