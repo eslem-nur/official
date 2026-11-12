@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel • Eslem Nur Çetin</title>
-<meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin.">
-<!-- Bu dosyayı /official/ klasörüne koyun (styles.css ile aynı dizine).
-     Uygulama yolları "tr/..." şeklinde; başka yere koyarsanız güncelleyin. -->
+<meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin. Personal learning panel for your apps. Persönliches Lern-Panel.">
 <style>
 :root{
   --primary:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
@@ -42,6 +40,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0
 .btn-danger{border-color:#D32F2F;color:#D32F2F}
 .btn-danger:hover{background:#D32F2F;color:#fff}
 .btn-sm{padding:6px 14px;min-height:36px;font-size:.82rem}
+.theme-toggle,.lang-toggle{background:transparent;border:2px solid var(--border);color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:all var(--t);display:flex;align-items:center;justify-content:center;text-decoration:none}
+.lang-toggle{font-size:.75rem;font-weight:700;font-family:'Lato',sans-serif}
+.theme-toggle:hover,.lang-toggle:hover{border-color:var(--primary);color:var(--primary)}
 .auth-wrap{max-width:420px;margin:clamp(40px,8vw,80px) auto;padding:0 20px}
 .auth-card{background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);padding:clamp(24px,5vw,40px);text-align:center}
 .auth-card .emblem{font-size:3rem;margin-bottom:8px}
@@ -84,6 +85,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0
 .app-meta b{color:var(--primary)}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .empty-note{text-align:center;color:var(--muted);padding:30px 10px;font-size:.9rem}
+.don-strip{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:var(--note);border:1px dashed var(--primary);border-radius:var(--r);padding:12px 18px;margin:14px 0 0;color:var(--text2);font-size:.9rem;font-weight:600}
+.don-strip a{text-decoration:none}
 .settings-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,32px);max-width:640px;margin:0 auto 50px;text-align:left}
 .settings-box h3{color:var(--primary);margin-bottom:8px}
 .settings-box p{font-size:.88rem;color:var(--text2);margin-bottom:16px}
@@ -91,8 +94,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0
 details.dev{border:1px dashed var(--primary);border-radius:12px;padding:14px 16px;margin-top:10px}
 details.dev summary{cursor:pointer;font-weight:600;color:var(--primary);font-size:.9rem}
 details.dev pre{background:var(--note);border-radius:10px;padding:14px;font-size:.72rem;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-all;color:var(--text)}
-.theme-toggle{background:transparent;border:2px solid var(--border);color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:all var(--t)}
-.theme-toggle:hover{border-color:var(--primary);color:var(--primary)}
 .hidden{display:none!important}
 footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
 @media(max-width:640px){.projects-grid{grid-template-columns:1fr}.controls{flex-direction:column;align-items:center}}
@@ -105,7 +106,10 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
   <header>
     <div class="container"><nav>
       <a class="logo" href="index.html">✿ Eslem Nur Çetin · Panel</a>
-      <button class="theme-toggle" id="themeBtnAuth" onclick="toggleTheme()" title="Tema">🌙</button>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="lang-toggle" onclick="cycleLang()" title="Dil / Language / Sprache">TR</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema">🌙</button>
+      </div>
     </nav></div>
   </header>
 
@@ -113,51 +117,48 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
     <div class="auth-card">
       <div class="emblem">📖</div>
       <h1>İlim &amp; Kod Paneli</h1>
-      <p>Tüm uygulamalarım tek yerde, ilerlemeniz cihazınızda.</p>
+      <p data-i18n="authSub">Tüm uygulamalarım tek yerde, ilerlemeniz cihazınızda.</p>
 
       <div class="tabs2">
-        <button id="tabLogin" class="active" onclick="showAuthTab('login')">Giriş Yap</button>
-        <button id="tabRegister" onclick="showAuthTab('register')">Kayıt Ol</button>
+        <button id="tabLogin" class="active" onclick="showAuthTab('login')" data-i18n="tabLogin">Giriş Yap</button>
+        <button id="tabRegister" onclick="showAuthTab('register')" data-i18n="tabRegister">Kayıt Ol</button>
       </div>
 
       <form id="loginForm" onsubmit="doLogin(event)">
         <div class="field">
-          <label for="li_user">Kullanıcı adı</label>
+          <label for="li_user" data-i18n="fUser">Kullanıcı adı</label>
           <input id="li_user" type="text" autocomplete="username" required maxlength="24" placeholder="örn. Ayşe">
         </div>
         <div class="field">
-          <label for="li_pass">PIN / Şifre</label>
+          <label for="li_pass" data-i18n="fPass">PIN / Şifre</label>
           <input id="li_pass" type="password" autocomplete="current-password" required placeholder="••••••">
         </div>
         <label style="font-size:.85rem;color:var(--text2);display:flex;gap:8px;align-items:center">
-          <input type="checkbox" id="li_remember" checked style="width:16px;min-height:0;accent-color:var(--primary)"> Beni hatırla
+          <input type="checkbox" id="li_remember" checked style="width:16px;min-height:0;accent-color:var(--primary)">
+          <span data-i18n="remember">Beni hatırla</span>
         </label>
         <div class="auth-msg" id="loginMsg"></div>
-        <button type="submit" class="btn btn-solid" style="width:100%">Giriş Yap →</button>
+        <button type="submit" class="btn btn-solid" style="width:100%" data-i18n="btnLogin">Giriş Yap →</button>
       </form>
 
       <form id="registerForm" class="hidden" onsubmit="doRegister(event)">
         <div class="field">
-          <label for="rg_user">Kullanıcı adı</label>
+          <label for="rg_user" data-i18n="fUser">Kullanıcı adı</label>
           <input id="rg_user" type="text" autocomplete="off" required maxlength="24" minlength="2" placeholder="örn. Fatma">
         </div>
         <div class="field">
-          <label for="rg_pass">PIN / Şifre (en az 4 karakter)</label>
+          <label for="rg_pass" data-i18n="fPassHint">PIN / Şifre (en az 4 karakter)</label>
           <input id="rg_pass" type="password" autocomplete="new-password" required minlength="4" placeholder="••••••">
         </div>
         <div class="field">
-          <label for="rg_pass2">PIN tekrar</label>
+          <label for="rg_pass2" data-i18n="fPass2">PIN tekrar</label>
           <input id="rg_pass2" type="password" autocomplete="new-password" required placeholder="••••••">
         </div>
         <div class="auth-msg" id="regMsg"></div>
-        <button type="submit" class="btn btn-solid" style="width:100%">Hesap Oluştur ✿</button>
+        <button type="submit" class="btn btn-solid" style="width:100%" data-i18n="btnReg">Hesap Oluştur ✿</button>
       </form>
 
-      <p class="auth-note">
-        🔒 Her şey yalnızca bu cihazda saklanır — hiçbir veri internete gönderilmez.
-        Aynı cihazda birden fazla profil oluşturabilirsiniz (örn. kardeşler için).
-        Şifrenizi unutursanız verilerinize erişilemez; not alın.
-      </p>
+      <p class="auth-note" data-i18n="note">🔒 Her şey yalnızca bu cihazda saklanır — hiçbir veri internete gönderilmez. Aynı cihazda birden fazla profil oluşturabilirsiniz. Şifrenizi unutursanız verilerinize erişilemez; not alın.</p>
     </div>
   </div>
 </div>
@@ -172,8 +173,9 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
           <div class="avatar" id="avatarEl">?</div>
           <div><b id="userNameEl" style="color:var(--text)"></b><br><span style="font-size:.75rem" id="userSinceEl"></span></div>
         </div>
+        <button class="lang-toggle" onclick="cycleLang()" title="Dil / Language / Sprache">TR</button>
         <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">🌙</button>
-        <button class="btn btn-sm" onclick="logout()">Çıkış</button>
+        <button class="btn btn-sm" onclick="logout()" data-i18n="btnLogout">Çıkış</button>
       </div>
     </nav></div>
   </header>
@@ -181,18 +183,22 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
   <div class="container">
     <div class="hero-strip">
       <h1 id="welcomeEl">Hoş geldiniz!</h1>
-      <p>Bütün web uygulamalarıma buradan erişin. Açtığınız her uygulama, yalnızca sizin profilinize kaydedilir.</p>
+      <p data-i18n="dashSub">Bütün web uygulamalarıma buradan erişin. Açtığınız her uygulama, yalnızca sizin profilinize kaydedilir.</p>
       <div class="stats">
-        <div class="stat"><b id="statApps">0</b><span>Uygulama</span></div>
-        <div class="stat"><b id="statOpened">0</b><span>Açtığınız</span></div>
-        <div class="stat"><b id="statMembers">0</b><span>Cihazdaki profil</span></div>
+        <div class="stat"><b id="statApps">0</b><span data-i18n="stApps">Uygulama</span></div>
+        <div class="stat"><b id="statOpened">0</b><span data-i18n="stOpened">Açtığınız</span></div>
+        <div class="stat"><b id="statMembers">0</b><span data-i18n="stMembers">Cihazdaki profil</span></div>
+      </div>
+      <div id="donStrip" class="don-strip hidden">
+        <span data-i18n="donLabel">Geldiğin uygulamaya dön:</span>
+        <a id="donLink" class="btn btn-sm btn-solid" href="#" data-i18n="donOpen">Uygulamayı aç →</a>
       </div>
       <div class="controls">
-        <input class="search-box" id="searchBox" type="search" placeholder="🔍 Uygulama ara..." oninput="renderApps()">
+        <input class="search-box" id="searchBox" type="search" data-i18n-ph="searchPh" placeholder="🔍 Uygulama ara..." oninput="renderApps()">
       </div>
       <div class="controls">
-        <a class="btn btn-sm" onclick="exportData()">⬇ Yedeği indir</a>
-        <a class="btn btn-sm" onclick="document.getElementById('importFile').click()">⬆ Yedeği geri yükle</a>
+        <a class="btn btn-sm" onclick="exportData()" data-i18n="bkDl">⬇ Yedeği indir</a>
+        <a class="btn btn-sm" onclick="document.getElementById('importFile').click()" data-i18n="bkUl">⬆ Yedeği geri yükle</a>
         <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(this)">
       </div>
     </div>
@@ -201,19 +207,19 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
     <div id="groupsWrap"></div>
 
     <div class="settings-box">
-      <h3>⚙ Profil Ayarları</h3>
-      <p>Bu profilin tüm verileri (<code>u__<span id="pfName">…</span>__</code> önekli anahtarlar) cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.</p>
+      <h3 data-i18n="setTitle">⚙ Profil Ayarları</h3>
+      <p><span data-i18n="setDesc">Bu profilin tüm verileri cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.</span> <code>u__<span id="pfName">…</span>__</code></p>
       <div class="row">
-        <button class="btn btn-sm btn-danger" onclick="deleteAccount()">🗑 Profili ve tüm verilerini sil</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteAccount()" data-i18n="setDelete">🗑 Profili ve tüm verilerini sil</button>
       </div>
       <details class="dev">
-        <summary>🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?</summary>
-        <p style="margin:12px 0 0;font-size:.85rem">Her uygulama sayfasının <code>&lt;head&gt;</code> bölümüne, diğer scriptlerden <b>önce</b> şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder; girişsiz açılanlar eskisi gibi ortak alana kaydetmeye devam eder:</p>
+        <summary data-i18n="devSummary">🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?</summary>
+        <p style="margin:12px 0 0;font-size:.85rem" data-i18n="devDesc">Her uygulama sayfasının <code>&lt;head&gt;</code> bölümüne, diğer scriptlerden <b>önce</b> şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder.</p>
         <pre id="snippetEl"></pre>
       </details>
     </div>
   </div>
-  <footer>Rabbim, ilmimizi arttır · رَبِّ زِدْنَا عِلْمًا</footer>
+  <footer>رَبِّ زِدْنَا عِلْمًا · Rabbim, ilmimizi arttır</footer>
 </div>
 
 <script>
@@ -234,14 +240,129 @@ async function hashPass(p){
 }
 function getUsers(){try{return JSON.parse(lsGet(USERS_KEY)||'{}')}catch(e){return{}}}
 function saveUsers(u){lsSet(USERS_KEY,JSON.stringify(u))}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
-/* ═══════ 2. Tema ═══════ */
-function applyTheme(){var t=lsGet('theme')||'light';document.documentElement.setAttribute('data-theme',t);['themeBtnAuth','themeBtnDash'].forEach(function(id){var b=document.getElementById(id);if(b)b.textContent=t==='light'?'🌙':'☀️'})}
-function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';lsSet('theme',t);applyTheme()}
+/* ═══════ 2. Dil ═══════ */
+var LANGS=['tr','en','de'], cur='tr';
+var I18N={
+tr:{
+  authSub:'Tüm uygulamalarım tek yerde, ilerlemeniz cihazınızda.',
+  tabLogin:'Giriş Yap',tabRegister:'Kayıt Ol',
+  fUser:'Kullanıcı adı',fPass:'PIN / Şifre',fPass2:'PIN tekrar',fPassHint:'PIN / Şifre (en az 4 karakter)',
+  remember:'Beni hatırla',btnLogin:'Giriş Yap →',btnReg:'Hesap Oluştur ✿',btnLogout:'Çıkış',
+  note:'🔒 Her şey yalnızca bu cihazda saklanır — hiçbir veri internete gönderilmez. Aynı cihazda birden fazla profil oluşturabilirsiniz. Şifrenizi unutursanız verilerinize erişilemez; not alın.',
+  dashSub:'Bütün web uygulamalarıma buradan erişin. Açtığınız her uygulama, yalnızca sizin profilinize kaydedilir.',
+  stApps:'Uygulama',stOpened:'Açtığınız',stMembers:'Cihazdaki profil',
+  donLabel:'Geldiğin uygulamaya dön:',donOpen:'Uygulamayı aç →',
+  searchPh:'🔍 Uygulama ara...',bkDl:'⬇ Yedeği indir',bkUl:'⬆ Yedeği geri yükle',
+  tabWeb:'Web Uygulamaları',tabOther:'Diğer Projeler',
+  setTitle:'⚙ Profil Ayarları',setDesc:'Bu profilin tüm verileri cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.',
+  setDelete:'🗑 Profili ve tüm verilerini sil',
+  devSummary:'🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?',
+  devDesc:'Her uygulama sayfasının <head> bölümüne, diğer scriptlerden önce şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder.',
+  open:'Aç →',isNew:'✨ Yeni',openedTimes:function(n){return '📁 '+n+' kez açtınız'},
+  hello:function(n){return 'Merhaba, '+n+'! ✿'},
+  memberSince:function(d){return 'Üye: '+d},
+  errNoUser:'Böyle bir profil bulunamadı.',errPass:'Şifre yanlış.',
+  errUserFmt:'Kullanıcı adı 2–24 karakter olmalı (harf, sayı, boşluk).',
+  errExists:'Bu kullanıcı adı bu cihazda zaten var.',errMatch:"PIN'ler eşleşmiyor.",
+  okCreated:'Hesap oluşturuldu! Giriş yapabilirsiniz ✿',
+  impOk:function(n){return n+' kayıt geri yüklendi ✿'},impFail:'Geçersiz yedek dosyası.',
+  delQ1:'Bu profilin TÜM verileri kalıcı olarak silinecek. Emin misiniz?',delQ2:'Son onay: gerçekten silinsin mi?',
+  emptySearch:'Aradığınız uygulamayı bulamadım 🌸',themeTitle:'Tema değiştir',langTitle:'Dili değiştir / Language / Sprache',
+  panelTitle:'Ilm & Code Paneli',pageTitle:'Eslem Nur Çetin',
+  phUser:'örn. Ayşe',logoPanel:'✿ Eslem Nur Çetin · Panel',logoPanelShort:'✿ Panel',
+  footQuote:'· Rabbim, ilmimizi arttır'
+},
+en:{
+  authSub:'All my apps in one place, progress stored on your device.',
+  tabLogin:'Log in',tabRegister:'Sign up',
+  fUser:'Username',fPass:'PIN / Password',fPass2:'Repeat PIN',fPassHint:'PIN / Password (min. 4 characters)',
+  remember:'Remember me',btnLogin:'Log in →',btnReg:'Create account ✿',btnLogout:'Log out',
+  note:'🔒 Everything is stored on this device only — no data leaves your browser. You can create multiple profiles on the same device. If you forget your password your data cannot be recovered; write it down.',
+  dashSub:'Access all my web apps here. Every app you open saves only to your profile.',
+  stApps:'Apps',stOpened:'Opened',stMembers:'Profiles on device',
+  donLabel:'Back to the app you came from:',donOpen:'Open app →',
+  searchPh:'🔍 Search apps...',bkDl:'⬇ Download backup',bkUl:'⬆ Restore backup',
+  tabWeb:'Web Apps',tabOther:'Other Projects',
+  setTitle:'⚙ Profile Settings',setDesc:'All data of this profile lives in your browser storage. The actions below affect only this profile.',
+  setDelete:'🗑 Delete profile and all its data',
+  devSummary:'🔧 Dev note: how do I connect apps to this panel?',
+  devDesc:'Add the following single line to the <head> of every app page, before other scripts. The app then saves into the namespace of the logged-in user.',
+  open:'Open →',isNew:'✨ New',openedTimes:function(n){return '📁 opened '+n+'×'},
+  hello:function(n){return 'Hello, '+n+'! ✿'},
+  memberSince:function(d){return 'Member since: '+d},
+  errNoUser:'No such profile found.',errPass:'Wrong password.',
+  errUserFmt:'Username must be 2–24 characters (letters, numbers, spaces).',
+  errExists:'This username already exists on this device.',errMatch:'PINs do not match.',
+  okCreated:'Account created! You can log in now ✿',
+  impOk:function(n){return n+' records restored ✿'},impFail:'Invalid backup file.',
+  delQ1:'ALL data of this profile will be permanently deleted. Are you sure?',delQ2:'Final confirmation: really delete?',
+  emptySearch:'Could not find the app you searched for 🌸',themeTitle:'Toggle theme',langTitle:'Dili değiştir / Language / Sprache',
+  panelTitle:'Ilm & Code Portal',pageTitle:'Eslem Nur Çetin',
+  phUser:'e.g. Aisha',logoPanel:'✿ Ilm & Code · Dashboard',logoPanelShort:'✿ Dashboard',
+  footQuote:'· Oh Allah, increase us in knowledge'
+},
+de:{
+  authSub:'Alle meine Apps an einem Ort, Fortschritt auf deinem Gerät.',
+  tabLogin:'Anmelden',tabRegister:'Registrieren',
+  fUser:'Benutzername',fPass:'PIN / Passwort',fPass2:'PIN wiederholen',fPassHint:'PIN / Passwort (mind. 4 Zeichen)',
+  remember:'Angemeldet bleiben',btnLogin:'Anmelden →',btnReg:'Konto erstellen ✿',btnLogout:'Abmelden',
+  note:'🔒 Alles wird nur auf diesem Gerät gespeichert — keine Daten verlassen deinen Browser. Du kannst mehrere Profile anlegen. Bei vergessener PIN sind die Daten nicht wiederherstellbar; notiere sie dir.',
+  dashSub:'Hier findest du alle meine Web-Apps. Jede geöffnete App speichert nur in dein Profil.',
+  stApps:'Apps',stOpened:'Geöffnet',stMembers:'Profile auf dem Gerät',
+  donLabel:'Zurück zur App, aus der du kommst:',donOpen:'App öffnen →',
+  searchPh:'🔍 Apps suchen...',bkDl:'⬇ Backup herunterladen',bkUl:'⬆ Backup wiederherstellen',
+  tabWeb:'Web-Apps',tabOther:'Andere Projekte',
+  setTitle:'⚙ Profileinstellungen',setDesc:'Alle Daten dieses Profils liegen im Browserspeicher deines Geräts. Die folgenden Aktionen betreffen nur dieses Profil.',
+  setDelete:'🗑 Profil und alle Daten löschen',
+  open:'Öffnen →',isNew:'✨ Neu',openedTimes:function(n){return '📁 '+n+'× geöffnet'},
+  hello:function(n){return 'Hallo, '+n+'! ✿'},
+  memberSince:function(d){return 'Mitglied seit: '+d},
+  errNoUser:'Kein solches Profil gefunden.',errPass:'Falsches Passwort.',
+  errUserFmt:'Der Benutzername muss 2–24 Zeichen haben (Buchstaben, Zahlen, Leerzeichen).',
+  errExists:'Dieser Benutzername existiert auf diesem Gerät bereits.',errMatch:'PINs stimmen nicht überein.',
+  okCreated:'Konto erstellt! Du kannst dich jetzt anmelden ✿',
+  impOk:function(n){return n+' Einträge wiederhergestellt ✿'},impFail:'Ungültige Backup-Datei.',
+  delQ1:'ALLE Daten dieses Profils werden dauerhaft gelöscht. Bist du sicher?',delQ2:'Letzte Bestätigung: wirklich löschen?',
+  emptySearch:'Die gesuchte App wurde nicht gefunden 🌸',themeTitle:'Design wechseln',langTitle:'Dili değiştir / Language / Sprache',
+  panelTitle:'Ilm & Code Portal',pageTitle:'Eslem Nur Çetin',
+  phUser:'z. B. Ayşe',logoPanel:'✿ Eslem Nur Çetin',logoPanelShort:'✿ Portal',
+  footQuote:'· Oh Allah, mehre uns an Wissen zunehmen',
+}};
+function t(k){return I18N[cur][k]}
+function applyLang(l){
+  if(LANGS.indexOf(l)<0)l=cur; cur=l; lsSet('portalLang',l);
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=t(el.getAttribute('data-i18n'))});
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){el.placeholder=t(el.getAttribute('data-i18n-ph'))});
+  document.querySelectorAll('.lang-toggle').forEach(function(b){b.textContent=l.toUpperCase()});
+  document.querySelectorAll('.theme-toggle').forEach(function(b){b.title=t('themeTitle')});
+  if(typeof currentUser!=='undefined'&&currentUser){
+    var u=getUsers()[currentUser]||{};
+    document.getElementById('welcomeEl').textContent=t('hello')(u.name||currentUser);
+    if(u.createdAt)document.getElementById('userSinceEl').textContent=t('memberSince')(new Date(u.createdAt).toLocaleDateString(l==='tr'?'tr-TR':(l==='de'?'de-DE':'en-GB')));
+    renderApps();
+  }
+}
+function cycleLang(){
+  var i=LANGS.indexOf(cur);applyLang(LANGS[(i+1)%LANGS.length]);
+}
+(function(){
+  var saved=lsGet('portalLang');
+  if(saved){cur=saved}
+  else{
+    var nav=(navigator.language||'tr').toLowerCase();
+    cur=nav.indexOf('de')===0?'de':(nav.indexOf('en')===0?'en':'tr');
+  }
+})();
+
+/* ═══════ 3. Tema ═══════ */
+function applyTheme(){var th=lsGet('theme')||'light';document.documentElement.setAttribute('data-theme',th);['themeBtnAuth','themeBtnDash'].forEach(function(id){var b=document.getElementById(id);if(b)b.textContent=th==='light'?'🌙':'☀️'})}
+function toggleTheme(){var th=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';lsSet('theme',th);applyTheme()}
 applyTheme();
 
-/* ═══════ 3. Auth ═══════ */
+/* ═══════ 4. Auth ═══════ */
 function showAuthTab(w){
   document.getElementById('loginForm').classList.toggle('hidden',w!=='login');
   document.getElementById('registerForm').classList.toggle('hidden',w!=='register');
@@ -252,23 +373,24 @@ function msg(id,text,err){var el=document.getElementById(id);el.textContent=text
 async function doRegister(e){
   e.preventDefault();
   var u=document.getElementById('rg_user').value.trim(),p=document.getElementById('rg_pass').value,p2=document.getElementById('rg_pass2').value;
-  if(!/^[\wçğıöşüÇĞİÖŞÜ ]{2,24}$/.test(u))return msg('regMsg','Kullanıcı adı 2–24 karakter olmalı.',true);
+  if(!/^[\wçğıöşüÇĞİÖŞÜ ]{2,24}$/.test(u))return msg('regMsg',t('errUserFmt'),true);
   var users=getUsers(),key=u.toLowerCase();
-  if(users[key])return msg('regMsg','Bu kullanıcı adı bu cihazda zaten var.',true);
-  if(p!==p2)return msg('regMsg','PIN\'ler eşleşmiyor.',true);
+  if(users[key])return msg('regMsg',t('errExists'),true);
+  if(p!==p2)return msg('regMsg',t('errMatch'),true);
   users[key]={name:u,hash:await hashPass(p),createdAt:new Date().toISOString()};
   saveUsers(users);
-  msg('regMsg','Hesap oluşturuldu! Giriş yapabilirsiniz ✿',false);
+  msg('regMsg',t('okCreated'),false);
   setTimeout(function(){showAuthTab('login');document.getElementById('li_user').value=u},600);
 }
 async function doLogin(e){
   e.preventDefault();
   var u=document.getElementById('li_user').value.trim(),p=document.getElementById('li_pass').value;
   var user=getUsers()[u.toLowerCase()];
-  if(!user)return msg('loginMsg','Böyle bir profil bulunamadı.',true);
-  if(user.hash!==await hashPass(p))return msg('loginMsg','Şifre yanlış.',true);
-  if(document.getElementById('li_remember').checked)lsSet(SESSION_KEY,JSON.stringify({user:u.toLowerCase()}));
-  else sessionStorage.setItem(SESSION_KEY,JSON.stringify({user:u.toLowerCase()}));
+  if(!user)return msg('loginMsg',t('errNoUser'),true);
+  if(user.hash!==await hashPass(p))return msg('loginMsg',t('errPass'),true);
+  var sess=JSON.stringify({user:u.toLowerCase()});
+  if(document.getElementById('li_remember').checked)lsSet(SESSION_KEY,sess);
+  else sessionStorage.setItem(SESSION_KEY,sess);
   enterPanel(u.toLowerCase());
 }
 function currentSession(){
@@ -278,28 +400,43 @@ function currentSession(){
 }
 function logout(){
   lsDel(ACTIVE_KEY);lsDel(SESSION_KEY);sessionStorage.removeItem(SESSION_KEY);
+  lsDel('portalUserName');
   location.reload();
 }
 
-/* ═══════ 4. Panel ═══════ */
+/* ═══════ 5. Uygulama kataloğu ═══════ */
+/* İstersen her uygulamaya urlEn/urlDe alanı ekleyip dile göre farklı dosyaya
+   yönlendirebilirsin; şimdilik hepsi tr/ klasörüne gidiyor. */
 var APPS={
   web:[
-    {name:'Nur Kuran-ı Kerim',desc:'Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur\'an uygulaması.',icon:'📖',url:'tr/kuran.html'},
-    {name:'İlim Defteri',desc:'114 sure için kişisel çalışma defteri; not alın, işaretleyin, PDF yazdırın.',icon:'📓',url:'tr/ilim-defteri.html'},
-    {name:'İlim ve İbadet Takibi',desc:'Günlük ibadet ve ilim takibi, seviye sistemiyle.',icon:'📈',url:'tr/gelisim.html'},
-    {name:'Dini Literatür Kelime Avı',desc:'İslami terimleri oyunlaştırarak öğrenin.',icon:'🎯',url:'tr/kelime-oyunu.html'},
-    {name:'İlim & İbadet Planlayıcısı',desc:'Hedef ve günlük görev planlayıcı, yedekleme özellikli.',icon:'🗓️',url:'tr/planner.html'},
-    {name:'Dijital Zikir Sayacı',desc:'Zarif, minimalist dijital tesbih.',icon:'📿',url:'tr/zikir.html'},
-    {name:'Ayet-i Kelim',desc:'Kur\'an kıssalarında bağlamsal kelime öğrenimi.',icon:'🔤',url:'tr/arapca.html'},
-    {name:'İslami Zekat Hesaplama',desc:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',icon:'🧮',url:'tr/zekat-hesaplama.html'},
-    {name:'iKuran (Pembe)',desc:'iPod hissiyle Kur\'an dinleme arayüzü.',icon:'🎧',url:'tr/ikuran-pink.html'}
+    {name:'Nur Kuran-ı Kerim',desc:{tr:"Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur'an uygulaması.",en:"Modern Qur'an app with Arabic text and Turkish translation (Diyanet API).",de:"Moderne Koran-App mit arabischem Text und türkischer Übersetzung."},icon:'📖',url:'tr/kuran.html'},
+    {name:'İlim Defteri',desc:{tr:'114 sure için kişisel çalışma defteri; not alın, işaretleyin, PDF yazdırın.',en:'Personal study journal for all 114 surahs: notes, tracking, PDF print.',de:'Persönliches Lernheft für alle 114 Suren: Notizen, Fortschritt, PDF-Druck.'},icon:'📓',url:'tr/ilim-defteri.html'},
+    {name:'İlim ve İbadet Takibi',desc:{tr:'Günlük ibadet ve ilim takibi, seviye sistemiyle.',en:'Daily worship & study tracker with a level system.',de:'Täglicher Anbetungs- und Lern-Tracker mit Stufensystem.'},icon:'📈',url:'tr/gelisim.html'},
+    {name:'Dini Literatür Kelime Avı',desc:{tr:'İslami terimleri oyunlaştırarak öğrenin.',en:'Learn Islamic terms through a word-search game.',de:'Islamische Begriffe spielerisch im Wortsuchspiel lernen.'},icon:'🎯',url:'tr/kelime-oyunu.html'},
+    {name:'İlim & İbadet Planlayıcısı',desc:{tr:'Hedef ve günlük görev planlayıcı, yedekleme özellikli.',en:'Goal & daily task planner with backup support.',de:'Ziel- und Tagesaufgaben-Planer mit Backup-Funktion.'},icon:'🗓️',url:'tr/planner.html'},
+    {name:'Dijital Zikir Sayacı',desc:{tr:'Zarif, minimalist dijital tesbih.',en:'An elegant, minimalist digital tasbih.',de:'Ein eleganter, minimalistischer digitaler Tasbih.'},icon:'📿',url:'tr/zikir.html'},
+    {name:'Ayet-i Kelim',desc:{tr:"Kur'an kıssalarında bağlamsal kelime öğrenimi.",en:"Contextual vocabulary learning from Qur'anic stories.",de:'Kontextuelles Vokabellernen aus Korangeschichten.'},icon:'🔤',url:'tr/arapca.html'},
+    {name:'İslami Zekat Hesaplama',desc:{tr:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',en:'Zakat calculator with nisab check at 2.5%.',de:'Zakat-Rechner mit Nisab-Prüfung (2,5 %).'},icon:'🧮',url:'tr/zekat-hesaplama.html'},
+    {name:'iKuran (Pembe)',desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü.",en:"Qur'an audio interface with an iPod feel.",de:'Koran-Audiooberfläche im iPod-Stil.'},icon:'🎧',url:'tr/ikuran-pink.html'},
+    {name:'iKuran (Siyah)',desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü — siyah tema.",en:"Qur'an audio interface with an iPod feel — black theme.",de:'Koran-Audiooberfläche im iPod-Stil — schwarzes Design.'},icon:'🎧',url:'tr/ikuran-black.html'},
+    {name:'Nur Kartları',desc:{tr:'Hicri ayları tanıtan etkileşimli bilgi kartları.',en:'Interactive cards introducing the Hijri months.',de:'Interaktive Karten zu den Hidschri-Monaten.'},icon:'🃏',url:'tr/nur-kartlari.html'},
+    {name:'Anket & Oylama Sistemi',desc:{tr:'Saf JavaScript ile interaktif anket.',en:'Interactive polls built with pure JavaScript.',de:'Interaktive Umfragen in reinem JavaScript.'},icon:'🗳️',url:'tr/anket-sistemi.html'}
   ],
   other:[
-    {name:'İlim Rehberi',desc:'Kur\'an, tefsir, hadis, fıkıh ve Arapça dokümantasyon platformu.',icon:'📚',url:'tr/ilim-rehberi.html'},
-    {name:'Adım Adım Hac ve Umre',desc:'Kutsal yolculuğu dualarla adım adım takip rehberi.',icon:'🕋',url:'tr/umre-hac.html'}
+    {name:'İlim Rehberi',desc:{tr:"Kur'an, tefsir, hadis, fıkıh ve Arapça dokümantasyon platformu.",en:"Documentation platform for Qur'an, tafsir, hadith, fiqh & Arabic.",de:'Dokumentationsplattform für Koran, Tafsir, Hadith, Fiqh & Arabisch.'},icon:'📚',url:'tr/ilim-rehberi.html'},
+    {name:'Adım Adım Hac ve Umre',desc:{tr:'Kutsal yolculuğu dualarla adım adım takip rehberi.',en:'Step-by-step guide to Hajj & Umrah with supplications.',de:'Haddsch- und Umra-Leitfaden Schritt für Schritt, mit Duas.'},icon:'🕋',url:'tr/umre-hac.html'},
+    {name:'İslami Not Dönüştürücü',desc:{tr:"Markdown notlarınızı anında HTML'e çevirin.",en:'Convert your Markdown notes to HTML instantly.',de:'Markdown-Noten sofort in HTML umwandeln.'},icon:'🔄',url:'tr/markdown-html.html'},
+    {name:'Banka Hesabı Simülasyonu',desc:{tr:'ES6 class ile işlem takipli hesap uygulaması.',en:'Bank account simulation with a transaction log (ES6 classes).',de:'Bankkonto-Simulation mit Kontobewegungen (ES6-Klassen).'},icon:'🏦',url:'tr/banka-hesabi.html'},
+    {name:'Galeri',desc:{tr:'İslami güzel sanatlar ve ilham veren görseller.',en:'Islamic fine arts and inspiring visuals.',de:'Islamische Künste und inspirierende Bilder.'},icon:'🖼️',url:'tr/galeri.html'},
+    {name:'Kütüphane Envanteri',desc:{tr:'Klasik ilim eserleri için okuma takibi.',en:'Reading tracker for classical scholarly works.',de:'Lesetracker für klassische Gelehrsamkeitswerke.'},icon:'🏛️',url:'tr/book-inventory.html'}
   ]
 };
 
+/* ?don= parametresi: uygulamadan panele yönlendirildiyse dönüş şeridi göster */
+var DON=null;
+try{DON=new URLSearchParams(location.search).get('don')}catch(e){DON=null}
+
+/* ═══════ 6. Panel ═══════ */
 var currentUser=null;
 function getMeta(u){try{return JSON.parse(lsGet(META_P+u)||'{}')}catch(e){return{}}}
 function saveMeta(u,m){lsSet(META_P+u,JSON.stringify(m))}
@@ -308,6 +445,7 @@ function countUserData(u){
   try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)n++}}catch(e){}
   return n;
 }
+function appUrl(a){return a.url}
 function enterPanel(key){
   currentUser=key;
   lsSet(ACTIVE_KEY,key);
@@ -315,22 +453,27 @@ function enterPanel(key){
   var users=getUsers(),user=users[key]||{};
   document.getElementById('authScreen').classList.add('hidden');
   document.getElementById('dashScreen').classList.remove('hidden');
-  document.getElementById('welcomeEl').textContent='Merhaba, '+user.name+'! ✿';
-  document.getElementById('avatarEl').textContent=user.name.charAt(0).toUpperCase();
-  document.getElementById('userNameEl').textContent=user.name;
-  document.getElementById('userSinceEl').textContent=user.createdAt?('Üye: '+new Date(user.createdAt).toLocaleDateString('tr-TR')):'';
+  document.getElementById('welcomeEl').textContent=t('hello')(user.name||key);
+  document.getElementById('avatarEl').textContent=(user.name||key).charAt(0).toUpperCase();
+  document.getElementById('userNameEl').textContent=user.name||key;
+  document.getElementById('userSinceEl').textContent=user.createdAt?t('memberSince')(new Date(user.createdAt).toLocaleDateString(cur==='tr'?'tr-TR':(cur==='de'?'de-DE':'en-GB'))):'';
   document.getElementById('pfName').textContent=key;
   var m=getMeta(key);(m.recent=m.recent||[]);saveMeta(key,m);
   document.getElementById('statApps').textContent=APPS.web.length+APPS.other.length;
   document.getElementById('statOpened').textContent=m.recent.length;
   document.getElementById('statMembers').textContent=Object.keys(users).length;
   renderTabs();renderApps();
-  document.getElementById('snippetEl').textContent="<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();<\/script>";
+  if(DON){
+    var link=document.getElementById('donLink');
+    link.href='tr/'+encodeURIComponent(DON)+'.html';
+    document.getElementById('donStrip').classList.remove('hidden');
+  }
+  document.getElementById('snippetEl').textContent="<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();<\\/script>";
 }
 function renderTabs(){
   var c=document.getElementById('tabControls');
-  c.innerHTML='<button class="tab-btn active" data-g="web" onclick="switchGroup(\'web\',this)">Web Uygulamaları</button>'
-    +'<button class="tab-btn" data-g="other" onclick="switchGroup(\'other\',this)">Diğer Projeler</button>';
+  c.innerHTML='<button class="tab-btn active" data-g="web" onclick="switchGroup(\'web\',this)">'+t('tabWeb')+'</button>'
+    +'<button class="tab-btn" data-g="other" onclick="switchGroup(\'other\',this)">'+t('tabOther')+'</button>';
 }
 function switchGroup(g,btn){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
@@ -345,14 +488,18 @@ function renderApps(){
     var wrap=document.getElementById('group-'+g);
     if(!wrap){wrap=document.createElement('div');wrap.id='group-'+g;wrap.className='group';document.getElementById('groupsWrap').appendChild(wrap)}
     var inner=document.createElement('div');inner.className='projects-grid';
-    var list=APPS[g].filter(function(a){return a.name.toLowerCase().indexOf(q)>-1||a.desc.toLowerCase().indexOf(q)>-1});
-    if(!list.length){inner.innerHTML='<p class="empty-note">Aradığınız uygulamayı bulamadım 🌸</p>'}
+    var list=APPS[g].filter(function(a){
+      var d=a.desc[cur]||a.desc.tr;
+      return a.name.toLowerCase().indexOf(q)>-1||d.toLowerCase().indexOf(q)>-1;
+    });
+    if(!list.length){inner.innerHTML='<p class="empty-note">'+esc(t('emptySearch'))+'</p>'}
     list.forEach(function(a){
       var times=recent.filter(function(r){return r===a.url}).length;
+      var d=a.desc[cur]||a.desc.tr;
       var card=document.createElement('div');card.className='app-card';
-      card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(a.name)+'</h3><p>'+esc(a.desc)+'</p>'
-        +'<div class="app-meta"><span>'+(times?('📁 '+times+' kez açtınız'):'✨ Yeni')+'</span>'
-        +'<a class="btn btn-sm btn-solid" href="'+a.url+'" target="_blank" rel="noopener" data-url="'+a.url+'">Aç →</a></div>';
+      card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(a.name)+'</h3><p>'+esc(d)+'</p>'
+        +'<div class="app-meta"><span>'+(times?esc(t('openedTimes')(times)):esc(t('isNew')))+'</span>'
+        +'<a class="btn btn-sm btn-solid" href="'+appUrl(a)+'" target="_blank" rel="noopener" data-url="'+a.url+'">'+esc(t('open'))+'</a></div>';
       card.querySelector('a').addEventListener('click',function(){launch(a.url)});
       inner.appendChild(card);
     });
@@ -369,7 +516,7 @@ function launch(url){
   renderApps();
 }
 
-/* ═══════ 5. Yedekleme / Silme ═══════ */
+/* ═══════ 7. Yedekleme / Silme ═══════ */
 function exportData(){
   var p='u__'+currentUser+'__',data={_user:currentUser,_date:new Date().toISOString(),keys:{}};
   try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)data.keys[k]=localStorage.getItem(k)}}catch(e){}
@@ -385,15 +532,15 @@ function importData(input){
       var data=JSON.parse(reader.result);
       if(!data.keys||data._user!==currentUser)throw 0;
       var n=0;Object.keys(data.keys).forEach(function(k){if(k.indexOf('u__'+currentUser+'__')===0){localStorage.setItem(k,data.keys[k]);n++}});
-      alert(n+' kayıt geri yüklendi ✿');
-    }catch(e){alert('Geçersiz yedek dosyası.');}
+      alert(t('impOk')(n));
+    }catch(e){alert(t('impFail'));}
     input.value='';
   };
   reader.readAsText(f);
 }
 function deleteAccount(){
-  if(!confirm('Bu profilin TÜM verileri kalıcı olarak silinecek. Emin misiniz?'))return;
-  if(!confirm('Son onay: gerçekten silinsin mi?'))return;
+  if(!confirm(t('delQ1')))return;
+  if(!confirm(t('delQ2')))return;
   var p='u__'+currentUser+'__',del=[];
   try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)del.push(k)}}catch(e){}
   del.forEach(lsDel);
@@ -402,7 +549,8 @@ function deleteAccount(){
   logout();
 }
 
-/* ═══════ 6. Otomatik oturum: sayfa açılınca girişliyse panele gir ═══════ */
+/* ═══════ 8. Başlat ═══════ */
+applyLang(cur);
 (function(){
   var s=currentSession();
   if(s&&s.user&&getUsers()[s.user]){enterPanel(s.user)}
