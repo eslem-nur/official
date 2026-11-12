@@ -260,8 +260,7 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
-var USERS_KEY='portalUsers', SESSION_KEY='portalSession', ACTIVE_KEY='portalActiveUser', META_P='portalMeta_';
-
+var USERS_KEY='portalUsers', SESSION_KEY='portalSession', ACTIVE_KEY='portalActiveUser', META_P='portalMeta_', TAB_KEY='portalActiveTab';
 async function hashPass(p){
   try{
     var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('ilkod·'+p));
@@ -529,6 +528,7 @@ function isFallback(a){
   return !(typeof a.url==='string') && a.url && !a.url[cur] && cur!=='tr';
 }
 function enterPanel(key){
+  TAB_KEY='portalActiveTab_'+key;
   currentUser=key;
   lsSet(ACTIVE_KEY,key);
   lsSet('portalUserName',(getUsers()[key]||{}).name||key);
@@ -553,8 +553,11 @@ function enterPanel(key){
 function renderTabs(){
   var c=document.getElementById('tabControls');
   var defs=[['ilm','tabIlm'],['guides','tabGuides'],['tools','tabTools']];
-  c.innerHTML=defs.map(function(d,i){
-    return '<button class="tab-btn'+(i===0?' active':'')+'" data-g="'+d[0]+'" onclick="switchGroup(\''+d[0]+'\',this)">'+t(d[1])+'</button>';
+  var saved=lsGet(TAB_KEY);
+  var valid=defs.some(function(d){return d[0]===saved});
+  if(!valid)saved=defs[0][0];
+  c.innerHTML=defs.map(function(d){
+    return '<button class="tab-btn'+(d[0]===saved?' active':'')+'" data-g="'+d[0]+'" onclick="switchGroup(\''+d[0]+'\',this)">'+t(d[1])+'</button>';
   }).join('');
 }
 function switchGroup(g,btn){
@@ -562,6 +565,7 @@ function switchGroup(g,btn){
   btn.classList.add('active');
   document.querySelectorAll('.group').forEach(function(gr){gr.classList.remove('active')});
   document.getElementById('group-'+g).classList.add('active');
+  lsSet(TAB_KEY,g);
 }
 function renderApps(){
   var q=(document.getElementById('searchBox').value||'').toLowerCase();
@@ -602,8 +606,13 @@ function renderApps(){
     });
     wrap.innerHTML='';wrap.appendChild(inner);
   });
-  if(!document.getElementById('group-ilm').classList.contains('active'))
-  document.getElementById('group-ilm').classList.add('active');
+    var saved=lsGet(TAB_KEY);
+  if(['ilm','guides','tools'].indexOf(saved)<0)saved='ilm';
+  var gEl=document.getElementById('group-'+saved);
+  if(gEl&&!gEl.classList.contains('active')){
+    document.querySelectorAll('.group').forEach(function(gr){gr.classList.remove('active')});
+    gEl.classList.add('active');
+  }
 }
 function launch(url){
   var m=getMeta(currentUser);m.recent=m.recent||[];
