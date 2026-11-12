@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Barakah — Muslimah Digital Planner</title>
+<meta name="description" content="My Barakah: a private Muslimah digital planner — salah, hifdh, hijab, cycle and goals. By Eslem Nur Çetin (Ilm & Code).">
+<meta name="author" content="Eslem Nur Çetin">
+
+
+<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();</script>
+<script>if(!localStorage.getItem('portalActiveUser')){location.replace('../portal.html?don=my-barakah');}</script>
+
+<!-- Fonts & Icons (same stack as the main site) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<style>
+/* ==========================================================
+   SITE DESIGN SYSTEM VARIABLES (from styles.css v2.0)
+   ========================================================== */
+:root{
+  --primary-color:#A06872;
+  --primary-dark:#8E5A65;
+  --primary-light:#CC8E98;
+  --secondary-color:#FDF5E6;
+  --accent-color:#9E7F7F;
+  --accent-warm:#E6C9C9;
+  --accent-cool:#D8C3CD;
+  --bg-color:#FFF9F9;
+  --card-bg:#FFFFFF;
+  --text-primary:#4E342E;
+  --text-secondary:#8D6E63;
+  --radius-md:14px;
+  --radius-lg:18px;
+  --shadow-sm:0 2px 8px rgba(160,104,114,.10);
+  --shadow-md:0 8px 30px rgba(160,104,114,.15);
+  --transition:.2s ease;
+}
+[data-theme="dark"]{
+  --bg-color:#0D0D0D;
+  --card-bg:#1A1A1A;
+  --text-primary:#F5F5F0;
+  --text-secondary:#C4B5AE;
+  --primary-color:#CC8E98;
+  --primary-dark:#E6C9C9;
+  --primary-light:#A06872;
+  --accent-warm:#3A2A2E;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.4);
+  --shadow-md:0 8px 30px rgba(0,0,0,.5);
+}
+
+.planner-body{
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  color:var(--text-primary);
+  background:var(--bg-color);
+  min-height:100vh;
+  transition:background .3s ease,color .3s ease;
+}
+.planner-body button{font:inherit;cursor:pointer;}
+.planner-body :focus-visible{
+  outline:2px solid var(--primary-color);
+  outline-offset:2px;
+}
+.arabic,.bism{
+  font-family:'Scheherazade New','Amiri',serif;
+}
+
+/* ---------- APP SHELL ---------- */
+#app{display:flex;height:100vh;flex-direction:column;}
+#app header{
+  background:var(--card-bg);
+  border-bottom:1px solid rgba(160,104,114,.18);
+  color:var(--text-primary);
+  padding:10px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(8px);
+}
+#app header .brand{
+  font-family:'Playfair Display',serif;
+  font-size:16px;letter-spacing:1.5px;font-weight:600;
+}
+#app header .brand small{
+  display:block;font-size:9.5px;letter-spacing:2px;
+  color:var(--primary-color);font-weight:400;
+}
+
+
+.tabwrap{flex:1;min-width:0;position:relative;}
+.top-tabs{
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.top-tabs button{
+  background:transparent;
+  border:1.5px solid rgba(160,104,114,.25);
+  color:var(--text-secondary);border-radius:30px;
+  padding:8px 14px;font-size:.82rem;min-height:44px;
+  transition:all .2s ease;white-space:nowrap;
+}
+.top-tabs button:hover{border-color:var(--primary-color);color:var(--primary-color);}
+.top-tabs button.on{
+  background:var(--primary-color);border-color:var(--primary-color);
+  color:#fff;font-weight:600;
+}
+@media(max-width:899px){
+  .tabwrap{
+    flex:1 1 100%;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+  }
+  .top-tabs{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:2px;
+  }
+  .top-tabs::-webkit-scrollbar{display:none;}
+  .top-tabs button{
+    scroll-snap-align:start;
+    flex:0 0 auto;
+    padding:8px 12px;
+    font-size:.8rem;
+  }
+}
+
+.userbox{display:flex;align-items:center;gap:8px;}
+.userbox .av{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--primary-color);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;
+}
+.userbox .uname{font-size:.8rem;color:var(--text-secondary);}
+.userbox .out,.theme-toggle-planner,.userbox .home{
+  background:transparent;border:1.5px solid rgba(160,104,114,.3);
+  color:var(--text-secondary);border-radius:30px;
+  padding:8px 14px;font-size:.78rem;min-height:44px;
+  transition:all .2s ease;text-decoration:none;display:inline-flex;align-items:center;
+}
+.userbox .out:hover,.theme-toggle-planner:hover,.userbox .home:hover{
+  border-color:var(--primary-color);color:var(--primary-color);
+}
+.savebadge{font-size:.72rem;color:var(--primary-color);opacity:0;transition:opacity .3s;}
+.savebadge.show{opacity:1;}
+
+main{flex:1;overflow-y:auto;padding:24px;max-width:1100px;margin:0 auto;width:100%;}
+.pg{display:none;}
+.pg.on{display:block;}
+
+/* Page headings */
+.ph{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+.ph .bism{
+  font-family:'Scheherazade New','Amiri',serif;
+  font-size:17px;color:var(--primary-color);direction:rtl;
+}
+.ph h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,4vw,2rem);font-weight:600;
+  color:var(--text-primary);
+}
+.ph h1 span{color:var(--primary-color);}
+.psub{font-size:.82rem;font-style:italic;color:var(--text-secondary);margin-bottom:18px;}
+
+/* Cards */
+.card{
+  background:var(--card-bg);border-radius:var(--radius-md);
+  padding:18px 20px;margin-bottom:16px;
+  border:1px solid rgba(160,104,114,.15);
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{box-shadow:var(--shadow-md);}
+.card h3{
+  font-family:'Playfair Display',serif;
+  font-size:.95rem;font-weight:600;
+  color:var(--primary-color);letter-spacing:.5px;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.card h3::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,var(--primary-light),transparent);
+}
+.cols{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+/* Labels & inputs */
+.mini{font-size:.78rem;color:var(--text-secondary);font-weight:600;letter-spacing:.3px;}
+.planner-body input[type=text],.planner-body input[type=date],
+.planner-body input[type=time],.planner-body input[type=number],
+.planner-body textarea{
+  border:none;border-bottom:1.5px solid rgba(160,104,114,.3);
+  background:transparent;font:inherit;color:var(--text-primary);
+  padding:6px 2px;outline:none;width:100%;
+}
+.planner-body input:focus,.planner-body textarea:focus{border-color:var(--primary-color);}
+.planner-body textarea{
+  border:1.5px dashed rgba(160,104,114,.4);border-radius:12px;
+  background:var(--bg-color);padding:10px;min-height:80px;resize:vertical;
+}
+[data-theme="dark"] .planner-body input[type=date]::-webkit-calendar-picker-indicator,
+[data-theme="dark"] .planner-body input[type=time]::-webkit-calendar-picker-indicator{
+  filter:invert(1);
+}
+
+/* Checkbox rows */
+.chk{display:flex;align-items:center;gap:10px;padding:7px 2px;border-bottom:1px dashed rgba(160,104,114,.2);font-size:.9rem;}
+.chk:last-child{border-bottom:none;}
+.cbx{
+  width:22px;height:22px;flex:none;border-radius:8px;
+  border:2px solid var(--primary-light);
+  background:var(--card-bg);position:relative;
+  cursor:pointer;transition:background .15s;min-width:22px;min-height:22px;
+}
+.cbx.on{background:var(--primary-color);border-color:var(--primary-color);}
+.cbx.on::after{
+  content:"✓";position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;color:#fff;font-size:12px;
+}
+.chk .lbl{flex:1;color:var(--text-primary);}
+.chk .lbl input{width:95%;}
+
+/* Tables */
+.planner-body table{width:100%;border-collapse:collapse;font-size:.85rem;}
+.planner-body th{
+  font-size:.68rem;text-transform:uppercase;letter-spacing:1px;
+  color:var(--text-secondary);padding:8px 6px;
+  border-bottom:2px solid rgba(160,104,114,.3);text-align:left;
+}
+.planner-body td{padding:6px;border-bottom:1px dashed rgba(160,104,114,.2);color:var(--text-primary);}
+.planner-body td.day{color:var(--primary-color);font-weight:600;background:var(--bg-color);}
+
+/* Track dots */
+.dotb{
+  display:inline-block;width:24px;height:24px;
+  border:2px solid var(--primary-light);border-radius:50%;
+  background:var(--card-bg);vertical-align:middle;cursor:pointer;
+  position:relative;transition:background .15s;min-width:24px;min-height:24px;
+}
+.dotb.on{background:var(--primary-color);border-color:var(--primary-color);}
+.dotb.on::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;}
+.dotb.late{background:var(--accent-warm);border-color:var(--primary-dark);}
+.dotb.late::after{content:"~";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--primary-dark);font-weight:700;}
+.dotb.miss{background:var(--card-bg);border-color:var(--primary-dark);}
+.dotb.miss::after{content:"✕";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--primary-dark);font-size:11px;}
+
+/* Juz pills */
+.pills{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;}
+.jz{
+  text-align:center;font-size:.65rem;color:var(--text-secondary);
+  border:1.5px solid rgba(160,104,114,.25);
+  border-radius:12px;background:var(--card-bg);
+  padding:8px 4px;cursor:pointer;user-select:none;min-height:52px;
+  transition:transform .15s ease;
+}
+.jz:hover{transform:translateY(-2px);}
+.jz b{display:block;font-size:14px;color:var(--primary-color);}
+.jz.l{background:var(--accent-warm);border-color:var(--primary-dark);}
+.jz.l b{color:var(--primary-dark);}
+.jz.m{background:var(--primary-color);}
+.jz.m,.jz.m b{color:#fff;}
+
+/* Stats */
+.stat{
+  display:inline-flex;flex-direction:column;align-items:center;
+  background:var(--bg-color);
+  border:1px solid rgba(160,104,114,.2);
+  border-radius:14px;padding:12px 20px;margin:4px 8px 4px 0;
+}
+.stat b{font-size:22px;color:var(--primary-color);}
+.stat small{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-secondary);}
+
+footer{
+  padding:16px 22px;text-align:center;
+  font-size:.7rem;color:var(--text-secondary);letter-spacing:1px;
+  border-top:1px solid rgba(160,104,114,.15);
+}
+
+@media(max-width:640px){
+  main{padding:14px;}
+  #app header{padding:8px 10px;}
+  .ph h1{font-size:1.35rem;}
+  .planner-body table{font-size:.75rem;}
+  .dotb{width:20px;height:20px;min-width:20px;min-height:20px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .planner-body *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body class="planner-body">
+
+<!-- ================= APP ================= -->
+<div id="app">
+  <header>
+    <div class="brand">MY BARAKAH<small>MUSLIMAH PLANNER ☾</small></div>
+    <div class="tabwrap">
+      <nav class="top-tabs" id="tabs" aria-label="Planner sections">
+        <button data-p="home" class="on">🕌 Home</button>
+        <button data-p="salah">🕋 Salah</button>
+        <button data-p="hifdh">📖 Hifdh</button>
+        <button data-p="hijab">🧕 Hijab</button>
+        <button data-p="cycle">🌙 Cycle</button>
+        <button data-p="goals">🌱 Goals</button>
+        <button data-p="dua">🤲 Du'a</button>
+        <button data-p="notes">📝 Notes</button>
+      </nav>
+    </div>
+    <span class="savebadge" id="savebadge">✓ saved</span>
+    <div class="userbox">
+      <div class="av" id="uav">A</div>
+      <span class="uname" id="uname"></span>
+      <button class="theme-toggle-planner" id="plannerThemeToggle" aria-label="Toggle Theme">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+      <button class="out" onclick="location.href='../portal.html'" title="Back to the Ilm & Code Portal">
+        <i class="fas fa-house" aria-hidden="true"></i> Portal
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HOME ============ -->
+    <section class="pg on" id="home">
+      <div class="ph"><span class="bism" dir="rtl">بِسْمِ اللّٰهِ</span><h1>Assalamu <span>alaykum</span> 🌷</h1></div>
+      <p class="psub">Start with intention — a barakah-filled day is planned before it begins.</p>
+      <div class="card"><h3>Today</h3>
+        <div class="cols">
+          <div><label class="mini">Date</label><input type="date" data-k="home_date"></div>
+          <div><label class="mini">Hijri date</label><input type="text" data-k="home_hijri" placeholder="e.g. 15 Jumada I 1448"></div>
+          <div><label class="mini">My niyyah for today</label><input type="text" data-k="home_niyyah" placeholder="Intention…"></div>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>🚩 Top 3 Priorities</h3>
+          <div class="chk"><span class="cbx" data-k="hp1" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht1" placeholder="Priority 1"></div>
+          <div class="chk"><span class="cbx" data-k="hp2" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht2" placeholder="Priority 2"></div>
+          <div class="chk"><span class="cbx" data-k="hp3" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht3" placeholder="Priority 3"></div>
+        </div>
+        <div class="card"><h3>🤍 Today's Ibadah</h3>
+          <div class="chk"><span class="cbx" data-k="hb1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Qur'an — <input type="number" data-k="hb1p" style="width:52px;" min="0" max="999"> pages</span></div>
+          <div class="chk"><span class="cbx" data-k="hb2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Morning adhkar</span></div>
+          <div class="chk"><span class="cbx" data-k="hb3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Evening adhkar</span></div>
+          <div class="chk"><span class="cbx" data-k="hb4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Sadaqah — even a smile</span></div>
+        </div>
+        <div class="card"><h3>💗 Self-Care</h3>
+          <div class="chk"><span class="cbx" data-k="hs1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">8 glasses of water</span></div>
+          <div class="chk"><span class="cbx" data-k="hs2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Movement / walk</span></div>
+          <div class="chk"><span class="cbx" data-k="hs3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Skincare &amp; rest</span></div>
+          <div class="chk"><span class="cbx" data-k="hs4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Screen-free hour</span></div>
+        </div>
+      </div>
+      <div class="card"><h3>✨ Alhamdulillah for… (gratitude journal)</h3>
+        <textarea data-k="home_gratitude" placeholder="Three blessings of today…"></textarea>
+      </div>
+    </section>
+
+    <!-- ============ SALAH ============ -->
+    <section class="pg" id="salah">
+      <div class="ph"><span class="bism" dir="rtl">حَافِظْ عَلَى الصَّلَوَاتِ</span><h1>Salah <span>Tracker</span> 🕋</h1></div>
+      <p class="psub">Tap a circle: click once = on time ✓, twice = prayed late ~, three times = missed ✕.</p>
+      <div class="card"><h3>This Week — 5 Prayers</h3>
+        <table id="saltable"></table>
+        <p style="margin-top:12px;">
+          <span class="stat"><b id="st_ontime">0/35</b><small>On time</small></span>
+          <span class="stat"><b id="st_late">0</b><small>Late</small></span>
+          <span class="stat"><b id="st_miss">0</b><small>Missed</small></span>
+          <span class="stat"><b id="st_best">—</b><small>Best day</small></span>
+        </p>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>Qiyam &amp; Sunnah</h3>
+          <div class="chk"><span class="cbx" data-k="sq1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Tahajjud</span></div>
+          <div class="chk"><span class="cbx" data-k="sq2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Duha</span></div>
+          <div class="chk"><span class="cbx" data-k="sq3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Witr</span></div>
+        </div>
+        <div class="card"><h3>🕰 Prayer Times This Week</h3>
+          <table>
+            <tr><th>Salah</th><th>Athan</th><th>Jamaah</th></tr>
+            <tr><td class="day">Fajr</td><td><input type="time" data-k="pt_f1"></td><td><input type="time" data-k="pt_j1"></td></tr>
+            <tr><td class="day">Dhuhr</td><td><input type="time" data-k="pt_f2"></td><td><input type="time" data-k="pt_j2"></td></tr>
+            <tr><td class="day">Asr</td><td><input type="time" data-k="pt_f3"></td><td><input type="time" data-k="pt_j3"></td></tr>
+            <tr><td class="day">Maghrib</td><td><input type="time" data-k="pt_f4"></td><td><input type="time" data-k="pt_j4"></td></tr>
+            <tr><td class="day">Isha</td><td><input type="time" data-k="pt_f5"></td><td><input type="time" data-k="pt_j5"></td></tr>
+          </table>
+        </div>
+        <div class="card"><h3>Focus Checklist</h3>
+          <div class="chk"><span class="cbx" data-k="kh1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Phone away before salah</span></div>
+          <div class="chk"><span class="cbx" data-k="kh2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Wudu done calmly</span></div>
+          <div class="chk"><span class="cbx" data-k="kh3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Learned a new du'a in salah</span></div>
+          <div class="chk"><span class="cbx" data-k="kh4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Heart present, no wandering</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HIFDH ============ -->
+    <section class="pg" id="hifdh">
+      <div class="ph"><span class="bism" dir="rtl">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span><h1>Hifdh <span>Progress</span> 📖</h1></div>
+      <p class="psub">Tap a juz: once = learning ◐, twice = memorised ●, three times = reset. Progress is saved per profile.</p>
+      <div class="card"><h3>30-Juz Journey Map</h3><div class="pills" id="juzmap"></div>
+        <p style="margin-top:12px;"><span class="stat"><b id="st_juz">0</b><small>Juz memorised</small></span>
+        <span class="stat"><b id="st_learn">0</b><small>In progress</small></span>
+        <span class="stat"><b id="st_pct">0%</b><small>Complete</small></span></p>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>Weekly Routine</h3>
+          <div class="chk"><span class="cbx" data-k="hf1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Listen to new portion ×10</span></div>
+          <div class="chk"><span class="cbx" data-k="hf2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Recite from memory</span></div>
+          <div class="chk"><span class="cbx" data-k="hf3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Record &amp; check tajweed</span></div>
+          <div class="chk"><span class="cbx" data-k="hf4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Send to teacher / halaqa</span></div>
+          <div class="chk"><span class="cbx" data-k="hf5" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Revise older portion</span></div>
+        </div>
+        <div class="card"><h3>This Week's Portion</h3>
+          <label class="mini">Surah</label><input data-k="hw_surah" placeholder="e.g. Al-Baqarah">
+          <label class="mini" style="margin-top:10px;display:block;">Ayat</label><input data-k="hw_ayat" placeholder="e.g. 1–20">
+          <label class="mini" style="margin-top:10px;display:block;">Tajweed focus</label><input data-k="hw_taj" placeholder="e.g. madd rules">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HIJAB ============ -->
+    <section class="pg" id="hijab">
+      <div class="ph"><span class="bism" dir="rtl">وَقُلْ لِلْمُؤْمِنَاتِ يَغْضُضْنَ مِنْ أَبْصَارِهِنَّ</span><h1>Modesty &amp; <span>Hijab Journey</span> 🧕</h1></div>
+      <p class="psub">A private, judgement-free tracker — growth at your own pace, for Allah alone.</p>
+      <div class="card"><h3>Outer Hijab — This Week</h3><table id="hjouter"></table></div>
+      <div class="card"><h3>Inner Hijab — Guarding the Heart</h3><table id="hjinner"></table></div>
+      <div class="cols">
+        <div class="card"><h3>This Month's Modesty Goals</h3><textarea data-k="hj_goals"></textarea></div>
+        <div class="card"><h3>🤲 My Du'a for This Journey</h3>
+          <p style="font-size:.85rem;font-style:italic;color:var(--text-secondary);line-height:1.8;">"O Allah, adorn me with modesty inside and out, and make my hijab a crown of honour."</p>
+          <textarea data-k="hj_dua" style="min-height:60px;"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CYCLE ============ -->
+    <section class="pg" id="cycle">
+      <div class="ph"><span class="bism" dir="rtl">لِكُلٍّ جَعَلْنَا مِنْكُمْ شِرْعَةً وَمِنْهَاجًا</span><h1>Cycle &amp; <span>Worship Plan</span> 🌙</h1></div>
+      <p class="psub">A resting season is still a season of worship — swap the form, keep the connection.</p>
+      <div class="card"><h3>This Month's Log</h3>
+        <table>
+          <tr><th>Phase</th><th>From</th><th>To</th><th>Energy 1–5</th></tr>
+          <tr><td class="day">Menstruation</td><td><input type="date" data-k="cy_m1"></td><td><input type="date" data-k="cy_m2"></td><td><input type="number" data-k="cy_me" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Follicular</td><td><input type="date" data-k="cy_f1"></td><td><input type="date" data-k="cy_f2"></td><td><input type="number" data-k="cy_fe" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Ovulation</td><td><input type="date" data-k="cy_o1"></td><td><input type="date" data-k="cy_o2"></td><td><input type="number" data-k="cy_oe" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Luteal</td><td><input type="date" data-k="cy_l1"></td><td><input type="date" data-k="cy_l2"></td><td><input type="number" data-k="cy_le" min="1" max="5" style="width:60px;"></td></tr>
+        </table>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>During Menstruation I Can…</h3>
+          <div class="chk"><span class="cbx" data-k="cm1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Make du'a — anytime, any words</span></div>
+          <div class="chk"><span class="cbx" data-k="cm2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Dhikr &amp; salawat</span></div>
+          <div class="chk"><span class="cbx" data-k="cm3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Listen to Qur'an &amp; tafsir</span></div>
+          <div class="chk"><span class="cbx" data-k="cm4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Daily sadaqah</span></div>
+          <div class="chk"><span class="cbx" data-k="cm5" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Seek knowledge / attend lessons</span></div>
+        </div>
+        <div class="card"><h3>Owed Fasts</h3>
+          <label class="mini">Days owed to repay</label><input type="number" data-k="cy_owed" min="0" max="60" style="width:80px;">
+          <label class="mini" style="margin-top:10px;display:block;">Scheduled from</label><input type="date" data-k="cy_sched">
+          <p class="mini" style="margin-top:12px;">Prayers during menstruation need no make-up. Fasting rules differ among scholars — confirm with a trusted teacher.</p>
+        </div>
+      </div>
+      <div class="card"><h3>Energy-Matched Worship Ladder</h3>
+        <table>
+          <tr><th></th><th>Low day 😴</th><th>Okay day 🙂</th><th>Strong day 💪</th></tr>
+          <tr><td class="day">Worship</td><td>Dhikr + one du'a</td><td>Adhkar + 1 page Qur'an</td><td>Full hifdh session</td></tr>
+          <tr><td class="day">Body</td><td>Rest &amp; warmth</td><td>Gentle walk</td><td>Stretching</td></tr>
+          <tr><td class="day">Mind</td><td>Journaling only</td><td>Light reading</td><td>Learn something new</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ GOALS ============ -->
+    <section class="pg" id="goals">
+      <div class="ph"><span class="bism" dir="rtl">وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى</span><h1>Goals &amp; <span>Habits</span> 🌱</h1></div>
+      <p class="psub">Dunya goals with akhirah intention — every goal carries a "why" for the sake of Allah.</p>
+      <div class="cols">
+        <div class="card"><h3>🤲 Deen</h3>
+          <label class="mini">Goal</label><input data-k="gl_d1" placeholder="e.g. Complete Juz 2 hifdh">
+          <label class="mini" style="display:block;margin-top:10px;">Intention</label><input data-k="gl_d2" placeholder="Why — for Allah">
+          <label class="mini" style="display:block;margin-top:10px;">Weekly step</label><input data-k="gl_d3" placeholder="e.g. 5 ayat + revise">
+        </div>
+        <div class="card"><h3>🌸 Self</h3>
+          <label class="mini">Goal</label><input data-k="gl_s1">
+          <label class="mini" style="display:block;margin-top:10px;">Intention</label><input data-k="gl_s2">
+          <label class="mini" style="display:block;margin-top:10px;">Weekly step</label><input data-k="gl_s3">
+        </div>
+        <div class="card"><h3>💼 Work / Study</h3>
+          <label class="mini">Goal</label><input data-k="gl_w1">
+          <label class="mini" style="display:block;margin-top:10px;">Intention</label><input data-k="gl_w2">
+          <label class="mini" style="display:block;margin-top:10px;">Weekly step</label><input data-k="gl_w3">
+        </div>
+        <div class="card"><h3>💞 Relationships</h3>
+          <label class="mini">Goal</label><input data-k="gl_r1">
+          <label class="mini" style="display:block;margin-top:10px;">Intention</label><input data-k="gl_r2">
+          <label class="mini" style="display:block;margin-top:10px;">Weekly step</label><input data-k="gl_r3">
+        </div>
+      </div>
+      <div class="card"><h3>Habit Grid — tap each dot for 30 days</h3>
+        <table id="habitgrid"></table>
+      </div>
+    </section>
+
+    <!-- ============ DU'A ============ -->
+    <section class="pg" id="dua">
+      <div class="ph"><span class="bism" dir="rtl">ادْعُونِي أَسْتَجِبْ لَكُمْ</span><h1>Du'a <span>Bank</span> 🤲</h1></div>
+      <p class="psub">Collect the du'as that carry you through every season — then watch them get answered.</p>
+      <div class="cols">
+        <div class="card"><h3>Core Du'as</h3>
+          <p style="font-size:16px;line-height:2.4;color:var(--text-primary);">
+            <span class="arabic" dir="rtl">رَبِّ اشْرَحْ لِي صَدْرِي</span> — <span class="mini">ease in difficulty</span><br>
+            <span class="arabic" dir="rtl">رَبِّ هَبْ لِي مِنْ لَدُنْكَ ذُرِّيَّةً طَيِّبَةً</span> — <span class="mini">righteous spouse &amp; children</span><br>
+            <span class="arabic" dir="rtl">رَبِّ زِدْنِي عِلْمًا</span> — <span class="mini">increase me in knowledge</span><br>
+            <span class="arabic" dir="rtl">حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُ</span> — <span class="mini">trust in trials</span>
+          </p>
+        </div>
+        <div class="card"><h3>My Personal List</h3>
+          <div class="chk"><span class="cbx" data-k="dp1" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt1" placeholder="Du'a 1"></div>
+          <div class="chk"><span class="cbx" data-k="dp2" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt2" placeholder="Du'a 2"></div>
+          <div class="chk"><span class="cbx" data-k="dp3" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt3" placeholder="Du'a 3"></div>
+          <div class="chk"><span class="cbx" data-k="dp4" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt4" placeholder="Du'a 4"></div>
+          <p class="mini" style="margin-top:10px;">Tick = answered ✅ — record it below!</p>
+        </div>
+      </div>
+      <div class="card"><h3>Answered Du'a Journal — Evidence of Yaqeen</h3>
+        <textarea data-k="dua_journal" placeholder="Write each answered du'a with its date — this builds certainty like nothing else…" style="min-height:140px;"></textarea>
+      </div>
+    </section>
+
+    <!-- ============ NOTES ============ -->
+    <section class="pg" id="notes">
+      <div class="ph"><span class="bism" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</span><h1>Free <span>Notes</span> 📝</h1></div>
+      <p class="psub">Whatever your heart needs this week — tafsir gems, lectures, journaling.</p>
+      <div class="card"><h3>Notebook</h3><textarea data-k="notes_main" style="min-height:320px;"></textarea></div>
+    </section>
+  </main>
+  <footer>✦ MY BARAKAH · a project of Ilm &amp; Code by Eslem Nur Çetin · data saved privately on this device ✦</footer>
+</div>
+
+<script>
+
+var K_DATA='barakah_v1';
+
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+var PORTAL_NAME=(function(){
+  try{return localStorage.getItem('portalUserName')||localStorage.getItem('portalActiveUser')||'';}catch(e){return '';}
+})();
+
+var DATA={};
+function loadData(){
+  try{DATA=JSON.parse(lsGet(K_DATA)||'{}');}catch(e){DATA={};}
+  if(!DATA.data)DATA={data:{},created:new Date().toISOString()};
+}
+function persist(){lsSet(K_DATA,JSON.stringify(DATA));flash();}
+function flash(){
+  var b=document.getElementById('savebadge');
+  b.classList.add('show');setTimeout(function(){b.classList.remove('show')},1200);
+}
+function setVal(k,v){DATA.data[k]=v;persist();}
+function getVal(k){return DATA.data[k];}
+
+/* ═══════ START (login yok — oturum panelden gelir) ═══════ */
+loadData();
+var pretty=PORTAL_NAME||'Misafir';
+document.getElementById('uav').textContent=pretty.charAt(0).toUpperCase();
+document.getElementById('uname').textContent=pretty;
+document.title='My Barakah — '+pretty;
+
+/* ═══════ TABS (mobile: auto-scroll active tab into view) ═══════ */
+var tabstrip=document.getElementById('tabs');
+tabstrip.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  tabstrip.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id===b.dataset.p)});
+  if(window.innerWidth<900&&b.scrollIntoView){
+    b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  }
+});
+
+/* ═══════ THEME (shared "theme" key with portal & site) ═══════ */
+(function initPlannerTheme(){
+  var t=(lsGet('theme')==='dark')?'dark':'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var ic=document.querySelector('#plannerThemeToggle i');
+  if(ic)ic.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  document.getElementById('plannerThemeToggle').addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    lsSet('theme',nxt);
+    ic.className=nxt==='dark'?'fas fa-sun':'fas fa-moon';
+  });
+})();
+
+/* ═══════ INPUT BINDING ═══════ */
+function hydrate(){
+  document.querySelectorAll('[data-k]').forEach(function(el){
+    if(el.classList.contains('cbx'))return;
+    var v=getVal(el.dataset.k);
+    if(v!==undefined)el.value=v;
+    el.addEventListener('input',function(){setVal(el.dataset.k,el.value)});
+  });
+  document.querySelectorAll('.cbx[data-k]').forEach(function(el){
+    if(getVal(el.dataset.k)==='on'){el.classList.add('on');el.setAttribute('aria-checked','true');}
+    var toggle=function(){
+      el.classList.toggle('on');
+      var on=el.classList.contains('on');
+      el.setAttribute('aria-checked',on?'true':'false');
+      setVal(el.dataset.k,on?'on':'off');
+    };
+    el.addEventListener('click',toggle);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+}
+
+/* ═══════ SALAH GRID ═══════ */
+var DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+var PRAYERS=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+function renderSalah(){
+  var t=document.getElementById('saltable');
+  var html='<tr><th></th>'+PRAYERS.map(function(p){return '<th>'+p+'</th>'}).join('')+'</tr>';
+  DAYS.forEach(function(d){
+    html+='<tr><td class="day">'+d+'</td>';
+    PRAYERS.forEach(function(p,i){
+      var k='sl_'+d.slice(0,2)+'_'+i;
+      var s=getVal(k)||'0';
+      html+='<td><span class="dotb '+(s==='1'?'on':s==='2'?'late':s==='3'?'miss':'')+'" data-k="'+k+'" role="button" tabindex="0" aria-label="'+d+' '+p+': '+(s==='1'?'on time':s==='2'?'late':s==='3'?'missed':'not marked')+'"></span></td>';
+    });
+    html+='</tr>';
+  });
+  t.innerHTML=html;
+  t.querySelectorAll('.dotb').forEach(function(el){
+    var cycle=function(){
+      var nxt={'0':'1','1':'2','2':'3','3':'0'}[getVal(el.dataset.k)||'0'];
+      setVal(el.dataset.k,nxt);renderSalah();
+    };
+    el.addEventListener('click',cycle);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cycle();}});
+  });
+  var on=0,late=0,miss=0;var perDay={};
+  DAYS.forEach(function(d){
+    var c=0;
+    PRAYERS.forEach(function(p,i){
+      var s=getVal('sl_'+d.slice(0,2)+'_'+i)||'0';
+      if(s==='1'){on++;c++;}else if(s==='2')late++;else if(s==='3')miss++;
+    });
+    perDay[d]=c;
+  });
+  document.getElementById('st_ontime').textContent=on+'/35';
+  document.getElementById('st_late').textContent=late;
+  document.getElementById('st_miss').textContent=miss;
+  var best=Object.entries(perDay).sort(function(a,b){return b[1]-a[1]})[0];
+  document.getElementById('st_best').textContent=best&&best[1]>0?best[0]+' ('+best[1]+')':'—';
+}
+
+/* ═══════ JUZ MAP ═══════ */
+function renderJuz(){
+  var m=document.getElementById('juzmap');m.innerHTML='';
+  var mem=0,learn=0;
+  for(var i=1;i<=30;i++){
+    (function(i){
+      var k='jz_'+i;var s=getVal(k)||'0';
+      if(s==='2')mem++;if(s==='1')learn++;
+      var d=document.createElement('button');
+      d.className='jz '+(s==='2'?'m':s==='1'?'l':'');
+      d.setAttribute('aria-label','Juz '+i+': '+(s==='2'?'memorised':s==='1'?'learning':'not started'));
+      d.innerHTML='<b>'+i+'</b>'+(s==='2'?'● memorised':s==='1'?'◐ learning':'○ not started');
+      d.addEventListener('click',function(){
+        var nx={'0':'1','1':'2','2':'0'}[getVal(k)||'0'];
+        setVal(k,nx);renderJuz();
+      });
+      m.appendChild(d);
+    })(i);
+  }
+  document.getElementById('st_juz').textContent=mem;
+  document.getElementById('st_learn').textContent=learn;
+  document.getElementById('st_pct').textContent=Math.round((mem+learn*.5)/30*100)+'%';
+}
+
+/* ═══════ HIJAB TABLES ═══════ */
+var HJ_OUT=['Left home in full hijab','Loose & modest outfit','Stayed covered after salah','Outfits planned night before'];
+var HJ_IN=['Lowered my gaze','Spoke kindly — no gossip','Checked intention before posting','Modesty in voice & manner'];
+function renderHijab(){
+  var mk=function(id,rows,pref){
+    var el=document.getElementById(id);
+    var html='<tr><th>Habit</th>'+DAYS.map(function(d){return '<th>'+d.slice(0,2)+'</th>'}).join('')+'</tr>';
+    rows.forEach(function(r,ri){
+      html+='<tr><td class="day">'+r+'</td>';
+      DAYS.forEach(function(d,di){
+        var k=pref+ri+'_'+di;
+        html+='<td style="text-align:center;"><span class="dotb '+(getVal(k)==='1'?'on':'')+'" data-k="'+k+'" role="button" tabindex="0" aria-label="'+r+' — '+d+'"></span></td>';
+      });
+      html+='</tr>';
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.dotb').forEach(function(b){
+      var tgl=function(){setVal(b.dataset.k,getVal(b.dataset.k)==='1'?'0':'1');renderHijab();};
+      b.addEventListener('click',tgl);
+      b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
+    });
+  };
+  mk('hjouter',HJ_OUT,'hjo_');
+  mk('hjinner',HJ_IN,'hji_');
+}
+
+/* ═══════ HABIT GRID ═══════ */
+function renderHabits(){
+  var rows=[['Deen','hg_d'],['Self','hg_s'],['Work','hg_w']];
+  var el=document.getElementById('habitgrid');
+  var html='<tr><th style="width:90px;">Habit</th><th>Days 1–10</th><th>Days 11–20</th><th>Days 21–30</th></tr>';
+  rows.forEach(function(row){
+    var name=row[0],pref=row[1];
+    html+='<tr><td class="day">'+name+'</td>';
+    for(var grp=0;grp<3;grp++){
+      html+='<td style="white-space:nowrap;">';
+      for(var d=0;d<10;d++){
+        var k=pref+'_'+(grp*10+d);
+        html+='<span class="dotb '+(getVal(k)==='1'?'on':'')+'" data-k="'+k+'" style="width:16px;height:16px;margin-right:4px;" role="button" tabindex="0" aria-label="'+name+' habit day '+(grp*10+d+1)+'"></span>';
+      }
+      html+='</td>';
+    }
+    html+='</tr>';
+  });
+  el.innerHTML=html;
+  el.querySelectorAll('.dotb').forEach(function(b){
+    var tgl=function(){
+      setVal(b.dataset.k,getVal(b.dataset.k)==='1'?'0':'1');
+      b.classList.toggle('on');
+    };
+    b.addEventListener('click',tgl);
+    b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
+  });
+}
+
+/* ═══════ INIT ═══════ */
+hydrate();renderSalah();renderJuz();renderHijab();renderHabits();
+</script>
+</body>
+</html>
