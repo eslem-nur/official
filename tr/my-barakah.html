@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benim Bereketim — Müslüman Hanımlar İçin Dijital Planlayıcı</title>
+<meta name="description" content="Benim Bereketim: saliha hanımlara özel, kişisel bir dijital planlayıcı — namaz, hıfz-ı Kelâmullah, hicab, âdet döngüsü ve hedefler. Eslem Nur Çetin (İlim & Kod).">
+<meta name="author" content="Eslem Nur Çetin">
+
+
+<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();</script>
+<script>if(!localStorage.getItem('portalActiveUser')){location.replace('../portal.html?don=my-barakah');}</script>
+
+<!-- Fontlar & İkonlar (ana site ile aynı) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<!-- barakah CSS -->
+    <link rel="stylesheet" href="../style-sheets/my-barakah.css">
+</head>
+<body class="planner-body">
+
+<!-- ================= UYGULAMA ================= -->
+<div id="app">
+  <header>
+    <div class="brand">BENİM BEREKETİM<small>MÜSLÜMAN HANIM PLANLAYICI ☾</small></div>
+    <div class="tabwrap">
+      <nav class="top-tabs" id="tabs" aria-label="Planlayıcı bölümleri">
+        <button data-p="home" class="on">🕌 Ana Sayfa</button>
+        <button data-p="salah">🕋 Namaz</button>
+        <button data-p="hifdh">📖 Hıfz</button>
+        <button data-p="hijab">🧕 Hicab</button>
+        <button data-p="cycle">🌙 Âdet Döngüsü</button>
+        <button data-p="goals">🌱 Hedefler</button>
+        <button data-p="dua">🤲 Duâ</button>
+        <button data-p="notes">📝 Notlar</button>
+      </nav>
+    </div>
+    <span class="savebadge" id="savebadge">✓ kaydedildi</span>
+    <div class="userbox">
+      <div class="av" id="uav">A</div>
+      <span class="uname" id="uname"></span>
+      <button class="theme-toggle-planner" id="plannerThemeToggle" aria-label="Temayı değiştir">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+      <button class="out" onclick="location.href='../portal.html'" title="İlim & Kod Portalına dön">
+        <i class="fas fa-house" aria-hidden="true"></i> Portal
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ ANA SAYFA ============ -->
+    <section class="pg on" id="home">
+      <div class="ph"><span class="bism" dir="rtl">بِسْمِ اللّٰهِ</span><h1>Esselâmu <span>aleyküm</span> 🌷</h1></div>
+      <p class="psub">Niyetle başla — bereketli bir gün, başlamadan önce planlanır.</p>
+      <div class="card"><h3>Bugün</h3>
+        <div class="cols">
+          <div><label class="mini">Tarih</label><input type="date" data-k="home_date"></div>
+          <div><label class="mini">Hicri tarih</label><input type="text" data-k="home_hijri" placeholder="örn. 15 Cemâziyelevvel 1448"></div>
+          <div><label class="mini">Bugünkü niyetim</label><input type="text" data-k="home_niyyah" placeholder="Niyet…"></div>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>🚩 Günün 3 Önceliği</h3>
+          <div class="chk"><span class="cbx" data-k="hp1" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht1" placeholder="Öncelik 1"></div>
+          <div class="chk"><span class="cbx" data-k="hp2" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht2" placeholder="Öncelik 2"></div>
+          <div class="chk"><span class="cbx" data-k="hp3" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="ht3" placeholder="Öncelik 3"></div>
+        </div>
+        <div class="card"><h3>🤍 Bugünkü İbadetlerim</h3>
+          <div class="chk"><span class="cbx" data-k="hb1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Kur'ân-ı Kerîm — <input type="number" data-k="hb1p" style="width:52px;" min="0" max="999"> sayfa</span></div>
+          <div class="chk"><span class="cbx" data-k="hb2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Sabah evrâdı (zikirleri)</span></div>
+          <div class="chk"><span class="cbx" data-k="hb3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Akşam evrâdı (zikirleri)</span></div>
+          <div class="chk"><span class="cbx" data-k="hb4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Sadaka — bir tebessüm bile olsa</span></div>
+        </div>
+        <div class="card"><h3>💗 Nefse İhtimam</h3>
+          <div class="chk"><span class="cbx" data-k="hs1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">8 bardak su</span></div>
+          <div class="chk"><span class="cbx" data-k="hs2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Hareket / yürüyüş</span></div>
+          <div class="chk"><span class="cbx" data-k="hs3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Cilt bakımı &amp; istirahat</span></div>
+          <div class="chk"><span class="cbx" data-k="hs4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Ekransız bir saat</span></div>
+        </div>
+      </div>
+      <div class="card"><h3>✨ Elhamdülillah ki… (şükür günlüğü)</h3>
+        <textarea data-k="home_gratitude" placeholder="Bugün nimet olarak verilen üç şey…"></textarea>
+      </div>
+    </section>
+
+    <!-- ============ NAMAZ ============ -->
+    <section class="pg" id="salah">
+      <div class="ph"><span class="bism" dir="rtl">حَافِظْ عَلَى الصَّلَوَاتِ</span><h1>Namaz <span>Takibi</span> 🕋</h1></div>
+      <p class="psub">Daireye dokun: bir kez = vaktinde kılındı ✓, iki kez = geç kılındı ~, üç kez = kılınamadı ✕.</p>
+      <div class="card"><h3>Bu Hafta — Beş Vakit Namaz</h3>
+        <table id="saltable"></table>
+        <p style="margin-top:12px;">
+          <span class="stat"><b id="st_ontime">0/35</b><small>Vaktinde</small></span>
+          <span class="stat"><b id="st_late">0</b><small>Geç kılınan</small></span>
+          <span class="stat"><b id="st_miss">0</b><small>Kılınamayan</small></span>
+          <span class="stat"><b id="st_best">—</b><small>En güzel gün</small></span>
+        </p>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>Gece İbadeti &amp; Sünnetler</h3>
+          <div class="chk"><span class="cbx" data-k="sq1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Teheccüd</span></div>
+          <div class="chk"><span class="cbx" data-k="sq2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Duhâ (Kuşluk) namazı</span></div>
+          <div class="chk"><span class="cbx" data-k="sq3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Vitir</span></div>
+        </div>
+        <div class="card"><h3>🕰 Bu Haftanın Namaz Vakitleri</h3>
+          <table>
+            <tr><th>Namaz</th><th>Ezan</th><th>Cemaat</th></tr>
+            <tr><td class="day">Sabah</td><td><input type="time" data-k="pt_f1"></td><td><input type="time" data-k="pt_j1"></td></tr>
+            <tr><td class="day">Öğle</td><td><input type="time" data-k="pt_f2"></td><td><input type="time" data-k="pt_j2"></td></tr>
+            <tr><td class="day">İkindi</td><td><input type="time" data-k="pt_f3"></td><td><input type="time" data-k="pt_j3"></td></tr>
+            <tr><td class="day">Akşam</td><td><input type="time" data-k="pt_f4"></td><td><input type="time" data-k="pt_j4"></td></tr>
+            <tr><td class="day">Yatsı</td><td><input type="time" data-k="pt_f5"></td><td><input type="time" data-k="pt_j5"></td></tr>
+          </table>
+        </div>
+        <div class="card"><h3>Huzur Kontrol Listesi</h3>
+          <div class="chk"><span class="cbx" data-k="kh1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Namazdan önce telefonu uzaklaştırdım</span></div>
+          <div class="chk"><span class="cbx" data-k="kh2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Abdesti sükûnetle aldım</span></div>
+          <div class="chk"><span class="cbx" data-k="kh3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Namazda yeni bir duâ öğrendim</span></div>
+          <div class="chk"><span class="cbx" data-k="kh4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Kalbim hâzır oldu, dünyaya dalıp gitmedim</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HIFDH ============ -->
+    <section class="pg" id="hifdh">
+      <div class="ph"><span class="bism" dir="rtl">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span><h1>Hıfz <span>Yolculuğu</span> 📖</h1></div>
+      <p class="psub">Cuze dokun: bir kez = öğreniliyor ◐, iki kez = ezberlendi ●, üç kez = sıfırla. İlerleme profile özel kaydedilir.</p>
+      <div class="card"><h3>30 Cüz Yolculuk Haritası</h3><div class="pills" id="juzmap"></div>
+        <p style="margin-top:12px;"><span class="stat"><b id="st_juz">0</b><small>Ezberlenen cüz</small></span>
+        <span class="stat"><b id="st_learn">0</b><small>Çalışılan</small></span>
+        <span class="stat"><b id="st_pct">0%</b><small>Tamamlanan</small></span></p>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>Haftalık Usûl</h3>
+          <div class="chk"><span class="cbx" data-k="hf1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Yeni bölümü 10 kez dinledim</span></div>
+          <div class="chk"><span class="cbx" data-k="hf2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Ezberimden tilâvet ettim</span></div>
+          <div class="chk"><span class="cbx" data-k="hf3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Ses kaydı yapıp tecvidimi kontrol ettim</span></div>
+          <div class="chk"><span class="cbx" data-k="hf4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Hocama / halkama gönderdim</span></div>
+          <div class="chk"><span class="cbx" data-k="hf5" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Önceki bölümleri tekrar ettim</span></div>
+        </div>
+        <div class="card"><h3>Bu Haftanın Bölümü</h3>
+          <label class="mini">Sûre</label><input data-k="hw_surah" placeholder="örn. Bakara Sûresi">
+          <label class="mini" style="margin-top:10px;display:block;">Âyetler</label><input data-k="hw_ayat" placeholder="örn. 1–20">
+          <label class="mini" style="margin-top:10px;display:block;">Tecvid odağı</label><input data-k="hw_taj" placeholder="örn. med (uzatma) kaideleri">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HICAB ============ -->
+    <section class="pg" id="hijab">
+      <div class="ph"><span class="bism" dir="rtl">وَقُلْ لِلْمُؤْمِنَاتِ يَغْضُضْنَ مِنْ أَبْصَارِهِنَّ</span><h1>İffet &amp; <span>Hicab Yolculuğu</span> 🧕</h1></div>
+      <p class="psub">Kişiye özel, yargısız bir takip — gelişim kendi temposunda, yalnızca Allah rızası için.</p>
+      <div class="card"><h3>Dış Hicab — Bu Hafta</h3><table id="hjouter"></table></div>
+      <div class="card"><h3>İç Hicab — Kalbi Muhafaza</h3><table id="hjinner"></table></div>
+      <div class="cols">
+        <div class="card"><h3>Bu Ayın İffet Hedefleri</h3><textarea data-k="hj_goals"></textarea></div>
+        <div class="card"><h3>🤲 Bu Yolculuk İçin Duâm</h3>
+          <p style="font-size:.85rem;font-style:italic;color:var(--text-secondary);line-height:1.8;">"Allah'ım! Beni içeride ve dışarıda haya ile süsle; hicabımı benim için bir izzet tâcı eyle."</p>
+          <textarea data-k="hj_dua" style="min-height:60px;"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ÂDET DÖNGÜSÜ ============ -->
+    <section class="pg" id="cycle">
+      <div class="ph"><span class="bism" dir="rtl">لِكُلٍّ جَعَلْنَا مِنْكُمْ شِرْعَةً وَمِنْهَاجًا</span><h1>Âdet Döngüsü &amp; <span>İbadet Planı</span> 🌙</h1></div>
+      <p class="psub">İstirahat mevsimi de bir ibadet mevsimidir — şekil değişsin, Rabbe bağlantı sürsün.</p>
+      <div class="card"><h3>Bu Ayın Kaydı</h3>
+        <table>
+          <tr><th>Evre</th><th>Başlangıç</th><th>Bitiş</th><th>Enerji 1–5</th></tr>
+          <tr><td class="day">Âdet hali</td><td><input type="date" data-k="cy_m1"></td><td><input type="date" data-k="cy_m2"></td><td><input type="number" data-k="cy_me" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Foliküler evre</td><td><input type="date" data-k="cy_f1"></td><td><input type="date" data-k="cy_f2"></td><td><input type="number" data-k="cy_fe" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Yumurtlama dönemi</td><td><input type="date" data-k="cy_o1"></td><td><input type="date" data-k="cy_o2"></td><td><input type="number" data-k="cy_oe" min="1" max="5" style="width:60px;"></td></tr>
+          <tr><td class="day">Luteal evre</td><td><input type="date" data-k="cy_l1"></td><td><input type="date" data-k="cy_l2"></td><td><input type="number" data-k="cy_le" min="1" max="5" style="width:60px;"></td></tr>
+        </table>
+      </div>
+      <div class="cols">
+        <div class="card"><h3>Âdet Halindeyken Yapabileceklerim…</h3>
+          <div class="chk"><span class="cbx" data-k="cm1" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Duâ etmek — istediğim anda, kalbimden gelen sözlerle</span></div>
+          <div class="chk"><span class="cbx" data-k="cm2" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Zikir &amp; salavât</span></div>
+          <div class="chk"><span class="cbx" data-k="cm3" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Kur'ân-ı Kerîm ve tefsir dinlemek</span></div>
+          <div class="chk"><span class="cbx" data-k="cm4" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">Her gün sadaka</span></div>
+          <div class="chk"><span class="cbx" data-k="cm5" role="checkbox" tabindex="0" aria-checked="false"></span><span class="lbl">İlim tahsil etmek / derslere katılmak</span></div>
+        </div>
+        <div class="card"><h3>Kaza Oruçları</h3>
+          <label class="mini">Tutulması gereken gün sayısı</label><input type="number" data-k="cy_owed" min="0" max="60" style="width:80px;">
+          <label class="mini" style="margin-top:10px;display:block;">Planlanan başlangıç</label><input type="date" data-k="cy_sched">
+          <p class="mini" style="margin-top:12px;">Âdet hâlinde kılınmayan farz namazların kazası gerekmez. Oruç ise îcap eder; âdet günlerinin hesabında âlimler farklı görüş beyan etmiştir — güvendiğiniz bir hocanıza danışınız.</p>
+        </div>
+      </div>
+      <div class="card"><h3>Enerjiye Göre İbadet Merdiveni</h3>
+        <table>
+          <tr><th></th><th>Zayıf gün 😴</th><th>İyi gün 🙂</th><th>Güçlü gün 💪</th></tr>
+          <tr><td class="day">İbadet</td><td>Zikir + bir duâ</td><td>Evrâd + 1 sayfa Kur'ân</td><td>Tam bir hıfz seansı</td></tr>
+          <tr><td class="day">Beden</td><td>İstirahat &amp; sıcaklık</td><td>Hafif yürüyüş</td><td>Esneme hareketleri</td></tr>
+          <tr><td class="day">Gönül</td><td>Sadece günlük yazmak</td><td>Hafif okuma</td><td>Yeni bir ilim öğrenmek</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ HEDEFLER ============ -->
+    <section class="pg" id="goals">
+      <div class="ph"><span class="bism" dir="rtl">وَأَنْ لَيْسَ لِلْإِنْسَانِ إِلَّا مَا سَعَى</span><h1>Hedefler &amp; <span>Alışkanlıklar</span> 🌱</h1></div>
+      <p class="psub">Uhrevî niyetle dünyevî hedefler — her hedef, Allah rızası için bir "neden" taşır.</p>
+      <div class="cols">
+        <div class="card"><h3>🤲 Din</h3>
+          <label class="mini">Hedef</label><input data-k="gl_d1" placeholder="örn. 2. Cüz hıfzını tamamlamak">
+          <label class="mini" style="display:block;margin-top:10px;">Niyet</label><input data-k="gl_d2" placeholder="Neden — Allah rızası için">
+          <label class="mini" style="display:block;margin-top:10px;">Haftalık adım</label><input data-k="gl_d3" placeholder="örn. 5 âyet + tekrar">
+        </div>
+        <div class="card"><h3>🌸 Nefs</h3>
+          <label class="mini">Hedef</label><input data-k="gl_s1">
+          <label class="mini" style="display:block;margin-top:10px;">Niyet</label><input data-k="gl_s2">
+          <label class="mini" style="display:block;margin-top:10px;">Haftalık adım</label><input data-k="gl_s3">
+        </div>
+        <div class="card"><h3>💼 İş / Tahsil</h3>
+          <label class="mini">Hedef</label><input data-k="gl_w1">
+          <label class="mini" style="display:block;margin-top:10px;">Niyet</label><input data-k="gl_w2">
+          <label class="mini" style="display:block;margin-top:10px;">Haftalık adım</label><input data-k="gl_w3">
+        </div>
+        <div class="card"><h3>💞 Akrabalık &amp; İnsanlar</h3>
+          <label class="mini">Hedef</label><input data-k="gl_r1">
+          <label class="mini" style="display:block;margin-top:10px;">Niyet</label><input data-k="gl_r2">
+          <label class="mini" style="display:block;margin-top:10px;">Haftalık adım</label><input data-k="gl_r3">
+        </div>
+      </div>
+      <div class="card"><h3>Alışkanlık Tablosu — 30 gün boyunca her noktaya dokun</h3>
+        <table id="habitgrid"></table>
+      </div>
+    </section>
+
+    <!-- ============ DUÂ ============ -->
+    <section class="pg" id="dua">
+      <div class="ph"><span class="bism" dir="rtl">ادْعُونِي أَسْتَجِبْ لَكُمْ</span><h1>Duâ <span>Hazinesi</span> 🤲</h1></div>
+      <p class="psub">Seni her mevsimde ayakta tutan duâları biriktir — sonra kabul edilmelerini izle.</p>
+      <div class="cols">
+        <div class="card"><h3>Seçme Duâlar</h3>
+          <p style="font-size:16px;line-height:2.4;color:var(--text-primary);">
+            <span class="arabic" dir="rtl">رَبِّ اشْرَحْ لِي صَدْرِي</span> — <span class="mini">darlıkta ferahlık</span><br>
+            <span class="arabic" dir="rtl">رَبِّ هَبْ لِي مِنْ لَدُنْكَ ذُرِّيَّةً طَيِّبَةً</span> — <span class="mini">sâlih eş ve evlât</span><br>
+            <span class="arabic" dir="rtl">رَبِّ زِدْنِي عِلْمًا</span> — <span class="mini">ilimde artış</span><br>
+            <span class="arabic" dir="rtl">حَسْبُنَا اللّٰهُ وَنِعْمَ الْوَكِيلُ</span> — <span class="mini">imtihanlarda tevekkül</span>
+          </p>
+        </div>
+        <div class="card"><h3>Kendi Duâ Listem</h3>
+          <div class="chk"><span class="cbx" data-k="dp1" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt1" placeholder="Duâ 1"></div>
+          <div class="chk"><span class="cbx" data-k="dp2" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt2" placeholder="Duâ 2"></div>
+          <div class="chk"><span class="cbx" data-k="dp3" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt3" placeholder="Duâ 3"></div>
+          <div class="chk"><span class="cbx" data-k="dp4" role="checkbox" tabindex="0" aria-checked="false"></span><input data-k="dt4" placeholder="Duâ 4"></div>
+          <p class="mini" style="margin-top:10px;">İşaretlendi = kabul oldu ✅ — aşağıya kaydet!</p>
+        </div>
+      </div>
+      <div class="card"><h3>Kabul Olunan Duâ Günlüğü — Yakîn Delilleri</h3>
+        <textarea data-k="dua_journal" placeholder="Kabul edilen her duâyı tarihiyle birlikte yaz — bu, yakîni hiçbir şeydeki gibi pekiştirir…" style="min-height:140px;"></textarea>
+      </div>
+    </section>
+
+    <!-- ============ NOTLAR ============ -->
+    <section class="pg" id="notes">
+      <div class="ph"><span class="bism" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</span><h1>Serbest <span>Notlar</span> 📝</h1></div>
+      <p class="psub">Kalbinin bu haftaya ihtiyacı ne ise — tefsir incileri, sohbetler, günlük tutmak.</p>
+      <div class="card"><h3>Not Defteri</h3><textarea data-k="notes_main" style="min-height:320px;"></textarea></div>
+    </section>
+  </main>
+  <footer>✦ BENİM BEREKETİM · Eslem Nur Çetin'in İlim &amp; Kod projesi · veriler yalnızca bu cihazda, gizlice saklanır ✦</footer>
+</div>
+
+<script>
+
+var K_DATA='barakah_v1';
+
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+var PORTAL_NAME=(function(){
+  try{return localStorage.getItem('portalUserName')||localStorage.getItem('portalActiveUser')||'';}catch(e){return '';}
+})();
+
+var DATA={};
+function loadData(){
+  try{DATA=JSON.parse(lsGet(K_DATA)||'{}');}catch(e){DATA={};}
+  if(!DATA.data)DATA={data:{},created:new Date().toISOString()};
+}
+function persist(){lsSet(K_DATA,JSON.stringify(DATA));flash();}
+function flash(){
+  var b=document.getElementById('savebadge');
+  b.classList.add('show');setTimeout(function(){b.classList.remove('show')},1200);
+}
+function setVal(k,v){DATA.data[k]=v;persist();}
+function getVal(k){return DATA.data[k];}
+
+/* ═══════ BAŞLANGIÇ (giriş yok — oturum portaldan gelir) ═══════ */
+loadData();
+var pretty=PORTAL_NAME||'Misafir';
+document.getElementById('uav').textContent=pretty.charAt(0).toLocaleUpperCase('tr');
+document.getElementById('uname').textContent=pretty;
+document.title='Benim Bereketim — '+pretty;
+
+/* ═══════ SEKMELER (mobil: aktif sekme görünür alana kayar) ═══════ */
+var tabstrip=document.getElementById('tabs');
+tabstrip.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  tabstrip.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id===b.dataset.p)});
+  if(window.innerWidth<900&&b.scrollIntoView){
+    b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  }
+});
+
+/* ═══════ TEMA (portal ve site ile ortak "theme" anahtarı) ═══════ */
+(function initPlannerTheme(){
+  var t=(lsGet('theme')==='dark')?'dark':'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var ic=document.querySelector('#plannerThemeToggle i');
+  if(ic)ic.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  document.getElementById('plannerThemeToggle').addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    lsSet('theme',nxt);
+    ic.className=nxt==='dark'?'fas fa-sun':'fas fa-moon';
+  });
+})();
+
+/* ═══════ GİRDİ BAĞLAMA ═══════ */
+function hydrate(){
+  document.querySelectorAll('[data-k]').forEach(function(el){
+    if(el.classList.contains('cbx'))return;
+    var v=getVal(el.dataset.k);
+    if(v!==undefined)el.value=v;
+    el.addEventListener('input',function(){setVal(el.dataset.k,el.value)});
+  });
+  document.querySelectorAll('.cbx[data-k]').forEach(function(el){
+    if(getVal(el.dataset.k)==='on'){el.classList.add('on');el.setAttribute('aria-checked','true');}
+    var toggle=function(){
+      el.classList.toggle('on');
+      var on=el.classList.contains('on');
+      el.setAttribute('aria-checked',on?'true':'false');
+      setVal(el.dataset.k,on?'on':'off');
+    };
+    el.addEventListener('click',toggle);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+}
+
+/* ═══════ NAMAZ TABLOSU ═══════ */
+var DAYS=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];
+var PRAYERS=['Sabah','Öğle','İkindi','Akşam','Yatsı'];
+function renderSalah(){
+  var t=document.getElementById('saltable');
+  var html='<tr><th></th>'+PRAYERS.map(function(p){return '<th>'+p+'</th>'}).join('')+'</tr>';
+  DAYS.forEach(function(d){
+    html+='<tr><td class="day">'+d+'</td>';
+    PRAYERS.forEach(function(p,i){
+      var k='sl_'+d.slice(0,2)+'_'+i;
+      var s=getVal(k)||'0';
+      html+='<td><span class="dotb '+(s==='1'?'on':s==='2'?'late':s==='3'?'miss':'')+'" data-k="'+k+'" role="button" tabindex="0" aria-label="'+d+' '+p+': '+(s==='1'?'vaktinde kılındı':s==='2'?'geç kılındı':s==='3'?'kılınamadı':'işaretlenmedi')+'"></span></td>';
+    });
+    html+='</tr>';
+  });
+  t.innerHTML=html;
+  t.querySelectorAll('.dotb').forEach(function(el){
+    var cycle=function(){
+      var nxt={'0':'1','1':'2','2':'3','3':'0'}[getVal(el.dataset.k)||'0'];
+      setVal(el.dataset.k,nxt);renderSalah();
+    };
+    el.addEventListener('click',cycle);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cycle();}});
+  });
+  var on=0,late=0,miss=0;var perDay={};
+  DAYS.forEach(function(d){
+    var c=0;
+    PRAYERS.forEach(function(p,i){
+      var s=getVal('sl_'+d.slice(0,2)+'_'+i)||'0';
+      if(s==='1'){on++;c++;}else if(s==='2')late++;else if(s==='3')miss++;
+    });
+    perDay[d]=c;
+  });
+  document.getElementById('st_ontime').textContent=on+'/35';
+  document.getElementById('st_late').textContent=late;
+  document.getElementById('st_miss').textContent=miss;
+  var best=Object.entries(perDay).sort(function(a,b){return b[1]-a[1]})[0];
+  document.getElementById('st_best').textContent=best&&best[1]>0?best[0]+' ('+best[1]+')':'—';
+}
+
+/* ═══════ CÜZ HARİTASI ═══════ */
+function renderJuz(){
+  var m=document.getElementById('juzmap');m.innerHTML='';
+  var mem=0,learn=0;
+  for(var i=1;i<=30;i++){
+    (function(i){
+      var k='jz_'+i;var s=getVal(k)||'0';
+      if(s==='2')mem++;if(s==='1')learn++;
+      var d=document.createElement('button');
+      d.className='jz '+(s==='2'?'m':s==='1'?'l':'');
+      d.setAttribute('aria-label','Cüz '+i+': '+(s==='2'?'ezberlendi':s==='1'?'çalışılıyor':'başlanmadı'));
+      d.innerHTML='<b>'+i+'</b>'+(s==='2'?'● ezberlendi':s==='1'?'◐ çalışılıyor':'○ başlanmadı');
+      d.addEventListener('click',function(){
+        var nx={'0':'1','1':'2','2':'0'}[getVal(k)||'0'];
+        setVal(k,nx);renderJuz();
+      });
+      m.appendChild(d);
+    })(i);
+  }
+  document.getElementById('st_juz').textContent=mem;
+  document.getElementById('st_learn').textContent=learn;
+  document.getElementById('st_pct').textContent=Math.round((mem+learn*.5)/30*100)+'%';
+}
+
+/* ═══════ HİCAB TABLOLARI ═══════ */
+var HJ_OUT=['Tam tesettürle evden çıktım','Bol ve edep ölçülerine uygun kıyafet','Namazdan sonra da örtünmeye devam ettim','Kıyafetlerimi bir gece önceden hazırladım'];
+var HJ_IN=['Bakışlarımı haramdan sakındım','Güzel söz söyledim — gıybet etmedim','Paylaşım yapmadan önce niyetimi sorguladım','Ses ve tavırlarda haya'];
+function renderHijab(){
+  var mk=function(id,rows,pref){
+    var el=document.getElementById(id);
+    var html='<tr><th>Alışkanlık</th>'+DAYS.map(function(d){return '<th>'+d.slice(0,2)+'</th>'}).join('')+'</tr>';
+    rows.forEach(function(r,ri){
+      html+='<tr><td class="day">'+r+'</td>';
+      DAYS.forEach(function(d,di){
+        var k=pref+ri+'_'+di;
+        html+='<td style="text-align:center;"><span class="dotb '+(getVal(k)==='1'?'on':'')+'" data-k="'+k+'" role="button" tabindex="0" aria-label="'+r+' — '+d+'"></span></td>';
+      });
+      html+='</tr>';
+    });
+    el.innerHTML=html;
+    el.querySelectorAll('.dotb').forEach(function(b){
+      var tgl=function(){setVal(b.dataset.k,getVal(b.dataset.k)==='1'?'0':'1');renderHijab();};
+      b.addEventListener('click',tgl);
+      b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
+    });
+  };
+  mk('hjouter',HJ_OUT,'hjo_');
+  mk('hjinner',HJ_IN,'hji_');
+}
+
+/* ═══════ ALIŞKANLIK TABLOSU ═══════ */
+function renderHabits(){
+  var rows=[['Din','hg_d'],['Nefs','hg_s'],['İş/Tahsil','hg_w']];
+  var el=document.getElementById('habitgrid');
+  var html='<tr><th style="width:90px;">Alışkanlık</th><th>1.–10. Günler</th><th>11.–20. Günler</th><th>21.–30. Günler</th></tr>';
+  rows.forEach(function(row){
+    var name=row[0],pref=row[1];
+    html+='<tr><td class="day">'+name+'</td>';
+    for(var grp=0;grp<3;grp++){
+      html+='<td style="white-space:nowrap;">';
+      for(var d=0;d<10;d++){
+        var k=pref+'_'+(grp*10+d);
+        html+='<span class="dotb '+(getVal(k)==='1'?'on':'')+'" data-k="'+k+'" style="width:16px;height:16px;margin-right:4px;" role="button" tabindex="0" aria-label="'+name+' alışkanlığı '+(grp*10+d+1)+'. gün"></span>';
+      }
+      html+='</td>';
+    }
+    html+='</tr>';
+  });
+  el.innerHTML=html;
+  el.querySelectorAll('.dotb').forEach(function(b){
+    var tgl=function(){
+      setVal(b.dataset.k,getVal(b.dataset.k)==='1'?'0':'1');
+      b.classList.toggle('on');
+    };
+    b.addEventListener('click',tgl);
+    b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
+  });
+}
+
+/* ═══════ BAŞLAT ═══════ */
+hydrate();renderSalah();renderJuz();renderHijab();renderHabits();
+</script>
+</body>
+</html>
