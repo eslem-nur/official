@@ -5,12 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İlim Defterleri | Eslem Nur Çetin</title>
 
-<!-- ══════════════════════════════════════════════════════════
-     PANEL ENTEGRASYONU (Seçenek A) — bu iki script EN ÜSTTE kalmalı!
-     a) Verileri panele giriş yapan kullanıcıya yönlendir.
-        Eski (öneksiz) kayıtları ilk okumada otomatik yeni ad alanına taşır.
-     b) Giriş yapılmamışsa panelin login ekranına gönder.
-     ══════════════════════════════════════════════════════════ -->
+
 <script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();</script>
 <script>if(!localStorage.getItem('portalActiveUser')){location.replace('../portal.html?don=ilim-defteri');}</script>
 

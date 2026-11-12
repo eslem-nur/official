@@ -18,6 +18,9 @@
     <meta property="og:type" content="Web App">
     <meta property="og:locale" content="de_DE">
 
+    <script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();</script>
+    <script>if(!localStorage.getItem('portalActiveUser')){location.replace('../portal.html?don=DOSYA-ADI');}</script>
+
     <!-- PWA Manifest Ekleme -->
     <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon2.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon2-96x96.png" />
