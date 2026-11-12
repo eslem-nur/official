@@ -437,35 +437,52 @@ function logout(){
 
 /* ═══════ 5. Uygulama kataloğu — GERÇEK dosya adlarıyla ═══════
    url:{tr,en,de} — dilde sürüm yoksa null → TR'ye düşer ve "yalnızca Türkçe" rozeti çıkar. */
+/* ═══════ Uygulama kataloğu — isimler dile göre ═══════ */
 var APPS={
   web:[
-    {name:'Nur Kuran-ı Kerim',icon:'📖',url:{tr:'tr/kuran.html',en:'en/nur-kuran.html',de:'de/nur-kuran-de.html'},
+    {icon:'📖',name:{tr:"Nur Kuran-ı Kerim",en:"Nur Qur'an",de:"Nur Koran"},
+     url:{tr:'tr/kuran.html',en:'en/nur-kuran.html',de:'de/nur-kuran-de.html'},
      desc:{tr:"Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur'an uygulaması.",en:"Modern Qur'an app with Arabic text and Turkish translation (Diyanet API).",de:"Moderne Koran-App mit arabischem Text und türkischer Übersetzung."}},
-    {name:'İlim Defteri',icon:'📓',url:{tr:'tr/ilim-defteri.html',en:null,de:null},
+    {icon:'📓',name:{tr:"İlim Defteri",en:"Knowledge Journal",de:"Wissensjournal"},
+     url:{tr:'tr/ilim-defteri.html',en:null,de:null},
      desc:{tr:'114 sure için kişisel çalışma defteri; not alın, işaretleyin, PDF yazdırın.',en:'Personal study journal for all 114 surahs: notes, tracking, PDF print.',de:'Persönliches Lernheft für alle 114 Suren: Notizen, Fortschritt, PDF-Druck.'}},
-    {name:'İlim ve İbadet Takibi',icon:'📈',url:{tr:'tr/gelisim.html',en:'en/tracker-en.html',de:'de/ilm-ibadah.html'},
+    {icon:'📈',name:{tr:"İlim ve İbadet Takibi",en:"Study & Worship Tracker",de:"Lern- & Gebets-Tracker"},
+     url:{tr:'tr/gelisim.html',en:'en/tracker-en.html',de:'de/ilm-ibadah.html'},
      desc:{tr:'Günlük ibadet ve ilim takibi, seviye sistemiyle.',en:'Daily worship & study tracker with a level system.',de:'Täglicher Anbetungs- und Lern-Tracker mit Stufensystem.'}},
-    {name:'Dini Literatür Kelime Avı',icon:'🎯',url:{tr:'tr/kelime-oyunu.html',en:'en/word-hunt.html',de:'de/wortspiel.html'},
+    {icon:'🎯',name:{tr:"Dini Literatür Kelime Avı",en:"Religious Word Hunt",de:"Islamisches Wortsuchspiel"},
+     url:{tr:'tr/kelime-oyunu.html',en:'en/word-hunt.html',de:'de/wortspiel.html'},
      desc:{tr:'İslami terimleri oyunlaştırarak öğrenin.',en:'Learn Islamic terms through a word-search game.',de:'Islamische Begriffe spielerisch im Wortsuchspiel lernen.'}},
-    {name:'İlim & İbadet Planlayıcısı',icon:'🗓️',url:{tr:'tr/planner.html',en:'en/planner.html',de:'de/ilm-ibadah-Planer.html'},
+    {icon:'🗓️',name:{tr:"İlim & İbadet Planlayıcısı",en:"Study & Worship Planner",de:"Lern- & Gebets-Planer"},
+     url:{tr:'tr/planner.html',en:'en/planner.html',de:'de/ilm-ibadah-Planer.html'},
      desc:{tr:'Hedef ve günlük görev planlayıcı, yedekleme özellikli.',en:'Goal & daily task planner with backup support.',de:'Ziel- und Tagesaufgaben-Planer mit Backup-Funktion.'}},
-    {name:'Dijital Zikir Sayacı',icon:'📿',url:{tr:'tr/zikir.html',en:'en/dhikr.html',de:'de/Zikirz.html'},
+    {icon:'📿',name:{tr:"Dijital Zikir Sayacı",en:"Digital Dhikr Counter",de:"Digitaler Dhikr-Zähler"},
+     url:{tr:'tr/zikir.html',en:'en/dhikr.html',de:'de/Zikirz.html'},
      desc:{tr:'Zarif, minimalist dijital tesbih.',en:'An elegant, minimalist digital tasbih.',de:'Ein eleganter, minimalistischer digitaler Tasbih.'}},
-    {name:'Ayet-i Kelim',icon:'🔤',url:{tr:'tr/arapca.html',en:'en/arabic-words.html',de:'de/arabisch-wort.html'},
+    {icon:'🔤',name:{tr:"Ayet-i Kelim",en:"Arabic Words",de:"Arabische Wörter"},
+     url:{tr:'tr/arapca.html',en:'en/arabic-words.html',de:'de/arabisch-wort.html'},
      desc:{tr:"Kur'an kıssalarında bağlamsal kelime öğrenimi.",en:"Contextual vocabulary learning from Qur'anic stories.",de:'Kontextuelles Vokabellernen aus Korangeschichten.'}},
-    {name:'İslami Zekat Hesaplama',icon:'🧮',url:{tr:'tr/zekat-hesaplama.html',en:null,de:null},
+    {icon:'🧮',name:{tr:"İslami Zekat Hesaplama",en:"Zakat Calculator",de:"Zakat-Rechner"},
+     url:{tr:'tr/zekat-hesaplama.html',en:null,de:null},
      desc:{tr:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',en:'Zakat calculator with nisab check at 2.5%.',de:'Zakat-Rechner mit Nisab-Prüfung (2,5 %).'}},
-    {name:'iKuran (Pembe)',icon:'🎧',url:{tr:'tr/ikuran-pink.html',en:'en/ikuran-pink.html',de:'de/ikuran-pink.html'},
-     desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü.",en:"Qur'an audio interface with an iPod feel.",de:'Koran-Audiooberfläche im iPod-Stil.'}},
-    {name:'Nur Kartları',icon:'🃏',url:{tr:'tr/nur-kartlari.html',en:null,de:null},
+        {icon:'🎧',name:{tr:"iKuran",en:"iQuran",de:"iKoran"},
+     variants:[
+       {label:{tr:'Pembe',en:'Pink',de:'Rosa'}, url:{tr:'tr/ikuran-pink.html',en:'en/ikuran-pink.html',de:'de/ikuran-pink.html'}},
+       {label:{tr:'Siyah',en:'Black',de:'Schwarz'}, url:{tr:'tr/ikuran-black.html',en:'en/ikuran-black.html',de:'de/ikuran-black.html'}}
+     ],
+     desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü — pembe ve siyah tema.",en:"Qur'an audio interface with an iPod feel — pink & black themes.",de:'Koran-Audiooberfläche im iPod-Stil — rosa & schwarzes Design.'}},
+    {icon:'🃏',name:{tr:"Nur Kartları",en:"Nur Cards",de:"Nur-Karten"},
+     url:{tr:'tr/nur-kartlari.html',en:null,de:null},
      desc:{tr:'Hicri ayları tanıtan etkileşimli bilgi kartları.',en:'Interactive cards introducing the Hijri months.',de:'Interaktive Karten zu den Hidschri-Monaten.'}}
   ],
   other:[
-    {name:'İlim Rehberi',icon:'📚',url:{tr:'tr/ilim-rehberi.html',en:null,de:null},
+    {icon:'📚',name:{tr:"İlim Rehberi",en:"Knowledge Guide",de:"Wissensführer"},
+     url:{tr:'tr/ilim-rehberi.html',en:null,de:null},
      desc:{tr:"Kur'an, tefsir, hadis, fıkıh ve Arapça dokümantasyon platformu.",en:"Documentation platform for Qur'an, tafsir, hadith, fiqh & Arabic.",de:'Dokumentationsplattform für Koran, Tafsir, Hadith, Fiqh & Arabisch.'}},
-    {name:'Adım Adım Hac ve Umre',icon:'🕋',url:{tr:'tr/umre-hac.html',en:'en/hajj-umrah-en.html',de:'de/hajj-umrah.html'},
+    {icon:'🕋',name:{tr:"Adım Adım Hac ve Umre",en:"Hajj & Umrah Step by Step",de:"Haddsch & Umra Schritt für Schritt"},
+     url:{tr:'tr/umre-hac.html',en:'en/hajj-umrah-en.html',de:'de/hajj-umrah.html'},
      desc:{tr:'Kutsal yolculuğu dualarla adım adım takip rehberi.',en:'Step-by-step guide to Hajj & Umrah with supplications.',de:'Haddsch- und Umra-Leitfaden Schritt für Schritt, mit Duas.'}},
-    {name:'İslami Not Dönüştürücü',icon:'🔄',url:{tr:'tr/markdown-html.html',en:null,de:null},
+    {icon:'🔄',name:{tr:"İslami Not Dönüştürücü",en:"Notes Converter",de:"Noten-Konverter"},
+     url:{tr:'tr/markdown-html.html',en:null,de:null},
      desc:{tr:"Markdown notlarınızı anında HTML'e çevirin.",en:'Convert your Markdown notes to HTML instantly.',de:'Markdown-Noten sofort in HTML umwandeln.'}}
   ]
 };
@@ -529,20 +546,31 @@ function renderApps(){
     if(!wrap){wrap=document.createElement('div');wrap.id='group-'+g;wrap.className='group';document.getElementById('groupsWrap').appendChild(wrap)}
     var inner=document.createElement('div');inner.className='projects-grid';
     var list=APPS[g].filter(function(a){
-      var d=a.desc[cur]||a.desc.tr;
-      return a.name.toLowerCase().indexOf(q)>-1||d.toLowerCase().indexOf(q)>-1;
-    });
+  var nm=(a.name[cur]||a.name.tr), d=a.desc[cur]||a.desc.tr;
+  return nm.toLowerCase().indexOf(q)>-1||d.toLowerCase().indexOf(q)>-1;
+});
     if(!list.length){inner.innerHTML='<p class="empty-note">'+esc(t('emptySearch'))+'</p>'}
     list.forEach(function(a){
       var u=appUrl(a), ext=/^https?:/.test(u);
       var times=recent.filter(function(r){return r===u}).length;
-      var d=a.desc[cur]||a.desc.tr;
-      var card=document.createElement('div');card.className='app-card';
-      var badge=isFallback(a)?'<span class="lang-badge">'+esc(t('onlyTr'))+'</span><br>':'';
-      card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(a.name)+'</h3><p>'+esc(d)+'</p>'+badge
+
+            var d=a.desc[cur]||a.desc.tr, nm=a.name[cur]||a.name.tr;
+      card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(nm)+'</h3><p>'+esc(d)+'</p>'+badge
         +'<div class="app-meta"><span>'+(times?esc(t('openedTimes')(times)):esc(t('isNew')))+'</span>'
-        +'<a class="btn btn-sm btn-solid" href="'+u+'"'+(ext?' target="_blank" rel="noopener noreferrer"':' target="_blank" rel="noopener"')+'>'+esc(t('open'))+'</a></div>';
-      card.querySelector('a').addEventListener('click',function(){launch(u)});
+        +'<span class="variant-btns"></span></div>';
+      var vwrap=card.querySelector('.variant-btns');
+      var vars=a.variants||[{label:{tr:t('open')},url:a.url}];
+      vars.forEach(function(v){
+        var vu=(typeof v.url==='string')?v.url:(v.url[cur]||v.url.tr);
+        var b=document.createElement('a');
+        b.className='btn btn-sm btn-solid';
+        b.style.marginLeft='6px';
+        b.href=vu; b.target='_blank'; b.rel='noopener';
+        b.textContent=v.label[cur]||v.label.tr;
+        b.addEventListener('click',function(){launch(vu)});
+        vwrap.appendChild(b);
+      });
+
       inner.appendChild(card);
     });
     wrap.innerHTML='';wrap.appendChild(inner);
