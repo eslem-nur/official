@@ -311,6 +311,7 @@ function countUserData(u){
 function enterPanel(key){
   currentUser=key;
   lsSet(ACTIVE_KEY,key);
+  lsSet('portalUserName',(getUsers()[key]||{}).name||key);
   var users=getUsers(),user=users[key]||{};
   document.getElementById('authScreen').classList.add('hidden');
   document.getElementById('dashScreen').classList.remove('hidden');
