@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel • Eslem Nur Çetin</title>
+<meta name="description" content="Kişisel öğrenme paneli: uygulamalarınıza giriş yapıp ilerlemenizi takip edin.">
+<!-- Bu dosyayı /official/ klasörüne koyun (styles.css ile aynı dizine).
+     Uygulama yolları "tr/..." şeklinde; başka yere koyarsanız güncelleyin. -->
+<style>
+:root{
+  --primary:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
+  --bg:#FFF9F9;--bg2:#FFF0F5;--card:#FFFFFF;--card2:#FDF5F5;
+  --text:#4E342E;--text2:#8D6E63;--muted:#A89080;
+  --border:#F0E6E6;--note:#FFF0F5;
+  --shadow:0 4px 15px rgba(183,110,121,.15);
+  --shadow-lg:0 8px 25px rgba(183,110,121,.2);
+  --r:16px;--t:.3s ease;
+}
+[data-theme="dark"]{
+  --primary:#CC8E98;--primary-dark:#A06872;--primary-light:#E0A4AC;
+  --bg:#0D0D0D;--bg2:#141414;--card:#1A1A1A;--card2:#222222;
+  --text:#F5F5F0;--text2:#B0B0B0;--muted:#808080;
+  --border:#2A2A2A;--note:#252525;
+  --shadow:0 4px 20px rgba(0,0,0,.4);
+  --shadow-lg:0 8px 35px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;transition:background var(--t),color var(--t)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:0 clamp(15px,3vw,40px)}
+header{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none}
+.user-chip{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--text2)}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:25px;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;min-height:44px;border:2px solid var(--primary);transition:all var(--t);background:transparent;color:var(--primary)}
+.btn:hover{background:var(--primary);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-solid{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+.btn-solid:hover{filter:brightness(.92);color:#fff}
+.btn-danger{border-color:#D32F2F;color:#D32F2F}
+.btn-danger:hover{background:#D32F2F;color:#fff}
+.btn-sm{padding:6px 14px;min-height:36px;font-size:.82rem}
+.auth-wrap{max-width:420px;margin:clamp(40px,8vw,80px) auto;padding:0 20px}
+.auth-card{background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);padding:clamp(24px,5vw,40px);text-align:center}
+.auth-card .emblem{font-size:3rem;margin-bottom:8px}
+.auth-card h1{font-size:1.6rem;margin-bottom:4px}
+.auth-card>p{color:var(--text2);font-size:.92rem;margin-bottom:24px}
+.tabs2{display:flex;gap:6px;background:var(--card2);border-radius:25px;padding:5px;margin-bottom:24px}
+.tabs2 button{flex:1;padding:9px;border:none;background:transparent;border-radius:20px;font-weight:600;color:var(--text2);cursor:pointer;transition:all var(--t);font-size:.9rem}
+.tabs2 button.active{background:var(--primary);color:#fff}
+.field{text-align:left;margin-bottom:16px}
+.field label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.field input{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;background:var(--bg2);color:var(--text);font-size:1rem;transition:all var(--t)}
+.field input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(160,104,114,.12)}
+.auth-msg{min-height:24px;font-size:.88rem;font-weight:600;margin:10px 0}
+.auth-msg.err{color:#D32F2F}
+.auth-msg.ok{color:#388E3C}
+.auth-note{font-size:.78rem;color:var(--muted);margin-top:16px;line-height:1.6}
+.hero-strip{text-align:center;padding:clamp(30px,6vw,55px) 0 clamp(15px,3vw,25px)}
+.hero-strip h1{font-size:clamp(1.6rem,4vw,2.4rem);background:linear-gradient(90deg,var(--primary),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-strip p{color:var(--text2);max-width:600px;margin:8px auto 0;font-size:.95rem}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0 6px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:14px 26px;min-width:130px}
+.stat b{display:block;font-size:1.5rem;color:var(--primary);font-family:'Playfair Display',serif}
+.stat span{font-size:.8rem;color:var(--text2)}
+.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px 0 8px}
+.search-box{width:min(360px,100%);padding:11px 18px;border:2px solid var(--border);border-radius:25px;background:var(--card);color:var(--text);font-size:.95rem}
+.search-box:focus{outline:none;border-color:var(--primary)}
+.tab-controls{display:flex;justify-content:center;gap:10px;margin:24px 0;flex-wrap:wrap}
+.tab-btn{padding:11px 24px;border:2px solid var(--border);background:transparent;color:var(--text2);border-radius:25px;cursor:pointer;font-weight:600;font-size:.92rem;transition:all var(--t);min-height:44px}
+.tab-btn:hover:not(.active){border-color:var(--primary);color:var(--primary)}
+.tab-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.group{display:none;animation:fade .3s ease}
+.group.active{display:grid}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px}
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;transition:all .3s cubic-bezier(.175,.885,.32,1.27)}
+.app-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.app-icon{width:52px;height:52px;border-radius:14px;background:var(--note);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px}
+.app-card h3{font-size:1.15rem;color:var(--primary);margin-bottom:6px}
+.app-card p{font-size:.88rem;color:var(--text2);flex-grow:1;margin-bottom:14px}
+.app-meta{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);border-top:1px dashed var(--border);padding-top:12px}
+.app-meta b{color:var(--primary)}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.empty-note{text-align:center;color:var(--muted);padding:30px 10px;font-size:.9rem}
+.settings-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(20px,4vw,32px);max-width:640px;margin:0 auto 50px;text-align:left}
+.settings-box h3{color:var(--primary);margin-bottom:8px}
+.settings-box p{font-size:.88rem;color:var(--text2);margin-bottom:16px}
+.settings-box .row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+details.dev{border:1px dashed var(--primary);border-radius:12px;padding:14px 16px;margin-top:10px}
+details.dev summary{cursor:pointer;font-weight:600;color:var(--primary);font-size:.9rem}
+details.dev pre{background:var(--note);border-radius:10px;padding:14px;font-size:.72rem;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-all;color:var(--text)}
+.theme-toggle{background:transparent;border:2px solid var(--border);color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:all var(--t)}
+.theme-toggle:hover{border-color:var(--primary);color:var(--primary)}
+.hidden{display:none!important}
+footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
+@media(max-width:640px){.projects-grid{grid-template-columns:1fr}.controls{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+
+<!-- ══════════ GİRİŞ (LOGIN) EKRANI ══════════ -->
+<div id="authScreen">
+  <header>
+    <div class="container"><nav>
+      <a class="logo" href="index.html">✿ Eslem Nur Çetin · Panel</a>
+      <button class="theme-toggle" id="themeBtnAuth" onclick="toggleTheme()" title="Tema">🌙</button>
+    </nav></div>
+  </header>
+
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="emblem">📖</div>
+      <h1>İlim &amp; Kod Paneli</h1>
+      <p>Tüm uygulamalarım tek yerde, ilerlemeniz cihazınızda.</p>
+
+      <div class="tabs2">
+        <button id="tabLogin" class="active" onclick="showAuthTab('login')">Giriş Yap</button>
+        <button id="tabRegister" onclick="showAuthTab('register')">Kayıt Ol</button>
+      </div>
+
+      <form id="loginForm" onsubmit="doLogin(event)">
+        <div class="field">
+          <label for="li_user">Kullanıcı adı</label>
+          <input id="li_user" type="text" autocomplete="username" required maxlength="24" placeholder="örn. Ayşe">
+        </div>
+        <div class="field">
+          <label for="li_pass">PIN / Şifre</label>
+          <input id="li_pass" type="password" autocomplete="current-password" required placeholder="••••••">
+        </div>
+        <label style="font-size:.85rem;color:var(--text2);display:flex;gap:8px;align-items:center">
+          <input type="checkbox" id="li_remember" checked style="width:16px;min-height:0;accent-color:var(--primary)"> Beni hatırla
+        </label>
+        <div class="auth-msg" id="loginMsg"></div>
+        <button type="submit" class="btn btn-solid" style="width:100%">Giriş Yap →</button>
+      </form>
+
+      <form id="registerForm" class="hidden" onsubmit="doRegister(event)">
+        <div class="field">
+          <label for="rg_user">Kullanıcı adı</label>
+          <input id="rg_user" type="text" autocomplete="off" required maxlength="24" minlength="2" placeholder="örn. Fatma">
+        </div>
+        <div class="field">
+          <label for="rg_pass">PIN / Şifre (en az 4 karakter)</label>
+          <input id="rg_pass" type="password" autocomplete="new-password" required minlength="4" placeholder="••••••">
+        </div>
+        <div class="field">
+          <label for="rg_pass2">PIN tekrar</label>
+          <input id="rg_pass2" type="password" autocomplete="new-password" required placeholder="••••••">
+        </div>
+        <div class="auth-msg" id="regMsg"></div>
+        <button type="submit" class="btn btn-solid" style="width:100%">Hesap Oluştur ✿</button>
+      </form>
+
+      <p class="auth-note">
+        🔒 Her şey yalnızca bu cihazda saklanır — hiçbir veri internete gönderilmez.
+        Aynı cihazda birden fazla profil oluşturabilirsiniz (örn. kardeşler için).
+        Şifrenizi unutursanız verilerinize erişilemez; not alın.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PANEL (GİRİŞTEN SONRA) ══════════ -->
+<div id="dashScreen" class="hidden">
+  <header>
+    <div class="container"><nav>
+      <a class="logo" href="index.html">✿ Panel</a>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="user-chip">
+          <div class="avatar" id="avatarEl">?</div>
+          <div><b id="userNameEl" style="color:var(--text)"></b><br><span style="font-size:.75rem" id="userSinceEl"></span></div>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">🌙</button>
+        <button class="btn btn-sm" onclick="logout()">Çıkış</button>
+      </div>
+    </nav></div>
+  </header>
+
+  <div class="container">
+    <div class="hero-strip">
+      <h1 id="welcomeEl">Hoş geldiniz!</h1>
+      <p>Bütün web uygulamalarıma buradan erişin. Açtığınız her uygulama, yalnızca sizin profilinize kaydedilir.</p>
+      <div class="stats">
+        <div class="stat"><b id="statApps">0</b><span>Uygulama</span></div>
+        <div class="stat"><b id="statOpened">0</b><span>Açtığınız</span></div>
+        <div class="stat"><b id="statMembers">0</b><span>Cihazdaki profil</span></div>
+      </div>
+      <div class="controls">
+        <input class="search-box" id="searchBox" type="search" placeholder="🔍 Uygulama ara..." oninput="renderApps()">
+      </div>
+      <div class="controls">
+        <a class="btn btn-sm" onclick="exportData()">⬇ Yedeği indir</a>
+        <a class="btn btn-sm" onclick="document.getElementById('importFile').click()">⬆ Yedeği geri yükle</a>
+        <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(this)">
+      </div>
+    </div>
+
+    <div class="tab-controls" id="tabControls"></div>
+    <div id="groupsWrap"></div>
+
+    <div class="settings-box">
+      <h3>⚙ Profil Ayarları</h3>
+      <p>Bu profilin tüm verileri (<code>u__<span id="pfName">…</span>__</code> önekli anahtarlar) cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.</p>
+      <div class="row">
+        <button class="btn btn-sm btn-danger" onclick="deleteAccount()">🗑 Profili ve tüm verilerini sil</button>
+      </div>
+      <details class="dev">
+        <summary>🔧 Geliştirici notu: uygulamaları bu panele nasıl bağlarım?</summary>
+        <p style="margin:12px 0 0;font-size:.85rem">Her uygulama sayfasının <code>&lt;head&gt;</code> bölümüne, diğer scriptlerden <b>önce</b> şu tek satırı ekleyin. Uygulama artık girişi yapan kullanıcının ad alanına kaydeder; girişsiz açılanlar eskisi gibi ortak alana kaydetmeye devam eder:</p>
+        <pre id="snippetEl"></pre>
+      </details>
+    </div>
+  </div>
+  <footer>Rabbim, ilmimizi arttır · رَبِّ زِدْنَا عِلْمًا</footer>
+</div>
+
+<script>
+/* ═══════ 1. Yardımcılar ═══════ */
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+var USERS_KEY='portalUsers', SESSION_KEY='portalSession', ACTIVE_KEY='portalActiveUser', META_P='portalMeta_';
+
+async function hashPass(p){
+  try{
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('ilkod·'+p));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }catch(e){
+    var h=2166136261,x=p||'';for(var i=0;i<x.length;i++){h^=x.charCodeAt(i);h=Math.imul(h,16777619)}
+    return 'fnv'+(h>>>0).toString(16);
+  }
+}
+function getUsers(){try{return JSON.parse(lsGet(USERS_KEY)||'{}')}catch(e){return{}}}
+function saveUsers(u){lsSet(USERS_KEY,JSON.stringify(u))}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* ═══════ 2. Tema ═══════ */
+function applyTheme(){var t=lsGet('theme')||'light';document.documentElement.setAttribute('data-theme',t);['themeBtnAuth','themeBtnDash'].forEach(function(id){var b=document.getElementById(id);if(b)b.textContent=t==='light'?'🌙':'☀️'})}
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';lsSet('theme',t);applyTheme()}
+applyTheme();
+
+/* ═══════ 3. Auth ═══════ */
+function showAuthTab(w){
+  document.getElementById('loginForm').classList.toggle('hidden',w!=='login');
+  document.getElementById('registerForm').classList.toggle('hidden',w!=='register');
+  document.getElementById('tabLogin').classList.toggle('active',w==='login');
+  document.getElementById('tabRegister').classList.toggle('active',w==='register');
+}
+function msg(id,text,err){var el=document.getElementById(id);el.textContent=text;el.className='auth-msg '+(err?'err':'ok')}
+async function doRegister(e){
+  e.preventDefault();
+  var u=document.getElementById('rg_user').value.trim(),p=document.getElementById('rg_pass').value,p2=document.getElementById('rg_pass2').value;
+  if(!/^[\wçğıöşüÇĞİÖŞÜ ]{2,24}$/.test(u))return msg('regMsg','Kullanıcı adı 2–24 karakter olmalı.',true);
+  var users=getUsers(),key=u.toLowerCase();
+  if(users[key])return msg('regMsg','Bu kullanıcı adı bu cihazda zaten var.',true);
+  if(p!==p2)return msg('regMsg','PIN\'ler eşleşmiyor.',true);
+  users[key]={name:u,hash:await hashPass(p),createdAt:new Date().toISOString()};
+  saveUsers(users);
+  msg('regMsg','Hesap oluşturuldu! Giriş yapabilirsiniz ✿',false);
+  setTimeout(function(){showAuthTab('login');document.getElementById('li_user').value=u},600);
+}
+async function doLogin(e){
+  e.preventDefault();
+  var u=document.getElementById('li_user').value.trim(),p=document.getElementById('li_pass').value;
+  var user=getUsers()[u.toLowerCase()];
+  if(!user)return msg('loginMsg','Böyle bir profil bulunamadı.',true);
+  if(user.hash!==await hashPass(p))return msg('loginMsg','Şifre yanlış.',true);
+  if(document.getElementById('li_remember').checked)lsSet(SESSION_KEY,JSON.stringify({user:u.toLowerCase()}));
+  else sessionStorage.setItem(SESSION_KEY,JSON.stringify({user:u.toLowerCase()}));
+  enterPanel(u.toLowerCase());
+}
+function currentSession(){
+  try{var s=JSON.parse(sessionStorage.getItem(SESSION_KEY)||'null');if(s)return s}catch(e){}
+  try{var s2=JSON.parse(lsGet(SESSION_KEY)||'null');if(s2)return s2}catch(e){}
+  return null;
+}
+function logout(){
+  lsDel(ACTIVE_KEY);lsDel(SESSION_KEY);sessionStorage.removeItem(SESSION_KEY);
+  location.reload();
+}
+
+/* ═══════ 4. Panel ═══════ */
+var APPS={
+  web:[
+    {name:'Nur Kuran-ı Kerim',desc:'Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur\'an uygulaması.',icon:'📖',url:'tr/kuran.html'},
+    {name:'İlim Defteri',desc:'114 sure için kişisel çalışma defteri; not alın, işaretleyin, PDF yazdırın.',icon:'📓',url:'tr/ilim-defteri.html'},
+    {name:'İlim ve İbadet Takibi',desc:'Günlük ibadet ve ilim takibi, seviye sistemiyle.',icon:'📈',url:'tr/gelisim.html'},
+    {name:'Dini Literatür Kelime Avı',desc:'İslami terimleri oyunlaştırarak öğrenin.',icon:'🎯',url:'tr/kelime-oyunu.html'},
+    {name:'İlim & İbadet Planlayıcısı',desc:'Hedef ve günlük görev planlayıcı, yedekleme özellikli.',icon:'🗓️',url:'tr/planner.html'},
+    {name:'Dijital Zikir Sayacı',desc:'Zarif, minimalist dijital tesbih.',icon:'📿',url:'tr/zikir.html'},
+    {name:'Ayet-i Kelim',desc:'Kur\'an kıssalarında bağlamsal kelime öğrenimi.',icon:'🔤',url:'tr/arapca.html'},
+    {name:'İslami Zekat Hesaplama',desc:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',icon:'🧮',url:'tr/zekat-hesaplama.html'},
+    {name:'iKuran (Pembe)',desc:'iPod hissiyle Kur\'an dinleme arayüzü.',icon:'🎧',url:'tr/ikuran-pink.html'},
+    {name:'iKuran (Siyah)',desc:'iPod hissiyle Kur\'an dinleme arayüzü — siyah tema.',icon:'🎧',url:'tr/ikuran-black.html'},
+    {name:'Nur Kartları',desc:'Hicri ayları tanıtan etkileşimli bilgi kartları.',icon:'🃏',url:'tr/nur-kartlari.html'},
+    {name:'Anket & Oylama Sistemi',desc:'Saf JavaScript ile interaktif anket.',icon:'🗳️',url:'tr/anket-sistemi.html'}
+  ],
+  other:[
+    {name:'İlim Rehberi',desc:'Kur\'an, tefsir, hadis, fıkıh ve Arapça dokümantasyon platformu.',icon:'📚',url:'tr/ilim-rehberi.html'},
+    {name:'Adım Adım Hac ve Umre',desc:'Kutsal yolculuğu dualarla adım adım takip rehberi.',icon:'🕋',url:'tr/umre-hac.html'},
+    {name:'İslami Not Dönüştürücü',desc:'Markdown notlarınızı anında HTML\'e çevirin.',icon:'🔄',url:'tr/markdown-html.html'},
+    {name:'Banka Hesabı Simülasyonu',desc:'ES6 class ile işlem takipli hesap uygulaması.',icon:'🏦',url:'tr/banka-hesabi.html'},
+    {name:'Galeri',desc:'İslami güzel sanatlar ve ilham veren görseller.',icon:'🖼️',url:'tr/galeri.html'},
+    {name:'Kütüphane Envanteri',desc:'Klasik ilim eserleri için okuma takibi.',icon:'🏛️',url:'tr/book-inventory.html'}
+  ]
+};
+
+var currentUser=null;
+function getMeta(u){try{return JSON.parse(lsGet(META_P+u)||'{}')}catch(e){return{}}}
+function saveMeta(u,m){lsSet(META_P+u,JSON.stringify(m))}
+function countUserData(u){
+  var p='u__'+u+'__',n=0;
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)n++}}catch(e){}
+  return n;
+}
+function enterPanel(key){
+  currentUser=key;
+  lsSet(ACTIVE_KEY,key);
+  var users=getUsers(),user=users[key]||{};
+  document.getElementById('authScreen').classList.add('hidden');
+  document.getElementById('dashScreen').classList.remove('hidden');
+  document.getElementById('welcomeEl').textContent='Merhaba, '+user.name+'! ✿';
+  document.getElementById('avatarEl').textContent=user.name.charAt(0).toUpperCase();
+  document.getElementById('userNameEl').textContent=user.name;
+  document.getElementById('userSinceEl').textContent=user.createdAt?('Üye: '+new Date(user.createdAt).toLocaleDateString('tr-TR')):'';
+  document.getElementById('pfName').textContent=key;
+  var m=getMeta(key);(m.recent=m.recent||[]);saveMeta(key,m);
+  document.getElementById('statApps').textContent=APPS.web.length+APPS.other.length;
+  document.getElementById('statOpened').textContent=m.recent.length;
+  document.getElementById('statMembers').textContent=Object.keys(users).length;
+  renderTabs();renderApps();
+  document.getElementById('snippetEl').textContent="<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();<\/script>";
+}
+function renderTabs(){
+  var c=document.getElementById('tabControls');
+  c.innerHTML='<button class="tab-btn active" data-g="web" onclick="switchGroup(\'web\',this)">Web Uygulamaları</button>'
+    +'<button class="tab-btn" data-g="other" onclick="switchGroup(\'other\',this)">Diğer Projeler</button>';
+}
+function switchGroup(g,btn){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.group').forEach(function(gr){gr.classList.remove('active')});
+  document.getElementById('group-'+g).classList.add('active');
+}
+function renderApps(){
+  var q=(document.getElementById('searchBox').value||'').toLowerCase();
+  var m=getMeta(currentUser);var recent=m.recent||[];
+  ['web','other'].forEach(function(g){
+    var wrap=document.getElementById('group-'+g);
+    if(!wrap){wrap=document.createElement('div');wrap.id='group-'+g;wrap.className='group';document.getElementById('groupsWrap').appendChild(wrap)}
+    var inner=document.createElement('div');inner.className='projects-grid';
+    var list=APPS[g].filter(function(a){return a.name.toLowerCase().indexOf(q)>-1||a.desc.toLowerCase().indexOf(q)>-1});
+    if(!list.length){inner.innerHTML='<p class="empty-note">Aradığınız uygulamayı bulamadım 🌸</p>'}
+    list.forEach(function(a){
+      var times=recent.filter(function(r){return r===a.url}).length;
+      var card=document.createElement('div');card.className='app-card';
+      card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(a.name)+'</h3><p>'+esc(a.desc)+'</p>'
+        +'<div class="app-meta"><span>'+(times?('📁 '+times+' kez açtınız'):'✨ Yeni')+'</span>'
+        +'<a class="btn btn-sm btn-solid" href="'+a.url+'" target="_blank" rel="noopener" data-url="'+a.url+'">Aç →</a></div>';
+      card.querySelector('a').addEventListener('click',function(){launch(a.url)});
+      inner.appendChild(card);
+    });
+    wrap.innerHTML='';wrap.appendChild(inner);
+  });
+  if(!document.getElementById('group-web').classList.contains('active'))
+    document.getElementById('group-web').classList.add('active');
+}
+function launch(url){
+  var m=getMeta(currentUser);m.recent=m.recent||[];
+  m.recent=m.recent.filter(function(r){return r!==url});m.recent.unshift(url);m.recent=m.recent.slice(0,8);
+  saveMeta(currentUser,m);
+  document.getElementById('statOpened').textContent=m.recent.length;
+  renderApps();
+}
+
+/* ═══════ 5. Yedekleme / Silme ═══════ */
+function exportData(){
+  var p='u__'+currentUser+'__',data={_user:currentUser,_date:new Date().toISOString(),keys:{}};
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)data.keys[k]=localStorage.getItem(k)}}catch(e){}
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='panel-yedek-'+currentUser+'.json';a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href)},5000);
+}
+function importData(input){
+  var f=input.files[0];if(!f)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    try{
+      var data=JSON.parse(reader.result);
+      if(!data.keys||data._user!==currentUser)throw 0;
+      var n=0;Object.keys(data.keys).forEach(function(k){if(k.indexOf('u__'+currentUser+'__')===0){localStorage.setItem(k,data.keys[k]);n++}});
+      alert(n+' kayıt geri yüklendi ✿');
+    }catch(e){alert('Geçersiz yedek dosyası.');}
+    input.value='';
+  };
+  reader.readAsText(f);
+}
+function deleteAccount(){
+  if(!confirm('Bu profilin TÜM verileri kalıcı olarak silinecek. Emin misiniz?'))return;
+  if(!confirm('Son onay: gerçekten silinsin mi?'))return;
+  var p='u__'+currentUser+'__',del=[];
+  try{for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(p)===0)del.push(k)}}catch(e){}
+  del.forEach(lsDel);
+  lsDel(META_P+currentUser);
+  var users=getUsers();delete users[currentUser];saveUsers(users);
+  logout();
+}
+
+/* ═══════ 6. Otomatik oturum: sayfa açılınca girişliyse panele gir ═══════ */
+(function(){
+  var s=currentSession();
+  if(s&&s.user&&getUsers()[s.user]){enterPanel(s.user)}
+})();
+</script>
+</body>
+</html>
