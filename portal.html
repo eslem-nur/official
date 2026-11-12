@@ -550,11 +550,13 @@ function renderApps(){
   return nm.toLowerCase().indexOf(q)>-1||d.toLowerCase().indexOf(q)>-1;
 });
     if(!list.length){inner.innerHTML='<p class="empty-note">'+esc(t('emptySearch'))+'</p>'}
-    list.forEach(function(a){
+        list.forEach(function(a){
       var u=appUrl(a), ext=/^https?:/.test(u);
       var times=recent.filter(function(r){return r===u}).length;
+      var badge=isFallback(a)?'<span class="lang-badge">'+esc(t('onlyTr'))+'</span><br>':'';
 
-            var d=a.desc[cur]||a.desc.tr, nm=a.name[cur]||a.name.tr;
+      var d=a.desc[cur]||a.desc.tr, nm=a.name[cur]||a.name.tr;
+      var card=document.createElement('div');card.className='app-card';
       card.innerHTML='<div class="app-icon">'+a.icon+'</div><h3>'+esc(nm)+'</h3><p>'+esc(d)+'</p>'+badge
         +'<div class="app-meta"><span>'+(times?esc(t('openedTimes')(times)):esc(t('isNew')))+'</span>'
         +'<span class="variant-btns"></span></div>';
