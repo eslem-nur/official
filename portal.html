@@ -288,7 +288,7 @@ tr:{
   stApps:'Uygulama',stOpened:'Açtığınız',stMembers:'Cihazdaki profil',
   donLabel:'Geldiğin uygulamaya dön:',donOpen:'Uygulamayı aç →',
   searchPh:'🔍 Uygulama ara...',bkDl:'⬇ Yedeği indir',bkUl:'⬆ Yedeği geri yükle',
-  tabWeb:'Web Uygulamaları',tabOther:'Diğer Projeler',
+  tabIlm:'İlim', tabGuides:'Rehberler', tabTools:'Araçlar',  
   setTitle:'⚙ Profil Ayarları',setDesc:'Bu profilin tüm verileri cihazınızın tarayıcı deposunda durur. Aşağıdaki işlemler yalnızca bu profili etkiler.',
   setDelete:'🗑 Profili ve tüm verilerini sil',
   open:'Aç →',isNew:'✨ Yeni',openedTimes:function(n){return '📁 '+n+' kez açtınız'},
@@ -316,7 +316,7 @@ en:{
   stApps:'Apps',stOpened:'Opened',stMembers:'Profiles on device',
   donLabel:'Back to the app you came from:',donOpen:'Open app →',
   searchPh:'🔍 Search apps...',bkDl:'⬇ Download backup',bkUl:'⬆ Restore backup',
-  tabWeb:'Web Apps',tabOther:'Other Projects',
+  tabIlm:'Ilm', tabGuides:'Guides', tabTools:'Tools',  
   setTitle:'⚙ Profile Settings',setDesc:'All data of this profile lives in your browser storage. The actions below affect only this profile.',
   setDelete:'🗑 Delete profile and all its data',
   open:'Open →',isNew:'✨ New',openedTimes:function(n){return '📁 opened '+n+'×'},
@@ -344,7 +344,7 @@ de:{
   stApps:'Apps',stOpened:'Geöffnet',stMembers:'Profile auf dem Gerät',
   donLabel:'Zurück zur App, aus der du kommst:',donOpen:'App öffnen →',
   searchPh:'🔍 Apps suchen...',bkDl:'⬇ Backup herunterladen',bkUl:'⬆ Backup wiederherstellen',
-  tabWeb:'Web-Apps',tabOther:'Andere Projekte',
+  tabIlm:'Ilm', tabGuides:'Leitfäden', tabTools:'Werkzeuge',  
   setTitle:'⚙ Profileinstellungen',setDesc:'Alle Daten dieses Profils liegen im Browserspeicher deines Geräts. Die folgenden Aktionen betreffen nur dieses Profil.',
   setDelete:'🗑 Profil und alle Daten löschen',
   open:'Öffnen →',isNew:'✨ Neu',openedTimes:function(n){return '📁 '+n+'× geöffnet'},
@@ -376,7 +376,7 @@ function applyLang(l){
     var u=getUsers()[currentUser]||{};
     document.getElementById('welcomeEl').textContent=t('hello')(u.name||currentUser);
     if(u.createdAt)document.getElementById('userSinceEl').textContent=t('memberSince')(new Date(u.createdAt).toLocaleDateString(l==='tr'?'tr-TR':(l==='de'?'de-DE':'en-GB')));
-    renderApps();
+    renderTabs(); renderApps();
   }
 }
 /* Dropdown aç/kapa */
@@ -454,10 +454,7 @@ function logout(){
    url:{tr,en,de} — dilde sürüm yoksa null → TR'ye düşer ve "yalnızca Türkçe" rozeti çıkar. */
 /* ═══════ Uygulama kataloğu — isimler dile göre ═══════ */
 var APPS={
-  web:[
-    {icon:'📖',name:{tr:"Nur Kuran-ı Kerim",en:"Nur Qur'an",de:"Nur Koran"},
-     url:{tr:'tr/kuran.html',en:'en/nur-kuran.html',de:'de/nur-kuran-de.html'},
-     desc:{tr:"Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur'an uygulaması.",en:"Modern Qur'an app with Arabic text and Turkish translation (Diyanet API).",de:"Moderne Koran-App mit arabischem Text und türkischer Übersetzung."}},
+  ilm:[
     {icon:'📓',name:{tr:"İlim Defteri",en:"Knowledge Journal",de:"Wissensjournal"},
      url:{tr:'tr/ilim-defteri.html',en:null,de:null},
      desc:{tr:'114 sure için kişisel çalışma defteri; not alın, işaretleyin, PDF yazdırın.',en:'Personal study journal for all 114 surahs: notes, tracking, PDF print.',de:'Persönliches Lernheft für alle 114 Suren: Notizen, Fortschritt, PDF-Druck.'}},
@@ -470,35 +467,41 @@ var APPS={
     {icon:'🗓️',name:{tr:"İlim & İbadet Planlayıcısı",en:"Study & Worship Planner",de:"Lern- & Gebets-Planer"},
      url:{tr:'tr/planner.html',en:'en/planner.html',de:'de/ilm-ibadah-Planer.html'},
      desc:{tr:'Hedef ve günlük görev planlayıcı, yedekleme özellikli.',en:'Goal & daily task planner with backup support.',de:'Ziel- und Tagesaufgaben-Planer mit Backup-Funktion.'}},
-    {icon:'📿',name:{tr:"Dijital Zikir Sayacı",en:"Digital Dhikr Counter",de:"Digitaler Dhikr-Zähler"},
-     url:{tr:'tr/zikir.html',en:'en/dhikr.html',de:'de/Zikirz.html'},
-     desc:{tr:'Zarif, minimalist dijital tesbih.',en:'An elegant, minimalist digital tasbih.',de:'Ein eleganter, minimalistischer digitaler Tasbih.'}},
     {icon:'🔤',name:{tr:"Ayet-i Kelim",en:"Arabic Words",de:"Arabische Wörter"},
      url:{tr:'tr/arapca.html',en:'en/arabic-words.html',de:'de/arabisch-wort.html'},
      desc:{tr:"Kur'an kıssalarında bağlamsal kelime öğrenimi.",en:"Contextual vocabulary learning from Qur'anic stories.",de:'Kontextuelles Vokabellernen aus Korangeschichten.'}},
-    {icon:'🧮',name:{tr:"İslami Zekat Hesaplama",en:"Zakat Calculator",de:"Zakat-Rechner"},
-     url:{tr:'tr/zekat-hesaplama.html',en:null,de:null},
-     desc:{tr:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',en:'Zakat calculator with nisab check at 2.5%.',de:'Zakat-Rechner mit Nisab-Prüfung (2,5 %).'}},
-        {icon:'🎧',name:{tr:"iKuran",en:"iQuran",de:"iKoran"},
-     variants:[
-       {label:{tr:'Pembe',en:'Pink',de:'Rosa'}, url:{tr:'tr/ikuran-pink.html',en:'en/ikuran-pink.html',de:'de/ikuran-pink.html'}},
-       {label:{tr:'Siyah',en:'Black',de:'Schwarz'}, url:{tr:'tr/ikuran-black.html',en:'en/ikuran-black.html',de:'de/ikuran-black.html'}}
-     ],
-     desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü — pembe ve siyah tema.",en:"Qur'an audio interface with an iPod feel — pink & black themes.",de:'Koran-Audiooberfläche im iPod-Stil — rosa & schwarzes Design.'}},
     {icon:'🃏',name:{tr:"Nur Kartları",en:"Nur Cards",de:"Nur-Karten"},
      url:{tr:'tr/nur-kartlari.html',en:null,de:null},
      desc:{tr:'Hicri ayları tanıtan etkileşimli bilgi kartları.',en:'Interactive cards introducing the Hijri months.',de:'Interaktive Karten zu den Hidschri-Monaten.'}}
   ],
-  other:[
+  guides:[
     {icon:'📚',name:{tr:"İlim Rehberi",en:"Knowledge Guide",de:"Wissensführer"},
      url:{tr:'tr/ilim-rehberi.html',en:null,de:null},
      desc:{tr:"Kur'an, tefsir, hadis, fıkıh ve Arapça dokümantasyon platformu.",en:"Documentation platform for Qur'an, tafsir, hadith, fiqh & Arabic.",de:'Dokumentationsplattform für Koran, Tafsir, Hadith, Fiqh & Arabisch.'}},
     {icon:'🕋',name:{tr:"Adım Adım Hac ve Umre",en:"Hajj & Umrah Step by Step",de:"Haddsch & Umra Schritt für Schritt"},
      url:{tr:'tr/umre-hac.html',en:'en/hajj-umrah-en.html',de:'de/hajj-umrah.html'},
-     desc:{tr:'Kutsal yolculuğu dualarla adım adım takip rehberi.',en:'Step-by-step guide to Hajj & Umrah with supplications.',de:'Haddsch- und Umra-Leitfaden Schritt für Schritt, mit Duas.'}},
-    {icon:'🔄',name:{tr:"İslami Not Dönüştürücü",en:"Notes Converter",de:"Noten-Konverter"},
+     desc:{tr:'Kutsal yolculuğu dualarla adım adım takip rehberi.',en:'Step-by-step guide to Hajj & Umrah with supplications.',de:'Haddsch- und Umra-Leitfaden Schritt für Schritt, mit Duas.'}}
+    ],
+
+    tools:[
+      {icon:'📖',name:{tr:"Nur Kuran-ı Kerim",en:"Nur Qur'an",de:"Nur Koran"},
+     url:{tr:'tr/kuran.html',en:'en/nur-kuran.html',de:'de/nur-kuran-de.html'},
+     desc:{tr:"Diyanet API ile Arapça ve Türkçe meal gösteren modern Kur'an uygulaması.",en:"Modern Qur'an app with Arabic text and Turkish translation (Diyanet API).",de:"Moderne Koran-App mit arabischem Text und türkischer Übersetzung."}},
+       {icon:'🎧',name:{tr:"iKuran",en:"iQuran",de:"iKoran"},
+     variants:[
+       {label:{tr:'Pembe',en:'Pink',de:'Rosa'}, url:{tr:'tr/ikuran-pink.html',en:'en/ikuran-pink.html',de:'de/ikuran-pink.html'}},
+       {label:{tr:'Siyah',en:'Black',de:'Schwarz'}, url:{tr:'tr/ikuran-black.html',en:'en/ikuran-black.html',de:'de/ikuran-black.html'}}
+     ],
+     desc:{tr:"iPod hissiyle Kur'an dinleme arayüzü — pembe ve siyah tema.",en:"Qur'an audio interface with an iPod feel — pink & black themes.",de:'Koran-Audiooberfläche im iPod-Stil — rosa & schwarzes Design.'}},
+     {icon:'🔄',name:{tr:"İslami Not Dönüştürücü",en:"Notes Converter",de:"Noten-Konverter"},
      url:{tr:'tr/markdown-html.html',en:null,de:null},
-     desc:{tr:"Markdown notlarınızı anında HTML'e çevirin.",en:'Convert your Markdown notes to HTML instantly.',de:'Markdown-Noten sofort in HTML umwandeln.'}}
+     desc:{tr:"Markdown notlarınızı anında HTML'e çevirin.",en:'Convert your Markdown notes to HTML instantly.',de:'Markdown-Noten sofort in HTML umwandeln.'}},
+     {icon:'📿',name:{tr:"Dijital Zikir Sayacı",en:"Digital Dhikr Counter",de:"Digitaler Dhikr-Zähler"},
+     url:{tr:'tr/zikir.html',en:'en/dhikr.html',de:'de/Zikirz.html'},
+     desc:{tr:'Zarif, minimalist dijital tesbih.',en:'An elegant, minimalist digital tasbih.',de:'Ein eleganter, minimalistischer digitaler Tasbih.'}},
+     {icon:'🧮',name:{tr:"İslami Zekat Hesaplama",en:"Zakat Calculator",de:"Zakat-Rechner"},
+     url:{tr:'tr/zekat-hesaplama.html',en:null,de:null},
+     desc:{tr:'Nisap kontrolü ve %2.5 oranla zekat hesaplayıcı.',en:'Zakat calculator with nisab check at 2.5%.',de:'Zakat-Rechner mit Nisab-Prüfung (2,5 %).'}}
   ]
 };
 
@@ -538,7 +541,7 @@ function enterPanel(key){
   document.getElementById('userSinceEl').textContent=user.createdAt?t('memberSince')(new Date(user.createdAt).toLocaleDateString(cur==='tr'?'tr-TR':(cur==='de'?'de-DE':'en-GB'))):'';
   document.getElementById('pfName').textContent=key;
   var m=getMeta(key);(m.recent=m.recent||[]);saveMeta(key,m);
-  document.getElementById('statApps').textContent=APPS.web.length+APPS.other.length;
+  document.getElementById('statApps').textContent=APPS.ilm.length+APPS.guides.length+APPS.tools.length;
   document.getElementById('statOpened').textContent=m.recent.length;
   document.getElementById('statMembers').textContent=Object.keys(users).length;
   renderTabs();renderApps();
@@ -549,8 +552,10 @@ function enterPanel(key){
 }
 function renderTabs(){
   var c=document.getElementById('tabControls');
-  c.innerHTML='<button class="tab-btn active" data-g="web" onclick="switchGroup(\'web\',this)">'+t('tabWeb')+'</button>'
-    +'<button class="tab-btn" data-g="other" onclick="switchGroup(\'other\',this)">'+t('tabOther')+'</button>';
+  var defs=[['ilm','tabIlm'],['guides','tabGuides'],['tools','tabTools']];
+  c.innerHTML=defs.map(function(d,i){
+    return '<button class="tab-btn'+(i===0?' active':'')+'" data-g="'+d[0]+'" onclick="switchGroup(\''+d[0]+'\',this)">'+t(d[1])+'</button>';
+  }).join('');
 }
 function switchGroup(g,btn){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active')});
@@ -561,7 +566,7 @@ function switchGroup(g,btn){
 function renderApps(){
   var q=(document.getElementById('searchBox').value||'').toLowerCase();
   var m=getMeta(currentUser);var recent=m.recent||[];
-  ['web','other'].forEach(function(g){
+  ['ilm','guides','tools'].forEach(function(g){
     var wrap=document.getElementById('group-'+g);
     if(!wrap){wrap=document.createElement('div');wrap.id='group-'+g;wrap.className='group';document.getElementById('groupsWrap').appendChild(wrap)}
     var inner=document.createElement('div');inner.className='projects-grid';
@@ -597,8 +602,8 @@ function renderApps(){
     });
     wrap.innerHTML='';wrap.appendChild(inner);
   });
-  if(!document.getElementById('group-web').classList.contains('active'))
-    document.getElementById('group-web').classList.add('active');
+  if(!document.getElementById('group-ilm').classList.contains('active'))
+  document.getElementById('group-ilm').classList.add('active');
 }
 function launch(url){
   var m=getMeta(currentUser);m.recent=m.recent||[];
