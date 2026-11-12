@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İlim Defterleri | Eslem Nur Çetin</title>
+
+<!-- ══════════════════════════════════════════════════════════
+     PANEL ENTEGRASYONU (Seçenek A) — bu iki script EN ÜSTTE kalmalı!
+     a) Verileri panele giriş yapan kullanıcıya yönlendir.
+        Eski (öneksiz) kayıtları ilk okumada otomatik yeni ad alanına taşır.
+     b) Giriş yapılmamışsa panelin login ekranına gönder.
+     ══════════════════════════════════════════════════════════ -->
+<script>(function(){try{var u=localStorage.getItem('portalActiveUser');if(!u)return;var P='u__'+u+'__',S=Storage.prototype,st=S.setItem,g=S.getItem,r=S.removeItem;S.setItem=function(k,v){st.call(this,P+k,v)};S.getItem=function(k){var v=g.call(this,P+k);if(v===null){v=g.call(this,k);if(v!==null)st.call(this,P+k,v)}return v};S.removeItem=function(k){r.call(this,P+k);r.call(this,k)}}catch(e){}})();</script>
+<script>if(!localStorage.getItem('portalActiveUser')){location.replace('../portal.html?don=ilim-defteri');}</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
@@ -56,12 +66,14 @@ nav{display:flex;justify-content:space-between;align-items:center;gap:var(--spac
 .tool-btn:hover{background:var(--note-bg);border-color:var(--primary-color);color:var(--primary-color);transform:scale(1.05)}
 .tool-btn.danger{color:var(--error-color);border-color:var(--error-bg)}
 .tool-btn.danger:hover{background:var(--error-bg)}
+.user-badge{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--primary-color);white-space:nowrap}
+.user-badge i{color:var(--primary-light)}
 .page-hero{text-align:center;padding:clamp(40px,8vw,70px) 0 clamp(20px,4vw,35px);background:linear-gradient(135deg,var(--bg-color) 0%,var(--note-bg) 100%)}
 .page-hero .arabic-title{font-family:'Scheherazade New',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);direction:rtl;background:linear-gradient(90deg,var(--primary-color),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .page-hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);margin:.4rem 0}
 .page-hero p{color:var(--text-secondary);max-width:650px;margin:0 auto}
 .books-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--spacing-lg);padding:var(--spacing-lg) 0}
-.book-card{background:var(--card-bg);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-color);text-align:center;padding:var(--spacing-lg) var(--spacing-md);transition:all var(--transition-bounce);cursor:pointer}
+.book-card{background:var(--card-bg);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-color);text-align:center;padding:var(--spacing-lg) var(--spacing-md);transition:all var(--transition-bounce);cursor:pointer;position:relative}
 .book-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl)}
 .book-icon{font-size:2.4rem;color:var(--primary-color);width:70px;height:70px;display:flex;align-items:center;justify-content:center;background:var(--note-bg);border-radius:var(--radius-md);margin:0 auto var(--spacing-sm)}
 .book-card h3{font-size:1.25rem;color:var(--primary-color);margin-bottom:.3rem}
@@ -84,21 +96,6 @@ nav{display:flex;justify-content:space-between;align-items:center;gap:var(--spac
 .btn-outline:hover{background:var(--primary-color);color:#fff;transform:translateY(-2px)}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 28px;background:var(--primary-color);color:#fff;border:none;border-radius:30px;font-weight:600;font-size:.95rem;box-shadow:var(--shadow-md);transition:all var(--transition-bounce)}
 .btn-primary:hover{background:var(--button-hover);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.login-wrap{max-width:520px;margin:0 auto;padding:var(--spacing-xl) clamp(15px,3vw,40px)}
-.login-card{background:var(--card-bg);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);border:1px solid var(--border-color);padding:var(--spacing-xl);text-align:center}
-.login-card .arabic{font-family:'Scheherazade New',serif;font-size:1.8rem;color:var(--primary-color)}
-.login-card h2{color:var(--primary-color);margin:.4rem 0 .2rem}
-.login-card>p{color:var(--text-secondary);font-size:.95rem;margin-bottom:var(--spacing-md)}
-.profile-list{display:flex;flex-direction:column;gap:10px;margin-bottom:var(--spacing-md);text-align:left}
-.profile-row{display:flex;align-items:center;gap:10px;background:var(--card-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;transition:all var(--transition-base)}
-.profile-row:hover{border-color:var(--primary-color);box-shadow:var(--shadow-sm)}
-.profile-row .p-info{flex:1;cursor:pointer}
-.profile-row .p-name{font-weight:700;color:var(--text-primary)}
-.profile-row .p-sub{font-size:.8rem;color:var(--text-muted)}
-.row-btn{background:none;border:2px solid var(--border-color);color:var(--text-primary);width:38px;height:38px;min-width:38px;min-height:38px;border-radius:50%;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all var(--transition-base)}
-.row-btn:hover{border-color:var(--primary-color);color:var(--primary-color)}
-.row-btn.danger{color:var(--error-color)}
-.row-btn.danger:hover{background:var(--error-bg);border-color:var(--error-color)}
 .field{width:100%;padding:12px 16px;border:2px solid var(--border-color);border-radius:var(--radius-sm);background:var(--card-bg);color:var(--text-primary);font-size:1rem;font-family:inherit;min-height:48px;transition:all var(--transition-fast)}
 .field:focus{outline:none;border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(160,104,114,.15)}
 .field::placeholder{color:var(--text-muted)}
@@ -191,36 +188,12 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 /* ============================================
    HEADER LOGO (PNG) + İSİM
    ============================================ */
-
-.site-logo {
-    height: clamp(60px, 6vw, 80px);
-    width: auto;
-    flex-shrink: 0;
-    display: block;
-    object-fit: contain;
-    transition: transform var(--transition-base);
-}
-
-.logo:hover .site-logo {
-    transform: scale(1.06);
-}
-
-[data-theme="dark"] .site-logo {
-    filter: brightness(1.15) contrast(1.05);
-}
-
-.logo {
-    gap: var(--spacing-xs);
-}
-
-/* Mobil */
-@media (max-width: 640px) {
-    .site-logo { height: 58px; }
-}
-
-@media (max-width: 460px) {
-    .site-logo { height: 54px; }
-}
+.site-logo{height:clamp(60px,6vw,80px);width:auto;flex-shrink:0;display:block;object-fit:contain;transition:transform var(--transition-base)}
+.logo:hover .site-logo{transform:scale(1.06)}
+[data-theme="dark"] .site-logo{filter:brightness(1.15) contrast(1.05)}
+.logo{gap:var(--spacing-xs)}
+@media (max-width:640px){.site-logo{height:58px}}
+@media (max-width:460px){.site-logo{height:54px}}
 </style>
 </head>
 <body>
@@ -228,16 +201,16 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 <header>
     <nav class="container">
         <div class="logo">
-                    <img src="../png/logo/logo.png"  class="site-logo">
-                    Eslem Nur Çetin
-                </div>
+            <img src="../png/logo/logo.png" class="site-logo" alt="Eslem Nur Çetin">
+            Eslem Nur Çetin
+        </div>
         <div class="nav-controls">
+            <span class="user-badge" id="userBadge"><i class="fas fa-user"></i> <span id="userNameBadge">…</span></span>
             <button class="tool-btn" id="themeBtn" title="Tema değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
             <button class="tool-btn" id="backupBtn" title="Yedekle"><i class="fas fa-download"></i></button>
             <button class="tool-btn" id="restoreBtn" title="Geri yükle"><i class="fas fa-upload"></i></button>
-            <button class="tool-btn" id="pinBtn" title="PIN değiştir"><i class="fas fa-key"></i></button>
-            <button class="tool-btn danger" id="delProfileBtn" title="Profil sil"><i class="fas fa-trash"></i></button>
-            <button class="tool-btn danger" id="logoutBtn" title="Çıkış"><i class="fas fa-door-open"></i></button>
+            <button class="tool-btn danger" id="resetBtn" title="Defteri sıfırla (tüm notlar silinir)"><i class="fas fa-trash"></i></button>
+            <button class="tool-btn" id="logoutBtn" title="Panele dön"><i class="fas fa-house"></i></button>
         </div>
     </nav>
 </header>
@@ -245,40 +218,24 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 <input type="file" id="restoreFile" accept=".json" class="hidden">
 <div class="top-band" id="bands"></div>
 
-<!-- GİRİŞ -->
-<section id="screenLogin" class="login-wrap">
-    <div class="login-card">
-        <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-        <h2>İlim Defterleri</h2>
-        <p>Defterini aç veya bu cihazda yeni bir defter oluştur.</p>
-        <div class="profile-list" id="profileList"></div>
-        <input class="field" id="newName" placeholder="Adın (ör. Ayşe)" maxlength="30">
-        <p class="hint">İsteğe bağlı: aynı isimden birden fazla defter olabilir; PIN koyarsan yalnızca PIN'i bilen açar.</p>
-        <input class="field" id="newPin" placeholder="4 haneli PIN (isteğe bağlı)" inputmode="numeric" maxlength="4">
-        <div style="height:12px"></div>
-        <button class="btn-primary" style="width:100%" onclick="createProfile()"><i class="fas fa-plus"></i> Defteri Aç / Oluştur</button>
-    </div>
-</section>
-
-<!-- ANA SAYFA -->
-<section id="screenHome" class="hidden">
+<!-- ANA SAYFA (login kaldırıldı — giriş panelde yapılıyor) -->
+<section id="screenHome">
     <div class="page-hero">
         <div class="arabic-title">وَقُل رَّبِّ زِدْنِي عِلْمًا</div>
         <h1 id="homeTitle">Hoş geldin</h1>
         <p>Hangi defterde çalışmak istersin? Notların otomatik kaydedilir, kaldığın yerden devam edersin.</p>
     </div>
     <div class="overall"><span>Genel ilerleme (Sure)</span><div class="track"><i id="overallBar" style="width:0%"></i></div><span id="overallPct">0%</span></div>
-    <div class="container"><div class="books-grid" id="booksGrid"></div>
 
     <div class="container">
-    <div class="topic-add no-print" style="margin-top:0">
-        <input class="field" id="newBookName" placeholder="Yeni defter adı (ör. Tefsir, Akaid, Sarf...)" maxlength="40">
-        <select class="field" id="newBookIcon" style="flex:0 0 auto;width:auto;min-width:170px"></select>
-        <button class="btn-primary" onclick="addCustomBook()"><i class="fas fa-plus"></i> Defter Ekle</button>
-    </div>
-</div>
+        <div class="books-grid" id="booksGrid"></div>
 
-</div>
+        <div class="topic-add no-print" style="margin-top:0">
+            <input class="field" id="newBookName" placeholder="Yeni defter adı (ör. Tefsir, Akaid, Sarf...)" maxlength="40">
+            <select class="field" id="newBookIcon" style="flex:0 0 auto;width:auto;min-width:170px"></select>
+            <button class="btn-primary" onclick="addCustomBook()"><i class="fas fa-plus"></i> Defter Ekle</button>
+        </div>
+    </div>
 </section>
 
 <!-- SURE DEFTERİ -->
@@ -358,7 +315,7 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 
 <footer>
     <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
-    <div class="copyright">© 2026 Eslem Nur Çetin • Defterleriniz yalnızca bu cihazda saklanır</div>
+    <div class="copyright">© 2026 Eslem Nur Çetin • Defterleriniz yalnızca bu cihazda, sizin panel hesabınıza özel saklanır</div>
 </footer>
 
 <div class="toast" id="toast"></div>
@@ -366,7 +323,6 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
     <div class="modal">
         <h3 id="modalTitle"></h3>
         <p id="modalBody"></p>
-        <input class="field hidden" id="modalPin" placeholder="Defterin PIN'i" inputmode="numeric" maxlength="4" style="text-align:center">
         <div class="modal-btns">
             <button class="btn-outline" onclick="closeModal()">Vazgeç</button>
             <button class="btn-danger" id="modalOk">Onayla</button>
@@ -381,6 +337,12 @@ var STORE_OK=true, MEM={};
 function sGet(k){ try{ return localStorage.getItem(k);}catch(e){STORE_OK=false;return (k in MEM)?MEM[k]:null;} }
 function sSet(k,v){ try{ localStorage.setItem(k,v);return true;}catch(e){STORE_OK=false;MEM[k]=v;return false;} }
 function sDel(k){ try{ localStorage.removeItem(k);}catch(e){} delete MEM[k]; }
+
+/* ---------- Panel kimliği ---------- */
+/* portal.html bu anahtarları set eder; bu dosyanın en üstündeki yama
+   tüm kayıtları otomatik olarak 'u__<kullanıcı>__' ad alanına taşır. */
+var PORTAL_KEY  = sGet('portalActiveUser') || '';
+var PORTAL_NAME = sGet('portalUserName')   || PORTAL_KEY;
 
 /* ---------- 114 sure ---------- */
 const SURES=[["الفاتحة","Fâtiha"],["البقرة","Bakara"],["آل عمران","Âl-i İmrân"],["النساء","Nisâ"],["المائدة","Mâide"],["الأنعام","En'âm"],["الأعراف","A'râf"],["الأنفال","Enfâl"],["التوبة","Tevbe"],["يونس","Yûnus"],["هود","Hûd"],["يوسف","Yûsuf"],["الرعد","Ra'd"],["إبراهيم","İbrâhîm"],["الحجر","Hicr"],["النحل","Nahl"],["الإسراء","İsrâ"],["الكهف","Kehf"],["مريم","Meryem"],["طه","Tâhâ"],["الأنبياء","Enbiyâ"],["الحج","Hac"],["المؤمنون","Mü'minûn"],["النور","Nûr"],["الفرقان","Furkân"],["الشعراء","Şuarâ"],["النمل","Neml"],["القصص","Kasas"],["العنكبوت","Ankebût"],["الروم","Rûm"],["لقمان","Lokmân"],["السجدة","Secde"],["الأحزاب","Ahzâb"],["سبأ","Sebe"],["فاطر","Fâtır"],["يس","Yâsin"],["الصافات","Sâffât"],["ص","Sâd"],["الزمر","Zümer"],["غافر","Gâfir"],["فصلت","Fussilet"],["الشورى","Şûrâ"],["الزخرف","Zuhruf"],["الدخان","Duhân"],["الجاثية","Câsiye"],["الأحقاف","Ahkâf"],["محمد","Muhammed"],["الفتح","Fetih"],["الحجرات","Hucurât"],["ق","Kâf"],["الذاريات","Zâriyât"],["الطور","Tûr"],["النجم","Necm"],["القمر","Kamer"],["الرحمن","Rahmân"],["الواقعة","Vâkıa"],["الحديد","Hadîd"],["المجادلة","Mücâdele"],["الحشر","Haşr"],["الممتحنة","Mümtehine"],["الصف","Saff"],["الجمعة","Cuma"],["المنافقون","Münâfikûn"],["التغابن","Tagâbün"],["الطلاق","Talâk"],["التحريم","Tehrîm"],["الملك","Mülk"],["القلم","Kalem"],["الحاقة","Hâkka"],["المعارج","Meâric"],["نوح","Nûh"],["الجن","Cin"],["المزمل","Müzzemmil"],["المدثر","Müddessir"],["القيامة","Kıyâme"],["الإنسان","İnsân"],["المرسلات","Mürselât"],["النبأ","Nebe"],["النازعات","Nâziât"],["عبس","Abese"],["التكوير","Tekvîr"],["الانفطار","İnfitâr"],["المطففين","Mutaffifîn"],["الانشقاق","İnşikâk"],["البروج","Burûc"],["الطارق","Târik"],["الأعلى","A'lâ"],["الغاشية","Gâşiye"],["الفجر","Fecr"],["البلد","Beled"],["الشمس","Şems"],["الليل","Leyl"],["الضحى","Duhâ"],["الشرح","İnşirâh"],["التين","Tîn"],["العلق","Alak"],["القدر","Kadr"],["البينة","Beyyine"],["الزلزلة","Zilzâl"],["العاديات","Âdiyât"],["القارعة","Kâria"],["التكاثر","Tekâsür"],["العصر","Asr"],["الهمزة","Hümeze"],["الفيل","Fîl"],["قريش","Kureyş"],["الماعون","Mâûn"],["الكوثر","Kevser"],["الكافرون","Kâfirûn"],["النصر","Nasr"],["اللهب","Leheb"],["الإخلاص","İhlâs"],["الفلق","Felak"],["الناس","Nâs"]];
@@ -398,11 +360,13 @@ try{ CUSTOM_BOOKS=JSON.parse(sGet(K_CUSTOM)||"[]"); if(!Array.isArray(CUSTOM_BOO
 function getBooks(){ return CUSTOM_BOOKS.concat(BASE_BOOKS); }
 function saveCustomBooks(){ sSet(K_CUSTOM,JSON.stringify(CUSTOM_BOOKS)); }
 
-const ICON_CHOICES=["fa-book","fa-feather","fa-language","fa-scroll","fa-scale-balanced","fa-star-and-crescent","fa-mosque","fa-graduation-cap","fa-pen-nib","fa-globe","fa-heart","fa-calculator", "fa-kaaba", "fa-pray", "fa-school", "fa-book-reader", "fa-code", "fa-bug", "fa-file-alt", "fa-file-pdf" ];
+const ICON_CHOICES=["fa-book","fa-feather","fa-language","fa-scroll","fa-scale-balanced","fa-star-and-crescent","fa-mosque","fa-graduation-cap","fa-pen-nib","fa-globe","fa-heart","fa-calculator","fa-kaaba","fa-pray","fa-school","fa-book-reader","fa-code","fa-bug","fa-file-alt","fa-file-pdf"];
 
 /* ---------- Durum ---------- */
-let DB=null, ACTIVE_ID=null, CURRENT_BOOK=null, currentIdx=-1;
-const K_DB="ilimDefterleriV1", K_ACT="ilimActive", K_THEME="ilimTheme", K_BAK="ilimLastBackup", K_SNOOZE="ilimSnooze";
+let DB=null;
+const ACTIVE_ID="portal"; /* panel kullanıcısı başına tek defter profili */
+let CURRENT_BOOK=null, currentIdx=-1;
+const K_DB="ilimDefterleriV1", K_THEME="ilimTheme", K_BAK="ilimLastBackup", K_SNOOZE="ilimSnooze";
 
 function migrateProfile(p){
     if(!p||typeof p!=="object")return;
@@ -424,8 +388,30 @@ function loadDB(){
     saveDB();
 }
 function saveDB(){ sSet(K_DB,JSON.stringify(DB)); }
-function active(){ return ACTIVE_ID&&DB[ACTIVE_ID]?DB[ACTIVE_ID]:null; }
-function blankProfileData(){ return {surah:{done:{},notes:{}},books:{}}; }
+function blankProfileData(name){ return {id:"portal",name:name||PORTAL_NAME,pin:null,createdAt:Date.now(),data:{surah:{done:{},notes:{}},books:{}}}; }
+
+/* Panel kullanıcısının defterini garanti et.
+   Eski (portal öncesi) ortak veride bu isimde bir profil varsa
+   verileri otomatik olarak bu kullanıcının ad alanına devrolur. */
+function ensurePortalProfile(){
+    if(DB[ACTIVE_ID])return;
+    const target=(PORTAL_NAME||"").trim().toLowerCase();
+    const matchId=Object.keys(DB).find(id=>{
+        const p=DB[id];
+        return p&&p.data&&(p.name||"").trim().toLowerCase()===target;
+    });
+    if(matchId){
+        DB[ACTIVE_ID]=DB[matchId];
+        DB[ACTIVE_ID].id=ACTIVE_ID;
+        DB[ACTIVE_ID].name=PORTAL_NAME;
+        DB[ACTIVE_ID].pin=null;
+        delete DB[matchId];
+    }else{
+        DB[ACTIVE_ID]=blankProfileData();
+    }
+    saveDB();
+}
+function active(){ return DB[ACTIVE_ID]||null; }
 function bookData(bid){
     const p=active(); if(!p)return {surah:{done:{},notes:{}},books:{},topics:[],__dummy:true};
     if(bid==="surah")return p.data.surah;
@@ -450,59 +436,17 @@ function toast(msg,err){ const t=document.getElementById("toast"); t.textContent
 
 /* ---------- Modal ---------- */
 let modalCb=null;
-function openModal(title,body,pin){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalBody").innerHTML=body; const mp=document.getElementById("modalPin"); mp.classList.toggle("hidden",!pin); if(pin)mp.value=""; document.getElementById("modalOverlay").classList.add("open"); }
+function openModal(title,body){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalBody").innerHTML=body; document.getElementById("modalOverlay").classList.add("open"); }
 function closeModal(){ document.getElementById("modalOverlay").classList.remove("open"); modalCb=null; }
-document.getElementById("modalOk").onclick=()=>{ const pin=document.getElementById("modalPin").value; const cb=modalCb; modalCb=null; document.getElementById("modalOverlay").classList.remove("open"); if(cb)cb(pin); };
+document.getElementById("modalOk").onclick=()=>{ const cb=modalCb; modalCb=null; document.getElementById("modalOverlay").classList.remove("open"); if(cb)cb(); };
 document.getElementById("modalOverlay").onclick=e=>{ if(e.target.id==="modalOverlay")closeModal(); };
 
-function show(id){ ["screenLogin","screenHome","screenSurah","screenSurahDetail","screenLesson"].forEach(s=>document.getElementById(s).classList.add("hidden")); document.getElementById(id).classList.remove("hidden"); window.scrollTo({top:0}); }
+function show(id){ ["screenHome","screenSurah","screenSurahDetail","screenLesson"].forEach(s=>document.getElementById(s).classList.add("hidden")); document.getElementById(id).classList.remove("hidden"); window.scrollTo({top:0}); }
 
-/* ---------- Giriş ---------- */
+/* ---------- Yardımcılar ---------- */
 function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function countDone(p){ return Object.values((p.data&&p.data.surah&&p.data.surah.done)||{}).filter(Boolean).length; }
 function countNotes(p){ return Object.values((p.data&&p.data.surah&&p.data.surah.notes)||{}).filter(v=>v&&(v.notes||v.fayda||v.onem||v.extra)).length; }
-
-function renderProfiles(){
-    const el=document.getElementById("profileList"); el.innerHTML="";
-    const ids=Object.keys(DB);
-    if(!ids.length){ el.innerHTML='<p style="color:var(--text-muted);font-size:.9rem;text-align:center">Bu cihazda henüz defter yok. Aşağıdan oluştur ↓</p>'; return; }
-    ids.sort((a,b)=>(DB[a].createdAt||0)-(DB[b].createdAt||0)).forEach(id=>{
-        const p=DB[id];
-        const row=document.createElement("div"); row.className="profile-row";
-        row.innerHTML=`<div class="p-info"><div class="p-name">${esc(p.name)}${p.pin?' <i class="fas fa-lock" style="font-size:.75rem;color:var(--primary-light)"></i>':''}</div><div class="p-sub">${countDone(p)} sure tamamlandı • ${countNotes(p)} surede not</div></div>
-            <button class="row-btn" title="Aç"><i class="fas fa-book-open"></i></button>
-            <button class="row-btn danger" title="Sil"><i class="fas fa-trash"></i></button>`;
-        row.querySelector(".row-btn").onclick=()=>openProfile(id);
-        row.querySelector(".row-btn.danger").onclick=()=>askDeleteProfile(id);
-        row.querySelector(".p-info").onclick=()=>openProfile(id);
-        el.appendChild(row);
-    });
-}
-function createProfile(){
-    const name=document.getElementById("newName").value.trim();
-    if(!name){ toast("Lütfen adını yaz 🙂",true); return; }
-    let pin=document.getElementById("newPin").value.trim();
-    if(pin&&!/^\d{4}$/.test(pin)){ toast("PIN 4 haneli olmalı",true); return; }
-    const hash=pin?simpleHash(pin):null;
-    const sameName=Object.values(DB).filter(p=>(p.name||"").toLowerCase()===name.toLowerCase());
-    if(!hash&&sameName.length&&!confirm(`"${name}" adında ${sameName.length} defter zaten var. PIN olmadan yine de oluşturulsun mu?`))return;
-    const id="p"+Date.now()+Math.random().toString(36).slice(2,6);
-    DB[id]={id,name,pin:hash,createdAt:Date.now(),data:blankProfileData()};
-    saveDB(); document.getElementById("newName").value=""; document.getElementById("newPin").value="";
-    openProfile(id);
-}
-function simpleHash(s){ let h=0; for(const c of s)h=(h*31+c.charCodeAt(0))>>>0; return "h"+h.toString(36); }
-function checkPin(p,given){ return !p.pin||p.pin===simpleHash(given||""); }
-function openProfile(id){
-    const p=DB[id]; if(!p)return;
-    if(p.pin){
-        openModal(`${p.name} — PIN`,"Bu defter PIN korumalı. PIN'i gir:",true);
-        modalCb=given=>{ if(given&&checkPin(p,given)){ ACTIVE_ID=id; sSet(K_ACT,id); enterApp(); } else toast("Yanlış PIN",true); };
-        return;
-    }
-    ACTIVE_ID=id; sSet(K_ACT,id); enterApp();
-}
-function enterApp(){ renderHome(); show("screenHome"); checkStorage(); renderBands(); }
 
 /* ---------- Ana sayfa ---------- */
 function renderHome(){
@@ -655,15 +599,10 @@ function askDeleteCustomBook(id){
     openModal(`${b.name} defterini sil`, `Bu defterdeki <b>tüm konular ve notlar</b> silinecek.<br><br>Bu işlem geri alınamaz.`);
     modalCb=()=>{
         CUSTOM_BOOKS=CUSTOM_BOOKS.filter(x=>x.id!==id); saveCustomBooks();
-        Object.values(DB).forEach(p=>{
-            if(p.data&&p.data.books&&p.data.books[id]){
-                const bk=p.data.books[id];
-                const empty=!bk.topics||!bk.topics.length;
-                if(!empty&&!confirm(`${p.name} kişisinin "${b.name}" defterinde notlar var. Yine de silinsin mi?`))return;
-                delete p.data.books[id];
-            }
-        });
-        saveDB(); if(CURRENT_BOOK===id){ CURRENT_BOOK=null; renderHome(); show("screenHome"); } else renderHome();
+        const p=active();
+        if(p&&p.data&&p.data.books&&p.data.books[id])delete p.data.books[id];
+        saveDB();
+        if(CURRENT_BOOK===id){ CURRENT_BOOK=null; renderHome(); show("screenHome"); } else renderHome();
         toast("Defter silindi");
     };
 }
@@ -693,46 +632,22 @@ function printTopic(i){
     wopen(`<html><head><title>${esc(t.title)}</title>${printStyle()}</head><body><h1>${t.done?"✓ ":""}${esc(t.title)}</h1><div>${esc(t.text||"")}</div></body></html>`);
 }
 
-/* ---------- Profil silme / çıkış / PIN ---------- */
-function askDeleteProfile(id){
-    const p=DB[id]; if(!p)return;
-    if(p.pin){
-        openModal(`${p.name} defterini sil`,"Bu defter PIN korumalı. Silmek için PIN'i gir:",true);
-        modalCb=given=>{ if(given&&checkPin(p,given))reallyDelete(id); else toast("Yanlış PIN",true); };
-        return;
-    }
-    openModal(`${p.name} defterini sil`,`Bu defterde <b>${countDone(p)}</b> sure tamamlandı, <b>${countNotes(p)}</b> surede not var.<br><br>Önce <b>⬇ Yedekle</b> ile yedek alman önerilir. Bu işlem geri alınamaz.`);
-    modalCb=()=>reallyDelete(id);
-}
-function reallyDelete(id){
-    delete DB[id]; saveDB();
-    if(id===ACTIVE_ID){
-        ACTIVE_ID=Object.keys(DB)[0]||null;
-        if(ACTIVE_ID){ sSet(K_ACT,ACTIVE_ID); enterApp(); } else { sDel(K_ACT); logoutToLogin(); }
-    } else renderProfiles();
-    toast("Defter silindi");
-}
-document.getElementById("delProfileBtn").onclick=()=>{ if(ACTIVE_ID)askDeleteProfile(ACTIVE_ID); };
-document.getElementById("logoutBtn").onclick=()=>{ ACTIVE_ID=null; CURRENT_BOOK=null; sDel(K_ACT); logoutToLogin(); };
-function logoutToLogin(){ renderProfiles(); show("screenLogin"); }
-document.getElementById("pinBtn").onclick=()=>{
+/* ---------- Defteri sıfırla / Panele dön ---------- */
+document.getElementById("resetBtn").onclick=()=>{
     const p=active(); if(!p)return;
-    openModal("PIN değiştir", p.pin?"Eski PIN'i gir:":"Yeni 4 haneli PIN belirle:",true);
-    modalCb=given=>{
-        if(p.pin&&!checkPin(p,given)){ toast("Eski PIN yanlış",true); return; }
-        const np=prompt("Yeni 4 haneli PIN (boş bırakırsan PIN kaldırılır):");
-        if(np===null)return;
-        if(np&&!/^\d{4}$/.test(np)){ toast("PIN 4 haneli olmalı",true); return; }
-        p.pin=np?simpleHash(np):null; saveDB(); toast(p.pin?"PIN güncellendi ✓":"PIN kaldırıldı");
-    };
+    openModal("Defteri sıfırla",`<b>${p.name}</b> kişisinin tüm notları (<b>${countDone(p)}</b> sure, <b>${countNotes(p)}</b> surede not ve tüm konular) silinecek.<br><br>Önce <b>⬇ Yedekle</b> butonuyla yedek alman önerilir. Bu işlem geri alınamaz.`);
+    modalCb=()=>{ DB[ACTIVE_ID]=blankProfileData(); saveDB(); CURRENT_BOOK=null; renderHome(); show("screenHome"); toast("Defter sıfırlandı"); };
 };
+/* Çıkış: panele geri döner (panel oturumu açık kaldığı için şifresiz panele düşersin;
+   tam çıkış istersen paneldeki "Çıkış" butonunu kullan) */
+document.getElementById("logoutBtn").onclick=()=>{ location.href="../portal.html"; };
 
 /* ---------- Yedekle / Geri yükle ---------- */
 function doBackup(){
-    if(!Object.keys(DB).length){ toast("Yedeklenecek defter yok",true); return; }
+    const p=active(); if(!p||!Object.keys(DB).length){ toast("Yedeklenecek defter yok",true); return; }
     const blob=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});
     const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
-    a.download="ilim-defterleri-yedek-"+new Date().toISOString().slice(0,10)+".json"; a.click();
+    a.download="ilim-defteri-yedek-"+(PORTAL_KEY||"profil")+"-"+new Date().toISOString().slice(0,10)+".json"; a.click();
     sSet(K_BAK,String(Date.now())); sDel(K_SNOOZE); renderBands(); toast("Yedek indirildi ✓");
 }
 document.getElementById("backupBtn").onclick=doBackup;
@@ -744,10 +659,15 @@ document.getElementById("restoreFile").onchange=e=>{
         try{
             const d=JSON.parse(r.result);
             if(!d||typeof d!=="object")throw 0;
-            const merged=Object.assign({},DB);
-            if(Array.isArray(d)){ d.forEach(p=>{ if(p&&p.id){ migrateProfile(p); merged[p.id]=p; } }); }
-            else{ Object.keys(d).forEach(k=>{ if(d[k]&&d[k].data!==undefined){ migrateProfile(d[k]); merged[k]=d[k]; } }); }
-            DB=merged; saveDB(); renderProfiles(); toast("Geri yüklendi ✓");
+            let restored=null;
+            if(Array.isArray(d)){ restored=d[0]||null; }                 /* eski çoklu-profil yedeği */
+            else if(d[ACTIVE_ID]){ restored=d[ACTIVE_ID]; }              /* yeni format */
+            else{ const k=Object.keys(d).find(k=>d[k]&&d[k].data!==undefined); restored=k?d[k]:null; }
+            if(!restored||!restored.data)throw 0;
+            migrateProfile(restored);
+            restored.id=ACTIVE_ID; restored.name=PORTAL_NAME; restored.pin=null;
+            DB={}; DB[ACTIVE_ID]=restored; saveDB();
+            CURRENT_BOOK=null; renderHome(); show("screenHome"); renderBands(); toast("Geri yüklendi ✓");
         }catch(err){ toast("Geçersiz yedek dosyası",true); }
         e.target.value="";
     };
@@ -758,6 +678,7 @@ document.getElementById("restoreFile").onchange=e=>{
 function renderBands(){
     const el=document.getElementById("bands"); el.innerHTML="";
     if(!STORE_OK)el.innerHTML=`<div class="band err">⚠️ Kayıt şu an yapılamıyor — bu önizleme/gizli pencere ortamında kalıcı depo kapalı. Dosyayı indirip tarayıcıda açın.</div>`;
+    if(!PORTAL_KEY){ el.insertAdjacentHTML("beforeend",`<div class="band warn"><i class="fas fa-triangle-exclamation"></i> Panel oturumu bulunamadı. <button onclick="location.href='../portal.html'">Panele git</button></div>`); return; }
     const p=active(); if(!p)return;
     if(sGet(K_SNOOZE)&&Date.now()<Number(sGet(K_SNOOZE)))return;
     const last=Number(sGet(K_BAK)||0), days=Math.floor((Date.now()-last)/86400000);
@@ -778,15 +699,12 @@ window.onerror=function(msg){
     }catch(e){}
 };
 
-/* ---------- Başlat ---------- */
+/* ---------- Başlat (login yok — oturum panelden gelir) ---------- */
 loadDB();
-try{
-    const savedAct=sGet(K_ACT);
-    ACTIVE_ID=(savedAct&&DB[savedAct])?savedAct:null;
-    if(ACTIVE_ID)enterApp(); else { renderProfiles(); show("screenLogin"); }
-}catch(err){
-    renderProfiles(); show("screenLogin");
-}
+ensurePortalProfile();
+document.getElementById("userNameBadge").textContent=PORTAL_NAME||"Misafir";
+enterApp();
+function enterApp(){ renderHome(); show("screenHome"); checkStorage(); renderBands(); }
 </script>
 </body>
 </html>
