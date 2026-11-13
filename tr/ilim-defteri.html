@@ -189,6 +189,36 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
 .logo{gap:var(--spacing-xs)}
 @media (max-width:640px){.site-logo{height:58px}}
 @media (max-width:460px){.site-logo{height:54px}}
+
+/* ============ KAYDIRILABİLİR TAB BUTONLARI ============ */
+.top-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:6px 0 2px}
+.top-tabs button{
+    background:transparent;border:1.5px solid var(--border-color);
+    color:var(--text-secondary);border-radius:30px;
+    padding:8px 14px;font-size:.82rem;min-height:44px;
+    transition:all var(--transition-fast);white-space:nowrap;font-family:inherit;
+}
+.top-tabs button:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.top-tabs button.on{
+    background:var(--primary-color);border-color:var(--primary-color);
+    color:#fff;font-weight:700;
+}
+@media(max-width:899px){
+    .top-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        scroll-snap-type:x proximity;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+        padding:2px;
+        -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+        mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+    }
+    .top-tabs::-webkit-scrollbar{display:none}
+    .top-tabs button{scroll-snap-align:start;flex:0 0 auto;padding:8px 12px;font-size:.8rem}
+}
+@media print{.top-tabs{display:none!important}}
+
 </style>
 </head>
 <body>
@@ -208,6 +238,11 @@ footer{background:var(--card-bg);border-top:1px solid var(--border-color);paddin
             <button class="tool-btn" id="logoutBtn" title="Panele dön"><i class="fas fa-house"></i></button>
         </div>
     </nav>
+
+    <div class="container">
+    <nav class="top-tabs" id="topTabs" aria-label="Defterler arasında gezin"></nav>
+</div>
+    
 </header>
 
 <input type="file" id="restoreFile" accept=".json" class="hidden">
@@ -436,7 +471,11 @@ function closeModal(){ document.getElementById("modalOverlay").classList.remove(
 document.getElementById("modalOk").onclick=()=>{ const cb=modalCb; modalCb=null; document.getElementById("modalOverlay").classList.remove("open"); if(cb)cb(); };
 document.getElementById("modalOverlay").onclick=e=>{ if(e.target.id==="modalOverlay")closeModal(); };
 
-function show(id){ ["screenHome","screenSurah","screenSurahDetail","screenLesson"].forEach(s=>document.getElementById(s).classList.add("hidden")); document.getElementById(id).classList.remove("hidden"); window.scrollTo({top:0}); }
+function show(id){
+    ["screenHome","screenSurah","screenSurahDetail","screenLesson"].forEach(s=>document.getElementById(s).classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+    window.scrollTo({top:0});
+    ACTIVE_SCREEN=id; syncTabs();
 
 /* ---------- Yardımcılar ---------- */
 function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -469,6 +508,7 @@ function renderHome(){
         card.onclick=()=>openBook(b.id);
         grid.appendChild(card);
     });
+    buildTabs();
 }
 function openBook(bid){
     if(bid==="surah"){ CURRENT_BOOK="surah"; renderSurahGrid(); show("screenSurah"); return; }
@@ -693,6 +733,34 @@ window.onerror=function(msg){
         document.getElementById("bands").insertAdjacentHTML("afterbegin",`<div class="band err">⚠️ Beklenmeyen bir hata oluştu: ${esc(msg)}</div>`);
     }catch(e){}
 };
+
+/* ---------- Sekme şeridi (planner ile aynı davranış) ---------- */
+var ACTIVE_SCREEN='screenHome';
+
+function buildTabs(){
+    const bar=document.getElementById('topTabs'); bar.innerHTML='';
+    const add=(t,label,fn)=>{
+        const b=document.createElement('button');
+        b.type='button'; b.dataset.t=t; b.textContent=label; b.onclick=fn;
+        bar.appendChild(b);
+    };
+    add('home','🏠 Ana Sayfa',()=>goHome());
+    add('surah','📖 Sure Defteri',()=>openBook('surah'));
+    getBooks().filter(b=>b.id!=='surah').forEach(b=>add(b.id,b.name,()=>openBook(b.id)));
+    syncTabs();
+}
+function syncTabs(){
+    document.querySelectorAll('#topTabs button').forEach(b=>{
+        const t=b.dataset.t; let on=false;
+        if(t==='home')on=(ACTIVE_SCREEN==='screenHome');
+        else if(t==='surah')on=(ACTIVE_SCREEN==='screenSurah'||ACTIVE_SCREEN==='screenSurahDetail');
+        else if(CURRENT_BOOK)on=(t===CURRENT_BOOK&&ACTIVE_SCREEN==='screenLesson');
+        b.classList.toggle('on',on);
+        if(on&&window.innerWidth<900&&b.scrollIntoView){
+            b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+        }
+    });
+}
 
 /* ---------- Başlat (login yok — oturum panelden gelir) ---------- */
 loadDB();
