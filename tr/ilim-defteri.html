@@ -476,7 +476,7 @@ function show(id){
     document.getElementById(id).classList.remove("hidden");
     window.scrollTo({top:0});
     ACTIVE_SCREEN=id; syncTabs();
-    }
+}
 
 /* ---------- Yardımcılar ---------- */
 function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
