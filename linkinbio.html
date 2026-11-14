@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>Eslem Nur Çetin • Tüm Bağlantılar</title>
+<meta name="description" content="Eslem Nur Çetin'in ücretsiz dijital ilim notları, web uygulamaları, mağazası ve tüm bağlantıları tek yerde. Link in Bio.">
+<meta name="author" content="Eslem Nur Çetin">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Eslem Nur Çetin • Tüm Bağlantılar">
+<meta property="og:description" content="Ücretsiz dijital ilim notları ve web uygulamaları — tüm bağlantılar tek yerde.">
+<meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+
+<!-- Fontlar & İkonlar (ana siteyle aynı) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ── Ana sitenin paleti ── */
+:root{
+  --primary-color:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
+  --accent-warm:#E6C9C9;--secondary-color:#FDF5E6;
+  --bg-color:#FFF9F9;--bg-secondary:#FFF0F5;
+  --card:#FFFFFF;--text-color:#4E342E;--text-secondary:#8D6E63;--muted:#A89080;
+  --border:#F0E6E6;
+  --shadow:0 4px 15px rgba(183,110,121,.15);
+  --shadow-lg:0 10px 30px rgba(183,110,121,.22);
+  --transition:all .3s ease;
+}
+/* Koyu mod — ana sitedeki gibi koyu siyah */
+[data-theme="dark"]{
+  --primary-color:#CC8E98;--primary-dark:#A06872;--primary-light:#E0A4AC;
+  --bg-color:#000000;--bg-secondary:#161616;
+  --card:#121212;--text-color:#F5F5F0;--text-secondary:#B0B0B0;--muted:#7A7A7A;
+  --border:#262626;
+  --shadow:0 4px 20px rgba(0,0,0,.55);
+  --shadow-lg:0 10px 35px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;color:var(--text-color);
+  background:var(--bg-color);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:clamp(20px,5vw,50px) 18px;
+  transition:background .3s ease,color .3s ease;
+  line-height:1.7;
+}
+body[dir="rtl"]{font-family:'Scheherazade New','Lato',sans-serif}
+/* Arka plan süsü */
+body::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(160,104,114,.09),transparent 45%),
+    radial-gradient(circle at 85% 80%,rgba(230,201,201,.12),transparent 45%);
+}
+[data-theme="dark"] body::before{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(204,142,152,.08),transparent 45%),
+    radial-gradient(circle at 85% 80%,rgba(204,142,152,.05),transparent 45%);
+}
+.wrap{width:100%;max-width:520px}
+
+/* Sabit butonlar (tema + dil) — viewport'a sabitlenir, sayfa kaydırılınca yerinde kalır.
+   BUTONLAR YAN YANA: flex-direction: row (varsayılan) + yatay gap */
+.controls{
+  position:fixed;
+  top:16px;right:16px;bottom:auto;left:auto;
+  margin:0;padding:0;
+  z-index:9999;
+  width:max-content;
+  display:flex;
+  flex-direction:row;      /* yan yana sıralanır */
+  align-items:center;
+  gap:10px;                /* iki buton arasındaki yatay boşluk */
+}
+body[dir="rtl"] .controls{right:auto;left:16px}
+.theme-toggle,.lang-toggle{
+  width:42px;height:42px;border-radius:50%;cursor:pointer;
+  background:var(--card);border:2px solid var(--border);color:var(--text-color);
+  font-size:1.05rem;display:flex;align-items:center;justify-content:center;
+  transition:var(--transition);box-shadow:var(--shadow);
+}
+.theme-toggle:hover,.lang-toggle:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.theme-toggle:hover{transform:rotate(15deg)}
+
+/* Dil dropdown */
+.lang-dropdown{position:relative}
+.lang-menu{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  box-shadow:var(--shadow-lg);padding:6px;min-width:160px;display:none;
+}
+body[dir="rtl"] .lang-menu{right:auto;left:0}
+.lang-menu.open{display:block;animation:fadeIn .2s ease}
+.lang-menu button{
+  display:block;width:100%;padding:9px 12px;
+  border:none;background:transparent;border-radius:9px;color:var(--text-color);
+  font-family:'Lato',sans-serif;font-size:.92rem;text-align:left;cursor:pointer;
+  transition:background .2s ease;
+}
+body[dir="rtl"] .lang-menu button{text-align:right}
+.lang-menu button:hover{background:var(--bg-secondary);color:var(--primary-color)}
+.lang-menu button.on{color:var(--primary-color);font-weight:700}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* Profil */
+.profile{text-align:center;margin:14px 0 26px}
+/* Banner: gölgesiz, sade çerçeveli */
+.banner{
+  width:100%;
+  margin-bottom:14px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:none;            /* gölge kaldırıldı */
+  line-height:0;
+}
+.banner img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+h1{
+  font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,1.9rem);
+  color:var(--primary-color);margin-top:16px;
+}
+/* Rol etiketi: İlahiyat Öğrencisi | Frontend Geliştiricisi */
+.role-tag{
+  color:var(--text-secondary);font-size:.98rem;font-weight:600;
+  margin:8px auto 4px;max-width:420px;
+}
+/* Alt küçük not: ücretsiz + sadaka-i cariye */
+.role-note{
+  color:var(--muted);font-size:.78rem;
+  margin:2px auto 0;max-width:420px;line-height:1.55;
+}
+.arabic{
+  font-family:'Scheherazade New',serif;font-size:1.3rem;
+  color:var(--primary-light);margin-top:6px;direction:ltr;
+}
+/* Markalar — masaüstü/tablette yan yana, yalnızca telefonda yatay kaydırılabilir */
+.brands{
+  width:100%;margin-top:14px;
+  /* Mobil üstü: hepsi görünür, kaydırma yok */
+  overflow:visible;
+}
+.brands-inner{
+  display:flex;gap:6px;                /* birbirine yakın, tuhaf boşluk yok */
+  justify-content:center;              /* sığarsa ortala */
+  width:100%;
+  padding:2px 4px;
+}
+.brand{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.4px;
+  background:var(--bg-secondary);border:1px solid var(--border);
+  color:var(--primary-color);border-radius:20px;padding:4px 14px;
+  transition:var(--transition);white-space:nowrap;
+}
+.brand:hover{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}
+body[dir="rtl"] .brands{font-family:'Lato',sans-serif}
+/* Yalnızca telefonlarda: sığmazsa parmakla sağa-sola kaydır */
+@media(max-width:600px){
+  .brands{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+  .brands::-webkit-scrollbar{display:none}
+  .brands-inner{
+    width:max-content;      /* içerik genişliğinde dursun ki kaydırma mümkün olsun */
+    margin:0 auto;          /* sığarsa yine ortala */
+    gap:6px;
+  }
+}
+
+/* Linkler */
+.links{display:flex;flex-direction:column;gap:14px;margin:8px 0 30px}
+.link{
+  display:flex;align-items:center;gap:14px;text-decoration:none;
+  background:var(--card);border:1px solid var(--border);border-radius:18px;
+  padding:15px 18px;color:var(--text-color);
+  box-shadow:var(--shadow);
+  transition:transform .3s cubic-bezier(.175,.885,.32,1.2),box-shadow .3s ease,border-color .3s ease;
+  opacity:0;transform:translateY(14px);
+  animation:rise .5s ease forwards;
+}
+body[dir="rtl"] .link{flex-direction:row-reverse;text-align:right}
+body[dir="rtl"] .link .txt{text-align:right}
+body[dir="rtl"] .link .go{transform:scaleX(-1)}
+body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
+.link:nth-child(1){animation-delay:.05s}.link:nth-child(2){animation-delay:.1s}
+.link:nth-child(3){animation-delay:.15s}.link:nth-child(4){animation-delay:.2s}
+.link:nth-child(5){animation-delay:.25s}.link:nth-child(6){animation-delay:.3s}
+.link:nth-child(7){animation-delay:.35s}.link:nth-child(8){animation-delay:.4s}
+@keyframes rise{to{opacity:1;transform:none}}
+.link:hover{
+  transform:translateY(-4px) scale(1.015);box-shadow:var(--shadow-lg);
+  border-color:var(--primary-light);
+}
+.link .ico{
+  width:44px;height:44px;border-radius:13px;flex-shrink:0;
+  background:var(--bg-secondary);color:var(--primary-color);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+  transition:var(--transition);
+}
+.link:hover .ico{background:var(--primary-color);color:#fff}
+.link .txt{flex:1;min-width:0}
+.link .txt b{display:block;font-weight:600;font-size:.97rem}
+.link .txt span{display:block;font-size:.8rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link .go{color:var(--muted);font-size:.9rem;transition:var(--transition)}
+.link:hover .go{color:var(--primary-color);transform:translateX(4px)}
+
+/* Sosyal ikonlar */
+.socials{display:flex;justify-content:center;gap:14px;margin:6px 0 26px}
+.socials a{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--card);border:1px solid var(--border);color:var(--text-secondary);
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+  text-decoration:none;box-shadow:var(--shadow);transition:var(--transition);
+}
+.socials a:hover{color:#fff;background:var(--primary-color);border-color:var(--primary-color);transform:translateY(-4px)}
+
+/* Footer */
+.foot{text-align:center;color:var(--muted);font-size:.8rem}
+.foot .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.3rem;color:var(--primary-light);display:block;margin-bottom:6px;direction:ltr}
+.foot a{color:var(--primary-color);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- Sabit butonlar: doğrudan body'nin çocuğu + position:fixed → sayfayla kaymaz -->
+<div class="controls">
+  <div class="lang-dropdown">
+    <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-label="Dili Değiştir / Change language / Sprache ändern / تغيير اللغة / Changer de langue">
+      <i class="fas fa-globe" aria-hidden="true"></i>
+    </button>
+    <div class="lang-menu" id="langMenu">
+      <button data-lang="tr" class="on">Türkçe</button>
+      <button data-lang="en">English</button>
+      <button data-lang="de">Deutsch</button>
+      <button data-lang="ar">العربية</button>
+      <button data-lang="fr">Français</button>
+    </div>
+  </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir"><i class="fas fa-moon" aria-hidden="true"></i></button>
+</div>
+
+<div class="wrap">
+
+  <!-- PROFİL -->
+  <section class="profile">
+    <div class="banner">
+      <!-- ═══ KENDİ BANNER GÖRSELİNİ BURAYA KOY ═══
+           örn: <img src="png/banner.png" alt="Eslem Nur Çetin"> -->
+      <img src="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg" alt="Eslem Nur Çetin">
+    </div>
+    <div class="arabic" style="margin-bottom:10px">بسم الله الرحمن الرحيم</div>
+    <h1>Eslem Nur Çetin</h1>
+    <p class="role-tag" data-i18n="roleTag">İlahiyat Öğrencisi | Frontend Geliştiricisi</p>
+    <p class="role-note" data-i18n="freeNote">Notlar ve web uygulamaları sadaka-i cariye niyetiyle ücretsiz sunulur.</p>
+    <div class="brands">
+      <div class="brands-inner">
+        <span class="brand">ILM &amp; CODE™</span>
+        <span class="brand">Eslem Nur Notes™</span>
+        <span class="brand">Eslem Nur Kalligrafie™</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANA BAĞLANTILAR -->
+  <nav class="links" aria-label="Bağlantılar">
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-house" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l1t">Ana Sitem</b><span data-i18n="l1s">eslem-nur.github.io/official</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-diagram-project" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l2t">Projelerim</b><span data-i18n="l2s">Notlar, şablonlar &amp; web uygulamaları</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-user" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l3t">İlim Panelim</b><span data-i18n="l3s">Kişisel profilinle uygulamalara giriş</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-bag-shopping" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l4t">Mağazam</b><span data-i18n="l4s">Ilm &amp; Code ve Eslem Nur Notes™ ürünleri</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-mug-hot" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l5t">Ko-fi — Destekle</b><span data-i18n="l5s">Bir kahve ısmarla ☕</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l6t">Notion Planlayıcım</b><span data-i18n="l6s">Akademik &amp; manevi hedef şablonu</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-address-card" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l7t">Dijital Kartvizitim</b><span data-i18n="l7s">Business-Card</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+    <a class="link" href="#" onclick="return false">
+      <span class="ico"><i class="fas fa-handshake-angle" aria-hidden="true"></i></span>
+      <span class="txt"><b data-i18n="l8t">Hizmetlerim</b><span data-i18n="l8s">Web tasarım, grafik &amp; çeviri</span></span>
+      <i class="fas fa-arrow-right go" aria-hidden="true"></i>
+    </a>
+
+  </nav>
+
+  <!-- SOSYAL -->
+  <div class="socials">
+    <a href="#" onclick="return false" title="freeCodeCamp" aria-label="freeCodeCamp"><i class="fa-brands fa-free-code-camp" aria-hidden="true"></i></a>
+    <a href="#" onclick="return false" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+    <a href="mailto:eslemnur.notes@gmail.com" title="E-posta" aria-label="E-posta"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <span class="fa-arabic">رَبِّ زِدْنَا عِلْمًا</span>
+    © <span id="y">2026</span> Eslem Nur Çetin •
+    <a href="#" onclick="return false" data-i18n="fPortfolio">Kişisel Portfolyo</a>
+  </footer>
+
+</div>
+
+<script>
+/* ═══════ 1. Dil — TR / EN / DE / AR / FR ═══════ */
+var LANGS=['tr','en','de','ar','fr'], cur='tr';
+var I18N={
+tr:{
+  roleTag:'İlahiyat Öğrencisi | Frontend Geliştiricisi',
+  freeNote:'Notlar ve web uygulamaları sadaka-i cariye niyetiyle ücretsiz sunulur.',
+  l1t:'Ana Sitem',l1s:'eslem-nur.github.io/official',
+  l2t:'Projelerim',l2s:'Notlar, şablonlar & web uygulamaları',
+  l3t:'İlim Panelim',l3s:'Kişisel profilinle uygulamalara giriş',
+  l4t:'Mağazam',l4s:'Ilm & Code ve Eslem Nur Notes™ ürünleri',
+  l5t:'Ko-fi — Destekle',l5s:'Bir kahve ısmarla ☕',
+  l6t:'Notion Planlayıcım',l6s:'Akademik & manevi hedef şablonu',
+  l7t:'Dijital Kartvizitim',l7s:'Business-Card',
+  l8t:'Hizmetlerim',l8s:'Web tasarım, grafik & çeviri',
+  fPortfolio:'Kişisel Portfolyo',docTitle:'Eslem Nur Çetin • Tüm Bağlantılar',
+  themeAria:'Temayı Değiştir',langAria:'Dili Değiştir'
+},
+en:{
+  roleTag:'Theology Student | Frontend Developer',
+  freeNote:'Notes and web apps are shared for free, as sadaqa jāriya (ongoing charity).',
+  l1t:'My Website',l1s:'eslem-nur.github.io/official',
+  l2t:'My Projects',l2s:'Notes, templates & web apps',
+  l3t:'Ilm Panel',l3s:'Log in with your personal profile',
+  l4t:'My Shop',l4s:'Ilm & Code & Eslem Nur Notes™ products',
+  l5t:'Ko-fi — Support me',l5s:'Buy me a coffee ☕',
+  l6t:'My Notion Planner',l6s:'Academic & spiritual goals template',
+  l7t:'Digital Business Card',l7s:'Business-Card',
+  l8t:'My Services',l8s:'Web design, graphics & translation',
+  fPortfolio:'Personal Portfolio',docTitle:'Eslem Nur Çetin • All Links',
+  themeAria:'Toggle theme',langAria:'Change language'
+},
+de:{
+  roleTag:'Theologiestudentin | Frontend-Entwicklerin',
+  freeNote:'Notizen und Web-Apps werden kostenlos geteilt, als Sadaka-i Dschariya.',
+  l1t:'Meine Website',l1s:'eslem-nur.github.io/official',
+  l2t:'Meine Projekte',l2s:'Notizen, Vorlagen & Web-Apps',
+  l3t:'Ilm-Panel',l3s:'Mit deinem persönlichen Profil anmelden',
+  l4t:'Mein Shop',l4s:'Ilm & Code & Eslem Nur Notes™ Produkte',
+  l5t:'Ko-fi — Unterstützen',l5s:'Spendier mir einen Kaffee ☕',
+  l6t:'Mein Notion-Planer',l6s:'Vorlage für akademische & spirituelle Ziele',
+  l7t:'Digitale Visitenkarte',l7s:'Business-Card',
+  l8t:'Meine Dienstleistungen',l8s:'Webdesign, Grafik & Übersetzung',
+  fPortfolio:'Persönliches Portfolio',docTitle:'Eslem Nur Çetin • Alle Links',
+  themeAria:'Design wechseln',langAria:'Sprache ändern'
+},
+ar:{
+  roleTag:'طالبة علوم شرعية | مطورة واجهات أمامية',
+  freeNote:'تُقدَّم الملازم وتطبيقات الويب مجانًا نية الصدقة الجارية.',
+  l1t:'موقعي الرئيسي',l1s:'eslem-nur.github.io/official',
+  l2t:'مشاريعي',l2s:'ملازم وقوالب وتطبيقات ويب',
+  l3t:'لوحة العلم',l3s:'سجّل الدخول بملفك الشخصي',
+  l4t:'متجري',l4s:'منتجات Ilm & Code و Eslem Nur Notes™',
+  l5t:'كوفي — ادعمني',l5s:'قدّم لي فنجان قهوة ☕',
+  l6t:'مخطط Notion الخاص بي',l6s:'قالب للأهداف الأكاديمية والروحية',
+  l7t:'بطاقتي الرقمية',l7s:'Business-Card',
+  l8t:'خدماتي',l8s:'تصميم الويب والجرافيك والترجمة',
+  fPortfolio:'البورتفوليو الشخصي',docTitle:'Eslem Nur Çetin • جميع الروابط',
+  themeAria:'تغيير المظهر',langAria:'تغيير اللغة'
+},
+fr:{
+  roleTag:'Étudiante en théologie | Développeuse frontend',
+  freeNote:'Notes et applications web partagées gratuitement, comme sadaqa jāriya.',
+  l1t:'Mon site',l1s:'eslem-nur.github.io/official',
+  l2t:'Mes projets',l2s:'Notes, modèles & applications web',
+  l3t:'Panneau Ilm',l3s:'Connecte-toi avec ton profil personnel',
+  l4t:'Ma boutique',l4s:'Produits Ilm & Code & Eslem Nur Notes™',
+  l5t:'Ko-fi — Me soutenir',l5s:'Offre-moi un café ☕',
+  l6t:'Mon planificateur Notion',l6s:'Modèle d\'objectifs académiques & spirituels',
+  l7t:'Ma carte de visite',l7s:'Business-Card',
+  l8t:'Mes services',l8s:'Web design, graphisme & traduction',
+  fPortfolio:'Portfolio personnel',docTitle:'Eslem Nur Çetin • Tous les liens',
+  themeAria:'Changer le thème',langAria:'Changer de langue'
+}};
+function t(k){return I18N[cur][k]}
+function applyLang(l){
+  if(LANGS.indexOf(l)<0)l='tr'; cur=l;
+  document.documentElement.lang=l;
+  document.body.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  document.title=t('docTitle');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=t(el.getAttribute('data-i18n'))});
+  document.querySelectorAll('.lang-menu button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l)});
+  document.getElementById('themeToggle').setAttribute('aria-label',t('themeAria'));
+  document.getElementById('langToggle').setAttribute('aria-label',t('langAria'));
+}
+/* Dropdown davranışı */
+var lt=document.getElementById('langToggle'), lm=document.getElementById('langMenu');
+lt.addEventListener('click',function(e){e.stopPropagation();lm.classList.toggle('open');lt.setAttribute('aria-expanded',lm.classList.contains('open'))});
+document.querySelectorAll('.lang-menu button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.getAttribute('data-lang'));lm.classList.remove('open')})});
+document.addEventListener('click',function(){lm.classList.remove('open')});
+/* Başlangıç dili: TR */
+(function(){ applyLang('tr'); })();
+
+/* ═══════ 2. Tema ═══════ */
+(function(){
+  var btn=document.getElementById('themeToggle');
+  function apply(th){
+    document.documentElement.setAttribute('data-theme',th);
+    btn.innerHTML=th==='light'?'<i class="fas fa-moon" aria-hidden="true"></i>':'<i class="fas fa-sun" aria-hidden="true"></i>';
+  }
+  apply('light');
+  btn.addEventListener('click',function(){
+    var th=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+    apply(th);
+  });
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
