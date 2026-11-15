@@ -121,14 +121,17 @@ body[dir="rtl"] .lang-menu button{text-align:right}
   border-radius:18px;
   overflow:hidden;
   border:none;
-  box-shadow:none;            /* gölge kaldırıldı */
+  box-shadow:none;
   line-height:0;
+  background:var(--bg-secondary);   /* şeffaf PNG arkasında temiz zemin */
+  display:flex;
+  justify-content:center;
 }
 .banner img{
   width:100%;
-  height:150px;
-  object-fit:cover;
-  object-position:center;
+  max-width:340px;        /* logo çok dev görünmesin; istediğine göre ayarla */
+  height:auto;            /* oran korunur, kırpma olmaz */
+  object-fit:contain;     /* KESME YOK — yazı-logonun tamamı görünür */
   display:block;
 }
 h1{
@@ -258,9 +261,8 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
   <!-- PROFİL -->
   <section class="profile">
     <div class="banner">
-      <!-- ═══ KENDİ BANNER GÖRSELİNİ BURAYA KOY ═══
-           örn: <img src="png/banner.png" alt="Eslem Nur Çetin"> -->
-      <img src="png/logo/Logo.png" alt="Eslem Nur Çetin">
+
+      <img src="logo.gif" alt="Eslem Nur Çetin">
     </div>
     <div class="arabic" style="margin-bottom:10px">بسم الله الرحمن الرحيم</div>
     <h1>Eslem Nur Çetin</h1>
@@ -268,7 +270,7 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
     <p class="role-note" data-i18n="freeNote">Notlar ve web uygulamaları sadaka-i cariye niyetiyle ücretsiz sunulur.</p>
     <div class="brands">
       <div class="brands-inner">
-        <span class="brand">ILM &amp; CODE™</span>
+        <span class="brand">Ilm &amp; Code™</span>
         <span class="brand">Eslem Nur Notes™</span>
         <span class="brand">Eslem Nur Kalligrafie™</span>
       </div>
@@ -278,30 +280,30 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
   <!-- ANA BAĞLANTILAR -->
   <nav class="links" aria-label="Bağlantılar">
 
-    <a class="link" href="#" onclick="return false">
+    <a class="link" href="index.html" onclick="return false">
       <span class="ico"><i class="fas fa-house" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l1t">Ana Sitem</b><span data-i18n="l1s">eslem-nur.github.io/official</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
 
-    <a class="link" href="#" onclick="return false">
+    <a class="link" href="inde.html#projects" onclick="return false">
       <span class="ico"><i class="fas fa-diagram-project" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l2t">Projelerim</b><span data-i18n="l2s">Notlar, şablonlar &amp; web uygulamaları</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
 
-    <a class="link" href="#" onclick="return false">
+    <a class="link" href="portal.html" onclick="return false">
       <span class="ico"><i class="fas fa-user" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l3t">İlim Panelim</b><span data-i18n="l3s">Kişisel profilinle uygulamalara giriş</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
 
-    <a class="link" href="#" onclick="return false">
+    <a class="link" href="index.html#shop" onclick="return false">
       <span class="ico"><i class="fas fa-bag-shopping" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l4t">Mağazam</b><span data-i18n="l4s">Ilm &amp; Code ve Eslem Nur Notes™ ürünleri</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
-
+<!--
     <a class="link" href="#" onclick="return false">
       <span class="ico"><i class="fas fa-mug-hot" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l5t">Ko-fi — Destekle</b><span data-i18n="l5s">Bir kahve ısmarla ☕</span></span>
@@ -312,7 +314,7 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
       <span class="ico"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l6t">Notion Planlayıcım</b><span data-i18n="l6s">Akademik &amp; manevi hedef şablonu</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
-    </a>
+    </a> 
 
     <a class="link" href="#" onclick="return false">
       <span class="ico"><i class="fas fa-address-card" aria-hidden="true"></i></span>
@@ -320,11 +322,11 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
 
-    <a class="link" href="#" onclick="return false">
+    <a class="link" href="index.html#services" onclick="return false">
       <span class="ico"><i class="fas fa-handshake-angle" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l8t">Hizmetlerim</b><span data-i18n="l8s">Web tasarım, grafik &amp; çeviri</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
-    </a>
+    </a> -->
 
   </nav>
 
@@ -332,7 +334,7 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
   <div class="socials">
     <a href="#" onclick="return false" title="freeCodeCamp" aria-label="freeCodeCamp"><i class="fa-brands fa-free-code-camp" aria-hidden="true"></i></a>
     <a href="#" onclick="return false" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-    <a href="mailto:eslemnur.notes@gmail.com" title="E-posta" aria-label="E-posta"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+    <a href="mailto:eslemnur-official@proton.me" title="E-posta" aria-label="E-posta"><i class="fas fa-envelope" aria-hidden="true"></i></a>
   </div>
 
   <!-- FOOTER -->
