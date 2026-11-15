@@ -4,9 +4,9 @@
 </div>
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./logo.gif">
-    <source media="(prefers-color-scheme: light)" srcset="./logo.gif">
-    <img src="./logo.gif" alt="Eslem Nur Logo" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./Logo.png">
+    <source media="(prefers-color-scheme: light)" srcset="./Logo.png">
+    <img src="./Logo.png" alt="Eslem Nur Logo" width="100%">
   </picture>
 </div>
 
