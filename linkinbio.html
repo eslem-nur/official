@@ -52,7 +52,7 @@ body{
   min-height:100vh;display:flex;flex-direction:column;align-items:center;
   padding:clamp(20px,5vw,50px) 18px;
   transition:background .3s ease,color .3s ease;
-  line-height:1.7;
+  line-height:1.7;overflow-x:hidden;
 }
 body[dir="rtl"]{font-family:'Scheherazade New','Lato',sans-serif}
 /* Arka plan süsü */
@@ -114,24 +114,23 @@ body[dir="rtl"] .lang-menu button{text-align:right}
 
 /* Profil */
 .profile{text-align:center;margin:14px 0 26px}
-/* Banner: gölgesiz, sade çerçeveli */
+
+/* Banner: kenarlıksız, her zaman ekranın tüm genişliği */
 .banner{
-  width:100%;
+  position:relative;
+  width:100vw;                                  /* tüm viewport genişliği */
+  margin-left:calc(-50vw + 50%);               /* wrap padding'inden kaçıp full-bleed yapar */
   margin-bottom:14px;
-  border-radius:none;
-  overflow:hidden;
   border:none;
   box-shadow:none;
   line-height:0;
-  background:none;
-  display:flex;
-  justify-content:center;
+  overflow:hidden;
 }
 .banner img{
   width:100%;
-  max-width:100%;        /* logo çok dev görünmesin; istediğine göre ayarla */
-  height:auto;            /* oran korunur, kırpma olmaz */
-  object-fit:contain;     /* KESME YOK — yazı-logonun tamamı görünür */
+  max-width:100%;                               /* kısıtlama yok — hep tam genişlik */
+  height:auto;
+  object-fit:cover;                             /* yüksekliği de tutarlı kırparsan */
   display:block;
 }
 h1{
