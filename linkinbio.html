@@ -115,11 +115,10 @@ body[dir="rtl"] .lang-menu button{text-align:right}
 /* Profil */
 .profile{text-align:center;margin:14px 0 26px}
 
-/* Banner: kenarlıksız, her zaman ekranın tüm genişliği */
 .banner{
   position:relative;
-  width:100vw;                                  /* tüm viewport genişliği */
-  margin-left:calc(-50vw + 50%);               /* wrap padding'inden kaçıp full-bleed yapar */
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
   margin-bottom:14px;
   border:none;
   box-shadow:none;
@@ -128,11 +127,12 @@ body[dir="rtl"] .lang-menu button{text-align:right}
 }
 .banner img{
   width:100%;
-  max-width:100%;                               /* kısıtlama yok — hep tam genişlik */
-  height:auto;
-  object-fit:cover;                             /* yüksekliği de tutarlı kırparsan */
+  max-width:100%;      
+  height:auto;          
+  object-fit:contain;   
   display:block;
 }
+  
 h1{
   font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,1.9rem);
   color:var(--primary-color);margin-top:16px;
