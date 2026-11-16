@@ -23,6 +23,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<!-- PWA Manifest Ekleme -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon-96x96.png" />
+    <link rel="manifest" href="/official/PWA/manifest/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon.svg" />
+    <link rel="shortcut icon" href="/official/PWA/icon/favicon.ico" />
+
+    <!-- PWA Service Worker Kaydı -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
+            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+        });
+      }
+    </script>
+  
 <style>
 /* ── Ana sitenin paleti ── */
 :root{
@@ -265,7 +284,7 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
     </div>
     <div class="arabic" style="margin-bottom:10px">بسم الله الرحمن الرحيم</div>
     <h1>Eslem Nur Çetin</h1>
-    <p class="role-tag" data-i18n="roleTag">İlahiyat Öğrencisi | Frontend Geliştiricisi</p>
+    <p class="role-tag" data-i18n="roleTag">İlahiyat Öğrencisi | Frontend Developer</p>
     <p class="role-note" data-i18n="freeNote">Notlar ve web uygulamaları sadaka-i cariye niyetiyle ücretsiz sunulur.</p>
     <div class="brands">
       <div class="brands-inner">
@@ -299,11 +318,11 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
 
     <a class="link" href="index.html#shop" target="_blank" rel="noopener noreferrer">
       <span class="ico"><i class="fas fa-bag-shopping" aria-hidden="true"></i></span>
-      <span class="txt"><b data-i18n="l4t">Mağazam</b><span data-i18n="l4s">Ilm &amp; Code ve Eslem Nur Notes™ ürünleri</span></span>
+      <span class="txt"><b data-i18n="l4t">Shop</b><span data-i18n="l4s">Ilm &amp; Code ve Eslem Nur Notes™ ürünleri</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
     </a>
 
-    <a class="link" href="#" target="_blank" rel="noopener noreferrer">
+    <a class="link" href="https://t.me/eslemnur_notestefsir" target="_blank" rel="noopener noreferrer">
       <span class="ico"><i class="fab fa-telegram-plane" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l5t">Tefsir Grubu</b><span data-i18n="l5s">Tefsir okuma notlarım</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
@@ -350,12 +369,12 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
 var LANGS=['tr','en','de','ar','fr'], cur='tr';
 var I18N={
 tr:{
-  roleTag:'İlahiyat Öğrencisi | Frontend Geliştiricisi',
+  roleTag:'İlahiyat Öğrencisi | Frontend Developer',
   freeNote:'Notlar ve web uygulamaları sadaka-i cariye niyetiyle ücretsiz sunulur.',
   l1t:'Ana Sitem',l1s:'eslem-nur.github.io/official',
   l2t:'Projelerim',l2s:'Notlar, şablonlar & web uygulamaları',
   l3t:'İlim Panelim',l3s:'Kişisel profilinle uygulamalara giriş',
-  l4t:'Mağazam',l4s:'Ilm & Code ve Eslem Nur Notes™ ürünleri',
+  l4t:'Shop',l4s:'Ilm & Code ve Eslem Nur Notes™ ürünleri',
   l5t:'Tefsir Grubu',l5s:'Tefsir okuma notlarım',
   l6t:'Notion Planlayıcım',l6s:'Akademik & manevi hedef şablonu',
   l7t:'Dijital Kartvizitim',l7s:'Business-Card',
@@ -378,7 +397,7 @@ en:{
   themeAria:'Toggle theme',langAria:'Change language'
 },
 de:{
-  roleTag:'Theologiestudentin | Frontend-Entwicklerin',
+  roleTag:'Theologiestudentin | Frontend-Developer',
   freeNote:'Notizen und Web-Apps werden kostenlos geteilt, als Sadaka-i Dschariya.',
   l1t:'Meine Website',l1s:'eslem-nur.github.io/official',
   l2t:'Meine Projekte',l2s:'Notizen, Vorlagen & Web-Apps',
