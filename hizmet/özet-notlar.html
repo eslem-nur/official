@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="https://eslem-nur.github.io/official/hizmet/ozet-notlar-flipbook.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Özet Ders Notları (Flipbook)",
+        "url": "https://eslem-nur.github.io/official/hizmet/ozet-notlar-flipbook.html",
+        "description": "Tefsir, Tecvid ve Arapça derslerimden derlediğim özet notlar; Heyzine üzerinden Flipbook olarak ücretsiz okunabiliyor.",
+        "provider": {
+            "@type": "Person",
+            "name": "Eslem Nur Çetin",
+            "url": "https://eslem-nur.github.io/official/index.html"
+        },
+        "areaServed": "Worldwide",
+        "isAccessibleForFree": true,
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://eslem-nur.github.io/official/index.html" },
+                { "@type": "ListItem", "position": 2, "name": "Hizmetler", "item": "https://eslem-nur.github.io/official/hizmet/index.html" },
+                { "@type": "ListItem", "position": 3, "name": "Özet Ders Notları" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../page.css">
+
+    <title>Özet Ders Notları (Flipbook) • Eslem Nur Çetin</title>
+    <meta name="description" content="Tefsir, Tecvid ve Arapça derslerimin özet notları — Heyzine üzerinden Flipbook olarak ücretsiz ve herkese açık.">
+    <meta name="keywords" content="Tefsir Özet Notları, Tecvid Notları, Arapça Notları, Flipbook, Heyzine, Ücretsiz Notlar, Eslem Nur Çetin">
+    <meta name="author" content="Eslem Nur Çetin">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Özet Ders Notları (Flipbook) • Eslem Nur Çetin">
+    <meta property="og:description" content="Tefsir, Tecvid ve Arapça özet notlarım Flipbook olarak yayınlanıyor — ücretsiz ve herkese açık.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/98/a5/ca/98a5ca07841720013645e7a35330fa02.jpg">
+    <meta property="og:url" content="https://eslem-nur.github.io/official/hizmet/ozet-notlar-flipbook.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" as="style">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/official/PWA/png/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/official/PWA/png/favicon-96x96.png" />
+    <link rel="manifest" href="/official/PWA/manifest/site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" type="image/svg+xml" href="/official/PWA/svg/favicon.svg" />
+    <link rel="shortcut icon" href="/official/PWA/icon/favicon.ico" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/official/PWA/js-files/sw.js', { scope: '/official/' })
+            .then(reg => console.log('Service Worker başarıyla kaydedildi!', reg.scope))
+            .catch(err => console.log('Service Worker kaydı başarısız:', err));
+        });
+      }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVIGASYON -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">
+                    <img src="../png/logo/logo.png" alt="Eslem Nur Çetin" class="site-logo">
+                    ENÇ
+                </a>
+                <div class="nav-controls">
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="theme-toggle" onclick="toggleLangMenu()" aria-label="Dili Değiştir">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </button>
+                        <div class="lang-dropdown-menu">
+                            <a href="ozet-notlar-flipbook.html">Türkçe</a>
+                            <a href="ozet-notlar-flipbook-en.html">English</a>
+                            <a href="ozet-notlar-flipbook-de.html">Deutsch</a>
+                            <a href="ozet-notlar-flipbook-fr.html">Français</a>
+                            <a href="ozet-notlar-flipbook-ar.html">العربية</a>
+                        </div>
+                    </div>
+
+                    <button id="themeToggle" class="theme-toggle" aria-label="Temayı Değiştir">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+
+                    <a href="../portal.html" class="theme-toggle portal-nav-btn" aria-label="Portal" title="Portal">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </a>
+
+                    <button class="hamburger" onclick="toggleMenu()" aria-label="Menüyü Aç">☰</button>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="../index.html#about">Hakkımda</a>
+                    <a href="../index.html#skills">Yetenekler</a>
+                    <a href="../projeler/index.html">Projeler</a>
+                    <a href="index.html" class="current" aria-current="page">Hizmetler</a>
+                    <a href="../shop/index.html">Shop</a>
+                    <a href="../index.html#contact">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SAYFA BAŞLIĞI -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Ana Sayfa</a>
+                <span class="sep">/</span>
+                <a href="index.html">Hizmetler</a>
+                <span class="sep">/</span>
+                <span aria-current="page">Özet Ders Notları</span>
+            </div>
+            <h1 class="page-title">Özet Ders Notları</h1>
+            <p class="page-subtitle">
+                Tefsir, Tecvid ve Arapça derslerimden derlediğim özet notlar —
+                gerçek bir kitap gibi sayfa çevrilerek okunabilen Flipbook formatında,
+                Heyzine üzerinden ücretsiz yayınlıyorum.
+            </p>
+            <div class="arabic-text" aria-hidden="true">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</div>
+        </div>
+    </section>
+
+    <!-- HİZMET DETAYI -->
+    <section id="service" class="section">
+        <div class="container">
+
+            <div class="card service-card-active">
+                <div class="service-card-body">
+                    <div class="icon-box">📚</div>
+                    <div class="service-card-text">
+                        <h3>Nedir?</h3>
+                        <p>
+                            Derslerim boyunca tuttuğum notları özetleyip düzenlediğim
+                            <strong>dijital kitapçıklar</strong>. Her biri Heyzine üzerinden
+                            Flipbook olarak yayınlanıyor; yani indirmeden, tarayıcında gerçek
+                            bir kitabı çevirir gibi okuyabilirsin. Bu notlar ders özetleri
+                            niteliğindedir — bir ilim talebesinin çalışma defterinden
+                            süzülmüş, pratik ve derli toplu kaynaklardır.
+                        </p>
+                        <div class="hero-badges service-card-badges">
+                            <span class="badge">Tefsir</span>
+                            <span class="badge">Tecvid</span>
+                            <span class="badge">Arapça</span>
+                            <span class="badge">Flipbook</span>
+                            <span class="badge">Ücretsiz</span>
+                        </div>
+                        <div class="hero-actions service-card-actions">
+                            <a href="#notlar" class="btn-primary">
+                                <i class="fas fa-arrow-down" style="margin-right: 8px;"></i>
+                                Notları Gör
+                            </a>
+                            <a href="../projeler/index.html" class="btn-outline">
+                                <i class="fas fa-folder-open" style="margin-right: 8px;"></i>
+                                Diğer Projelerim
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOTLAR -->
+            <div id="notlar">
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/8a/1c/98/8a1c9854b4498412f68cf8ddb85f3118.jpg" alt="Tefsir Özet Notları" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Tefsir Notlarım (Özet)</div>
+                            <p class="project-desc">Tefsir derslerimden derlediğim özet notlar.</p>
+                            <a href="https://heyzine.com/flip-book/f26bf4152e.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Heyzine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/a6/96/d7/a696d7208dc10222a799b7e4643436cf.jpg" alt="Tecvid Özet Notları" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Tecvid Notlarım (Özet)</div>
+                            <p class="project-desc">Tecvid derslerimden derlediğim özet notlar.</p>
+                            <a href="https://heyzine.com/flip-book/94f2f6b7aa.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Tecvid Kuralları</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="https://i.pinimg.com/736x/70/df/68/70df683db7f74c781a61742871a1513d.jpg" alt="Arapça Özet Notları" loading="lazy">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Arapça Dil Bilgisi Notlarım</div>
+                            <p class="project-desc">Arapça derslerimden derlediğim özet notlar.</p>
+                            <a href="https://heyzine.com/flip-book/341977e36c.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Aç</a>
+                            <div class="repo-link">
+                                <i class="fas fa-book"></i>
+                                <span>FlipBook • Arapça</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- NASIL OKUNUR BİLGİ KUTUSU -->
+            <div class="shop-info-box">
+                <h3><i class="fas fa-book-open" style="margin-right: 10px;" aria-hidden="true"></i>Flipbook Nedir, Nasıl Okunur?</h3>
+                <p>
+                    Flipbook, dijital ortamda gerçek bir kitap deneyimi sunan sayfa çevirme
+                    formatıdır. Notları indirmek gerekmez; linke tıkladığında Heyzine
+                    görüntüleyicide açılır ve ok tuşlarıyla ya da ekranı kaydırarak sayfa
+                    sayfa ilerlersin. Masaüstünde tam ekran modunda, mobilde de dikey
+                    kaydırma ile rahatça okunur.
+                </p>
+                <p style="margin-bottom: 0;">
+                    Tüm notlarım <strong>ücretsizdir</strong> ve sadaka-i cariye niyetiyle
+                    paylaşılmaktadır. Faydalanmakla kalmayıp paylaşan herkese de aynı ecir
+                    umulur.
+                </p>
+            </div>
+
+            <!-- SAYFA SONU ÇAĞRI -->
+            <div class="page-cta">
+                <h3>Notlarla ilgili görüşün mü var?</h3>
+                <p>
+                    Bir düzeltme, ekleme ya da önerin mi var? Her mesaj memnuniyetle
+                    karşılanır — notlar birlikte daha iyi hâle gelir.
+                </p>
+                <div class="hero-actions">
+                    <a href="../index.html#contact" class="btn-primary">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        İletişime Geç
+                    </a>
+                    <a href="tefsir-notlari.html" class="btn-outline">
+                        <i class="fab fa-telegram-plane" style="margin-right: 8px;"></i>
+                        Telegram Notlarım
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-arabic">رَبِّ زِدْنَا عِلْمًا</div>
+            <p class="footer-quote">Rabbim, ilmimizi arttır.</p>
+
+            <div class="social-links">
+                <a href="https://eslem-nur.github.io/Business-Card/index.html" target="_blank" rel="noopener noreferrer" class="social-link" title="Business-Card" aria-label="Business-Card">
+                    <i class="fa fa-vcard"></i>
+                </a>
+                <a href="https://www.freecodecamp.org/eslemnur" target="_blank" rel="noopener noreferrer" class="social-link" title="freeCodeCamp" aria-label="freeCodeCamp">
+                    <i class="fa-brands fa-free-code-camp"></i>
+                </a>
+            </div>
+
+            <div class="back-home-bar">
+                <a href="index.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Hizmetler Sayfasına Dön
+                </a>
+            </div>
+
+            <p class="copyright">© <span id="current-year"></span> Eslem Nur Çetin | Kişisel Portfolyo. Tüm hakları saklıdır.</p>
+            <p class="trademark-notice">
+                <strong>Markalar:</strong>
+                <span class="brand-badge">Eslem Nur Notes™</span>
+                <span class="separator">•</span>
+                <span class="brand-badge">Ilm & Code™</span>
+                <span class="separator">•</span>
+                <span class="brand-badge">Eslem Nur Kalligrafie™</span>
+            </p>
+
+            <p class="legal-links">
+                <a href="../legal/impressum.html" class="btn-outline">Impressum</a>
+                <span class="dot">•</span>
+                <a href="../legal/datenschutz.html" class="btn-outline">Datenschutz</a>
+            </p>
+
+            <p class="legal-note">™ tescilsiz ticari marka anlamına gelir. Kişisel marka projesi • Almanya</p>
+        </div>
+
+        <!-- Ko-fi Widget -->
+        <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+        <script>
+            kofiWidgetOverlay.draw('ilmandcode', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Destekle',
+                'floating-chat.donateButton.background-color': '#D4A5A5',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
+        </script>
+    </footer>
+
+    <script src="../scripts.js"></script>
+</body>
+</html>
