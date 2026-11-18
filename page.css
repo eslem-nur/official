@@ -510,3 +510,12 @@
     margin-top: var(--spacing-xl);
 }
 
+/* Detay sayfasında ara bölüm ve bilgi kutusu boşlukları */
+.service-card-active + #notlar {
+    margin-top: var(--spacing-xl);
+}
+
+.service-card-active ~ .shop-info-box {
+    margin-top: var(--spacing-xl);
+}
+
