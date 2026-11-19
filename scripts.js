@@ -1700,3 +1700,80 @@ if (installBtn) {
         deferredPrompt = null;
     });
 }
+
+// ============================================
+// 35. PWA TALİMAT KARTI (iOS için akıllı rehber)
+// ============================================
+
+const pwaHelpTexts = {
+  tr:{title:'Uygulamayı Telefonuna Ekle',
+      ios:['Safari\'nin altındaki <strong>Paylaş</strong> ikonuna bas <i class="fas fa-arrow-up-from-bracket"></i>',
+           'Listede aşağı kaydır ve <strong>Ana Ekrana Ekle</strong>\'yi seç',
+           '<strong>Ekle</strong>\'ye bas — uygulama hazır!']},
+  en:{title:'Add the App to Your Phone',
+      ios:['Tap the <strong>Share</strong> icon at the bottom of Safari <i class="fas fa-arrow-up-from-bracket"></i>',
+           'Scroll down and choose <strong>Add to Home Screen</strong>',
+           'Tap <strong>Add</strong> — done!']},
+  de:{title:'App aufs Handy hinzufügen',
+      ios:['Tippe unten in Safari auf <strong>Teilen</strong> <i class="fas fa-arrow-up-from-bracket"></i>',
+           'Scrolle nach unten und wähle <strong>Zum Home-Bildschirm</strong>',
+           'Tippe auf <strong>Hinzufügen</strong> — fertig!']},
+  fr:{title:'Ajouter l\'appli à ton téléphone',
+      ios:['Touche l\'icône <strong>Partager</strong> en bas de Safari <i class="fas fa-arrow-up-from-bracket"></i>',
+           'Descends et choisis <strong>Sur l\'écran d\'accueil</strong>',
+           'Touche <strong>Ajouter</strong> — c\'est fait !']},
+  ar:{title:'أضف التطبيق إلى هاتفك',
+      ios:['اضغط على أيقونة <strong>المشاركة</strong> أسفل سفاري <i class="fas fa-arrow-up-from-bracket"></i>',
+           'مرر للأسفل واختر <strong>إضافة إلى الشاشة الرئيسية</strong>',
+           'اضغط <strong>إضافة</strong> — تم!']}
+};
+
+function initPwaHelp(){
+  var overlay = document.getElementById('pwaHelp');
+  if(!overlay) return;
+
+  function isIOS(){
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+           (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS 13+
+  }
+  function isStandalone(){
+    return window.matchMedia('(display-mode: standalone)').matches ||
+           navigator.standalone === true; // iOS yüklü PWA
+  }
+
+  function fillCard(){
+    var lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'tr';
+    var t = pwaHelpTexts[lang] || pwaHelpTexts.tr;
+    document.getElementById('pwaHelpTitle').textContent = t.title;
+    document.getElementById('pwaSteps').innerHTML =
+      t.ios.map(function(s){ return '<li>' + s + '</li>'; }).join('');
+  }
+
+  function openCard(){
+    fillCard();
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden','false');
+  }
+  function closeCard(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden','true');
+  }
+
+  document.getElementById('pwaHelpClose').addEventListener('click', closeCard);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeCard(); });
+
+  // 1) iOS'ta ve henüz yüklü değilse: ilk ziyaretten ~3sn sonra otomatik göster (sakla: 7 gün)
+  if(isIOS() && !isStandalone()){
+    var dismissed = parseInt(localStorage.getItem('pwaHelpDismissed') || '0');
+    var sevenDays = 7*24*60*60*1000;
+    if(Date.now() - dismissed > sevenDays){
+      setTimeout(openCard, 3000);
+    }
+  }
+
+  // 2) "Uygulamayı Yükle" butonu iOS'ta görünmeyeceği için tıklanamaz;
+  //    ama istersen başka bir butona bağlamak için global fonksiyon:
+  window.openPwaHelp = openCard;
+}
+
+initPwaHelp();
