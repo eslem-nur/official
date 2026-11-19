@@ -2542,3 +2542,48 @@ select {
         transition: none;
     }
 }
+
+/* ============================================
+   PWA TALİMAT KARTI
+   ============================================ */
+.pwa-help-overlay{
+  display:none;position:fixed;inset:0;z-index:99999;
+  background:var(--overlay-bg);
+  align-items:center;justify-content:center;padding:20px;
+}
+.pwa-help-overlay.open{display:flex}
+.pwa-help-card{
+  background:var(--card-bg);color:var(--text-primary);
+  border:1px solid var(--border-color);border-radius:20px;
+  box-shadow:var(--shadow-xl);max-width:380px;width:100%;
+  padding:28px 24px;text-align:center;position:relative;
+  animation:fadeIn var(--transition-base) ease;
+}
+.pwa-help-close{
+  position:absolute;top:10px;right:14px;background:none;border:none;
+  color:var(--text-muted);font-size:1.6rem;cursor:pointer;line-height:1;
+}
+.pwa-help-icon{
+  font-size:2.4rem;color:var(--primary-color);margin-bottom:12px;
+}
+.pwa-help-card h3{
+  font-family:'Playfair Display',serif;color:var(--primary-color);
+  font-size:1.2rem;margin-bottom:16px;
+}
+.pwa-steps{
+  text-align:left;counter-reset:pwa;list-style:none;margin:0;
+}
+.pwa-steps li{
+  counter-increment:pwa;position:relative;padding-left:38px;
+  margin-bottom:12px;color:var(--text-secondary);font-size:.93rem;line-height:1.6;
+}
+.pwa-steps li::before{
+  content:counter(pwa);position:absolute;left:0;top:1px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--primary-color);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.85rem;
+}
+/* RTL: adım numaraları sağda */
+[dir="rtl"] .pwa-steps li{padding-left:0;padding-right:38px}
+[dir="rtl"] .pwa-steps li::before{left:auto;right:0}
