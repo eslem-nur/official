@@ -1671,3 +1671,32 @@ window.addEventListener('load', () => initShopDescToggle());
 if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => initShopDescToggle());
 }
+
+// ============================================
+// 34. PWA YÜKLEME BUTONU (beforeinstallprompt)
+// ============================================
+
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'inline-flex';
+});
+
+window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    const btn = document.getElementById('installBtn');
+    if (btn) btn.style.display = 'none';
+});
+
+const installBtn = document.getElementById('installBtn');
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+    });
+}
