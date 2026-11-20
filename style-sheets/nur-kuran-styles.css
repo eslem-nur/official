@@ -472,3 +472,7 @@ button:hover {
         min-height: 44px;
     }
 }
+
+.theme-toggle, .theme-btn, .lang-toggle, .user-btn {
+    border-radius: 50%;
+}

@@ -677,3 +677,7 @@
         min-height: 44px;
     }
 }
+
+.lang-toggle, .user-btn {
+    border-radius: 50%;
+}
