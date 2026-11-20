@@ -43,7 +43,7 @@
     </script>
   
 <style>
-/* ── Ana sitenin paleti ── */
+
 :root{
   --primary-color:#A06872;--primary-dark:#8E5A65;--primary-light:#CC8E98;
   --accent-warm:#E6C9C9;--secondary-color:#FDF5E6;
@@ -54,7 +54,7 @@
   --shadow-lg:0 10px 30px rgba(183,110,121,.22);
   --transition:all .3s ease;
 }
-/* Koyu mod — ana sitedeki gibi koyu siyah */
+
 [data-theme="dark"]{
   --primary-color:#CC8E98;--primary-dark:#A06872;--primary-light:#E0A4AC;
   --bg-color:#000000;--bg-secondary:#161616;
@@ -74,7 +74,7 @@ body{
   line-height:1.7;overflow-x:hidden;
 }
 body[dir="rtl"]{font-family:'Scheherazade New','Lato',sans-serif}
-/* Arka plan süsü */
+
 body::before{
   content:'';position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;pointer-events:none;
   background:
@@ -88,8 +88,7 @@ body::before{
 }
 .wrap{width:100%;max-width:520px}
 
-/* Sabit butonlar (tema + dil) — viewport'a sabitlenir, sayfa kaydırılınca yerinde kalır.
-   BUTONLAR YAN YANA: flex-direction: row (varsayılan) + yatay gap */
+
 .controls{
   position:fixed;
   top:16px;right:16px;bottom:auto;left:auto;
@@ -97,9 +96,9 @@ body::before{
   z-index:9999;
   width:max-content;
   display:flex;
-  flex-direction:row;      /* yan yana sıralanır */
+  flex-direction:row;      
   align-items:center;
-  gap:10px;                /* iki buton arasındaki yatay boşluk */
+  gap:10px;                
 }
 body[dir="rtl"] .controls{right:auto;left:16px}
 .theme-toggle,.lang-toggle{
@@ -156,12 +155,12 @@ h1{
   font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,1.9rem);
   color:var(--primary-color);margin-top:16px;
 }
-/* Rol etiketi: İlahiyat Öğrencisi | Frontend Geliştiricisi */
+
 .role-tag{
   color:var(--text-secondary);font-size:.98rem;font-weight:600;
   margin:8px auto 4px;max-width:420px;
 }
-/* Alt küçük not: ücretsiz + sadaka-i cariye */
+
 .role-note{
   color:var(--muted);font-size:.78rem;
   margin:2px auto 0;max-width:420px;line-height:1.55;
@@ -170,15 +169,15 @@ h1{
   font-family:'Scheherazade New',serif;font-size:1.3rem;
   color:var(--primary-light);margin-top:6px;direction:ltr;
 }
-/* Markalar — masaüstü/tablette yan yana, yalnızca telefonda yatay kaydırılabilir */
+
 .brands{
   width:100%;margin-top:14px;
-  /* Mobil üstü: hepsi görünür, kaydırma yok */
+
   overflow:visible;
 }
 .brands-inner{
-  display:flex;gap:6px;                /* birbirine yakın, tuhaf boşluk yok */
-  justify-content:center;              /* sığarsa ortala */
+  display:flex;gap:6px;                
+  justify-content:center;              
   width:100%;
   padding:2px 4px;
 }
@@ -190,13 +189,13 @@ h1{
 }
 .brand:hover{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}
 body[dir="rtl"] .brands{font-family:'Lato',sans-serif}
-/* Yalnızca telefonlarda: sığmazsa parmakla sağa-sola kaydır */
+
 @media(max-width:600px){
   .brands{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
   .brands::-webkit-scrollbar{display:none}
   .brands-inner{
-    width:max-content;      /* içerik genişliğinde dursun ki kaydırma mümkün olsun */
-    margin:0 auto;          /* sığarsa yine ortala */
+    width:max-content;      
+    margin:0 auto;          
     gap:6px;
   }
 }
@@ -257,7 +256,7 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
 </head>
 <body>
 
-<!-- Sabit butonlar: doğrudan body'nin çocuğu + position:fixed → sayfayla kaymaz -->
+
 <div class="controls">
   <div class="lang-dropdown">
     <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-label="Dili Değiştir / Change language / Sprache ändern / تغيير اللغة / Changer de langue">
@@ -338,13 +337,13 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
       <span class="ico"><i class="fas fa-address-card" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l7t">Dijital Kartvizitim</b><span data-i18n="l7s">Business-Card</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
-    </a>
+    </a> -->
 
-    <a class="link" href="index.html#services" onclick="return false">
+    <a class="link" href="hizmet/index.html" target="_blank" rel="noopener noreferrer">
       <span class="ico"><i class="fas fa-handshake-angle" aria-hidden="true"></i></span>
       <span class="txt"><b data-i18n="l8t">Hizmetlerim</b><span data-i18n="l8s">Web tasarım, grafik &amp; çeviri</span></span>
       <i class="fas fa-arrow-right go" aria-hidden="true"></i>
-    </a> -->
+    </a> 
 
   </nav>
 
