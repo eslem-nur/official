@@ -13,6 +13,11 @@
             --note-bg: #FFF0F5;
             --soft-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
             --nav-bg: rgba(255, 249, 249, 0.95);
+
+            --radius-md: 16px;
+            --radius-full: 50%;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
             
             /* Oyun Özel Renkler */
             --success-bg: #E8F5E9;

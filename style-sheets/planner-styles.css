@@ -17,6 +17,10 @@
             --header-bg: rgba(255, 249, 249, 0.95);
             --ramadan-primary: #4CAF50; /* Ramazan için Yeşil */
             --ramadan-bg: #E8F5E9;
+            --radius-md: 16px;
+            --radius-full: 50%;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
         }
 
         /* --- KOYU MOD DEĞİŞKENLERİ --- */

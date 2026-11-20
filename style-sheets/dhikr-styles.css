@@ -15,6 +15,10 @@
             --header-bg: rgba(255, 249, 249, 0.95);
             --tasbih-ring-color: #D4A5A5;
             --imame-color: #B76E79;
+            --radius-md: 16px;
+            --radius-full: 50%;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
         }
 
         [data-theme="dark"] {
