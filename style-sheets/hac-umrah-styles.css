@@ -209,6 +209,7 @@
     transition: all var(--transition-base);
     padding: 0;
     text-decoration: none;
+    margin: 0;
 }
 
 .theme-toggle:hover, .theme-btn:hover, .lang-toggle:hover, .user-btn:hover {

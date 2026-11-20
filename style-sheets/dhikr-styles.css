@@ -663,6 +663,7 @@
     transition: all var(--transition-base);
     padding: 0;
     text-decoration: none;
+    margin: 0;
 }
 
 .lang-toggle:hover, .user-btn:hover {
