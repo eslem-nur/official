@@ -428,7 +428,7 @@
     min-height: 48px;
     width: 40px;
     height: 40px;
-    border-radius: var(--radius-full);
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -437,6 +437,7 @@
     transition: all var(--transition-base);
     padding: 0;
     text-decoration: none;
+    margin: 0;   
 }
 
 .theme-toggle:hover, .theme-btn:hover, .lang-toggle:hover, .user-btn:hover {
