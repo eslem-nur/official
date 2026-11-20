@@ -18,6 +18,11 @@
             --radius-full: 50%;
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
+             --spacing-md: 1.5rem;
+    --transition-base: 0.3s ease;
+    --transition-fast: 0.15s ease;
+    --text-primary: var(--text-color);
+    --text-muted: var(--text-light);
             
             /* Oyun Özel Renkler */
             --success-bg: #E8F5E9;
