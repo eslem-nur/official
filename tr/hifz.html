@@ -65,8 +65,18 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;color:var(--text)}
 header{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
 nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0;gap:12px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.site-logo{width:34px;height:34px;object-fit:contain;border-radius:8px;flex-shrink:0}
+.site-logo{width:auto;clamp(60px, 6vw, 80px);object-fit:contain;display: block;flex-shrink:0}
 .logo h1{font-size:1.15rem;color:var(--primary)}
+.logo:hover .site-logo {transform: scale(1.06);}
+.logo:hover .site-logo {transform: scale(1.06);}
+[data-theme="dark"] .site-logo {filter: brightness(1.15) contrast(1.05);}
+@media (max-width: 640px) {
+    .site-logo { height: 58px; }
+}
+
+@media (max-width: 460px) {
+    .site-logo { height: 54px; }
+}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand h1{font-size:1.15rem;color:var(--primary)}
 .brand .basmala{font-size:1.05rem;color:var(--primary-light)}
