@@ -229,6 +229,8 @@ footer{text-align:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
             <button onclick="setLang('tr')" data-lang="tr">🇹🇷 Türkçe</button>
             <button onclick="setLang('en')" data-lang="en">🇬🇧 English</button>
             <button onclick="setLang('de')" data-lang="de">🇩🇪 Deutsch</button>
+            <button onclick="setLang('fr')" data-lang="fr">🇫🇷 Français</button>
+            <button onclick="setLang('ar')" data-lang="ar">🇸🇦 العربية</button>
           </div>
         </div>
         <button class="theme-toggle" onclick="toggleTheme()" title="Tema" id="themeBtnDash">
@@ -296,7 +298,7 @@ function saveUsers(u){lsSet(USERS_KEY,JSON.stringify(u))}
 function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
 /* ═══════ 2. Dil (dropdown) ═══════ */
-var LANGS=['tr','en','de'], cur='tr';
+var LANGS=['tr','en','de','fr','ar'], cur='tr';
 var I18N={
 tr:{
   authSub:'Tüm uygulamalarım tek yerde, ilerlemeniz cihazınızda.',
@@ -381,6 +383,62 @@ de:{
   panelTitle:'Ilm & Code Portal',pageTitle:'Panel • Eslem Nur Çetin',
   phUser:'z. B. Ayşe',phUser2:'z. B. Fatma',
   footQuote:'· Oh Allah, mehre unser Wissen'
+},
+fr:{
+  authSub:'Toutes mes applications au même endroit, progression stockée sur votre appareil.',
+  tabLogin:'Connexion',tabRegister:'Inscription',
+  fUser:"Nom d'utilisateur",fPass:'PIN / Mot de passe',fPass2:'Confirmer le PIN',fPassHint:'PIN / Mot de passe (min. 4 caractères)',
+  remember:'Se souvenir de moi',btnLogin:'Se connecter →',btnReg:'Créer un compte ✿',btnLogout:'Déconnexion',
+  note:'🔒 Tout est stocké uniquement sur cet appareil — aucune donnée ne quitte votre navigateur. Vous pouvez créer plusieurs profils sur le même appareil. Si vous oubliez votre mot de passe, vos données sont irrécupérables ; notez-le.',
+  dashSub:'Accédez ici à toutes mes applications web. Chaque application ouverte enregistre uniquement dans votre profil.',
+  stApps:'Applications',stOpened:'Ouvertes',stMembers:'Profils sur l\'appareil',
+  donLabel:"Retour à l'application d'origine :",donOpen:'Ouvrir l\'app →',
+  searchPh:'🔍 Rechercher des apps...',bkDl:'⬇ Télécharger la sauvegarde',bkUl:'⬆ Restaurer la sauvegarde',
+  tabIlm:'Ilm', tabGuides:'Guides', tabTools:'Outils',
+  setTitle:'⚙ Paramètres du profil',setDesc:'Toutes les données de ce profil restent dans le stockage du navigateur. Les actions ci-dessous n\'affectent que ce profil.',
+  setDelete:'🗑 Supprimer le profil et toutes ses données',
+  open:'Ouvrir →',isNew:'✨ Nouveau',openedTimes:function(n){return '📁 ouvert '+n+'×'},
+  onlyTr:'🇹🇷 Cette application est en turc uniquement',
+  hello:function(n){return 'Bonjour, '+n+' ! ✿'},
+  memberSince:function(d){return 'Membre depuis : '+d},
+  errNoUser:'Aucun profil trouvé.',errPass:'Mot de passe incorrect.',
+  errUserFmt:'Le nom doit contenir 2–24 caractères (lettres, chiffres, espaces).',
+  errExists:"Ce nom d'utilisateur existe déjà sur cet appareil.",errMatch:'Les PIN ne correspondent pas.',
+  okCreated:'Compte créé ! Vous pouvez vous connecter ✿',
+  impOk:function(n){return n+' enregistrements restaurés ✿'},impFail:'Fichier de sauvegarde invalide.',
+  delQ1:'TOUTES les données de ce profil seront supprimées définitivement. Êtes-vous sûr ?',delQ2:'Confirmation finale : supprimer vraiment ?',
+  emptySearch:'Application introuvable 🌸',themeTitle:'Changer le thème',
+  panelTitle:'Portail Ilm & Code',pageTitle:'Tableau de bord • Eslem Nur Çetin',
+  phUser:'ex. Aïcha',phUser2:'ex. Fatima',
+  footQuote:'· Ô mon Seigneur, augmente mes connaissances'
+},
+ar:{
+  authSub:'جميع تطبيقاتي في مكان واحد، ويتخزَّن تقدمك على جهازك.',
+  tabLogin:'تسجيل الدخول',tabRegister:'إنشاء حساب',
+  fUser:'اسم المستخدم',fPass:'رمز PIN / كلمة المرور',fPass2:'أعد إدخال الرمز',fPassHint:'رمز PIN / كلمة المرور (4 أحرف على الأقل)',
+  remember:'تذكرني',btnLogin:'دخول →',btnReg:'إنشاء الحساب ✿',btnLogout:'خروج',
+  note:'🔒 يُخزَّن كل شيء على هذا الجهاز فقط — لا تخرج أي بيانات من متصفحك. يمكنك إنشاء أكثر من ملف شخصي على نفس الجهاز. إذا نسيت كلمة المرور فلا يمكن استعادة بياناتك؛ سجِّلها.',
+  dashSub:'ادخل إلى جميع تطبيقاتي من هنا. كل تطبيق تفتحه يُسجَّل في ملفك الشخصي فقط.',
+  stApps:'تطبيق',stOpened:'فُتحت',stMembers:'ملفات على الجهاز',
+  donLabel:'العودة إلى التطبيق الذي أتيت منه:',donOpen:'افتح التطبيق →',
+  searchPh:'🔍 ابحث عن تطبيق...',bkDl:'⬇ تنزيل النسخة الاحتياطية',bkUl:'⬆ استعادة النسخة الاحتياطية',
+  tabIlm:'العلم', tabGuides:'الأدلة', tabTools:'الأدوات',
+  setTitle:'⚙ إعدادات الملف الشخصي',setDesc:'توجد جميع بيانات هذا الملف في مخزن المتصفح. العمليات التالية تمس هذا الملف فقط.',
+  setDelete:'🗑 حذف الملف وجميع بياناته',
+  open:'افتح →',isNew:'✨ جديد',openedTimes:function(n){return '📁 فُتح '+n+' مرة'},
+  onlyTr:'🇹🇷 هذا التطبيق بالتركية فقط',
+  hello:function(n){return 'مرحبًا، '+n+'! ✿'},
+  memberSince:function(d){return 'عضو منذ: '+d},
+  errNoUser:'لا يوجد ملف بهذا الاسم.',errPass:'كلمة المرور خاطئة.',
+  errUserFmt:'يجب أن يكون الاسم 2–24 حرفًا (حروف وأرقام ومسافات).',
+  errExists:'هذا الاسم موجود بالفعل على هذا الجهاز.',errMatch:'الرمزان غير متطابقين.',
+  okCreated:'تم إنشاء الحساب! يمكنك تسجيل الدخول الآن ✿',
+  impOk:function(n){return 'تمت استعادة '+n+' سجلًا ✿'},impFail:'ملف احتياطي غير صالح.',
+  delQ1:'ستُحذف جميع بيانات هذا الملف نهائيًا. هل أنت متأكد؟',delQ2:'تأكيد أخير: هل تريد الحذف حقًا؟',
+  emptySearch:'لم أجد التطبيق الذي تبحث عنه 🌸',themeTitle:'تغيير المظهر',
+  panelTitle:'بوابة Ilm & Code',pageTitle:'اللوحة • Eslem Nur Çetin',
+  phUser:'مثال: عائشة',phUser2:'مثال: فاطمة',
+  footQuote:'· ربِّ زدني علمًا'
 }};
 function t(k){return I18N[cur][k]}
 function setLang(l){applyLang(l);toggleLangMenu(true)}
