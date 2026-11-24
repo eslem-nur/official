@@ -364,7 +364,25 @@ body[dir="rtl"] .link:hover .go{transform:scaleX(-1) translateX(4px)}
 </div>
 
 <script>
-/* ═══════ 1. Dil — TR / EN / DE / AR / FR ═══════ */
+/* ═══════ 1. Site linklerinin dil versiyonları ═══════ */
+var SITE_URLS={
+  tr:{ home:'index.html',             projects:'index.html#projects',             portal:'portal.html',          shop:'index.html#shop',             services:'hizmet/index.html' },
+  en:{ home:'en.html',                projects:'en.html#projects',                portal:'portal.html',          shop:'en.html#shop',                services:'hizmet/en.html' },
+  de:{ home:'de.html',                projects:'de.html#projects',                portal:'portal.html',          shop:'de.html#shop',                services:'hizmet/de.html' },
+  ar:{ home:'ar.html',                projects:'ar.html#projects',                portal:'portal.html',          shop:'ar.html#shop',                services:'hizmet/ar.html' },
+  fr:{ home:'fr.html',                projects:'fr.html#projects',                portal:'portal.html',          shop:'fr.html#shop',                services:'hizmet/fr.html' }
+};
+
+function applySiteUrls(){
+  var map=SITE_URLS[cur];
+  if(!map)return;
+  document.querySelectorAll('[data-site]').forEach(function(a){
+    var key=a.getAttribute('data-site');
+    if(map[key]) a.setAttribute('href', map[key]);
+  });
+}
+
+/* ═══════ 2. Dil — TR / EN / DE / AR / FR ═══════ */
 var LANGS=['tr','en','de','ar','fr'], cur='tr';
 var I18N={
 tr:{
@@ -437,9 +455,12 @@ fr:{
   fPortfolio:'Portfolio personnel',docTitle:'Eslem Nur Çetin • Tous les liens',
   themeAria:'Changer le thème',langAria:'Changer de langue'
 }};
+
 function t(k){return I18N[cur][k]}
+
 function applyLang(l){
   if(LANGS.indexOf(l)<0)l='tr'; cur=l;
+  try{ localStorage.setItem('bio-lang', l); }catch(e){}
   document.documentElement.lang=l;
   document.body.setAttribute('dir',l==='ar'?'rtl':'ltr');
   document.title=t('docTitle');
@@ -449,15 +470,26 @@ function applyLang(l){
   document.getElementById('langToggle').setAttribute('aria-label',t('langAria'));
   applySiteUrls();
 }
+
 /* Dropdown davranışı */
 var lt=document.getElementById('langToggle'), lm=document.getElementById('langMenu');
 lt.addEventListener('click',function(e){e.stopPropagation();lm.classList.toggle('open');lt.setAttribute('aria-expanded',lm.classList.contains('open'))});
-document.querySelectorAll('.lang-menu button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.getAttribute('data-lang'));lm.classList.remove('open')})});
+document.querySelectorAll('.lang-menu button').forEach(function(b){
+  b.addEventListener('click',function(){
+    applyLang(b.getAttribute('data-lang'));
+    lm.classList.remove('open');
+  });
+});
 document.addEventListener('click',function(){lm.classList.remove('open')});
-/* Başlangıç dili: TR */
-(function(){ applyLang('tr'); })();
 
-/* ═══════ 2. Tema ═══════ */
+/* Başlangıç dili: kaydedilmiş varsa o, yoksa TR */
+(function(){
+  var saved=null;
+  try{ saved=localStorage.getItem('bio-lang'); }catch(e){}
+  applyLang(saved||'tr');
+})();
+
+/* ═══════ 3. Tema ═══════ */
 (function(){
   var btn=document.getElementById('themeToggle');
   function apply(th){
@@ -471,23 +503,6 @@ document.addEventListener('click',function(){lm.classList.remove('open')});
   });
   document.getElementById('y').textContent=new Date().getFullYear();
 })();
-
-    /* ═══════ 3. Site linklerinin dil versiyonları ═══════ */
-var SITE_URLS={
-  tr:{ home:'index.html', projects:'index.html#projects', portal:'portal.html', shop:'index.html#shop', services:'hizmet/index.html' },
-  en:{ home:'en.html',     projects:'en.html#projects',     portal:'en-portal.html', shop:'en.html#shop',     services:'en-hizmet/index.html' },
-  de:{ home:'de.html',     projects:'de.html#projects',     portal:'de-portal.html', shop:'de.html#shop',     services:'de-hizmet/index.html' },
-  ar:{ home:'ar.html',     projects:'ar.html#projects',     portal:'ar-portal.html', shop:'ar.html#shop',     services:'ar-hizmet/index.html' },
-  fr:{ home:'fr.html',     projects:'fr.html#projects',     portal:'fr-portal.html', shop:'fr.html#shop',     services:'fr-hizmet/index.html' }
-};
-
-function applySiteUrls(){
-  var map=SITE_URLS[cur];
-  document.querySelectorAll('[data-site]').forEach(function(a){
-    var key=a.getAttribute('data-site');
-    if(map[key]) a.setAttribute('href', map[key]);
-  });
-}
 </script>
 
 </body>
