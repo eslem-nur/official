@@ -85,10 +85,10 @@
 
             <!-- HİKAYE SEÇİMİ -->
             <div class="story-selector">
-                <button class="story-btn active" onclick="selectStory('eyyub')">Eyyüp A.S.</button>
-                <button class="story-btn" onclick="selectStory('musas')">Musa A.S.</button>
-                <button class="story-btn" onclick="selectStory('yusuf')">Yusuf A.S.</button>
-                <button class="story-btn" onclick="selectStory('random')">Rastgele</button>
+                <button class="story-btn active" data-story="eyyub" onclick="selectStory('eyyub')">Eyyüp A.S.</button>
+                <button class="story-btn" data-story="musas" onclick="selectStory('musas')">Musa A.S.</button>
+                <button class="story-btn" data-story="yusuf" onclick="selectStory('yusuf')">Yusuf A.S.</button>
+                <button class="story-btn" data-story="random" onclick="selectStory('random')">Rastgele</button>
             </div>
 
             <!-- İLERLEME -->
@@ -240,223 +240,16 @@
             }
         };
 
-        
-        function initRandomMode() {
-            const allWords = [];
-            let idCounter = 1;
-            ['eyyub', 'musas', 'yusuf'].forEach(key => {
-                stories[key].words.forEach(word => {
-                    allWords.push({ ...word, id: idCounter++ });
-                });
-            });
-           
-            for (let i = allWords.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
-            }
-            stories.random.words = allWords;
-        }
-
-        let currentStoryKey = 'eyyub';
-        let currentWordIndex = 0;
-        let currentWords = [];
-        let isRandomMode = false;
-
-        // Başlangıç
-        function initApp() {
-            initRandomMode();
-            loadTheme();
-            selectStory('eyyub');
-            updateYear();
-        }
-
-        // Tema Yönetimi
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-        }
-
-        function updateThemeIcon(theme) {
-            const icon = document.querySelector('#themeToggle i');
-            const btn = document.querySelector('#themeToggle');
-            if (theme === 'light') {
-                icon.className = 'fas fa-moon';
-                btn.setAttribute('aria-label', 'Koyu Temaya Geç');
-            } else {
-                icon.className = 'fas fa-sun';
-                btn.setAttribute('aria-label', 'Aydınlık Temaya Geç');
-            }
-        }
-
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-        // Menü Yönetimi
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // Hikaye Seçimi
-        window.selectStory = function(storyKey) {
-            currentStoryKey = storyKey;
-            isRandomMode = (storyKey === 'random');
-            
-            if (isRandomMode) {
-                currentWords = stories.random.words;
-                document.getElementById('currentStoryName').textContent = "Rastgele Kıssalar";
-                document.getElementById('storyProgressText').textContent = "Tüm kıssalardan karışık kelimeler öğreniyorsunuz.";
-            } else {
-                currentWords = stories[storyKey].words;
-               
-                const storyName = stories[storyKey].name.split('(')[0].trim();
-                document.getElementById('currentStoryName').textContent = storyName;
-                document.getElementById('storyProgressText').textContent = stories[storyKey].description;
-            }
-
-            currentWordIndex = 0;
-            
-            // Buton aktiflik durumu
-            document.querySelectorAll('.story-btn').forEach(btn => {
-                btn.classList.remove('active');
-                const btnText = btn.textContent;
-                if (storyKey === 'random' && btnText.includes('Rastgele')) btn.classList.add('active');
-                else if (storyKey === 'eyyub' && btnText.includes('Eyyüp')) btn.classList.add('active');
-                else if (storyKey === 'musas' && btnText.includes('Musa')) btn.classList.add('active');
-                else if (storyKey === 'yusuf' && btnText.includes('Yusuf')) btn.classList.add('active');
-            });
-            
-            renderWord();
-            updateProgress(); 
-        };
-
-        // İlerleme Çubuğunu Güncelle
-        function updateProgress() {
-            if (currentWords.length === 0) return;
-
-            const progress = ((currentWordIndex + 1) / currentWords.length) * 100;
-            const progressFill = document.getElementById('progressFill');
-            const learnedCount = document.getElementById('learnedCount');
-            const totalWords = document.getElementById('totalWords');
-
-            
-            progressFill.style.width = `${progress}%`;
-            learnedCount.textContent = currentWordIndex + 1;
-            totalWords.textContent = currentWords.length;
-        }
-
-        // Kelimeyi Ekrana Bas
-        function renderWord() {
-            if (currentWords.length === 0) return;
-
-            const wordData = currentWords[currentWordIndex];
-            const wordCard = document.getElementById('wordCard');
-
-            // Highlight mantığını oluştur
-            const contextParts = wordData.contextArabic.split(' ');
-            let highlightedContext = '';
-            contextParts.forEach((part, index) => {
-                if (index === wordData.highlightIndex) {
-                    highlightedContext += `<span class="highlight-word">${part}</span> `;
-                } else {
-                    highlightedContext += `${part} `;
-                }
-            });
-
-            // Kartın içeriği
-            wordCard.innerHTML = `
-                <div class="arabic-word">${wordData.word}</div>
-                <div class="pronunciation">${wordData.pronunciation}</div>
-                <div class="meaning">${wordData.meaning}</div>
-                
-                <div class="root-badge">Kök: ${wordData.root}</div>
-
-                <div class="context-card">
-                    <span class="context-label">Bağlam (Ayet):</span>
-                    <div class="context-arabic">${highlightedContext.trim()}</div>
-                    <div class="context-translation">${wordData.contextTranslation}</div>
-                </div>
-            `;
-        }
-
-        // Navigasyon Butonları (Global Scope'a Eklenmeli)
-        window.previousWord = function() {
-            if (currentWordIndex > 0) {
-                currentWordIndex--;
-                renderWord();
-            }
-        };
-
-        window.nextWord = function() {
-            if (currentWordIndex < currentWords.length - 1) {
-                currentWordIndex++;
-                renderWord();
-            }
-        };
-
-        // Ses Çalma Simülasyonu (Gerçek ses dosyası değil) 
-        window.playAudio = function() {
-            const btn = document.querySelector('.audio-btn');
-            if (btn.classList.contains('playing')) return;
-            
-            btn.classList.add('playing');
-            console.log(`[SES] "${currentWords[currentWordIndex].pronunciation}" telaffuz ediliyor...`);
-            
-            // 1.5 saniye sonra durdur (simülasyon)
-            setTimeout(() => {
-                btn.classList.remove('playing');
-            }, 1500);
-        };
-
-        window.resetProgress = function() {
-            if(confirm("İlerlemeyi sıfırlamak istediğinize emin misiniz?")) {
-                currentWordIndex = 0;
-                renderWord();
-                updateProgress();
-                alert("İlerleme sıfırlandı.");
-            }
-        };
-
-        window.jumpRandom = function() {
-            if (currentWords.length === 0) return;
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * currentWords.length);
-            } while (newIndex === currentWordIndex && currentWords.length > 1);
-            
-            currentWordIndex = newIndex;
-            renderWord();
-        };
-
-        // Yıl Güncelleme
-        function updateYear() {
-            const year = new Date().getFullYear();
-            document.getElementById('current-year').textContent = year;
-        }
-
-        // Klavye Kısayolları
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextWord();
-            if (e.key === 'ArrowLeft') previousWord();
-            if (e.key === ' ' || e.key === 'Spacebar') {
-                e.preventDefault();
-                jumpRandom();
-            }
-        });
-
-        // Uygulamayı Başlat
-        document.addEventListener('DOMContentLoaded', initApp);
+        window.APP_TEXT = {
+            contextLabel: "Bağlam (Ayet):",
+            randomStoryName: "Rastgele Kıssalar",
+            randomStoryText: "Tüm kıssalardan karışık kelimeler öğreniyorsunuz.",
+            confirmReset: "İlerlemeyi sıfırlamak istediğinize emin misiniz?",
+            resetDone: "İlerleme sıfırlandı."
+        };   
     </script>
+
+    <script src="../scripts/ayati-kelim.js"></script>
+
 </body>
 </html>

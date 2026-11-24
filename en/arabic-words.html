@@ -86,10 +86,10 @@
 
             <!-- STORY SELECTION -->
             <div class="story-selector">
-                <button class="story-btn active" onclick="selectStory('eyyub')">Ayub A.S.</button>
-                <button class="story-btn" onclick="selectStory('musas')">Moses A.S.</button>
-                <button class="story-btn" onclick="selectStory('yusuf')">Joseph A.S.</button>
-                <button class="story-btn" onclick="selectStory('random')">Random</button>
+                <button class="story-btn active" data-story="eyyub" onclick="selectStory('eyyub')">Ayub A.S.</button>
+                <button class="story-btn" data-story="musas" onclick="selectStory('musas')">Moses A.S.</button>
+                <button class="story-btn" data-story="yusuf" onclick="selectStory('yusuf')">Joseph A.S.</button>
+                <button class="story-btn" data-story="random" onclick="selectStory('random')">Random</button>
             </div>
 
             <!-- PROGRESS -->
@@ -241,223 +241,17 @@
             }
         };
 
+        window.APP_TEXT = {
+            contextLabel: "Context (Verse):",
+            randomStoryName: "Random Stories",
+            randomStoryText: "You are learning mixed words from all stories.",
+            confirmReset: "Are you sure you want to reset progress?",
+            resetDone: "Progress reset."
+        };
         
-        function initRandomMode() {
-            const allWords = [];
-            let idCounter = 1;
-            ['eyyub', 'musas', 'yusuf'].forEach(key => {
-                stories[key].words.forEach(word => {
-                    allWords.push({ ...word, id: idCounter++ });
-                });
-            });
-           
-            for (let i = allWords.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [allWords[i], allWords[j]] = [allWords[j], allWords[i]];
-            }
-            stories.random.words = allWords;
-        }
-
-        let currentStoryKey = 'eyyub';
-        let currentWordIndex = 0;
-        let currentWords = [];
-        let isRandomMode = false;
-
-        // Start
-        function initApp() {
-            initRandomMode();
-            loadTheme();
-            selectStory('eyyub');
-            updateYear();
-        }
-
-        // Theme Management
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-        }
-
-        function updateThemeIcon(theme) {
-            const icon = document.querySelector('#themeToggle i');
-            const btn = document.querySelector('#themeToggle');
-            if (theme === 'light') {
-                icon.className = 'fas fa-moon';
-                btn.setAttribute('aria-label', 'Switch to Dark Theme');
-            } else {
-                icon.className = 'fas fa-sun';
-                btn.setAttribute('aria-label', 'Switch to Light Theme');
-            }
-        }
-
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-        // Menu Management
-        function toggleMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // Story Selection
-        window.selectStory = function(storyKey) {
-            currentStoryKey = storyKey;
-            isRandomMode = (storyKey === 'random');
-            
-            if (isRandomMode) {
-                currentWords = stories.random.words;
-                document.getElementById('currentStoryName').textContent = "Random Stories";
-                document.getElementById('storyProgressText').textContent = "You are learning mixed words from all stories.";
-            } else {
-                currentWords = stories[storyKey].words;
-               
-                const storyName = stories[storyKey].name.split('(')[0].trim();
-                document.getElementById('currentStoryName').textContent = storyName;
-                document.getElementById('storyProgressText').textContent = stories[storyKey].description;
-            }
-
-            currentWordIndex = 0;
-            
-            // Button active state
-            document.querySelectorAll('.story-btn').forEach(btn => {
-                btn.classList.remove('active');
-                const btnText = btn.textContent;
-                if (storyKey === 'random' && btnText.includes('Random')) btn.classList.add('active');
-                else if (storyKey === 'eyyub' && btnText.includes('Ayub')) btn.classList.add('active');
-                else if (storyKey === 'musas' && btnText.includes('Moses')) btn.classList.add('active');
-                else if (storyKey === 'yusuf' && btnText.includes('Joseph')) btn.classList.add('active');
-            });
-            
-            renderWord();
-            updateProgress(); 
-        };
-
-        // Update Progress Bar
-        function updateProgress() {
-            if (currentWords.length === 0) return;
-
-            const progress = ((currentWordIndex + 1) / currentWords.length) * 100;
-            const progressFill = document.getElementById('progressFill');
-            const learnedCount = document.getElementById('learnedCount');
-            const totalWords = document.getElementById('totalWords');
-
-            
-            progressFill.style.width = `${progress}%`;
-            learnedCount.textContent = currentWordIndex + 1;
-            totalWords.textContent = currentWords.length;
-        }
-
-        // Render Word to Screen
-        function renderWord() {
-            if (currentWords.length === 0) return;
-
-            const wordData = currentWords[currentWordIndex];
-            const wordCard = document.getElementById('wordCard');
-
-            // Build highlight logic
-            const contextParts = wordData.contextArabic.split(' ');
-            let highlightedContext = '';
-            contextParts.forEach((part, index) => {
-                if (index === wordData.highlightIndex) {
-                    highlightedContext += `<span class="highlight-word">${part}</span> `;
-                } else {
-                    highlightedContext += `${part} `;
-                }
-            });
-
-            // Card content
-            wordCard.innerHTML = `
-                <div class="arabic-word">${wordData.word}</div>
-                <div class="pronunciation">${wordData.pronunciation}</div>
-                <div class="meaning">${wordData.meaning}</div>
-                
-                <div class="root-badge">Root: ${wordData.root}</div>
-
-                <div class="context-card">
-                    <span class="context-label">Context (Verse):</span>
-                    <div class="context-arabic">${highlightedContext.trim()}</div>
-                    <div class="context-translation">${wordData.contextTranslation}</div>
-                </div>
-            `;
-        }
-
-        // Navigation Buttons (Must be added to Global Scope)
-        window.previousWord = function() {
-            if (currentWordIndex > 0) {
-                currentWordIndex--;
-                renderWord();
-            }
-        };
-
-        window.nextWord = function() {
-            if (currentWordIndex < currentWords.length - 1) {
-                currentWordIndex++;
-                renderWord();
-            }
-        };
-
-        // Audio Playback Simulation (Not real audio file) 
-        window.playAudio = function() {
-            const btn = document.querySelector('.audio-btn');
-            if (btn.classList.contains('playing')) return;
-            
-            btn.classList.add('playing');
-            console.log(`[AUDIO] Pronouncing "${currentWords[currentWordIndex].pronunciation}"...`);
-            
-            // Stop after 1.5 seconds (simulation)
-            setTimeout(() => {
-                btn.classList.remove('playing');
-            }, 1500);
-        };
-
-        window.resetProgress = function() {
-            if(confirm("Are you sure you want to reset progress?")) {
-                currentWordIndex = 0;
-                renderWord();
-                updateProgress();
-                alert("Progress reset.");
-            }
-        };
-
-        window.jumpRandom = function() {
-            if (currentWords.length === 0) return;
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * currentWords.length);
-            } while (newIndex === currentWordIndex && currentWords.length > 1);
-            
-            currentWordIndex = newIndex;
-            renderWord();
-        };
-
-        // Year Update
-        function updateYear() {
-            const year = new Date().getFullYear();
-            document.getElementById('current-year').textContent = year;
-        }
-
-        // Keyboard Shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextWord();
-            if (e.key === 'ArrowLeft') previousWord();
-            if (e.key === ' ' || e.key === 'Spacebar') {
-                e.preventDefault();
-                jumpRandom();
-            }
-        });
-
-        // Launch Application
-        document.addEventListener('DOMContentLoaded', initApp);
     </script>
+
+    <script src="../scripts/ayati-kelim.js"></script>
+
 </body>
 </html>
