@@ -482,10 +482,17 @@ document.querySelectorAll('.lang-menu button').forEach(function(b){
 });
 document.addEventListener('click',function(){lm.classList.remove('open')});
 
-/* Başlangıç dili: kaydedilmiş varsa o, yoksa TR */
+/* Başlangıç dili: kayıtlı tercih > tarayıcı dili > TR */
 (function(){
   var saved=null;
   try{ saved=localStorage.getItem('bio-lang'); }catch(e){}
+  if(!saved){
+    var nav=(navigator.language||'tr').toLowerCase();
+    if(nav.indexOf('en')===0)saved='en';
+    else if(nav.indexOf('de')===0)saved='de';
+    else if(nav.indexOf('ar')===0)saved='ar';
+    else if(nav.indexOf('fr')===0)saved='fr';
+  }
   applyLang(saved||'tr');
 })();
 
