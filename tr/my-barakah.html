@@ -357,7 +357,7 @@ function renderSalah(){
   DAYS.forEach(function(d){
     html+='<tr><td class="day">'+d+'</td>';
     PRAYERS.forEach(function(p,i){
-      var k='sl_'+d.slice(0,2)+'_'+i;
+      var k='sl_'+d+'_'+i;
       var s=getVal(k)||'0';
       html+='<td><span class="dotb '+(s==='1'?'on':s==='2'?'late':s==='3'?'miss':'')+'" data-k="'+k+'" role="button" tabindex="0" aria-label="'+d+' '+p+': '+(s==='1'?'vaktinde kılındı':s==='2'?'geç kılındı':s==='3'?'kılınamadı':'işaretlenmedi')+'"></span></td>';
     });
@@ -376,7 +376,7 @@ function renderSalah(){
   DAYS.forEach(function(d){
     var c=0;
     PRAYERS.forEach(function(p,i){
-      var s=getVal('sl_'+d.slice(0,2)+'_'+i)||'0';
+      var s=getVal('sl_'+d+'_'+i)||'0';
       if(s==='1'){on++;c++;}else if(s==='2')late++;else if(s==='3')miss++;
     });
     perDay[d]=c;
