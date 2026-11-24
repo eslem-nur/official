@@ -1,9 +1,5 @@
 /* =========================================================
    Ayat-i Kelim — Ortak Uygulama Mantığı
-   /official/js-files/ayat-kelim.js
-   Her sayfada bu dosyadan ÖNCE aşağıdakiler tanımlı olmalı:
-   - const stories     (dile özel kelime verisi)
-   - const APP_TEXT    (dile özel uyarı metinleri)
    ========================================================= */
 
 // Dil bazlı metinler: sayfa tanımlamadıysa İngilizce varsayılan
@@ -48,30 +44,27 @@ function initApp() {
 
 /* ---------- İlerleme Yükleme ---------- */
 function loadProgress() {
-    const saved = localStorage.getItem('kelimProgress');
-    if (!saved) return;
+    let lastStory = localStorage.getItem('kelimLastStory');
+    if (lastStory && !stories[lastStory]) lastStory = null;
+    selectStory(lastStory || 'eyyub');
+}
+
+function loadLearnedForStory(storyKey) {
     try {
-        const p = JSON.parse(saved);
-        if (p.story && stories[p.story]) {
-            selectStory(p.story);
-            learnedWords = new Set(p.learned || []);
-            if (isRandomMode) {
-                // Rastgele modda indeks güvenilmez, baştan başla
-                currentWordIndex = 0;
-            } else if (p.index < currentWords.length) {
-                currentWordIndex = p.index;
-            }
-            renderWord();
-            updateProgress();
-            saveProgress();
+        const saved = JSON.parse(localStorage.getItem('kelimProgress_' + storyKey) || '{}');
+        learnedWords = new Set(saved.learned || []);
+        if (!isRandomMode && typeof saved.index === 'number' && saved.index < currentWords.length) {
+            currentWordIndex = saved.index;
         }
+        renderWord();
+        updateProgress();
     } catch (e) {}
 }
 
 /* ---------- İlerleme Kaydetme ---------- */
 function saveProgress() {
-    localStorage.setItem('kelimProgress', JSON.stringify({
-        story: currentStoryKey,
+    const key = 'kelimProgress_' + currentStoryKey;
+    localStorage.setItem(key, JSON.stringify({
         index: currentWordIndex,
         learned: [...learnedWords]
     }));
@@ -127,7 +120,6 @@ window.selectStory = function(storyKey) {
         document.getElementById('storyProgressText').textContent = APP_TEXT.randomStoryText;
     } else {
         currentWords = stories[storyKey].words;
-
         const storyName = stories[storyKey].name.split('(')[0].trim();
         document.getElementById('currentStoryName').textContent = storyName;
         document.getElementById('storyProgressText').textContent = stories[storyKey].description;
@@ -135,14 +127,14 @@ window.selectStory = function(storyKey) {
 
     currentWordIndex = 0;
 
-    // Buton aktiflik durumu — dile bağlı metin eşleştirmesi yerine data-story
+    // Buton aktiflik durumu
     document.querySelectorAll('.story-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.story === storyKey);
     });
 
-    renderWord();
-    updateProgress();
-    saveProgress();
+    // Son hikâyeyi hatırla + bu hikâyenin ilerlemesini yükle
+    localStorage.setItem('kelimLastStory', storyKey);
+    loadLearnedForStory(storyKey);
 };
 
 /* ---------- İlerleme Çubuğu ---------- */
@@ -182,7 +174,7 @@ function renderWord() {
         <div class="pronunciation">${wordData.pronunciation}</div>
         <div class="meaning">${wordData.meaning}</div>
 
-        <div class="root-badge">Root: ${wordData.root}</div>
+        <div class="root-badge">${APP_TEXT.rootLabel}: ${wordData.root}</div>
 
         <div class="context-card">
             <span class="context-label">${APP_TEXT.contextLabel}</span>
@@ -228,7 +220,7 @@ window.playAudio = function() {
 /* ---------- Sıfırlama ---------- */
 window.resetProgress = function() {
     if (confirm(APP_TEXT.confirmReset)) {
-        localStorage.removeItem('kelimProgress');
+        localStorage.removeItem('kelimProgress_' + currentStoryKey);
         learnedWords.clear();
         currentWordIndex = 0;
         renderWord();
@@ -236,7 +228,6 @@ window.resetProgress = function() {
         alert(APP_TEXT.resetDone);
     }
 };
-
 /* ---------- Rastgele Atlama ---------- */
 window.jumpRandom = function() {
     if (currentWords.length === 0) return;
