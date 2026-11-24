@@ -221,10 +221,10 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
   <div class="today-banner" id="todayBanner"></div>
 
   <div class="tab-controls">
-    <button class="tab-btn active" data-g="today" onclick="switchTab('today',this)">📋 Bugün</button>
-    <button class="tab-btn" data-g="map" onclick="switchTab('map',this)">🗺 Mushaf Haritası</button>
-    <button class="tab-btn" data-g="stats" onclick="switchTab('stats',this)">📊 İstatistik</button>
-    <button class="tab-btn" data-g="set" onclick="switchTab('set',this)">⚙ Ayarlar</button>
+    <button class="tab-btn active" data-g="today" onclick="switchTab('today',this)"><i class="fa-regular fa-calendar"></i> Bugün</button>
+    <button class="tab-btn" data-g="map" onclick="switchTab('map',this)"><i class="fa-regular fa-map"></i> Mushaf Haritası</button>
+    <button class="tab-btn" data-g="stats" onclick="switchTab('stats',this)"><i class="fa-solid fa-chart-line"></i> İstatistik</button>
+    <button class="tab-btn" data-g="set" onclick="switchTab('set',this)"><i class="fa-solid fa-gear"></i> Ayarlar</button>
   </div>
 
   <!-- ═══ BUGÜN ═══ -->
@@ -242,13 +242,13 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
     </div>
 
     <div class="panel">
-      <h3>🔁 Sabki — Son 7 Günün Tekrarı <span class="chip" id="sabkiChip"></span></h3>
+      <h3><i class="fa-solid fa-repeat"></i> Sabki — Son 7 Günün Tekrarı <span class="chip" id="sabkiChip"></span></h3>
       <p class="sub">Son 7 günde ezberlediğin sayfalar. Her tekrardan sonra işaretle ve zorluk derecini seç.</p>
       <div class="plist" id="sabkiList"></div>
     </div>
 
     <div class="panel">
-      <h3>🕋 Manzil — Eski Ezber Döngüsü <span class="chip" id="mzChip"></span></h3>
+      <h3><i class="fas fa-kaaba"></i> Manzil — Eski Ezber Döngüsü <span class="chip" id="mzChip"></span></h3>
       <p class="sub">7 günden eski ezberlerin döngüsel tekrarı. Bugünün bölümünü bitirince "Tamamla" ile sıradaki bölüme geç.</p>
       <div class="plist" id="manzilList"></div>
       <div class="row" style="margin-top:14px">
@@ -267,7 +267,7 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
   <!-- ═══ MUSHAF HARİTASI ═══ -->
   <div class="group" id="group-map">
     <div class="panel">
-      <h3>🗺 Mushaf Haritası — 604 Sayfa / 30 Cüz</h3>
+      <h3><i class="fa-regular fa-map"></i> Mushaf Haritası — 604 Sayfa / 30 Cüz</h3>
       <p class="sub">Ezberledikçe hücreler renklenir. Bir sayfaya tıklayarak durumu düzenleyebilirsin.</p>
       <div class="legend">
         <span><span class="lg" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark))"></span> Ezberlendi</span>
@@ -282,12 +282,12 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
   <!-- ═══ İSTATİSTİK ═══ -->
   <div class="group" id="group-stats">
     <div class="panel">
-      <h3>📊 Son 7 Gün — Ezber Hızı</h3>
+      <h3><i class="fa-solid fa-chart-line"></i> Son 7 Gün — Ezber Hızı</h3>
       <p class="sub">Her gün kaç yeni sayfa ezberledin?</p>
       <div class="daygrid" id="weekChart"></div>
     </div>
     <div class="panel">
-      <h3>🏆 Genel Durum</h3>
+      <h3><i class="fa-solid fa-award"></i> Genel Durum</h3>
       <div class="stats" style="justify-content:flex-start">
         <div class="stat"><b id="stTot">0</b><span>Toplam sayfa</span></div>
         <div class="stat"><b id="stStrug">0</b><span>Zorlanılan</span></div>
@@ -300,7 +300,7 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
   <!-- ═══ AYARLAR ═══ -->
   <div class="group" id="group-set">
     <div class="panel">
-      <h3>🎯 Hedefler</h3>
+      <h3><i class="fa-solid fa-bullseye"></i> Hedefler</h3>
       <div class="row" style="margin-bottom:10px">
         <label style="font-size:.9rem">Günlük sabak hedefi:
           <input type="number" id="setGoal" min="1" max="30" style="width:74px" onchange="saveSettings()">
@@ -313,13 +313,13 @@ footer .fa-arabic{font-family:'Scheherazade New',serif;font-size:1.25rem;color:v
     </div>
 
     <div class="panel">
-      <h3>📝 Notlarım</h3>
+      <h3><i class="fa-regular fa-bullseye-arrow"></i> Notlarım</h3>
       <p class="sub">Serbest not alanı — hoca sözleri, tecvid uyarıları, hatırlatmalar…</p>
       <textarea id="notesArea" placeholder="Notlarını buraya yaz…" oninput="saveNotes()"></textarea>
     </div>
 
     <div class="panel">
-      <h3>💾 Yedekleme</h3>
+      <h3><i class="fa-regular fa-bullseye-arrow"></i> Yedekleme</h3>
       <p class="sub">Verilerin cihazında durur. Yedek al, dosyayı güvende sakla.</p>
       <div class="row">
         <button class="btn btn-sm btn-solid" onclick="exportData()"><i class="fa-solid fa-download"></i> Yedeği indir</button>
